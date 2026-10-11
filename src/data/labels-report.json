@@ -1,0 +1,36 @@
+{
+  "hi": {
+    "kept": 33,
+    "dropped": [
+      "drawn_by_code"
+    ]
+  },
+  "te": {
+    "kept": 32,
+    "dropped": [
+      "sunlight",
+      "drawn_by_code"
+    ]
+  },
+  "ta": {
+    "kept": 34,
+    "dropped": []
+  },
+  "es": {
+    "kept": 34,
+    "dropped": []
+  },
+  "zh": {
+    "kept": 32,
+    "dropped": [
+      "sunlight",
+      "drawn_by_code"
+    ]
+  },
+  "ar": {
+    "kept": 33,
+    "dropped": [
+      "drawn_by_code"
+    ]
+  }
+}

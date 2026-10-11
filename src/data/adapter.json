@@ -1,0 +1,12 @@
+{
+  "url": "https://v3b.fal.media/files/b/0aadfc10/qIr_-4zgbrLuw-thsjR9H_pytorch_lora_weights.safetensors",
+  "config": "https://v3b.fal.media/files/b/0aadfc10/GKOk4uEI7LezNh7YClhkf_config.json",
+  "requestId": "01a12c43-0810-7280-8ccf-88f26eb449e9",
+  "base": "FLUX.1 [dev]",
+  "trainer": "fal-ai/flux-lora-fast-training",
+  "steps": 1000,
+  "images": 70,
+  "source": "OpenMoji 15 (CC BY-SA 4.0), 70 pictograms with written captions",
+  "seconds": 218,
+  "trainedAt": "2026-10-11T18:42:50.167Z"
+}
