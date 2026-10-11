@@ -38,8 +38,8 @@ const TIME_SCENE: Record<TimeOfDay, string> = {
 
 const FORM_OBJECT: Record<Form, (n: number) => string> = {
   tablet: (n) => `${NUMBER_WORDS[n]} round pale-blue tablet${n > 1 ? "s" : ""} with a score line`,
-  capsule: (n) => `${NUMBER_WORDS[n]} red-and-white capsule${n > 1 ? "s" : ""}`,
-  spoon: (n) => `${NUMBER_WORDS[n]} spoon${n > 1 ? "s" : ""} filled with liquid medicine`,
+  capsule: (n) => `${NUMBER_WORDS[n]} medicine capsule${n > 1 ? "s" : ""}, each a short rounded pill lying on its side, one half red and one half white`,
+  spoon: (n) => `${NUMBER_WORDS[n]} metal spoon${n > 1 ? "s" : ""} seen from the side, each holding red liquid medicine`,
   drops: (n) => `a dropper releasing ${NUMBER_WORDS[n]} separate drop${n > 1 ? "s" : ""}`,
   puff: (n) => `an inhaler with ${NUMBER_WORDS[n]} small puff cloud${n > 1 ? "s" : ""} beside it`,
 };
@@ -54,7 +54,7 @@ const AVOID_OBJECT: Record<Avoid, string> = {
 };
 
 const WARNING_SCENE: Record<Warning, string> = {
-  fever: "a person with a thermometer in the mouth and a flushed face",
+  fever: "the face of a sick person with red cheeks and sweat drops, holding a thermometer in the mouth",
   bleeding: "a bandaged arm with red drops falling from it",
   swelling: "two legs side by side, one clearly swollen and larger",
   chest_pain: "a person holding the chest with both hands, pain lines at the chest",
@@ -92,7 +92,7 @@ export function tilePrompt(t: TileSpec, useTrigger: boolean): string {
       case "dose":
         return `exactly ${FORM_OBJECT[t.form](t.count)} laid out in a row on a plain surface, each one fully visible and separate, nothing else in the picture`;
       case "meal":
-        return "a plate of food with a fork and a spoon beside it";
+        return "a round plate of food seen from above, with a fork on the left and a spoon on the right";
       case "avoid":
         return AVOID_OBJECT[t.item];
       case "warning":

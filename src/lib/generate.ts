@@ -10,6 +10,13 @@ export function adapterUrl(): string | null {
   return process.env.READBACK_ADAPTER_URL || null;
 }
 
+// How strongly the style adapter is applied. Lower keeps more of the base model's
+// grip on the subject; higher pushes harder toward the pictogram look.
+export function adapterScale(): number {
+  const v = Number(process.env.READBACK_ADAPTER_SCALE);
+  return Number.isFinite(v) && v > 0 ? v : 0.6;
+}
+
 export async function generateTile(
   t: TileSpec,
   opts: { seed?: number; adapter?: boolean; hint?: string } = {},
@@ -25,7 +32,7 @@ export async function generateTile(
       num_images: 1,
       output_format: "png",
       ...(opts.seed !== undefined ? { seed: opts.seed } : {}),
-      ...(lora ? { loras: [{ path: lora, scale: 1 }] } : {}),
+      ...(lora ? { loras: [{ path: lora, scale: adapterScale() }] } : {}),
     },
   })) as unknown as FalImageResult;
   const img = res.data.images[0];

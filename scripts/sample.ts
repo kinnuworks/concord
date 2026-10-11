@@ -22,7 +22,7 @@ async function main() {
   await Promise.all(
     SPECS.map(async (spec) => {
       const t0 = Date.now();
-      const g = await generateTile(spec, { adapter: false, seed: 7 });
+      const g = await generateTile(spec, { adapter: process.argv[3] !== "base", seed: 7 });
       const res = await fetch(g.url);
       writeFileSync(`${out}/${tileKey(spec)}.png`, Buffer.from(await res.arrayBuffer()));
       console.log(tileKey(spec), `${Date.now() - t0} ms`);
