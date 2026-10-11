@@ -5,7 +5,7 @@ import { CardSheet } from "@/components/Cards";
 import { HowItIsChecked, Mark, Questions, WhoItIsFor, Why } from "@/components/Landing";
 import { Results } from "@/components/Results";
 import type { TileState } from "@/components/Tile";
-import type { Card } from "@/lib/plan";
+import { tilesFor, type Card } from "@/lib/plan";
 import { LANGUAGES, type Disagreement, type Lang, type Regimen } from "@/lib/schema";
 import type { TileSpec } from "@/lib/tiles";
 import samples from "@/data/samples.json";
@@ -30,6 +30,8 @@ export default function Home() {
   const [photo, setPhoto] = useState<{ mime: string; base64: string; name: string } | null>(null);
   const [lang, setLang] = useState<Lang>("en");
   const [fresh, setFresh] = useState(false);
+  // The switch takes effect on the next "Make the cards", so flipping it never redraws what is on screen.
+  const [drawFresh, setDrawFresh] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [parsed, setParsed] = useState<Parsed | null>(SAMPLES[0].parsed);
@@ -73,6 +75,7 @@ export default function Home() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Could not read the instructions.");
       setParsed(data as Parsed);
+      setDrawFresh(fresh);
       setRun((n) => n + 1);
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
@@ -87,12 +90,12 @@ export default function Home() {
       r.state.attempts.filter((a) => a.verdict && !a.verdict.pass).map((a) => ({ ...a, spec: r.spec })),
     );
     return {
-      total: all.length,
+      total: parsed ? tilesFor(parsed.cards).length : 0,
       done: all.filter((r) => r.state.status === "accepted" || r.state.status === "fallback").length,
       fallback: all.filter((r) => r.state.status === "fallback").length,
       rejected,
     };
-  }, [reports]);
+  }, [reports, parsed]);
 
   return (
     <>
@@ -143,6 +146,7 @@ export default function Home() {
                       setError(null);
                       setReports({});
                       setParsed(s.parsed);
+                      setDrawFresh(false);
                       setRun((n) => n + 1);
                     }}
                   >
@@ -267,7 +271,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="stage stage--soft">
-                    <CardSheet cards={parsed.cards} lang={lang} fresh={fresh} run={run} report={report} />
+                    <CardSheet cards={parsed.cards} lang={lang} fresh={drawFresh} run={run} report={report} />
                   </div>
                 </div>
 

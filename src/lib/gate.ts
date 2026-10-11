@@ -17,7 +17,7 @@ export type GateResult = {
   url: string;
   source: "generated" | "library" | "fallback";
   tries: number;
-  log: { n: number; url: string; seed: number; verdict: Verdict }[];
+  log: { n: number; url: string; seed: number; adapter: boolean; verdict: Verdict }[];
 };
 
 // A failed read-back tells the next attempt what went wrong, in plain terms.
@@ -43,7 +43,9 @@ export async function* runGate(
   for (let n = 1; n <= maxTries; n++) {
     let gen;
     try {
-      gen = await generateTile(spec, { adapter: opts.adapter, hint });
+      // The first attempt is drawn in the house style. In our measurements the plain model
+      // was read correctly more often, so a redraw drops the adapter: meaning before style.
+      gen = await generateTile(spec, { adapter: n === 1 ? opts.adapter : false, hint });
     } catch (e) {
       yield { type: "error", message: e instanceof Error ? e.message : String(e) };
       break;
@@ -51,7 +53,7 @@ export async function* runGate(
     yield { type: "attempt", n, url: gen.url, seed: gen.seed, adapter: gen.adapter };
 
     const verdict = await readBack(spec, await fetchImage(gen.url));
-    log.push({ n, url: gen.url, seed: gen.seed, verdict });
+    log.push({ n, url: gen.url, seed: gen.seed, adapter: gen.adapter, verdict });
     yield { type: "verdict", n, verdict };
 
     if (verdict.pass) {

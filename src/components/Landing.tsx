@@ -140,7 +140,7 @@ const STEPS: { title: string; text: string; icon: ReactNode }[] = [
   },
   {
     title: "Every picture is read back",
-    text: "Both readers describe the picture in their own words, with no list to choose from. A separate judge decides whether each one understood it.",
+    text: "Both readers describe the picture in their own words, with no list to choose from. A separate judge checks each description against a written rule for that picture.",
     icon: (
       <>
         <path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2" />
@@ -150,7 +150,7 @@ const STEPS: { title: string; text: string; icon: ReactNode }[] = [
   },
   {
     title: "Wrong pictures are thrown away",
-    text: "A picture that fails is redrawn up to three times, and each new attempt is told what the last one got wrong.",
+    text: "A picture that fails is redrawn up to three times. Each new attempt is told what the last one got wrong, and drops our style adapter, because the plain model was easier to read in our tests.",
     icon: (
       <>
         <path d="M3 12a9 9 0 1 0 3-6.7" />

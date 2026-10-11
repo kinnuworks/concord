@@ -1,27 +1,18 @@
 {
-  "generatedAt": "2026-10-11T19:26:33.787Z",
+  "generatedAt": "2026-10-11T20:26:12.741Z",
   "base": {
     "pictures": 270,
     "tiles": 45,
     "firstTry": {
-      "k": 167,
+      "k": 180,
       "n": 270,
-      "pct": 61.9,
+      "pct": 66.7,
       "ci": [
-        55.9,
-        67.4
+        60.8,
+        72
       ]
     },
     "byKind": {
-      "time": {
-        "k": 18,
-        "n": 24,
-        "pct": 75,
-        "ci": [
-          55.1,
-          88
-        ]
-      },
       "dose": {
         "k": 47,
         "n": 84,
@@ -29,33 +20,6 @@
         "ci": [
           45.3,
           66.1
-        ]
-      },
-      "meal": {
-        "k": 6,
-        "n": 6,
-        "pct": 100,
-        "ci": [
-          61,
-          100
-        ]
-      },
-      "avoid": {
-        "k": 24,
-        "n": 36,
-        "pct": 66.7,
-        "ci": [
-          50.3,
-          79.8
-        ]
-      },
-      "warning": {
-        "k": 25,
-        "n": 60,
-        "pct": 41.7,
-        "ci": [
-          30.1,
-          54.3
         ]
       },
       "exercise": {
@@ -75,39 +39,63 @@
           83.3,
           99.4
         ]
+      },
+      "time": {
+        "k": 22,
+        "n": 24,
+        "pct": 91.7,
+        "ci": [
+          74.2,
+          97.7
+        ]
+      },
+      "meal": {
+        "k": 6,
+        "n": 6,
+        "pct": 100,
+        "ci": [
+          61,
+          100
+        ]
+      },
+      "avoid": {
+        "k": 28,
+        "n": 36,
+        "pct": 77.8,
+        "ci": [
+          61.9,
+          88.3
+        ]
+      },
+      "warning": {
+        "k": 30,
+        "n": 60,
+        "pct": 50,
+        "ci": [
+          37.7,
+          62.3
+        ]
       }
     },
-    "expectedFallbackPct": 22,
+    "expectedFallbackPct": 16.9,
     "neverPassed": [
-      "avoid-sunlight",
-      "warning-swelling",
-      "warning-breathlessness",
-      "warning-wound_discharge",
-      "exercise-straight_leg_raise-45"
+      "exercise-straight_leg_raise-45",
+      "warning-breathlessness"
     ]
   },
   "adapter": {
     "pictures": 270,
     "tiles": 45,
     "firstTry": {
-      "k": 178,
+      "k": 146,
       "n": 270,
-      "pct": 65.9,
+      "pct": 54.1,
       "ci": [
-        60.1,
-        71.3
+        48.1,
+        59.9
       ]
     },
     "byKind": {
-      "time": {
-        "k": 17,
-        "n": 24,
-        "pct": 70.8,
-        "ci": [
-          50.8,
-          85.1
-        ]
-      },
       "dose": {
         "k": 38,
         "n": 84,
@@ -115,33 +103,6 @@
         "ci": [
           35,
           55.9
-        ]
-      },
-      "meal": {
-        "k": 5,
-        "n": 6,
-        "pct": 83.3,
-        "ci": [
-          43.6,
-          97
-        ]
-      },
-      "avoid": {
-        "k": 34,
-        "n": 36,
-        "pct": 94.4,
-        "ci": [
-          81.9,
-          98.5
-        ]
-      },
-      "warning": {
-        "k": 41,
-        "n": 60,
-        "pct": 68.3,
-        "ci": [
-          55.8,
-          78.7
         ]
       },
       "exercise": {
@@ -161,13 +122,82 @@
           83.3,
           99.4
         ]
+      },
+      "time": {
+        "k": 20,
+        "n": 24,
+        "pct": 83.3,
+        "ci": [
+          64.1,
+          93.3
+        ]
+      },
+      "meal": {
+        "k": 5,
+        "n": 6,
+        "pct": 83.3,
+        "ci": [
+          43.6,
+          97
+        ]
+      },
+      "avoid": {
+        "k": 28,
+        "n": 36,
+        "pct": 77.8,
+        "ci": [
+          61.9,
+          88.3
+        ]
+      },
+      "warning": {
+        "k": 12,
+        "n": 60,
+        "pct": 20,
+        "ci": [
+          11.8,
+          31.8
+        ]
       }
     },
-    "expectedFallbackPct": 18.5,
+    "expectedFallbackPct": 27.4,
     "neverPassed": [
       "dose-puff-2",
+      "exercise-straight_leg_raise-45",
+      "warning-swelling",
       "warning-breathlessness",
-      "exercise-straight_leg_raise-45"
+      "warning-wound_discharge"
+    ]
+  },
+  "adapterLight": {
+    "pictures": 60,
+    "tiles": 10,
+    "firstTry": {
+      "k": 17,
+      "n": 60,
+      "pct": 28.3,
+      "ci": [
+        18.5,
+        40.8
+      ]
+    },
+    "byKind": {
+      "warning": {
+        "k": 17,
+        "n": 60,
+        "pct": 28.3,
+        "ci": [
+          18.5,
+          40.8
+        ]
+      }
+    },
+    "expectedFallbackPct": 60.3,
+    "neverPassed": [
+      "warning-bleeding",
+      "warning-chest_pain",
+      "warning-breathlessness",
+      "warning-wound_discharge"
     ]
   },
   "counting": {
@@ -178,6 +208,11 @@
       43.1,
       58.1
     ]
+  },
+  "redrawRule": {
+    "signs": 10,
+    "styledOnlyFallbackPct": 58.6,
+    "styledThenPlainFallbackPct": 32.1
   },
   "caught": [
     {
@@ -518,6 +553,80 @@
       ]
     }
   ],
+  "misread": [
+    {
+      "file": "/evidence/misread-adapter-warning-fever__3.png",
+      "arm": "adapter",
+      "meant": "a person with a fever or high temperature",
+      "saw": [
+        "a person's face with red tears and blue drool.",
+        "a person crying with tears and an open mouth"
+      ]
+    },
+    {
+      "file": "/evidence/misread-adapter-warning-bleeding__0.png",
+      "arm": "adapter",
+      "meant": "bleeding",
+      "saw": [
+        "an arm with a closed fist and a gold bracelet.",
+        "a hand with a yellow wristband"
+      ]
+    },
+    {
+      "file": "/evidence/misread-adapter-warning-swelling__1.png",
+      "arm": "adapter",
+      "meant": "a swollen leg, foot or body part",
+      "saw": [
+        "a red sock",
+        "a red sock"
+      ]
+    },
+    {
+      "file": "/evidence/misread-adapter-warning-chest_pain__0.png",
+      "arm": "adapter",
+      "meant": "chest pain",
+      "saw": [
+        "a person with hands raised to their chest, palms facing in.",
+        "a person in an orange shirt holding both hands near their chest"
+      ]
+    },
+    {
+      "file": "/evidence/misread-adapter-warning-breathlessness__0.png",
+      "arm": "adapter",
+      "meant": "a person struggling to breathe",
+      "saw": [
+        "a person with a sore throat or difficulty swallowing.",
+        "a person touching their chin with one hand."
+      ]
+    },
+    {
+      "file": "/evidence/misread-adapter-warning-severe_pain__3.png",
+      "arm": "adapter",
+      "meant": "a person in strong pain",
+      "saw": [
+        "a person with a red spot on their stomach.",
+        "a person with a red apple on their belly."
+      ]
+    },
+    {
+      "file": "/evidence/misread-adapter-warning-vomiting__3.png",
+      "arm": "adapter",
+      "meant": "a person vomiting or being sick",
+      "saw": [
+        "a person spitting a green drop into a cup with green liquid.",
+        "a face dripping green liquid into a cup"
+      ]
+    },
+    {
+      "file": "/evidence/misread-adapter-warning-dizziness__0.png",
+      "arm": "adapter",
+      "meant": "a dizzy person",
+      "saw": [
+        "a person wearing headphones with sound waves above their head.",
+        "a person holding their hands to their head beneath curved lines"
+      ]
+    }
+  ],
   "reader": {
     "cases": 100,
     "correct": 100,
@@ -529,6 +638,40 @@
     "flaggedButCorrect": 4,
     "errors": 0,
     "ranAt": "2026-10-11T19:19:20.913Z"
+  },
+  "style": {
+    "base": {
+      "agreeFlat": 56,
+      "total": 270,
+      "perReader": {
+        "gemini": {
+          "flat pictogram with outlines": 99,
+          "other illustration": 108,
+          "photo or 3d render": 63
+        },
+        "openai": {
+          "other illustration": 115,
+          "flat pictogram with outlines": 62,
+          "photo or 3d render": 93
+        }
+      }
+    },
+    "adapter": {
+      "agreeFlat": 210,
+      "total": 270,
+      "perReader": {
+        "gemini": {
+          "flat pictogram with outlines": 230,
+          "other illustration": 38,
+          "photo or 3d render": 2
+        },
+        "openai": {
+          "other illustration": 42,
+          "flat pictogram with outlines": 219,
+          "photo or 3d render": 9
+        }
+      }
+    }
   },
   "training": {
     "steps": 1000,

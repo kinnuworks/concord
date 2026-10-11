@@ -71,7 +71,7 @@ const WARNING_SCENE: Record<Warning, string> = {
   bleeding: "a bandaged arm with red drops falling from it",
   swelling: "one bare foot and ankle swollen up like a balloon, far bigger than a normal foot, red and puffy, with small arrows pointing outward from the swelling",
   chest_pain: "a person holding the chest with both hands, pain lines at the chest",
-  breathlessness: "a person clutching the throat with one hand, mouth wide open gasping for air, face turning blue, a pair of lungs drawn on the chest",
+  breathlessness: "side view of a person bent forward with both hands on the knees, mouth wide open, panting hard and out of breath, short puff lines of breath in front of the mouth, drops of sweat on the face",
   severe_pain: "a person bent forward clutching the belly with both hands, eyes shut tight and teeth clenched in pain, red jagged pain marks at the belly",
   vomiting: "the head and shoulders of a person in profile with the mouth wide open and green vomit pouring out of the mouth into a bucket",
   rash: "an arm covered in red spots",

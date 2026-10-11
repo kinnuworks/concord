@@ -12,6 +12,8 @@ type Results = {
   adapter?: Arm;
   counting?: Rate;
   caught?: Caught[];
+  misread?: { file: string; meant: string; saw: string[] }[];
+  redrawRule?: { signs: number; styledOnlyFallbackPct: number; styledThenPlainFallbackPct: number };
   reader?: { cases: number; correct: number; wrong: number; wrongAndUnflagged: number; errors: number };
   style?: Record<string, { agreeFlat: number; total: number }>;
   training?: { steps: number; images: number; seconds: number; base: string; source: string };
@@ -35,6 +37,8 @@ export function Results() {
   if (!total) return null;
   const counting = r.counting;
   const unit = r.adapter?.byKind.unit;
+  const warnA = r.adapter?.byKind.warning;
+  const warnB = r.base?.byKind.warning;
   const flatAdapter = share(r.style?.adapter);
   const flatBase = share(r.style?.base);
   const reader = r.reader && r.reader.errors === 0 ? r.reader : null;
@@ -84,8 +88,9 @@ export function Results() {
               </p>
               <p className="stat-card__text">
                 The share of pictures both readers called a flat outlined pictogram, without and with our
-                fine-tuned style adapter. The adapter changed the style. It did not make the generator more
-                accurate.
+                fine-tuned style adapter. The adapter gave the cards one look. It also made warning signs harder
+                to read{warnA && warnB ? `: ${warnA.k} of ${warnA.n} passed first time, against ${warnB.k} of ${warnB.n} without it` : ""}.
+                So a redraw drops the adapter.
               </p>
             </div>
           ) : null}
@@ -133,8 +138,11 @@ export function Results() {
               </tbody>
             </table>
             <p className="t-small">
-              A picture that fails is redrawn up to three times. If none passes, the card shows a plain pictogram
-              drawn by code.
+              A picture that fails is redrawn up to three times, the first attempt in our style and the rest with
+              the plain model. If none passes, the card shows a plain pictogram drawn by code.
+              {r.redrawRule
+                ? ` Worked out from these rates, that rule leaves about ${Math.round(r.redrawRule.styledThenPlainFallbackPct)}% of freshly drawn warning signs on the code-drawn marker, against ${Math.round(r.redrawRule.styledOnlyFallbackPct)}% if every attempt used the adapter.`
+                : ""}
               {r.training
                 ? ` The adapter was trained for ${r.training.steps} steps on ${r.training.images} OpenMoji pictograms in ${r.training.seconds} seconds.`
                 : ""}
@@ -144,7 +152,7 @@ export function Results() {
 
         {r.caught?.length ? (
           <div className="card results-caught">
-            <p className="t-title">Pictures the check threw away</p>
+            <p className="t-title">Miscounted doses the check threw away</p>
             <ul>
               {r.caught.slice(0, 6).map((c) => {
                 const seen = [...new Set(c.readings.map((x) => x.reading?.count).filter((n) => typeof n === "number"))];
@@ -158,6 +166,23 @@ export function Results() {
                   </li>
                 );
               })}
+            </ul>
+          </div>
+        ) : null}
+
+        {r.misread?.length ? (
+          <div className="card results-caught">
+            <p className="t-title">Warning signs the readers could not make sense of</p>
+            <ul>
+              {r.misread.slice(0, 6).map((c) => (
+                <li key={c.file}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={c.file} alt="" width={132} height={132} loading="lazy" />
+                  <span>
+                    Meant to show <b>{c.meant}</b>. A reader saw &ldquo;{c.saw[0].replace(/\.$/, "")}&rdquo;
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
         ) : null}

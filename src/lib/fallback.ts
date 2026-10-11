@@ -83,11 +83,11 @@ const limb = (a: Pt, b: Pt, colour = INK, w = 24) =>
 const polar = (o: Pt, len: number, deg: number): Pt => [o[0] + len * Math.cos(rad(deg)), o[1] - len * Math.sin(rad(deg))];
 
 // A dashed arc between two directions, with the angle written beside it.
-function angleMark(centre: Pt, from: number, to: number, shown: number) {
+function angleMark(centre: Pt, from: number, to: number, shown: number, labelGap = 46) {
   const r = 64;
   const steps = 24;
   const pts = Array.from({ length: steps + 1 }, (_, i) => polar(centre, r, from + ((to - from) * i) / steps));
-  const mid = polar(centre, r + 46, (from + to) / 2);
+  const mid = polar(centre, r + labelGap, (from + to) / 2);
   return `<polyline points="${pts.map((p) => `${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ")}" fill="none" stroke="${MOVE}" stroke-width="6" stroke-dasharray="3 11" stroke-linecap="round"/><text x="${mid[0].toFixed(1)}" y="${(mid[1] + 14).toFixed(1)}" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="middle" fill="${MOVE}">${Math.round(shown)}\u00B0</text>`;
 }
 
@@ -96,22 +96,25 @@ function angleMark(centre: Pt, from: number, to: number, shown: number) {
 export function exerciseSvg(movement: string, angle: number): string {
   let body = "";
   if (movement === "knee_bend" || movement === "straight_leg_raise") {
-    const floor = 392;
-    const hip: Pt = [250, 364];
-    const shoulder: Pt = [112, 364];
-    body += `<line x1="28" y1="${floor}" x2="484" y2="${floor}" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>`;
-    body += `<circle cx="72" cy="356" r="30" fill="#fff" stroke="${INK}" stroke-width="14"/>`;
-    body += limb(shoulder, hip) + limb(hip, [462, 364]);
+    // A person lying on a mat, head to the left. The resting leg is ink, the moving leg red.
+    const floor = 322;
+    const hip: Pt = [250, 290];
+    const shoulder: Pt = [116, 290];
+    const heel: Pt = [462, 290];
+    body += `<rect x="24" y="${floor - 6}" width="464" height="16" rx="8" fill="#E4E6EB"/>`;
+    body += `<circle cx="72" cy="282" r="30" fill="#fff" stroke="${INK}" stroke-width="14"/>`;
+    body += limb(shoulder, hip, INK, 30) + limb(hip, heel) + limb(heel, [468, 258], INK, 16);
     if (movement === "straight_leg_raise") {
-      body += limb(hip, polar(hip, 208, angle), MOVE);
-      body += angleMark(hip, 0, angle, angle);
+      const end = polar(hip, 208, angle);
+      body += limb(hip, end, MOVE) + limb(end, polar(end, 30, angle + 90), MOVE, 16);
+      body += angleMark(hip, 0, angle, angle, 96);
     } else {
-      // The heel stays on the floor. Thigh and shin meet at the knee at the prescribed angle.
+      // The heel stays on the mat. Thigh and shin meet at the knee at the prescribed angle.
       const L = 112;
       const half = rad(angle / 2);
       const knee: Pt = [hip[0] + L * Math.sin(half), hip[1] - L * Math.cos(half)];
       const foot: Pt = [hip[0] + 2 * L * Math.sin(half), hip[1]];
-      body += limb(hip, knee, MOVE) + limb(knee, foot, MOVE);
+      body += limb(hip, knee, MOVE) + limb(knee, foot, MOVE) + limb(foot, [foot[0] + 30, foot[1] - 4], MOVE, 16);
       const toHip = (Math.atan2(knee[1] - hip[1], hip[0] - knee[0]) * 180) / Math.PI;
       const toFoot = (Math.atan2(knee[1] - foot[1], foot[0] - knee[0]) * 180) / Math.PI;
       body += angleMark(knee, toHip, toFoot - 0, angle).replace(/<text[^>]*>/, (m) => m.replace(/y="[^"]*"/, `y="${(knee[1] - 26).toFixed(1)}"`).replace(/x="[^"]*"/, `x="${knee[0].toFixed(1)}"`));

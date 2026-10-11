@@ -1,0 +1,34 @@
+{
+  "base": {
+    "agreeFlat": 56,
+    "total": 270,
+    "perReader": {
+      "gemini": {
+        "flat pictogram with outlines": 99,
+        "other illustration": 108,
+        "photo or 3d render": 63
+      },
+      "openai": {
+        "other illustration": 115,
+        "flat pictogram with outlines": 62,
+        "photo or 3d render": 93
+      }
+    }
+  },
+  "adapter": {
+    "agreeFlat": 210,
+    "total": 270,
+    "perReader": {
+      "gemini": {
+        "flat pictogram with outlines": 230,
+        "other illustration": 38,
+        "photo or 3d render": 2
+      },
+      "openai": {
+        "other illustration": 42,
+        "flat pictogram with outlines": 219,
+        "photo or 3d render": 9
+      }
+    }
+  }
+}

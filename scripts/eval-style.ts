@@ -1,14 +1,20 @@
 // Two follow-up passes over the saved evaluation pictures, without drawing anything new.
-// 1. Style: a reader labels each picture's drawing style, to measure what the adapter changes.
-// 2. Pictures of things: re-read with the current open-ended question.
-// Run: pnpm tsx --env-file=.env.local scripts/eval-style.ts
+// 1. Pictures of things: the readers' saved descriptions are judged again with the current
+//    written rules, so every row in the table was judged the same way.
+// 2. Style: both readers label each picture's drawing style, to measure what the adapter changes.
+// Run: pnpm tsx --env-file=.env.local scripts/eval-style.ts [judge|style]
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { googleVisionJson, openaiJson } from "../src/lib/models";
-import { readBack } from "../src/lib/readback";
+import { judge, judged } from "../src/lib/readback";
 import type { Avoid, TimeOfDay, Warning } from "../src/lib/schema";
 import type { TileSpec } from "../src/lib/tiles";
 
-type Row = { key: string; kind: string; i: number; file: string; pass: boolean; expected: unknown; readings: unknown; mismatches: string[] };
+type Row = {
+  key: string; kind: string; i: number; file: string; pass: boolean; expected: unknown;
+  readings: { reader: string; reading: Record<string, unknown> | null }[];
+  mismatches: string[];
+};
+const only = process.argv[2];
 
 const STYLES = ["flat pictogram with outlines", "photo or 3d render", "other illustration"] as const;
 const QUESTION = `Look only at how this picture is drawn, not at what it shows. Answer with one JSON object: {"style": one of ${JSON.stringify(STYLES)}}. "flat pictogram with outlines" means flat solid colours with clear dark outlines and no realistic shading.`;
@@ -30,20 +36,32 @@ async function pool<T>(items: T[], n: number, fn: (x: T) => Promise<void>) {
 }
 
 async function main() {
-  const out: Record<string, unknown> = {};
-  for (const arm of ["base", "adapter"]) {
+  const styleFile = new URL("src/data/eval-style.json", root);
+  const out: Record<string, unknown> = existsSync(styleFile) ? JSON.parse(readFileSync(styleFile, "utf8")) : {};
+  for (const arm of ["base", "adapter", "adapter-light"]) {
     const file = new URL(`training/eval/${arm}.jsonl`, root);
     if (!existsSync(file)) continue;
     const rows = readFileSync(file, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l) as Row);
 
-    // Pictures of things, read again with the current open-ended question.
-    const again = rows.filter((r) => ["time", "meal", "avoid", "warning"].includes(r.kind));
-    await pool(again, 4, async (r) => {
-      const buf = readFileSync(new URL(`training/eval/${arm}/${r.file}`, root));
-      const v = await readBack(specFromKey(r.key), { mime: "image/png", base64: buf.toString("base64") });
-      r.pass = v.pass; r.expected = v.expected; r.readings = v.readers; r.mismatches = v.mismatches;
-    });
-    writeFileSync(file, rows.map((r) => JSON.stringify(r)).join("\n") + "\n");
+    if (only !== "style") {
+      const again = rows.filter((r) => ["time", "meal", "avoid", "warning"].includes(r.kind));
+      await pool(again, 6, async (r) => {
+        const j = judged(specFromKey(r.key))!;
+        const described = r.readings.map((x) => (typeof x.reading?.shows === "string" ? x.reading.shows : "unclear"));
+        const understood = await judge(j.intended, j.mustMention, described);
+        r.expected = { meaning: j.intended };
+        r.mismatches = [];
+        r.readings.forEach((x, i) => {
+          if (!x.reading) return void r.mismatches.push(`${x.reader} could not read the picture`);
+          x.reading.understood = understood[i];
+          if (!understood[i]) r.mismatches.push(`${x.reader} saw "${described[i]}", meant to show ${j.intended}`);
+        });
+        r.pass = r.mismatches.length === 0;
+      });
+      writeFileSync(file, rows.map((r) => JSON.stringify(r)).join("\n") + "\n");
+      console.log(arm, "judged again:", again.filter((r) => r.pass).length, "of", again.length, "pass");
+    }
+    if (only === "judge" || arm === "adapter-light") continue;
 
     // Style labels from both readers; a picture counts as a flat pictogram only if both say so.
     const counts: Record<string, number> = { agreeFlat: 0, total: 0 };
@@ -64,7 +82,7 @@ async function main() {
     out[arm] = { ...counts, perReader };
     console.log(arm, JSON.stringify(out[arm]));
   }
-  writeFileSync(new URL("src/data/eval-style.json", root), JSON.stringify(out, null, 2) + "\n");
+  writeFileSync(styleFile, JSON.stringify(out, null, 2) + "\n");
 }
 
 main();

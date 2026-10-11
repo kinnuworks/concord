@@ -16,7 +16,7 @@ export type Verdict = {
 // afterwards, to judge whether the reader's own description got the idea.
 const SKY: Record<TimeOfDay, string> = {
   morning: "morning, shown by a rooster or a sun rising over land",
-  afternoon: "daytime, with the sun up in the sky",
+  afternoon: "daytime, shown by a full bright sun",
   evening: "a sunset or dusk",
   night: "night, with a moon or stars",
 };
@@ -51,6 +51,51 @@ function meaning(t: TileSpec): string | null {
       return AVOID_MEANING[t.item];
     case "warning":
       return WARNING_MEANING[t.sign];
+    default:
+      return null;
+  }
+}
+
+// The written rule the judge applies for each meaning: what a description has to mention
+// before the picture counts as understood. One rule per meaning keeps the judge from
+// passing or failing the same description on different days.
+const SKY_RULE: Record<TimeOfDay, string> = {
+  morning: "a rooster, cockerel or chicken, or a sunrise",
+  afternoon: "a full sun, on its own or high in the sky, that is not rising or setting",
+  evening: "a sunset, dusk, or a sun going down at the horizon",
+  night: "a moon or stars",
+};
+const AVOID_RULE: Record<Avoid, string> = {
+  alcohol: "an alcoholic drink such as wine, beer or spirits, in a glass or a bottle",
+  driving: "a car or another road vehicle, or a person driving",
+  sunlight: "the sun shining on a person",
+  smoking: "a cigarette, cigar or pipe",
+  heavy_lifting: "a person lifting or carrying something heavy, such as a box or weights",
+  dairy: "milk, cheese, yoghurt or another dairy food",
+};
+const WARNING_RULE: Record<Warning, string> = {
+  fever: "a person with a thermometer, or a person described as feverish or having a high temperature",
+  bleeding: "blood on the body or dripping from it, or a bleeding wound",
+  swelling: "a body part described as swollen, puffed up or enlarged",
+  chest_pain: "a person holding or clutching their chest, or pain marked on the chest",
+  breathlessness: "a person struggling to breathe: gasping, panting, out of breath or short of breath",
+  severe_pain: "a person in pain: grimacing, crying out, or clutching a part of the body that hurts",
+  vomiting: "a person vomiting or being sick",
+  rash: "spots, a rash or red patches on the skin",
+  dizziness: "a dizzy person, for example with stars, spirals or swirls around the head",
+  wound_discharge: "a wound or cut with fluid, pus or drops coming out of it",
+};
+
+function rule(t: TileSpec): string | null {
+  switch (t.kind) {
+    case "time":
+      return SKY_RULE[t.time];
+    case "meal":
+      return "food on a plate or in a bowl, or a meal";
+    case "avoid":
+      return AVOID_RULE[t.item];
+    case "warning":
+      return WARNING_RULE[t.sign];
     default:
       return null;
   }
@@ -108,19 +153,27 @@ async function askReaders(q: string, image: ImageInput): Promise<ReaderResult[]>
   );
 }
 
-// Decides whether each free description carries the intended idea. It sees only text.
-async function judge(intended: string, descriptions: string[]): Promise<boolean[]> {
+// Decides whether each free description carries the intended idea. It sees only text,
+// and it applies the written rule for that meaning.
+export async function judge(intended: string, mustMention: string, descriptions: string[]): Promise<boolean[]> {
   const raw = (await openaiJson(
     `A pictogram on a patient's medicine card was meant to show: "${intended}".\n` +
-      `People who were not told this looked at it and described what they saw:\n` +
+      `Rule: a description counts as understood only if it mentions ${mustMention}.\n` +
+      `People who were not told the meaning looked at the picture and described what they saw:\n` +
       descriptions.map((d, i) => `${i + 1}. "${d}"`).join("\n") +
-      `\nThe descriptions are literal: people say what is drawn, not what it means. For each one, decide whether a person who saw exactly what is described would take the picture to mean the intended idea. ` +
-      `A crescent moon and stars means night. A rooster with a rising sun means morning. A wine glass and a bottle means alcoholic drinks. ` +
-      `Say false when the description is of something else, is too vague to tell, or leaves out the part that carries the meaning: a person bending over is not vomiting, a bare arm is not a leaking wound, a smiling person is not in pain, a plain sun in a blue sky is daytime, not a sunset. "unclear" is always false.\n` +
+      `\nApply the rule to each description. The descriptions are literal, so go by what is described, and accept plain synonyms ("throwing up" is vomiting, a hen is a chicken). ` +
+      `Say false when the description is of something else, when the part the rule asks for is missing, or when it is too vague to tell: a person bending over is not vomiting, a bare arm is not a wound, a smiling person is not in pain, a foot beside a ball is not a swollen foot. "unclear" is always false.\n` +
       `Answer with one JSON object: {"understood": [true or false for each description, in order]}.`,
   )) as { understood?: unknown };
   const list = Array.isArray(raw.understood) ? raw.understood : [];
   return descriptions.map((_, i) => list[i] === true);
+}
+
+// The meaning and rule for a picture of a thing, or null for pictures that are counted instead.
+export function judged(t: TileSpec): { intended: string; mustMention: string } | null {
+  const intended = meaning(t);
+  const mustMention = rule(t);
+  return intended && mustMention ? { intended, mustMention } : null;
 }
 
 // Every reader must get every expected fact. One wrong or missing answer fails the tile.
@@ -148,7 +201,7 @@ export async function readBack(t: TileSpec, image: ImageInput): Promise<Verdict>
   const described = readers.map((r) => (typeof r.reading?.shows === "string" ? r.reading.shows : "unclear"));
   let understood: boolean[];
   try {
-    understood = await judge(intended, described);
+    understood = await judge(intended, rule(t) ?? intended, described);
   } catch {
     understood = described.map(() => false);
   }

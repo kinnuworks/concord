@@ -36,7 +36,7 @@ export async function saveToLibrary(result: GateResult, adapter: boolean): Promi
   entries[result.key] = {
     file,
     seed: last?.seed ?? 0,
-    adapter,
+    adapter: last?.adapter ?? adapter,
     tries: result.tries,
     checkedBy: last?.verdict.readers.map((r) => r.reader) ?? [],
   };

@@ -1,7 +1,9 @@
 // Draws every tile several times without the gate and records what the readers saw.
 // One run per arm: "base" (no adapter) and "adapter". Results append to a JSON-lines
 // file so an interrupted run resumes where it stopped.
-// Run: pnpm tsx --env-file=.env.local scripts/eval-tiles.ts <base|adapter> [triesPerTile]
+// Run: pnpm tsx --env-file=.env.local scripts/eval-tiles.ts <base|adapter> [triesPerTile] [name] [kinds]
+// "name" stores the run under another name (for example an adapter run at a lower strength,
+// set with READBACK_ADAPTER_SCALE). "kinds" limits the run, for example "warning,avoid".
 import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { generateTile } from "../src/lib/generate";
 import { readBack } from "../src/lib/readback";
@@ -12,8 +14,10 @@ import { buildTestSet } from "./testset";
 
 const arm = process.argv[2] === "adapter" ? "adapter" : "base";
 const tries = Number(process.argv[3] ?? 5);
-const dir = new URL(`../training/eval/${arm}/`, import.meta.url);
-const logFile = new URL(`../training/eval/${arm}.jsonl`, import.meta.url);
+const name = process.argv[4] || arm;
+const kinds = (process.argv[5] ?? "").split(",").filter(Boolean);
+const dir = new URL(`../training/eval/${name}/`, import.meta.url);
+const logFile = new URL(`../training/eval/${name}.jsonl`, import.meta.url);
 
 function allSpecs(): TileSpec[] {
   const cases = buildTestSet();
@@ -30,7 +34,8 @@ function allSpecs(): TileSpec[] {
     knee_bend: 90, straight_leg_raise: 45, arm_raise_front: 90, arm_raise_side: 90, elbow_bend: 90,
   };
   const exercises: TileSpec[] = MOVEMENTS.map((movement) => ({ kind: "exercise", movement, angle: angles[movement] }));
-  return [...fromCases, ...counted.values(), ...warnings, ...exercises];
+  const all = [...fromCases, ...counted.values(), ...warnings, ...exercises];
+  return kinds.length ? all.filter((t) => kinds.includes(t.kind)) : all;
 }
 
 function seedFor(key: string, i: number) {
@@ -65,7 +70,7 @@ async function main() {
   const jobs = allSpecs().flatMap((spec) =>
     Array.from({ length: tries }, (_, i) => ({ spec, i })).filter((j) => !done.has(`${tileKey(j.spec)}#${j.i}`)),
   );
-  console.log(`${arm}: ${jobs.length} to draw, ${done.size} already done`);
+  console.log(`${name}: ${jobs.length} to draw, ${done.size} already done`);
 
   let finished = 0;
   const workers = Array.from({ length: 3 }, async () => {
@@ -94,11 +99,11 @@ async function main() {
         console.log("failed", key, job.i, e instanceof Error ? e.message.slice(0, 140) : e);
       }
       finished += 1;
-      if (finished % 20 === 0) console.log(`${arm}: ${finished} drawn`);
+      if (finished % 20 === 0) console.log(`${name}: ${finished} drawn`);
     }
   });
   await Promise.all(workers);
-  console.log(`${arm}: done`);
+  console.log(`${name}: done`);
 }
 
 main();

@@ -42,7 +42,7 @@ async function main() {
           const res = await fetch(r.url);
           writeFileSync(path, Buffer.from(await res.arrayBuffer()));
           const last = r.log[r.log.length - 1];
-          manifest[key] = { file: `/tiles/${key}.png`, seed: last.seed, adapter: true, tries: r.tries, checkedBy: last.verdict.readers.map((x) => x.reader) };
+          manifest[key] = { file: `/tiles/${key}.png`, seed: last.seed, adapter: last.adapter, tries: r.tries, checkedBy: last.verdict.readers.map((x) => x.reader) };
           console.log(`${key}: redrawn, passed on try ${r.tries}`);
         } else {
           delete manifest[key];

@@ -63,6 +63,8 @@ function main() {
   const out: Record<string, unknown> = { generatedAt: new Date().toISOString() };
   if (base.length) out.base = summarise(base);
   if (adapter.length) out.adapter = summarise(adapter);
+  const light = read("adapter-light");
+  if (light.length) out.adapterLight = summarise(light);
 
   // Whole doses drawn in one picture, pooled over both arms: how often the count was right.
   const counted = [...base, ...adapter].filter((r) => r.kind === "dose");
@@ -80,7 +82,52 @@ function main() {
       copyFileSync(new URL(`training/eval/${arm}/${r.file}`, root), new URL(name, dir));
       return { file: `/evidence/${name}`, arm, expected: r.expected, readings: r.readings, mismatches: r.mismatches };
     });
+  // What the redraw rule is worth, worked out from the measured first-try rates for
+  // warning signs: three styled attempts, against one styled attempt and two plain ones.
+  const passRate = (rows: Row[]) => {
+    const m: Record<string, { k: number; n: number }> = {};
+    for (const r of rows.filter((x) => x.kind === "warning")) {
+      (m[r.key] ??= { k: 0, n: 0 }).n += 1;
+      if (r.pass) m[r.key].k += 1;
+    }
+    return m;
+  };
+  const pa = passRate(adapter);
+  const pb = passRate(base);
+  const signs = Object.keys(pa).filter((k) => pb[k]);
+  if (signs.length) {
+    const miss = (t: { k: number; n: number }) => 1 - t.k / t.n;
+    const mean = (f: (k: string) => number) => pct(signs.reduce((s, k) => s + f(k), 0) / signs.length);
+    out.redrawRule = {
+      signs: signs.length,
+      styledOnlyFallbackPct: mean((k) => Math.pow(miss(pa[k]), 3)),
+      styledThenPlainFallbackPct: mean((k) => miss(pa[k]) * Math.pow(miss(pb[k]), 2)),
+    };
+  }
+
   out.caught = caught;
+
+  // Pictures of things that neither reader could make sense of, one per meaning. The
+  // adapter arm comes first because that is what the site draws with.
+  const seen = new Set<string>();
+  const order = ["warning", "avoid", "time"];
+  const misread = [...adapter, ...base]
+    .filter((r) => order.includes(r.kind) && r.readings.every((x) => x.reading?.understood === false))
+    .sort((a, b) => order.indexOf(a.kind) - order.indexOf(b.kind))
+    .filter((r) => (seen.has(r.key) ? false : (seen.add(r.key), true)))
+    .slice(0, 8)
+    .map((r) => {
+      const arm = adapter.includes(r) ? "adapter" : "base";
+      const name = `misread-${arm}-${r.file}`;
+      copyFileSync(new URL(`training/eval/${arm}/${r.file}`, root), new URL(name, dir));
+      return {
+        file: `/evidence/${name}`,
+        arm,
+        meant: String(r.expected.meaning ?? ""),
+        saw: r.readings.map((x) => String(x.reading?.shows ?? "")),
+      };
+    });
+  out.misread = misread;
 
   const parseFile = new URL("src/data/eval-parse.json", root);
   if (existsSync(parseFile)) out.reader = (JSON.parse(readFileSync(parseFile, "utf8")) as { summary: unknown }).summary;
