@@ -103,5 +103,5 @@ Upload to YouTube as Public (not Unlisted, the rules ask for public). Title: "Co
 - [ ] GitHub repo is public.
 - [ ] Write-up is under 500 words.
 - [ ] AI tools are named in the Devpost field.
-- [ ] Thumbnail (`docs/thumbnail.png`) and screenshots (`docs/cards.png`, `docs/pictures.png`, `docs/results.png`, `docs/card.png`) are uploaded.
+- [ ] Thumbnail is `docs/thumbnail.png`, and the six images in `docs/gallery/` are uploaded to the image gallery in their numbered order.
 - [ ] You are listed as the only team member.
