@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11T20:59:06.946Z",
+  "generatedAt": "2026-10-11T21:01:21.014Z",
   "base": {
     "pictures": 270,
     "tiles": 45,
@@ -173,28 +173,27 @@
     "pictures": 60,
     "tiles": 10,
     "firstTry": {
-      "k": 17,
+      "k": 21,
       "n": 60,
-      "pct": 28.3,
+      "pct": 35,
       "ci": [
-        18.5,
-        40.8
+        24.2,
+        47.6
       ]
     },
     "byKind": {
       "warning": {
-        "k": 17,
+        "k": 21,
         "n": 60,
-        "pct": 28.3,
+        "pct": 35,
         "ci": [
-          18.5,
-          40.8
+          24.2,
+          47.6
         ]
       }
     },
-    "expectedFallbackPct": 60.3,
+    "expectedFallbackPct": 47.9,
     "neverPassed": [
-      "warning-bleeding",
       "warning-chest_pain",
       "warning-breathlessness",
       "warning-wound_discharge"
