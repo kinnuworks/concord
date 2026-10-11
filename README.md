@@ -46,7 +46,7 @@ A picture that passes is saved and reused, so "morning" is drawn and checked onc
 
 ### Where the image model works
 
-- **Every picture on a card is generated.** FLUX.1 [dev] with our LoRA adapter draws each time of day, each medicine unit, the meal, each thing to avoid and each warning sign.
+- **Every pictogram on a card is generated.** FLUX.1 [dev] with our LoRA adapter draws each time of day, each medicine unit, the meal, each thing to avoid and each warning sign.
 - **Code writes the prompt.** It is built from the parsed instruction ("one red and white capsule, alone in the middle of the picture"), so nothing from a patient's sheet reaches the image model.
 - **Vision models read every generated picture back** before it can be used.
 - **Code composes the card.** It repeats the checked unit for the dose, puts the pictures in schedule order and writes the numbers and labels.

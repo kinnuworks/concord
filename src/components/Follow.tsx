@@ -56,7 +56,7 @@ export function Follow() {
             <span className="dot" />
             Where the image model works
           </p>
-          <h2>Every picture is generated, then read back.</h2>
+          <h2>Every pictogram is generated, then read back.</h2>
           <p className="lead">
             FLUX.1 [dev] with our own fine-tuned style adapter draws each picture from a prompt that code writes.
             Pick one and follow it from prompt to card.
@@ -87,8 +87,8 @@ export function Follow() {
             <li>
               <p className="t-title">3. Code places the kept picture on the card</p>
               <p className="t-small">
-                It sits under the words &ldquo;{nameOf(e.key)}&rdquo; in the patient&rsquo;s language. Numbers, order and
-                the calendar are never drawn by the image model.
+                It sits under the words &ldquo;{nameOf(e.key)}&rdquo; in the patient&rsquo;s language. Numbers, order, the
+                calendar and exercise angles are drawn by code, never by the image model.
               </p>
             </li>
           </ol>
