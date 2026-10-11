@@ -17,6 +17,8 @@ Everything to paste into Devpost, then the video script.
 
 **AI tools used (the rules ask for this):** Claude Code for writing code and building the demo video (rendered with Remotion, music synthesized by a script). FLUX.1 [dev] with our own LoRA adapter for the pictures. Gemini 3.8 Flash, Gemini 2.5 Flash, Gemini 3.5 Flash-Lite and GPT-6 Luna as readers.
 
+**Upload a file (additional info for judges):** `docs/Concord-notes-for-judges.pdf`. Two pages: where to look for each judging criterion, how to try the site in two minutes, and the measured numbers.
+
 ## Write-up
 
 Paste this into the "About the project" box. It is under 500 words.
