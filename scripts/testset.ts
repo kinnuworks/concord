@@ -19,15 +19,26 @@ function rng(seed: number) {
 const rand = rng(20261011);
 const pick = <T,>(xs: readonly T[]): T => xs[Math.floor(rand() * xs.length)];
 
-const NAMES = [
-  "Amoxicillin 500 mg", "Paracetamol 500 mg", "Ibuprofen 400 mg", "Metformin 500 mg", "Atorvastatin 20 mg",
-  "Omeprazole 20 mg", "Cetirizine 10 mg", "Azithromycin 250 mg", "Prednisolone 5 mg", "Amlodipine 5 mg",
-  "Cough syrup", "Antacid suspension", "Eye drops", "Ear drops", "Salbutamol inhaler",
+// Each medicine keeps its real form and a dose range a clinician would recognise, so a
+// reader is never asked to chart something that looks like an overdose.
+const DRUGS: { name: string; form: Form; max: number }[] = [
+  { name: "Amoxicillin 500 mg", form: "capsule", max: 2 },
+  { name: "Paracetamol 500 mg", form: "tablet", max: 2 },
+  { name: "Ibuprofen 400 mg", form: "tablet", max: 1 },
+  { name: "Metformin 500 mg", form: "tablet", max: 2 },
+  { name: "Atorvastatin 20 mg", form: "tablet", max: 1 },
+  { name: "Omeprazole 20 mg", form: "capsule", max: 1 },
+  { name: "Cetirizine 10 mg", form: "tablet", max: 1 },
+  { name: "Azithromycin 250 mg", form: "tablet", max: 2 },
+  { name: "Prednisolone 5 mg", form: "tablet", max: 6 },
+  { name: "Vitamin D 1000 IU", form: "capsule", max: 2 },
+  { name: "Iron 100 mg", form: "tablet", max: 2 },
+  { name: "Cough syrup", form: "spoon", max: 2 },
+  { name: "Antacid suspension", form: "spoon", max: 2 },
+  { name: "Eye drops", form: "drops", max: 2 },
+  { name: "Ear drops", form: "drops", max: 4 },
+  { name: "Salbutamol inhaler", form: "puff", max: 2 },
 ];
-const FORM_FOR: Record<string, Form> = {
-  "Cough syrup": "spoon", "Antacid suspension": "spoon", "Eye drops": "drops", "Ear drops": "drops",
-  "Salbutamol inhaler": "puff",
-};
 const UNIT: Record<Form, [string, string]> = {
   tablet: ["tablet", "tablets"], capsule: ["capsule", "capsules"], spoon: ["spoonful", "spoonfuls"],
   drops: ["drop", "drops"], puff: ["puff", "puffs"],
@@ -56,9 +67,9 @@ export type Case = { id: string; text: string; answer: Medicine };
 export function buildTestSet(n = 100): Case[] {
   const cases: Case[] = [];
   for (let i = 0; i < n; i++) {
-    const name = pick(NAMES);
-    const form: Form = FORM_FOR[name] ?? pick(["tablet", "capsule"] as const);
-    const count = 1 + Math.floor(rand() * (form === "puff" || form === "spoon" ? 2 : 4));
+    const drug = pick(DRUGS);
+    const { name, form } = drug;
+    const count = 1 + Math.floor(rand() * drug.max);
     const sched = pick(SCHEDULES);
     const food = pick(["after_food", "after_food", "before_food", "with_food", "any", "any"] as const);
     const days = rand() < 0.2 ? null : pick([3, 5, 7, 10, 14] as const);

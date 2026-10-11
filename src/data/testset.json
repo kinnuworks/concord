@@ -1,140 +1,177 @@
 [
   {
     "id": "t001",
-    "text": "Omeprazole 20 mg: take 3 capsules at bedtime after food for 7 days.",
+    "text": "Omeprazole 20 mg: take 1 capsule morning, afternoon and night after food.",
     "answer": {
       "name": "Omeprazole 20 mg",
       "form": "capsule",
-      "count": 3,
+      "count": 1,
       "times": [
+        "morning",
+        "afternoon",
         "night"
       ],
       "food": "after_food",
-      "days": 7,
+      "days": null,
       "avoid": []
     }
   },
   {
     "id": "t002",
-    "text": "Paracetamol 500 mg: take 1 capsule four times a day: morning, afternoon, evening and night after food for 10 days. Stay out of strong sunlight.",
+    "text": "Cough syrup: take 1 spoonful every morning.",
     "answer": {
-      "name": "Paracetamol 500 mg",
-      "form": "capsule",
+      "name": "Cough syrup",
+      "form": "spoon",
       "count": 1,
       "times": [
-        "morning",
-        "afternoon",
-        "evening",
-        "night"
+        "morning"
       ],
-      "food": "after_food",
-      "days": 10,
-      "avoid": [
-        "sunlight"
-      ]
+      "food": "any",
+      "days": null,
+      "avoid": []
     }
   },
   {
     "id": "t003",
-    "text": "Prednisolone 5 mg: take 4 capsules every morning after meals for 10 days.",
+    "text": "Cough syrup: take 1 spoonful twice a day for 7 days.",
     "answer": {
-      "name": "Prednisolone 5 mg",
-      "form": "capsule",
-      "count": 4,
+      "name": "Cough syrup",
+      "form": "spoon",
+      "count": 1,
       "times": [
-        "morning"
+        "morning",
+        "night"
       ],
-      "food": "after_food",
-      "days": 10,
+      "food": "any",
+      "days": 7,
       "avoid": []
     }
   },
   {
     "id": "t004",
-    "text": "Prednisolone 5 mg: take 1 tablet at bedtime with meals for 5 days. Do not take it with milk or cheese.",
+    "text": "Amoxicillin 500 mg: take 2 capsules in the morning and in the evening with meals for 10 days.",
     "answer": {
-      "name": "Prednisolone 5 mg",
-      "form": "tablet",
-      "count": 1,
+      "name": "Amoxicillin 500 mg",
+      "form": "capsule",
+      "count": 2,
       "times": [
-        "night"
+        "morning",
+        "evening"
       ],
       "food": "with_food",
-      "days": 5,
-      "avoid": [
-        "dairy"
-      ]
+      "days": 10,
+      "avoid": []
     }
   },
   {
     "id": "t005",
-    "text": "Atorvastatin 20 mg: take 4 capsules morning, afternoon and night with meals.",
+    "text": "Atorvastatin 20 mg: take 1 tablet in the morning and in the evening before meals.",
     "answer": {
       "name": "Atorvastatin 20 mg",
-      "form": "capsule",
-      "count": 4,
+      "form": "tablet",
+      "count": 1,
       "times": [
         "morning",
-        "afternoon",
-        "night"
+        "evening"
       ],
-      "food": "with_food",
+      "food": "before_food",
       "days": null,
       "avoid": []
     }
   },
   {
     "id": "t006",
-    "text": "Paracetamol 500 mg: take 2 capsules once a day in the morning after meals for 7 days.",
+    "text": "Omeprazole 20 mg: take 1 capsule four times a day: morning, afternoon, evening and night with meals for 3 days.",
     "answer": {
-      "name": "Paracetamol 500 mg",
+      "name": "Omeprazole 20 mg",
       "form": "capsule",
-      "count": 2,
+      "count": 1,
       "times": [
-        "morning"
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
       ],
-      "food": "after_food",
-      "days": 7,
+      "food": "with_food",
+      "days": 3,
       "avoid": []
     }
   },
   {
     "id": "t007",
-    "text": "Metformin 500 mg: take 2 capsules once a day in the morning after food for 5 days. Do not take it with milk or cheese.",
+    "text": "Paracetamol 500 mg: take 2 tablets twice a day after food. Do not smoke.",
     "answer": {
-      "name": "Metformin 500 mg",
-      "form": "capsule",
+      "name": "Paracetamol 500 mg",
+      "form": "tablet",
       "count": 2,
       "times": [
-        "morning"
+        "morning",
+        "night"
       ],
       "food": "after_food",
-      "days": 5,
+      "days": null,
       "avoid": [
-        "dairy"
+        "smoking"
       ]
     }
   },
   {
     "id": "t008",
-    "text": "Cetirizine 10 mg: take 3 capsules once a day at night before meals for 7 days.",
+    "text": "Omeprazole 20 mg: take 1 capsule in the morning and in the evening before meals. Do not drive.",
     "answer": {
-      "name": "Cetirizine 10 mg",
+      "name": "Omeprazole 20 mg",
       "form": "capsule",
-      "count": 3,
+      "count": 1,
       "times": [
-        "night"
+        "morning",
+        "evening"
       ],
       "food": "before_food",
-      "days": 7,
-      "avoid": []
+      "days": null,
+      "avoid": [
+        "driving"
+      ]
     }
   },
   {
     "id": "t009",
-    "text": "Cetirizine 10 mg: take 1 tablet four times a day: morning, afternoon, evening and night for 3 days. Do not take it with milk or cheese.",
+    "text": "Eye drops: take 2 drops in the morning and at night on an empty stomach for 7 days. Stay out of strong sunlight.",
     "answer": {
-      "name": "Cetirizine 10 mg",
+      "name": "Eye drops",
+      "form": "drops",
+      "count": 2,
+      "times": [
+        "morning",
+        "night"
+      ],
+      "food": "before_food",
+      "days": 7,
+      "avoid": [
+        "sunlight"
+      ]
+    }
+  },
+  {
+    "id": "t010",
+    "text": "Prednisolone 5 mg: take 2 tablets in the morning and in the evening on an empty stomach for 3 days.",
+    "answer": {
+      "name": "Prednisolone 5 mg",
+      "form": "tablet",
+      "count": 2,
+      "times": [
+        "morning",
+        "evening"
+      ],
+      "food": "before_food",
+      "days": 3,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t011",
+    "text": "Paracetamol 500 mg: take 1 tablet four times a day: morning, afternoon, evening and night with food. Do not lift heavy things.",
+    "answer": {
+      "name": "Paracetamol 500 mg",
       "form": "tablet",
       "count": 1,
       "times": [
@@ -143,114 +180,118 @@
         "evening",
         "night"
       ],
-      "food": "any",
-      "days": 3,
-      "avoid": [
-        "dairy"
-      ]
-    }
-  },
-  {
-    "id": "t010",
-    "text": "Metformin 500 mg: take 4 capsules in the morning and in the evening with food for 3 days.",
-    "answer": {
-      "name": "Metformin 500 mg",
-      "form": "capsule",
-      "count": 4,
-      "times": [
-        "morning",
-        "evening"
-      ],
       "food": "with_food",
-      "days": 3,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t011",
-    "text": "Paracetamol 500 mg: take 4 tablets at bedtime for 3 days. Do not take it with milk or cheese.",
-    "answer": {
-      "name": "Paracetamol 500 mg",
-      "form": "tablet",
-      "count": 4,
-      "times": [
-        "night"
-      ],
-      "food": "any",
-      "days": 3,
+      "days": null,
       "avoid": [
-        "dairy"
+        "heavy_lifting"
       ]
     }
   },
   {
     "id": "t012",
-    "text": "Ibuprofen 400 mg: take 2 tablets in the morning and in the evening on an empty stomach for 7 days.",
+    "text": "Prednisolone 5 mg: take 5 tablets once a day in the morning for 14 days. Do not drive.",
     "answer": {
-      "name": "Ibuprofen 400 mg",
+      "name": "Prednisolone 5 mg",
       "form": "tablet",
-      "count": 2,
+      "count": 5,
       "times": [
-        "morning",
-        "evening"
+        "morning"
       ],
-      "food": "before_food",
-      "days": 7,
-      "avoid": []
+      "food": "any",
+      "days": 14,
+      "avoid": [
+        "driving"
+      ]
     }
   },
   {
     "id": "t013",
-    "text": "Amoxicillin 500 mg: take 3 tablets once a day at night after meals for 3 days. Do not smoke.",
+    "text": "Eye drops: take 1 drop once a day in the morning after meals for 7 days. Do not drive.",
     "answer": {
-      "name": "Amoxicillin 500 mg",
+      "name": "Eye drops",
+      "form": "drops",
+      "count": 1,
+      "times": [
+        "morning"
+      ],
+      "food": "after_food",
+      "days": 7,
+      "avoid": [
+        "driving"
+      ]
+    }
+  },
+  {
+    "id": "t014",
+    "text": "Iron 100 mg: take 1 tablet three times a day before meals for 10 days.",
+    "answer": {
+      "name": "Iron 100 mg",
       "form": "tablet",
-      "count": 3,
+      "count": 1,
+      "times": [
+        "morning",
+        "afternoon",
+        "night"
+      ],
+      "food": "before_food",
+      "days": 10,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t015",
+    "text": "Cough syrup: take 1 spoonful once a day at night with meals. Do not smoke.",
+    "answer": {
+      "name": "Cough syrup",
+      "form": "spoon",
+      "count": 1,
       "times": [
         "night"
       ],
-      "food": "after_food",
-      "days": 3,
+      "food": "with_food",
+      "days": null,
       "avoid": [
         "smoking"
       ]
     }
   },
   {
-    "id": "t014",
-    "text": "Atorvastatin 20 mg: take 2 capsules in the morning and at night after meals.",
+    "id": "t016",
+    "text": "Omeprazole 20 mg: take 1 capsule once a day at night before meals. Do not lift heavy things.",
     "answer": {
-      "name": "Atorvastatin 20 mg",
+      "name": "Omeprazole 20 mg",
       "form": "capsule",
-      "count": 2,
+      "count": 1,
       "times": [
-        "morning",
         "night"
       ],
-      "food": "after_food",
+      "food": "before_food",
       "days": null,
-      "avoid": []
+      "avoid": [
+        "heavy_lifting"
+      ]
     }
   },
   {
-    "id": "t015",
-    "text": "Paracetamol 500 mg: take 4 tablets three times a day with meals for 5 days.",
+    "id": "t017",
+    "text": "Paracetamol 500 mg: take 1 tablet in the morning and in the evening with meals for 5 days. Do not smoke.",
     "answer": {
       "name": "Paracetamol 500 mg",
       "form": "tablet",
-      "count": 4,
+      "count": 1,
       "times": [
         "morning",
-        "afternoon",
-        "night"
+        "evening"
       ],
       "food": "with_food",
       "days": 5,
-      "avoid": []
+      "avoid": [
+        "smoking"
+      ]
     }
   },
   {
-    "id": "t016",
+    "id": "t018",
     "text": "Antacid suspension: take 2 spoonfuls once a day in the morning for 3 days.",
     "answer": {
       "name": "Antacid suspension",
@@ -265,28 +306,11 @@
     }
   },
   {
-    "id": "t017",
-    "text": "Omeprazole 20 mg: take 4 capsules at bedtime with food for 5 days. Stay out of strong sunlight.",
+    "id": "t019",
+    "text": "Omeprazole 20 mg: take 1 capsule four times a day: morning, afternoon, evening and night after meals for 10 days.",
     "answer": {
       "name": "Omeprazole 20 mg",
       "form": "capsule",
-      "count": 4,
-      "times": [
-        "night"
-      ],
-      "food": "with_food",
-      "days": 5,
-      "avoid": [
-        "sunlight"
-      ]
-    }
-  },
-  {
-    "id": "t018",
-    "text": "Cough syrup: take 1 spoonful four times a day: morning, afternoon, evening and night after meals for 14 days.",
-    "answer": {
-      "name": "Cough syrup",
-      "form": "spoon",
       "count": 1,
       "times": [
         "morning",
@@ -295,53 +319,20 @@
         "night"
       ],
       "food": "after_food",
-      "days": 14,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t019",
-    "text": "Paracetamol 500 mg: take 3 tablets once a day in the morning with meals for 7 days.",
-    "answer": {
-      "name": "Paracetamol 500 mg",
-      "form": "tablet",
-      "count": 3,
-      "times": [
-        "morning"
-      ],
-      "food": "with_food",
-      "days": 7,
+      "days": 10,
       "avoid": []
     }
   },
   {
     "id": "t020",
-    "text": "Omeprazole 20 mg: take 1 capsule in the morning and in the evening on an empty stomach.",
+    "text": "Iron 100 mg: take 1 tablet in the morning and in the evening after food for 3 days.",
     "answer": {
-      "name": "Omeprazole 20 mg",
-      "form": "capsule",
+      "name": "Iron 100 mg",
+      "form": "tablet",
       "count": 1,
       "times": [
         "morning",
         "evening"
-      ],
-      "food": "before_food",
-      "days": null,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t021",
-    "text": "Ibuprofen 400 mg: take 4 tablets four times a day: morning, afternoon, evening and night after meals for 3 days.",
-    "answer": {
-      "name": "Ibuprofen 400 mg",
-      "form": "tablet",
-      "count": 4,
-      "times": [
-        "morning",
-        "afternoon",
-        "evening",
-        "night"
       ],
       "food": "after_food",
       "days": 3,
@@ -349,48 +340,64 @@
     }
   },
   {
-    "id": "t022",
-    "text": "Cough syrup: take 1 spoonful once a day in the morning on an empty stomach for 10 days.",
+    "id": "t021",
+    "text": "Cetirizine 10 mg: take 1 tablet once a day in the morning before meals for 3 days.",
     "answer": {
-      "name": "Cough syrup",
-      "form": "spoon",
-      "count": 1,
-      "times": [
-        "morning"
-      ],
-      "food": "before_food",
-      "days": 10,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t023",
-    "text": "Atorvastatin 20 mg: take 1 tablet once a day in the morning on an empty stomach for 14 days.",
-    "answer": {
-      "name": "Atorvastatin 20 mg",
+      "name": "Cetirizine 10 mg",
       "form": "tablet",
       "count": 1,
       "times": [
         "morning"
       ],
       "food": "before_food",
+      "days": 3,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t022",
+    "text": "Omeprazole 20 mg: take 1 capsule once a day in the morning before meals for 3 days.",
+    "answer": {
+      "name": "Omeprazole 20 mg",
+      "form": "capsule",
+      "count": 1,
+      "times": [
+        "morning"
+      ],
+      "food": "before_food",
+      "days": 3,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t023",
+    "text": "Cough syrup: take 2 spoonfuls three times a day after meals for 14 days.",
+    "answer": {
+      "name": "Cough syrup",
+      "form": "spoon",
+      "count": 2,
+      "times": [
+        "morning",
+        "afternoon",
+        "night"
+      ],
+      "food": "after_food",
       "days": 14,
       "avoid": []
     }
   },
   {
     "id": "t024",
-    "text": "Amlodipine 5 mg: take 2 capsules twice a day before meals. Stay out of strong sunlight.",
+    "text": "Ibuprofen 400 mg: take 1 tablet once a day at night for 5 days. Stay out of strong sunlight.",
     "answer": {
-      "name": "Amlodipine 5 mg",
-      "form": "capsule",
-      "count": 2,
+      "name": "Ibuprofen 400 mg",
+      "form": "tablet",
+      "count": 1,
       "times": [
-        "morning",
         "night"
       ],
-      "food": "before_food",
-      "days": null,
+      "food": "any",
+      "days": 5,
       "avoid": [
         "sunlight"
       ]
@@ -398,244 +405,287 @@
   },
   {
     "id": "t025",
-    "text": "Antacid suspension: take 2 spoonfuls once a day in the morning after meals for 5 days.",
+    "text": "Prednisolone 5 mg: take 6 tablets once a day at night after food for 5 days. Stay out of strong sunlight.",
     "answer": {
-      "name": "Antacid suspension",
-      "form": "spoon",
-      "count": 2,
+      "name": "Prednisolone 5 mg",
+      "form": "tablet",
+      "count": 6,
       "times": [
-        "morning"
+        "night"
       ],
       "food": "after_food",
       "days": 5,
-      "avoid": []
+      "avoid": [
+        "sunlight"
+      ]
     }
   },
   {
     "id": "t026",
-    "text": "Atorvastatin 20 mg: take 3 capsules four times a day: morning, afternoon, evening and night with food for 10 days.",
+    "text": "Salbutamol inhaler: take 2 puffs twice a day with meals for 7 days.",
     "answer": {
-      "name": "Atorvastatin 20 mg",
-      "form": "capsule",
-      "count": 3,
+      "name": "Salbutamol inhaler",
+      "form": "puff",
+      "count": 2,
       "times": [
         "morning",
-        "afternoon",
-        "evening",
         "night"
       ],
       "food": "with_food",
-      "days": 10,
+      "days": 7,
       "avoid": []
     }
   },
   {
     "id": "t027",
-    "text": "Cough syrup: take 2 spoonfuls four times a day: morning, afternoon, evening and night for 10 days. Do not smoke.",
+    "text": "Metformin 500 mg: take 1 tablet once a day in the morning after meals for 10 days. Do not drive.",
     "answer": {
-      "name": "Cough syrup",
-      "form": "spoon",
-      "count": 2,
+      "name": "Metformin 500 mg",
+      "form": "tablet",
+      "count": 1,
       "times": [
-        "morning",
-        "afternoon",
-        "evening",
-        "night"
+        "morning"
       ],
-      "food": "any",
+      "food": "after_food",
       "days": 10,
       "avoid": [
-        "smoking"
+        "driving"
       ]
     }
   },
   {
     "id": "t028",
-    "text": "Paracetamol 500 mg: take 4 tablets three times a day after food for 5 days.",
+    "text": "Iron 100 mg: take 1 tablet once a day at night after food for 7 days.",
     "answer": {
-      "name": "Paracetamol 500 mg",
+      "name": "Iron 100 mg",
       "form": "tablet",
-      "count": 4,
+      "count": 1,
       "times": [
-        "morning",
-        "afternoon",
         "night"
       ],
       "food": "after_food",
-      "days": 5,
+      "days": 7,
       "avoid": []
     }
   },
   {
     "id": "t029",
-    "text": "Antacid suspension: take 2 spoonfuls in the morning and in the evening on an empty stomach. Do not drink alcohol.",
+    "text": "Antacid suspension: take 1 spoonful morning, afternoon and night with food for 14 days.",
     "answer": {
       "name": "Antacid suspension",
       "form": "spoon",
-      "count": 2,
+      "count": 1,
       "times": [
         "morning",
-        "evening"
+        "afternoon",
+        "night"
       ],
-      "food": "before_food",
-      "days": null,
-      "avoid": [
-        "alcohol"
-      ]
+      "food": "with_food",
+      "days": 14,
+      "avoid": []
     }
   },
   {
     "id": "t030",
-    "text": "Amoxicillin 500 mg: take 3 tablets in the morning and at night for 10 days. Do not smoke.",
-    "answer": {
-      "name": "Amoxicillin 500 mg",
-      "form": "tablet",
-      "count": 3,
-      "times": [
-        "morning",
-        "night"
-      ],
-      "food": "any",
-      "days": 10,
-      "avoid": [
-        "smoking"
-      ]
-    }
-  },
-  {
-    "id": "t031",
-    "text": "Ibuprofen 400 mg: take 2 capsules in the morning and at night after food for 3 days.",
-    "answer": {
-      "name": "Ibuprofen 400 mg",
-      "form": "capsule",
-      "count": 2,
-      "times": [
-        "morning",
-        "night"
-      ],
-      "food": "after_food",
-      "days": 3,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t032",
-    "text": "Paracetamol 500 mg: take 3 capsules four times a day: morning, afternoon, evening and night with meals for 10 days.",
-    "answer": {
-      "name": "Paracetamol 500 mg",
-      "form": "capsule",
-      "count": 3,
-      "times": [
-        "morning",
-        "afternoon",
-        "evening",
-        "night"
-      ],
-      "food": "with_food",
-      "days": 10,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t033",
-    "text": "Metformin 500 mg: take 4 capsules four times a day: morning, afternoon, evening and night with food.",
-    "answer": {
-      "name": "Metformin 500 mg",
-      "form": "capsule",
-      "count": 4,
-      "times": [
-        "morning",
-        "afternoon",
-        "evening",
-        "night"
-      ],
-      "food": "with_food",
-      "days": null,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t034",
-    "text": "Ear drops: take 2 drops morning, afternoon and night for 10 days.",
-    "answer": {
-      "name": "Ear drops",
-      "form": "drops",
-      "count": 2,
-      "times": [
-        "morning",
-        "afternoon",
-        "night"
-      ],
-      "food": "any",
-      "days": 10,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t035",
-    "text": "Antacid suspension: take 2 spoonfuls once a day at night for 3 days.",
-    "answer": {
-      "name": "Antacid suspension",
-      "form": "spoon",
-      "count": 2,
-      "times": [
-        "night"
-      ],
-      "food": "any",
-      "days": 3,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t036",
-    "text": "Cetirizine 10 mg: take 3 capsules once a day in the morning after meals for 14 days. Do not take it with milk or cheese.",
-    "answer": {
-      "name": "Cetirizine 10 mg",
-      "form": "capsule",
-      "count": 3,
-      "times": [
-        "morning"
-      ],
-      "food": "after_food",
-      "days": 14,
-      "avoid": [
-        "dairy"
-      ]
-    }
-  },
-  {
-    "id": "t037",
-    "text": "Antacid suspension: take 2 spoonfuls at bedtime after food for 10 days.",
-    "answer": {
-      "name": "Antacid suspension",
-      "form": "spoon",
-      "count": 2,
-      "times": [
-        "night"
-      ],
-      "food": "after_food",
-      "days": 10,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t038",
-    "text": "Cough syrup: take 1 spoonful in the morning and in the evening with meals for 3 days.",
+    "text": "Cough syrup: take 1 spoonful three times a day for 3 days. Do not lift heavy things.",
     "answer": {
       "name": "Cough syrup",
       "form": "spoon",
       "count": 1,
       "times": [
         "morning",
+        "afternoon",
+        "night"
+      ],
+      "food": "any",
+      "days": 3,
+      "avoid": [
+        "heavy_lifting"
+      ]
+    }
+  },
+  {
+    "id": "t031",
+    "text": "Eye drops: take 1 drop twice a day for 10 days.",
+    "answer": {
+      "name": "Eye drops",
+      "form": "drops",
+      "count": 1,
+      "times": [
+        "morning",
+        "night"
+      ],
+      "food": "any",
+      "days": 10,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t032",
+    "text": "Metformin 500 mg: take 1 tablet every morning for 3 days. Do not smoke.",
+    "answer": {
+      "name": "Metformin 500 mg",
+      "form": "tablet",
+      "count": 1,
+      "times": [
+        "morning"
+      ],
+      "food": "any",
+      "days": 3,
+      "avoid": [
+        "smoking"
+      ]
+    }
+  },
+  {
+    "id": "t033",
+    "text": "Cough syrup: take 2 spoonfuls at bedtime with meals for 10 days. Do not smoke.",
+    "answer": {
+      "name": "Cough syrup",
+      "form": "spoon",
+      "count": 2,
+      "times": [
+        "night"
+      ],
+      "food": "with_food",
+      "days": 10,
+      "avoid": [
+        "smoking"
+      ]
+    }
+  },
+  {
+    "id": "t034",
+    "text": "Amoxicillin 500 mg: take 2 capsules every morning with food for 10 days. Do not smoke.",
+    "answer": {
+      "name": "Amoxicillin 500 mg",
+      "form": "capsule",
+      "count": 2,
+      "times": [
+        "morning"
+      ],
+      "food": "with_food",
+      "days": 10,
+      "avoid": [
+        "smoking"
+      ]
+    }
+  },
+  {
+    "id": "t035",
+    "text": "Prednisolone 5 mg: take 5 tablets in the morning and in the evening with food. Do not drive.",
+    "answer": {
+      "name": "Prednisolone 5 mg",
+      "form": "tablet",
+      "count": 5,
+      "times": [
+        "morning",
         "evening"
       ],
       "food": "with_food",
-      "days": 3,
+      "days": null,
+      "avoid": [
+        "driving"
+      ]
+    }
+  },
+  {
+    "id": "t036",
+    "text": "Ear drops: take 3 drops once a day at night before meals for 14 days.",
+    "answer": {
+      "name": "Ear drops",
+      "form": "drops",
+      "count": 3,
+      "times": [
+        "night"
+      ],
+      "food": "before_food",
+      "days": 14,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t037",
+    "text": "Ear drops: take 2 drops in the morning and in the evening for 7 days.",
+    "answer": {
+      "name": "Ear drops",
+      "form": "drops",
+      "count": 2,
+      "times": [
+        "morning",
+        "evening"
+      ],
+      "food": "any",
+      "days": 7,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t038",
+    "text": "Cough syrup: take 2 spoonfuls every morning for 7 days.",
+    "answer": {
+      "name": "Cough syrup",
+      "form": "spoon",
+      "count": 2,
+      "times": [
+        "morning"
+      ],
+      "food": "any",
+      "days": 7,
       "avoid": []
     }
   },
   {
     "id": "t039",
+    "text": "Amoxicillin 500 mg: take 1 capsule morning, afternoon and night for 14 days.",
+    "answer": {
+      "name": "Amoxicillin 500 mg",
+      "form": "capsule",
+      "count": 1,
+      "times": [
+        "morning",
+        "afternoon",
+        "night"
+      ],
+      "food": "any",
+      "days": 14,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t040",
+    "text": "Cough syrup: take 1 spoonful once a day at night before meals for 10 days.",
+    "answer": {
+      "name": "Cough syrup",
+      "form": "spoon",
+      "count": 1,
+      "times": [
+        "night"
+      ],
+      "food": "before_food",
+      "days": 10,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t041",
+    "text": "Ibuprofen 400 mg: take 1 tablet morning, afternoon and night before meals.",
+    "answer": {
+      "name": "Ibuprofen 400 mg",
+      "form": "tablet",
+      "count": 1,
+      "times": [
+        "morning",
+        "afternoon",
+        "night"
+      ],
+      "food": "before_food",
+      "days": null,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t042",
     "text": "Ear drops: take 2 drops at bedtime for 14 days.",
     "answer": {
       "name": "Ear drops",
@@ -650,73 +700,79 @@
     }
   },
   {
-    "id": "t040",
-    "text": "Atorvastatin 20 mg: take 3 capsules at bedtime after meals for 14 days.",
+    "id": "t043",
+    "text": "Atorvastatin 20 mg: take 1 tablet three times a day after meals for 10 days.",
     "answer": {
       "name": "Atorvastatin 20 mg",
-      "form": "capsule",
-      "count": 3,
+      "form": "tablet",
+      "count": 1,
       "times": [
+        "morning",
+        "afternoon",
         "night"
       ],
       "food": "after_food",
-      "days": 14,
+      "days": 10,
       "avoid": []
     }
   },
   {
-    "id": "t041",
-    "text": "Salbutamol inhaler: take 2 puffs in the morning and at night for 3 days. Do not drink alcohol.",
+    "id": "t044",
+    "text": "Cetirizine 10 mg: take 1 tablet three times a day before meals for 5 days. Do not drink alcohol.",
     "answer": {
-      "name": "Salbutamol inhaler",
-      "form": "puff",
-      "count": 2,
+      "name": "Cetirizine 10 mg",
+      "form": "tablet",
+      "count": 1,
       "times": [
         "morning",
+        "afternoon",
         "night"
       ],
-      "food": "any",
-      "days": 3,
+      "food": "before_food",
+      "days": 5,
       "avoid": [
         "alcohol"
       ]
     }
   },
   {
-    "id": "t042",
-    "text": "Salbutamol inhaler: take 2 puffs every morning after food.",
+    "id": "t045",
+    "text": "Cough syrup: take 2 spoonfuls in the morning and in the evening after food. Do not take it with milk or cheese.",
     "answer": {
-      "name": "Salbutamol inhaler",
-      "form": "puff",
+      "name": "Cough syrup",
+      "form": "spoon",
       "count": 2,
       "times": [
-        "morning"
+        "morning",
+        "evening"
       ],
       "food": "after_food",
       "days": null,
-      "avoid": []
+      "avoid": [
+        "dairy"
+      ]
     }
   },
   {
-    "id": "t043",
-    "text": "Amlodipine 5 mg: take 4 capsules four times a day: morning, afternoon, evening and night for 3 days.",
+    "id": "t046",
+    "text": "Iron 100 mg: take 2 tablets in the morning and in the evening for 7 days. Do not lift heavy things.",
     "answer": {
-      "name": "Amlodipine 5 mg",
-      "form": "capsule",
-      "count": 4,
+      "name": "Iron 100 mg",
+      "form": "tablet",
+      "count": 2,
       "times": [
         "morning",
-        "afternoon",
-        "evening",
-        "night"
+        "evening"
       ],
       "food": "any",
-      "days": 3,
-      "avoid": []
+      "days": 7,
+      "avoid": [
+        "heavy_lifting"
+      ]
     }
   },
   {
-    "id": "t044",
+    "id": "t047",
     "text": "Eye drops: take 1 drop three times a day for 14 days. Do not lift heavy things.",
     "answer": {
       "name": "Eye drops",
@@ -735,70 +791,105 @@
     }
   },
   {
-    "id": "t045",
-    "text": "Paracetamol 500 mg: take 4 capsules in the morning and in the evening after food for 5 days. Do not lift heavy things.",
-    "answer": {
-      "name": "Paracetamol 500 mg",
-      "form": "capsule",
-      "count": 4,
-      "times": [
-        "morning",
-        "evening"
-      ],
-      "food": "after_food",
-      "days": 5,
-      "avoid": [
-        "heavy_lifting"
-      ]
-    }
-  },
-  {
-    "id": "t046",
-    "text": "Paracetamol 500 mg: take 3 tablets twice a day after food. Do not drink alcohol.",
+    "id": "t048",
+    "text": "Paracetamol 500 mg: take 2 tablets four times a day: morning, afternoon, evening and night for 7 days.",
     "answer": {
       "name": "Paracetamol 500 mg",
       "form": "tablet",
-      "count": 3,
+      "count": 2,
       "times": [
         "morning",
+        "afternoon",
+        "evening",
         "night"
       ],
+      "food": "any",
+      "days": 7,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t049",
+    "text": "Iron 100 mg: take 2 tablets once a day in the morning after meals for 7 days. Do not drive.",
+    "answer": {
+      "name": "Iron 100 mg",
+      "form": "tablet",
+      "count": 2,
+      "times": [
+        "morning"
+      ],
       "food": "after_food",
-      "days": null,
+      "days": 7,
       "avoid": [
-        "alcohol"
+        "driving"
       ]
     }
   },
   {
-    "id": "t047",
-    "text": "Ear drops: take 2 drops once a day at night with food for 5 days. Do not lift heavy things.",
+    "id": "t050",
+    "text": "Prednisolone 5 mg: take 1 tablet four times a day: morning, afternoon, evening and night before meals for 10 days.",
     "answer": {
-      "name": "Ear drops",
-      "form": "drops",
+      "name": "Prednisolone 5 mg",
+      "form": "tablet",
+      "count": 1,
+      "times": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "food": "before_food",
+      "days": 10,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t051",
+    "text": "Antacid suspension: take 2 spoonfuls in the morning and in the evening with food for 5 days.",
+    "answer": {
+      "name": "Antacid suspension",
+      "form": "spoon",
       "count": 2,
       "times": [
-        "night"
+        "morning",
+        "evening"
       ],
       "food": "with_food",
       "days": 5,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t052",
+    "text": "Ibuprofen 400 mg: take 1 tablet morning, afternoon and night with meals for 14 days. Do not smoke.",
+    "answer": {
+      "name": "Ibuprofen 400 mg",
+      "form": "tablet",
+      "count": 1,
+      "times": [
+        "morning",
+        "afternoon",
+        "night"
+      ],
+      "food": "with_food",
+      "days": 14,
       "avoid": [
-        "heavy_lifting"
+        "smoking"
       ]
     }
   },
   {
-    "id": "t048",
-    "text": "Amlodipine 5 mg: take 2 tablets in the morning and in the evening for 3 days. Do not smoke.",
+    "id": "t053",
+    "text": "Cetirizine 10 mg: take 1 tablet twice a day after meals for 3 days. Do not smoke.",
     "answer": {
-      "name": "Amlodipine 5 mg",
+      "name": "Cetirizine 10 mg",
       "form": "tablet",
-      "count": 2,
+      "count": 1,
       "times": [
         "morning",
-        "evening"
+        "night"
       ],
-      "food": "any",
+      "food": "after_food",
       "days": 3,
       "avoid": [
         "smoking"
@@ -806,15 +897,32 @@
     }
   },
   {
-    "id": "t049",
-    "text": "Eye drops: take 1 drop three times a day before meals for 5 days.",
+    "id": "t054",
+    "text": "Cough syrup: take 2 spoonfuls four times a day: morning, afternoon, evening and night after meals.",
     "answer": {
-      "name": "Eye drops",
-      "form": "drops",
-      "count": 1,
+      "name": "Cough syrup",
+      "form": "spoon",
+      "count": 2,
       "times": [
         "morning",
         "afternoon",
+        "evening",
+        "night"
+      ],
+      "food": "after_food",
+      "days": null,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t055",
+    "text": "Vitamin D 1000 IU: take 1 capsule twice a day on an empty stomach for 5 days.",
+    "answer": {
+      "name": "Vitamin D 1000 IU",
+      "form": "capsule",
+      "count": 1,
+      "times": [
+        "morning",
         "night"
       ],
       "food": "before_food",
@@ -823,10 +931,10 @@
     }
   },
   {
-    "id": "t050",
-    "text": "Cetirizine 10 mg: take 2 tablets three times a day after food for 10 days.",
+    "id": "t056",
+    "text": "Paracetamol 500 mg: take 2 tablets three times a day.",
     "answer": {
-      "name": "Cetirizine 10 mg",
+      "name": "Paracetamol 500 mg",
       "form": "tablet",
       "count": 2,
       "times": [
@@ -834,130 +942,17 @@
         "afternoon",
         "night"
       ],
-      "food": "after_food",
-      "days": 10,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t051",
-    "text": "Amoxicillin 500 mg: take 1 capsule at bedtime with food for 7 days.",
-    "answer": {
-      "name": "Amoxicillin 500 mg",
-      "form": "capsule",
-      "count": 1,
-      "times": [
-        "night"
-      ],
-      "food": "with_food",
-      "days": 7,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t052",
-    "text": "Cetirizine 10 mg: take 2 capsules once a day in the morning with food for 14 days. Stay out of strong sunlight.",
-    "answer": {
-      "name": "Cetirizine 10 mg",
-      "form": "capsule",
-      "count": 2,
-      "times": [
-        "morning"
-      ],
-      "food": "with_food",
-      "days": 14,
-      "avoid": [
-        "sunlight"
-      ]
-    }
-  },
-  {
-    "id": "t053",
-    "text": "Prednisolone 5 mg: take 4 tablets in the morning and at night with meals.",
-    "answer": {
-      "name": "Prednisolone 5 mg",
-      "form": "tablet",
-      "count": 4,
-      "times": [
-        "morning",
-        "night"
-      ],
-      "food": "with_food",
+      "food": "any",
       "days": null,
       "avoid": []
     }
   },
   {
-    "id": "t054",
-    "text": "Amoxicillin 500 mg: take 2 capsules in the morning and in the evening after food for 5 days.",
-    "answer": {
-      "name": "Amoxicillin 500 mg",
-      "form": "capsule",
-      "count": 2,
-      "times": [
-        "morning",
-        "evening"
-      ],
-      "food": "after_food",
-      "days": 5,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t055",
-    "text": "Atorvastatin 20 mg: take 1 capsule in the morning and in the evening for 7 days.",
-    "answer": {
-      "name": "Atorvastatin 20 mg",
-      "form": "capsule",
-      "count": 1,
-      "times": [
-        "morning",
-        "evening"
-      ],
-      "food": "any",
-      "days": 7,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t056",
-    "text": "Prednisolone 5 mg: take 2 capsules once a day at night for 14 days.",
+    "id": "t057",
+    "text": "Prednisolone 5 mg: take 3 tablets four times a day: morning, afternoon, evening and night before meals for 3 days.",
     "answer": {
       "name": "Prednisolone 5 mg",
-      "form": "capsule",
-      "count": 2,
-      "times": [
-        "night"
-      ],
-      "food": "any",
-      "days": 14,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t057",
-    "text": "Amoxicillin 500 mg: take 2 tablets twice a day for 5 days. Do not drive.",
-    "answer": {
-      "name": "Amoxicillin 500 mg",
       "form": "tablet",
-      "count": 2,
-      "times": [
-        "morning",
-        "night"
-      ],
-      "food": "any",
-      "days": 5,
-      "avoid": [
-        "driving"
-      ]
-    }
-  },
-  {
-    "id": "t058",
-    "text": "Omeprazole 20 mg: take 3 capsules four times a day: morning, afternoon, evening and night with food for 3 days.",
-    "answer": {
-      "name": "Omeprazole 20 mg",
-      "form": "capsule",
       "count": 3,
       "times": [
         "morning",
@@ -965,22 +960,39 @@
         "evening",
         "night"
       ],
-      "food": "with_food",
+      "food": "before_food",
       "days": 3,
       "avoid": []
     }
   },
   {
-    "id": "t059",
-    "text": "Omeprazole 20 mg: take 2 capsules three times a day after food for 14 days.",
+    "id": "t058",
+    "text": "Amoxicillin 500 mg: take 2 capsules in the morning and at night. Do not drive.",
     "answer": {
-      "name": "Omeprazole 20 mg",
+      "name": "Amoxicillin 500 mg",
       "form": "capsule",
       "count": 2,
       "times": [
         "morning",
-        "afternoon",
         "night"
+      ],
+      "food": "any",
+      "days": null,
+      "avoid": [
+        "driving"
+      ]
+    }
+  },
+  {
+    "id": "t059",
+    "text": "Amoxicillin 500 mg: take 1 capsule in the morning and in the evening after food for 14 days.",
+    "answer": {
+      "name": "Amoxicillin 500 mg",
+      "form": "capsule",
+      "count": 1,
+      "times": [
+        "morning",
+        "evening"
       ],
       "food": "after_food",
       "days": 14,
@@ -989,45 +1001,129 @@
   },
   {
     "id": "t060",
-    "text": "Ibuprofen 400 mg: take 3 capsules in the morning and at night for 3 days. Do not smoke.",
+    "text": "Azithromycin 250 mg: take 2 tablets morning, afternoon and night for 3 days.",
     "answer": {
-      "name": "Ibuprofen 400 mg",
-      "form": "capsule",
-      "count": 3,
+      "name": "Azithromycin 250 mg",
+      "form": "tablet",
+      "count": 2,
       "times": [
         "morning",
+        "afternoon",
         "night"
       ],
       "food": "any",
       "days": 3,
-      "avoid": [
-        "smoking"
-      ]
+      "avoid": []
     }
   },
   {
     "id": "t061",
-    "text": "Ibuprofen 400 mg: take 4 capsules twice a day with food.",
+    "text": "Salbutamol inhaler: take 1 puff four times a day: morning, afternoon, evening and night after food for 5 days.",
     "answer": {
-      "name": "Ibuprofen 400 mg",
-      "form": "capsule",
-      "count": 4,
+      "name": "Salbutamol inhaler",
+      "form": "puff",
+      "count": 1,
       "times": [
         "morning",
+        "afternoon",
+        "evening",
         "night"
       ],
-      "food": "with_food",
-      "days": null,
+      "food": "after_food",
+      "days": 5,
       "avoid": []
     }
   },
   {
     "id": "t062",
-    "text": "Eye drops: take 4 drops three times a day before meals for 7 days. Do not drive.",
+    "text": "Omeprazole 20 mg: take 1 capsule once a day at night after food for 5 days.",
+    "answer": {
+      "name": "Omeprazole 20 mg",
+      "form": "capsule",
+      "count": 1,
+      "times": [
+        "night"
+      ],
+      "food": "after_food",
+      "days": 5,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t063",
+    "text": "Vitamin D 1000 IU: take 1 capsule once a day in the morning on an empty stomach for 7 days.",
+    "answer": {
+      "name": "Vitamin D 1000 IU",
+      "form": "capsule",
+      "count": 1,
+      "times": [
+        "morning"
+      ],
+      "food": "before_food",
+      "days": 7,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t064",
+    "text": "Prednisolone 5 mg: take 2 tablets morning, afternoon and night for 10 days. Do not drink alcohol.",
+    "answer": {
+      "name": "Prednisolone 5 mg",
+      "form": "tablet",
+      "count": 2,
+      "times": [
+        "morning",
+        "afternoon",
+        "night"
+      ],
+      "food": "any",
+      "days": 10,
+      "avoid": [
+        "alcohol"
+      ]
+    }
+  },
+  {
+    "id": "t065",
+    "text": "Cetirizine 10 mg: take 1 tablet four times a day: morning, afternoon, evening and night after meals.",
+    "answer": {
+      "name": "Cetirizine 10 mg",
+      "form": "tablet",
+      "count": 1,
+      "times": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "food": "after_food",
+      "days": null,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t066",
+    "text": "Ibuprofen 400 mg: take 1 tablet in the morning and in the evening on an empty stomach for 3 days.",
+    "answer": {
+      "name": "Ibuprofen 400 mg",
+      "form": "tablet",
+      "count": 1,
+      "times": [
+        "morning",
+        "evening"
+      ],
+      "food": "before_food",
+      "days": 3,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t067",
+    "text": "Eye drops: take 2 drops three times a day before meals for 7 days. Do not drive.",
     "answer": {
       "name": "Eye drops",
       "form": "drops",
-      "count": 4,
+      "count": 2,
       "times": [
         "morning",
         "afternoon",
@@ -1041,23 +1137,25 @@
     }
   },
   {
-    "id": "t063",
-    "text": "Metformin 500 mg: take 2 tablets in the morning and in the evening with meals for 3 days.",
+    "id": "t068",
+    "text": "Atorvastatin 20 mg: take 1 tablet twice a day for 10 days. Do not smoke.",
     "answer": {
-      "name": "Metformin 500 mg",
+      "name": "Atorvastatin 20 mg",
       "form": "tablet",
-      "count": 2,
+      "count": 1,
       "times": [
         "morning",
-        "evening"
+        "night"
       ],
-      "food": "with_food",
-      "days": 3,
-      "avoid": []
+      "food": "any",
+      "days": 10,
+      "avoid": [
+        "smoking"
+      ]
     }
   },
   {
-    "id": "t064",
+    "id": "t069",
     "text": "Cough syrup: take 2 spoonfuls three times a day for 7 days. Stay out of strong sunlight.",
     "answer": {
       "name": "Cough syrup",
@@ -1076,103 +1174,102 @@
     }
   },
   {
-    "id": "t065",
-    "text": "Omeprazole 20 mg: take 2 capsules at bedtime after food for 7 days.",
+    "id": "t070",
+    "text": "Cetirizine 10 mg: take 1 tablet in the morning and at night after meals. Do not smoke.",
     "answer": {
-      "name": "Omeprazole 20 mg",
-      "form": "capsule",
-      "count": 2,
-      "times": [
-        "night"
-      ],
-      "food": "after_food",
-      "days": 7,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t066",
-    "text": "Antacid suspension: take 2 spoonfuls in the morning and in the evening with food for 3 days.",
-    "answer": {
-      "name": "Antacid suspension",
-      "form": "spoon",
-      "count": 2,
-      "times": [
-        "morning",
-        "evening"
-      ],
-      "food": "with_food",
-      "days": 3,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t067",
-    "text": "Omeprazole 20 mg: take 1 capsule in the morning and in the evening with meals for 5 days. Do not take it with milk or cheese.",
-    "answer": {
-      "name": "Omeprazole 20 mg",
-      "form": "capsule",
+      "name": "Cetirizine 10 mg",
+      "form": "tablet",
       "count": 1,
       "times": [
         "morning",
-        "evening"
-      ],
-      "food": "with_food",
-      "days": 5,
-      "avoid": [
-        "dairy"
-      ]
-    }
-  },
-  {
-    "id": "t068",
-    "text": "Antacid suspension: take 1 spoonful in the morning and in the evening before meals for 5 days.",
-    "answer": {
-      "name": "Antacid suspension",
-      "form": "spoon",
-      "count": 1,
-      "times": [
-        "morning",
-        "evening"
-      ],
-      "food": "before_food",
-      "days": 5,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t069",
-    "text": "Atorvastatin 20 mg: take 2 capsules four times a day: morning, afternoon, evening and night after food for 10 days. Do not smoke.",
-    "answer": {
-      "name": "Atorvastatin 20 mg",
-      "form": "capsule",
-      "count": 2,
-      "times": [
-        "morning",
-        "afternoon",
-        "evening",
         "night"
       ],
       "food": "after_food",
-      "days": 10,
+      "days": null,
       "avoid": [
         "smoking"
       ]
     }
   },
   {
-    "id": "t070",
-    "text": "Ibuprofen 400 mg: take 2 capsules morning, afternoon and night after food for 7 days. Do not lift heavy things.",
+    "id": "t071",
+    "text": "Paracetamol 500 mg: take 2 tablets in the morning and in the evening for 10 days. Stay out of strong sunlight.",
     "answer": {
-      "name": "Ibuprofen 400 mg",
-      "form": "capsule",
+      "name": "Paracetamol 500 mg",
+      "form": "tablet",
       "count": 2,
       "times": [
         "morning",
-        "afternoon",
+        "evening"
+      ],
+      "food": "any",
+      "days": 10,
+      "avoid": [
+        "sunlight"
+      ]
+    }
+  },
+  {
+    "id": "t072",
+    "text": "Omeprazole 20 mg: take 1 capsule once a day in the morning for 14 days. Do not drive.",
+    "answer": {
+      "name": "Omeprazole 20 mg",
+      "form": "capsule",
+      "count": 1,
+      "times": [
+        "morning"
+      ],
+      "food": "any",
+      "days": 14,
+      "avoid": [
+        "driving"
+      ]
+    }
+  },
+  {
+    "id": "t073",
+    "text": "Vitamin D 1000 IU: take 2 capsules at bedtime for 14 days. Do not smoke.",
+    "answer": {
+      "name": "Vitamin D 1000 IU",
+      "form": "capsule",
+      "count": 2,
+      "times": [
         "night"
       ],
-      "food": "after_food",
+      "food": "any",
+      "days": 14,
+      "avoid": [
+        "smoking"
+      ]
+    }
+  },
+  {
+    "id": "t074",
+    "text": "Atorvastatin 20 mg: take 1 tablet in the morning and at night for 10 days.",
+    "answer": {
+      "name": "Atorvastatin 20 mg",
+      "form": "tablet",
+      "count": 1,
+      "times": [
+        "morning",
+        "night"
+      ],
+      "food": "any",
+      "days": 10,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t075",
+    "text": "Vitamin D 1000 IU: take 1 capsule at bedtime with meals for 7 days. Do not lift heavy things.",
+    "answer": {
+      "name": "Vitamin D 1000 IU",
+      "form": "capsule",
+      "count": 1,
+      "times": [
+        "night"
+      ],
+      "food": "with_food",
       "days": 7,
       "avoid": [
         "heavy_lifting"
@@ -1180,165 +1277,94 @@
     }
   },
   {
-    "id": "t071",
-    "text": "Amoxicillin 500 mg: take 4 tablets once a day in the morning on an empty stomach for 14 days.",
-    "answer": {
-      "name": "Amoxicillin 500 mg",
-      "form": "tablet",
-      "count": 4,
-      "times": [
-        "morning"
-      ],
-      "food": "before_food",
-      "days": 14,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t072",
-    "text": "Prednisolone 5 mg: take 2 capsules in the morning and in the evening before meals for 5 days.",
-    "answer": {
-      "name": "Prednisolone 5 mg",
-      "form": "capsule",
-      "count": 2,
-      "times": [
-        "morning",
-        "evening"
-      ],
-      "food": "before_food",
-      "days": 5,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t073",
-    "text": "Eye drops: take 3 drops twice a day before meals for 3 days. Do not drink alcohol.",
-    "answer": {
-      "name": "Eye drops",
-      "form": "drops",
-      "count": 3,
-      "times": [
-        "morning",
-        "night"
-      ],
-      "food": "before_food",
-      "days": 3,
-      "avoid": [
-        "alcohol"
-      ]
-    }
-  },
-  {
-    "id": "t074",
-    "text": "Eye drops: take 2 drops three times a day after meals for 10 days. Do not drive.",
-    "answer": {
-      "name": "Eye drops",
-      "form": "drops",
-      "count": 2,
-      "times": [
-        "morning",
-        "afternoon",
-        "night"
-      ],
-      "food": "after_food",
-      "days": 10,
-      "avoid": [
-        "driving"
-      ]
-    }
-  },
-  {
-    "id": "t075",
-    "text": "Atorvastatin 20 mg: take 4 capsules every morning after food.",
-    "answer": {
-      "name": "Atorvastatin 20 mg",
-      "form": "capsule",
-      "count": 4,
-      "times": [
-        "morning"
-      ],
-      "food": "after_food",
-      "days": null,
-      "avoid": []
-    }
-  },
-  {
     "id": "t076",
-    "text": "Atorvastatin 20 mg: take 2 capsules four times a day: morning, afternoon, evening and night with meals for 3 days.",
-    "answer": {
-      "name": "Atorvastatin 20 mg",
-      "form": "capsule",
-      "count": 2,
-      "times": [
-        "morning",
-        "afternoon",
-        "evening",
-        "night"
-      ],
-      "food": "with_food",
-      "days": 3,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t077",
-    "text": "Paracetamol 500 mg: take 4 tablets four times a day: morning, afternoon, evening and night. Stay out of strong sunlight.",
-    "answer": {
-      "name": "Paracetamol 500 mg",
-      "form": "tablet",
-      "count": 4,
-      "times": [
-        "morning",
-        "afternoon",
-        "evening",
-        "night"
-      ],
-      "food": "any",
-      "days": null,
-      "avoid": [
-        "sunlight"
-      ]
-    }
-  },
-  {
-    "id": "t078",
-    "text": "Atorvastatin 20 mg: take 4 capsules in the morning and in the evening with food for 10 days. Stay out of strong sunlight.",
-    "answer": {
-      "name": "Atorvastatin 20 mg",
-      "form": "capsule",
-      "count": 4,
-      "times": [
-        "morning",
-        "evening"
-      ],
-      "food": "with_food",
-      "days": 10,
-      "avoid": [
-        "sunlight"
-      ]
-    }
-  },
-  {
-    "id": "t079",
-    "text": "Cough syrup: take 2 spoonfuls twice a day with meals for 3 days.",
+    "text": "Cough syrup: take 2 spoonfuls four times a day: morning, afternoon, evening and night after food for 10 days. Stay out of strong sunlight.",
     "answer": {
       "name": "Cough syrup",
       "form": "spoon",
       "count": 2,
       "times": [
         "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "food": "after_food",
+      "days": 10,
+      "avoid": [
+        "sunlight"
+      ]
+    }
+  },
+  {
+    "id": "t077",
+    "text": "Ear drops: take 3 drops in the morning and at night with meals for 7 days.",
+    "answer": {
+      "name": "Ear drops",
+      "form": "drops",
+      "count": 3,
+      "times": [
+        "morning",
         "night"
       ],
       "food": "with_food",
-      "days": 3,
+      "days": 7,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t078",
+    "text": "Atorvastatin 20 mg: take 1 tablet once a day in the morning after meals for 10 days.",
+    "answer": {
+      "name": "Atorvastatin 20 mg",
+      "form": "tablet",
+      "count": 1,
+      "times": [
+        "morning"
+      ],
+      "food": "after_food",
+      "days": 10,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t079",
+    "text": "Ibuprofen 400 mg: take 1 tablet every morning after meals.",
+    "answer": {
+      "name": "Ibuprofen 400 mg",
+      "form": "tablet",
+      "count": 1,
+      "times": [
+        "morning"
+      ],
+      "food": "after_food",
+      "days": null,
       "avoid": []
     }
   },
   {
     "id": "t080",
-    "text": "Azithromycin 250 mg: take 1 capsule once a day in the morning for 10 days. Do not smoke.",
+    "text": "Atorvastatin 20 mg: take 1 tablet in the morning and in the evening after food for 3 days. Do not drive.",
     "answer": {
-      "name": "Azithromycin 250 mg",
+      "name": "Atorvastatin 20 mg",
+      "form": "tablet",
+      "count": 1,
+      "times": [
+        "morning",
+        "evening"
+      ],
+      "food": "after_food",
+      "days": 3,
+      "avoid": [
+        "driving"
+      ]
+    }
+  },
+  {
+    "id": "t081",
+    "text": "Amoxicillin 500 mg: take 1 capsule every morning for 10 days. Do not smoke.",
+    "answer": {
+      "name": "Amoxicillin 500 mg",
       "form": "capsule",
       "count": 1,
       "times": [
@@ -1352,7 +1378,90 @@
     }
   },
   {
-    "id": "t081",
+    "id": "t082",
+    "text": "Iron 100 mg: take 1 tablet once a day at night on an empty stomach for 10 days. Do not drive.",
+    "answer": {
+      "name": "Iron 100 mg",
+      "form": "tablet",
+      "count": 1,
+      "times": [
+        "night"
+      ],
+      "food": "before_food",
+      "days": 10,
+      "avoid": [
+        "driving"
+      ]
+    }
+  },
+  {
+    "id": "t083",
+    "text": "Cough syrup: take 1 spoonful every morning on an empty stomach for 14 days. Do not lift heavy things.",
+    "answer": {
+      "name": "Cough syrup",
+      "form": "spoon",
+      "count": 1,
+      "times": [
+        "morning"
+      ],
+      "food": "before_food",
+      "days": 14,
+      "avoid": [
+        "heavy_lifting"
+      ]
+    }
+  },
+  {
+    "id": "t084",
+    "text": "Vitamin D 1000 IU: take 2 capsules in the morning and in the evening after food for 10 days. Do not lift heavy things.",
+    "answer": {
+      "name": "Vitamin D 1000 IU",
+      "form": "capsule",
+      "count": 2,
+      "times": [
+        "morning",
+        "evening"
+      ],
+      "food": "after_food",
+      "days": 10,
+      "avoid": [
+        "heavy_lifting"
+      ]
+    }
+  },
+  {
+    "id": "t085",
+    "text": "Vitamin D 1000 IU: take 1 capsule once a day in the morning on an empty stomach for 5 days.",
+    "answer": {
+      "name": "Vitamin D 1000 IU",
+      "form": "capsule",
+      "count": 1,
+      "times": [
+        "morning"
+      ],
+      "food": "before_food",
+      "days": 5,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t086",
+    "text": "Amoxicillin 500 mg: take 2 capsules in the morning and in the evening.",
+    "answer": {
+      "name": "Amoxicillin 500 mg",
+      "form": "capsule",
+      "count": 2,
+      "times": [
+        "morning",
+        "evening"
+      ],
+      "food": "any",
+      "days": null,
+      "avoid": []
+    }
+  },
+  {
+    "id": "t087",
     "text": "Eye drops: take 1 drop in the morning and at night with food.",
     "answer": {
       "name": "Eye drops",
@@ -1368,25 +1477,22 @@
     }
   },
   {
-    "id": "t082",
-    "text": "Amoxicillin 500 mg: take 1 tablet four times a day: morning, afternoon, evening and night on an empty stomach.",
+    "id": "t088",
+    "text": "Amoxicillin 500 mg: take 1 capsule once a day in the morning for 3 days.",
     "answer": {
       "name": "Amoxicillin 500 mg",
-      "form": "tablet",
+      "form": "capsule",
       "count": 1,
       "times": [
-        "morning",
-        "afternoon",
-        "evening",
-        "night"
+        "morning"
       ],
-      "food": "before_food",
-      "days": null,
+      "food": "any",
+      "days": 3,
       "avoid": []
     }
   },
   {
-    "id": "t083",
+    "id": "t089",
     "text": "Antacid suspension: take 2 spoonfuls once a day at night for 10 days. Do not take it with milk or cheese.",
     "answer": {
       "name": "Antacid suspension",
@@ -1403,208 +1509,131 @@
     }
   },
   {
-    "id": "t084",
-    "text": "Omeprazole 20 mg: take 1 tablet in the morning and in the evening with food for 3 days.",
+    "id": "t090",
+    "text": "Omeprazole 20 mg: take 1 capsule at bedtime for 14 days. Stay out of strong sunlight.",
     "answer": {
       "name": "Omeprazole 20 mg",
-      "form": "tablet",
+      "form": "capsule",
       "count": 1,
       "times": [
-        "morning",
-        "evening"
-      ],
-      "food": "with_food",
-      "days": 3,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t085",
-    "text": "Paracetamol 500 mg: take 2 capsules in the morning and at night on an empty stomach. Stay out of strong sunlight.",
-    "answer": {
-      "name": "Paracetamol 500 mg",
-      "form": "capsule",
-      "count": 2,
-      "times": [
-        "morning",
         "night"
       ],
-      "food": "before_food",
-      "days": null,
+      "food": "any",
+      "days": 14,
       "avoid": [
         "sunlight"
       ]
     }
   },
   {
-    "id": "t086",
-    "text": "Ibuprofen 400 mg: take 4 capsules in the morning and in the evening after meals for 5 days. Do not lift heavy things.",
+    "id": "t091",
+    "text": "Paracetamol 500 mg: take 2 tablets in the morning and at night on an empty stomach for 3 days. Stay out of strong sunlight.",
     "answer": {
-      "name": "Ibuprofen 400 mg",
-      "form": "capsule",
-      "count": 4,
+      "name": "Paracetamol 500 mg",
+      "form": "tablet",
+      "count": 2,
       "times": [
         "morning",
-        "evening"
+        "night"
       ],
-      "food": "after_food",
-      "days": 5,
+      "food": "before_food",
+      "days": 3,
       "avoid": [
-        "heavy_lifting"
+        "sunlight"
       ]
     }
   },
   {
-    "id": "t087",
-    "text": "Atorvastatin 20 mg: take 3 capsules every morning after meals for 14 days.",
+    "id": "t092",
+    "text": "Ibuprofen 400 mg: take 1 tablet in the morning and in the evening.",
     "answer": {
-      "name": "Atorvastatin 20 mg",
-      "form": "capsule",
-      "count": 3,
-      "times": [
-        "morning"
-      ],
-      "food": "after_food",
-      "days": 14,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t088",
-    "text": "Azithromycin 250 mg: take 2 tablets once a day in the morning with food for 10 days.",
-    "answer": {
-      "name": "Azithromycin 250 mg",
+      "name": "Ibuprofen 400 mg",
       "form": "tablet",
-      "count": 2,
+      "count": 1,
       "times": [
-        "morning"
+        "morning",
+        "evening"
       ],
-      "food": "with_food",
-      "days": 10,
+      "food": "any",
+      "days": null,
       "avoid": []
     }
   },
   {
-    "id": "t089",
-    "text": "Paracetamol 500 mg: take 1 capsule morning, afternoon and night with meals.",
+    "id": "t093",
+    "text": "Eye drops: take 1 drop morning, afternoon and night after food for 10 days. Do not drink alcohol.",
     "answer": {
-      "name": "Paracetamol 500 mg",
-      "form": "capsule",
+      "name": "Eye drops",
+      "form": "drops",
       "count": 1,
       "times": [
         "morning",
         "afternoon",
         "night"
       ],
-      "food": "with_food",
-      "days": null,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t090",
-    "text": "Salbutamol inhaler: take 2 puffs in the morning and at night for 14 days.",
-    "answer": {
-      "name": "Salbutamol inhaler",
-      "form": "puff",
-      "count": 2,
-      "times": [
-        "morning",
-        "night"
-      ],
-      "food": "any",
-      "days": 14,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t091",
-    "text": "Metformin 500 mg: take 2 capsules in the morning and in the evening after meals. Do not drink alcohol.",
-    "answer": {
-      "name": "Metformin 500 mg",
-      "form": "capsule",
-      "count": 2,
-      "times": [
-        "morning",
-        "evening"
-      ],
       "food": "after_food",
-      "days": null,
+      "days": 10,
       "avoid": [
         "alcohol"
       ]
     }
   },
   {
-    "id": "t092",
-    "text": "Ear drops: take 1 drop once a day at night for 7 days. Do not drive.",
-    "answer": {
-      "name": "Ear drops",
-      "form": "drops",
-      "count": 1,
-      "times": [
-        "night"
-      ],
-      "food": "any",
-      "days": 7,
-      "avoid": [
-        "driving"
-      ]
-    }
-  },
-  {
-    "id": "t093",
-    "text": "Eye drops: take 4 drops at bedtime after food for 3 days.",
-    "answer": {
-      "name": "Eye drops",
-      "form": "drops",
-      "count": 4,
-      "times": [
-        "night"
-      ],
-      "food": "after_food",
-      "days": 3,
-      "avoid": []
-    }
-  },
-  {
     "id": "t094",
-    "text": "Amoxicillin 500 mg: take 3 capsules in the morning and in the evening with meals for 3 days.",
+    "text": "Cetirizine 10 mg: take 1 tablet in the morning and in the evening with meals.",
     "answer": {
-      "name": "Amoxicillin 500 mg",
-      "form": "capsule",
-      "count": 3,
+      "name": "Cetirizine 10 mg",
+      "form": "tablet",
+      "count": 1,
       "times": [
         "morning",
         "evening"
       ],
       "food": "with_food",
-      "days": 3,
+      "days": null,
       "avoid": []
     }
   },
   {
     "id": "t095",
-    "text": "Azithromycin 250 mg: take 2 capsules in the morning and at night before meals for 14 days.",
+    "text": "Azithromycin 250 mg: take 2 tablets in the morning and at night. Do not smoke.",
     "answer": {
       "name": "Azithromycin 250 mg",
-      "form": "capsule",
+      "form": "tablet",
       "count": 2,
       "times": [
         "morning",
         "night"
       ],
-      "food": "before_food",
+      "food": "any",
+      "days": null,
+      "avoid": [
+        "smoking"
+      ]
+    }
+  },
+  {
+    "id": "t096",
+    "text": "Vitamin D 1000 IU: take 1 capsule in the morning and at night after meals for 14 days.",
+    "answer": {
+      "name": "Vitamin D 1000 IU",
+      "form": "capsule",
+      "count": 1,
+      "times": [
+        "morning",
+        "night"
+      ],
+      "food": "after_food",
       "days": 14,
       "avoid": []
     }
   },
   {
-    "id": "t096",
-    "text": "Cough syrup: take 2 spoonfuls three times a day with meals for 7 days.",
+    "id": "t097",
+    "text": "Eye drops: take 2 drops morning, afternoon and night with meals for 5 days.",
     "answer": {
-      "name": "Cough syrup",
-      "form": "spoon",
+      "name": "Eye drops",
+      "form": "drops",
       "count": 2,
       "times": [
         "morning",
@@ -1612,71 +1641,62 @@
         "night"
       ],
       "food": "with_food",
-      "days": 7,
-      "avoid": []
-    }
-  },
-  {
-    "id": "t097",
-    "text": "Ibuprofen 400 mg: take 2 tablets in the morning and in the evening before meals for 14 days.",
-    "answer": {
-      "name": "Ibuprofen 400 mg",
-      "form": "tablet",
-      "count": 2,
-      "times": [
-        "morning",
-        "evening"
-      ],
-      "food": "before_food",
-      "days": 14,
+      "days": 5,
       "avoid": []
     }
   },
   {
     "id": "t098",
-    "text": "Omeprazole 20 mg: take 2 tablets in the morning and in the evening after meals.",
+    "text": "Omeprazole 20 mg: take 1 capsule once a day in the morning after meals. Do not take it with milk or cheese.",
     "answer": {
       "name": "Omeprazole 20 mg",
-      "form": "tablet",
-      "count": 2,
+      "form": "capsule",
+      "count": 1,
       "times": [
-        "morning",
-        "evening"
+        "morning"
       ],
       "food": "after_food",
       "days": null,
-      "avoid": []
+      "avoid": [
+        "dairy"
+      ]
     }
   },
   {
     "id": "t099",
-    "text": "Ibuprofen 400 mg: take 3 tablets in the morning and at night for 7 days.",
+    "text": "Eye drops: take 1 drop morning, afternoon and night on an empty stomach. Do not take it with milk or cheese.",
     "answer": {
-      "name": "Ibuprofen 400 mg",
-      "form": "tablet",
-      "count": 3,
+      "name": "Eye drops",
+      "form": "drops",
+      "count": 1,
       "times": [
         "morning",
+        "afternoon",
         "night"
       ],
-      "food": "any",
-      "days": 7,
-      "avoid": []
+      "food": "before_food",
+      "days": null,
+      "avoid": [
+        "dairy"
+      ]
     }
   },
   {
     "id": "t100",
-    "text": "Ibuprofen 400 mg: take 4 tablets every morning for 3 days.",
+    "text": "Metformin 500 mg: take 1 tablet in the morning and at night after food for 7 days. Do not drink alcohol.",
     "answer": {
-      "name": "Ibuprofen 400 mg",
+      "name": "Metformin 500 mg",
       "form": "tablet",
-      "count": 4,
+      "count": 1,
       "times": [
-        "morning"
+        "morning",
+        "night"
       ],
-      "food": "any",
-      "days": 3,
-      "avoid": []
+      "food": "after_food",
+      "days": 7,
+      "avoid": [
+        "alcohol"
+      ]
     }
   }
 ]

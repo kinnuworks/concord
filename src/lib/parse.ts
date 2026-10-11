@@ -24,6 +24,7 @@ Rules:
 - "after meals" is "after_food", "with meals" is "with_food", "on an empty stomach" or "before meals" is "before_food". If food is not mentioned use "any".
 - "avoid" belongs on the medicine it was written for. If the sheet gives a general restriction, put it on every medicine.
 - If a dose is not a whole number of units, or changes over time, leave that medicine out of "medicines" and put its full text in "unparsed".
+- You are transcribing, not prescribing. Record a dose exactly as written even when it looks high, low or unusual to you. Never move a medicine to "unparsed" because of how its dose looks.
 - Sort "times" in day order and "avoid" and "warnings" alphabetically.`;
 
 function prompt(text: string | null) {
