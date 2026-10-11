@@ -10,7 +10,7 @@ Everything to paste into Devpost, then the video script.
 
 **Try it out links**
 
-- https://concord-beryl.vercel.app
+- https://concord-health.vercel.app
 - https://github.com/kinnuworks/concord
 
 **Built with:** nextjs, typescript, react, fal, flux, lora, gemini, openai, openmoji, vercel
@@ -60,7 +60,7 @@ Target length 2:42. The limit is 3:00 and it is strict, so the final cut must en
 
 ### Before you record
 
-- Open https://concord-beryl.vercel.app in a clean browser window, 1440 by 900, zoom 100%, bookmarks bar hidden.
+- Open https://concord-health.vercel.app in a clean browser window, 1440 by 900, zoom 100%, bookmarks bar hidden.
 - Do one silent run first so you know where to scroll.
 - Record the screen and your voice together (QuickTime: File, New Screen Recording, pick the microphone under Options). One take per block is fine. Join them in iMovie or CapCut.
 

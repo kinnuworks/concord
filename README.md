@@ -2,7 +2,7 @@
 
 Visual discharge instructions, verified before the patient sees them.
 
-**Live site:** https://concord-beryl.vercel.app
+**Live site:** https://concord-health.vercel.app
 **Built for:** Banana Hacks 2026 (image AI), solo, 9 to 12 October 2026
 
 Concord turns a hospital discharge sheet into picture cards a patient can follow. An image model draws the pictures. Before a picture is shown, two other models have to look at it and say, in their own words, what it shows. If they get it wrong, the picture is thrown away and drawn again.
