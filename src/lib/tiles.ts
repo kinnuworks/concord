@@ -5,6 +5,8 @@ import type { Avoid, Form, Movement, TimeOfDay, Warning } from "./schema";
 export type TileSpec =
   | { kind: "time"; time: TimeOfDay }
   | { kind: "dose"; form: Form; count: number }
+  // One unit of a medicine. Cards repeat it by code, so the count is exact.
+  | { kind: "unit"; form: Form }
   | { kind: "meal" }
   | { kind: "avoid"; item: Avoid }
   | { kind: "warning"; sign: Warning }
@@ -16,6 +18,8 @@ export function tileKey(t: TileSpec): string {
       return `time-${t.time}`;
     case "dose":
       return `dose-${t.form}-${t.count}`;
+    case "unit":
+      return `unit-${t.form}`;
     case "meal":
       return "meal";
     case "avoid":
@@ -43,6 +47,14 @@ const FORM_OBJECT: Record<Form, (n: number) => string> = {
   spoon: (n) => `${NUMBER_WORDS[n]} metal spoon${n > 1 ? "s" : ""} seen from the side, each holding red liquid medicine`,
   drops: (n) => `a dropper releasing ${NUMBER_WORDS[n]} separate drop${n > 1 ? "s" : ""}`,
   puff: (n) => `an inhaler with ${NUMBER_WORDS[n]} small puff cloud${n > 1 ? "s" : ""} beside it`,
+};
+
+const FORM_UNIT: Record<Form, string> = {
+  tablet: "one round pale-blue tablet with a score line",
+  capsule: "one medicine capsule lying on its side, one half red and one half white",
+  spoon: "one metal spoon seen from the side, holding red liquid medicine",
+  drops: "one dropper bottle with a single drop falling from its tip",
+  puff: "one blue asthma inhaler",
 };
 
 const AVOID_OBJECT: Record<Avoid, string> = {
@@ -92,6 +104,8 @@ export function tilePrompt(t: TileSpec, useTrigger: boolean): string {
         return TIME_SCENE[t.time];
       case "dose":
         return `exactly ${FORM_OBJECT[t.form](t.count)} laid out in a row on a plain surface, each one fully visible and separate, nothing else in the picture`;
+      case "unit":
+        return `${FORM_UNIT[t.form]}, large, alone in the middle of the picture, nothing else`;
       case "meal":
         return "a round plate of food seen from above, with a fork on the left and a spoon on the right";
       case "avoid":

@@ -1,4 +1,4 @@
-import type { Exercise, Medicine, Regimen, TimeOfDay, Warning } from "./schema";
+import { TIMES, type Exercise, type Medicine, type Regimen, type TimeOfDay, type Warning } from "./schema";
 import { tileKey, type TileSpec } from "./tiles";
 
 // A card is a fixed layout of tiles. Everything about order, arrows, numbers and the
@@ -49,7 +49,7 @@ export function planMedicine(m: Medicine, index: number): MedicineCard {
     rows: m.times.map((time) => ({
       time,
       timeTile: { kind: "time", time },
-      doseTile: { kind: "dose", form: m.form, count: m.count },
+      doseTile: { kind: "unit", form: m.form },
       meal: MEAL_POSITION[m.food],
       count: m.count,
     })),
@@ -86,6 +86,8 @@ export function tilesFor(cards: Card[]): TileSpec[] {
   const add = (t: TileSpec) => seen.set(tileKey(t), t);
   for (const c of cards) {
     if (c.kind === "medicine") {
+      // Every medicine card shows all four parts of the day, taken or not.
+      for (const time of TIMES) add({ kind: "time", time });
       for (const row of c.rows) {
         add(row.timeTile);
         add(row.doseTile);

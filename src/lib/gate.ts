@@ -26,7 +26,8 @@ function hintFor(t: TileSpec, v: Verdict): string | undefined {
     const seen = v.readers.map((r) => r.reading?.count).filter((c) => typeof c === "number");
     return `there must be exactly ${t.count}, not ${seen.join(" or ") || "any other number"}, spaced well apart`;
   }
-  if (t.kind === "time") return "make the time of day unmistakable";
+  if (t.kind === "unit") return "exactly one, alone, nothing beside it";
+  if (t.kind === "time") return "make the position of the sun or moon in the sky unmistakable";
   if (t.kind === "exercise") return "one person only, two arms and two legs, simple figure";
   return "one clear subject, nothing else";
 }

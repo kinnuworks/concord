@@ -1,4 +1,4 @@
-import { AVOIDS, FORMS, TIMES, WARNINGS } from "./schema";
+import { AVOIDS, FORMS, WARNINGS } from "./schema";
 import { googleVisionJson, openaiJson, MODELS, type ImageInput } from "./models";
 import type { TileSpec } from "./tiles";
 
@@ -12,15 +12,20 @@ export type Verdict = {
   mismatches: string[];
 };
 
+// A reader is asked what the sky shows, which it can see, and not which part of the day
+// is meant, which a lone sun cannot say. The card's column and label carry that.
+const SKY = { morning: "sunrise", afternoon: "midday sun", evening: "sunset", night: "night" } as const;
+
 // The reader is told nothing about what the picture is supposed to show.
 function question(t: TileSpec): string {
   const head =
     "You are shown one pictogram. Describe only what is drawn. Answer with one JSON object and nothing else.";
   switch (t.kind) {
     case "time":
-      return `${head}\nKeys: "time": which part of the day the picture shows, one of ${JSON.stringify(TIMES)} or "unclear".`;
+      return `${head}\nKeys: "sky": what the sky in the picture shows, one of ${JSON.stringify(Object.values(SKY))} or "unclear".`;
+    case "unit":
     case "dose":
-      return `${head}\nKeys: "form": what kind of medicine is drawn, one of ${JSON.stringify(FORMS)} or "unclear" (for "drops" count drops, for "puff" count puff clouds, for "spoon" count spoons). "count": how many of them are drawn, as a whole number. Count carefully, one by one.`;
+      return `${head}\nKeys: "form": what kind of medicine is drawn, one of ${JSON.stringify(FORMS)} or "unclear" (for "drops" count dropper bottles or separate drops, for "puff" count inhalers, for "spoon" count spoons). "count": how many of them are drawn, as a whole number. Count carefully, one by one.`;
     case "meal":
       return `${head}\nKeys: "food": true if the picture shows a meal or a plate of food, otherwise false.`;
     case "avoid":
@@ -35,9 +40,11 @@ function question(t: TileSpec): string {
 export function expectedReading(t: TileSpec): Reading {
   switch (t.kind) {
     case "time":
-      return { time: t.time };
+      return { sky: SKY[t.time] };
     case "dose":
       return { form: t.form, count: t.count };
+    case "unit":
+      return { form: t.form, count: 1 };
     case "meal":
       return { food: true };
     case "avoid":

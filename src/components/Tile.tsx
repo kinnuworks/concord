@@ -78,8 +78,14 @@ async function start(id: string, spec: TileSpec, opts: { fresh?: boolean; adapte
   }
 }
 
-export function useTile(spec: TileSpec, opts: { fresh?: boolean; adapter?: boolean; run: number }) {
-  const id = `${opts.run}|${opts.fresh ? 1 : 0}|${opts.adapter ?? "auto"}|${tileKey(spec)}`;
+type TileOpts = { fresh?: boolean; adapter?: boolean; run: number };
+
+function tileId(spec: TileSpec, opts: TileOpts) {
+  return `${opts.run}|${opts.fresh ? 1 : 0}|${opts.adapter ?? "auto"}|${tileKey(spec)}`;
+}
+
+export function useTile(spec: TileSpec, opts: TileOpts) {
+  const id = tileId(spec, opts);
 
   useEffect(() => {
     void start(id, spec, { fresh: opts.fresh, adapter: opts.adapter });
@@ -89,15 +95,14 @@ export function useTile(spec: TileSpec, opts: { fresh?: boolean; adapter?: boole
 
   const subscribe = useCallback(
     (fn: () => void) => {
-      // The entry may be created just after the first subscription, so poll once for it.
-      let entry = store.get(id);
-      const attach = () => {
-        entry = store.get(id);
-        entry?.subs.add(fn);
-        fn();
-      };
+      // The entry may be created just after the first subscription, so look once more for it.
+      const entry = store.get(id);
       if (entry) entry.subs.add(fn);
-      else queueMicrotask(attach);
+      else
+        queueMicrotask(() => {
+          store.get(id)?.subs.add(fn);
+          fn();
+        });
       return () => {
         store.get(id)?.subs.delete(fn);
       };
@@ -111,50 +116,120 @@ export function useTile(spec: TileSpec, opts: { fresh?: boolean; adapter?: boole
   );
 }
 
+export type TileSummary = { total: number; ready: number; redrawn: number; fallback: number; failed: number };
+
+// One line of status for a whole card: how many of its pictures are through the check.
+export function useTileSummary(specs: TileSpec[], opts: TileOpts): TileSummary {
+  const ids = [...new Set(specs.map((s) => tileId(s, opts)))];
+  const idKey = ids.join(",");
+
+  const subscribe = useCallback(
+    (fn: () => void) => {
+      let alive = true;
+      const attach = () => {
+        if (!alive) return;
+        let missing = false;
+        for (const id of idKey.split(",")) {
+          const entry = store.get(id);
+          if (entry) entry.subs.add(fn);
+          else missing = true;
+        }
+        fn();
+        if (missing) setTimeout(attach, 150);
+      };
+      attach();
+      return () => {
+        alive = false;
+        for (const id of idKey.split(",")) store.get(id)?.subs.delete(fn);
+      };
+    },
+    [idKey],
+  );
+
+  const snapshot = useSyncExternalStore(
+    subscribe,
+    () => {
+      let ready = 0, redrawn = 0, fallback = 0, failed = 0;
+      for (const id of idKey.split(",")) {
+        const st = store.get(id)?.state;
+        if (!st) continue;
+        if (st.status === "accepted" || st.status === "fallback") ready += 1;
+        if (st.status === "fallback") fallback += 1;
+        if (st.status === "error") failed += 1;
+        redrawn += st.attempts.filter((a) => a.verdict && !a.verdict.pass).length;
+      }
+      return `${ready}|${redrawn}|${fallback}|${failed}`;
+    },
+    () => "0|0|0|0",
+  );
+  const [ready, redrawn, fallback, failed] = snapshot.split("|").map(Number);
+  return { total: ids.length, ready, redrawn, fallback, failed };
+}
+
 export function TileView({
   state,
   size = 128,
-  badge,
+  count,
   crossed,
   alt,
-  caption,
 }: {
   state: TileState;
   size?: number;
-  badge?: string;
+  count?: number;
   crossed?: boolean;
   alt: string;
-  caption?: string;
 }) {
-  const rejected = state.attempts.filter((a) => a.verdict && !a.verdict.pass);
   const current = state.url ?? state.attempts[state.attempts.length - 1]?.url;
+  const settled = state.status === "accepted" || state.status === "fallback";
   return (
-    <figure className="pic" style={{ width: size }}>
-      <div className="pic__frame" style={{ width: size, height: size }} data-status={state.status}>
-        {current ? (
-          // Tiles come from several hosts and from data URLs, so a plain img is used.
+    <span className="pic" style={{ "--pic": `${size}px` } as React.CSSProperties} data-status={state.status}>
+      {current ? (
+        // Tiles come from several hosts and from data URLs, so a plain img is used.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className="pic__img" src={current} alt={alt} data-settled={settled} />
+      ) : (
+        <span className="pic__wait" role="img" aria-label="Drawing the picture" />
+      )}
+      {crossed && settled ? (
+        <svg className="pic__cross" viewBox="0 0 100 100" aria-hidden>
+          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="7" />
+          <line x1="18" y1="18" x2="82" y2="82" stroke="currentColor" strokeWidth="7" />
+        </svg>
+      ) : null}
+      {count !== undefined ? (
+        <span className="pic__count" aria-hidden>
+          {count}
+        </span>
+      ) : null}
+      {state.status === "error" ? <span className="pic__error">{state.message}</span> : null}
+    </span>
+  );
+}
+
+// A dose is one checked unit picture repeated by code, so the number shown is exact.
+export function DoseView({ state, count, size = 120, alt }: { state: TileState; count: number; size?: number; alt: string }) {
+  const current = state.url ?? state.attempts[state.attempts.length - 1]?.url;
+  const settled = state.status === "accepted" || state.status === "fallback";
+  return (
+    <span
+      className="pic dose"
+      style={{ "--pic": `${size}px` } as React.CSSProperties}
+      data-status={state.status}
+      data-n={count}
+      role="img"
+      aria-label={alt}
+    >
+      {current ? (
+        Array.from({ length: count }, (_, i) => (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={current} alt={alt} width={size} height={size} />
-        ) : (
-          <span className="pic__wait" aria-label="Drawing" />
-        )}
-        {crossed && state.url ? (
-          <svg className="pic__cross" viewBox="0 0 100 100" aria-hidden>
-            <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" strokeWidth="8" />
-            <line x1="19" y1="19" x2="81" y2="81" stroke="currentColor" strokeWidth="8" />
-          </svg>
-        ) : null}
-        {badge ? <span className="pic__count">{badge}</span> : null}
-      </div>
-      {caption ? <span className="word pic__caption">{caption}</span> : null}
-      <figcaption className="pic__note">
-        {state.status === "working" && state.attempts.length > 0 ? `Checking try ${state.attempts.length}` : null}
-        {state.status === "working" && state.attempts.length === 0 ? "Drawing" : null}
-        {state.status === "accepted" && rejected.length > 0
-          ? `Passed on try ${rejected.length + 1}, ${rejected.length} rejected`
-          : null}
-        {state.status === "error" ? state.message : null}
-      </figcaption>
-    </figure>
+          <img key={i} className="pic__img" src={current} alt="" data-settled={settled} />
+        ))
+      ) : (
+        <span className="pic__wait" />
+      )}
+      <span className="pic__count" aria-hidden>
+        {count}
+      </span>
+    </span>
   );
 }

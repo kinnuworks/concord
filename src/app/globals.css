@@ -210,13 +210,14 @@
 .sheet {
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
   align-items: start;
 }
 .rx {
   display: grid;
-  gap: 16px;
+  gap: 20px;
   align-content: start;
+  padding: clamp(18px, 2.4vw, 28px);
   box-shadow: var(--shadow-2);
 }
 .rx--warning {
@@ -229,44 +230,98 @@
   justify-content: space-between;
 }
 .rx__head h3 {
-  font-size: 19px;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 
-.dose-rows {
+/* Four parts of the day, always in the same order. */
+.schedule {
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
 }
-.dose-row {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
-}
-.dose-row:last-child {
-  padding-bottom: 0;
-  border-bottom: 0;
-}
-.dose-when {
+.slot {
   display: grid;
   justify-items: center;
+  align-content: start;
   gap: 6px;
+  padding: 12px 6px 10px;
+  border-radius: var(--r-md);
+  background: var(--sunk);
+  text-align: center;
 }
-.dose-steps {
+.slot[data-on="false"] {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.slot[data-on="false"] .pic__img {
+  opacity: 0.35;
+  filter: grayscale(1);
+}
+.slot__label {
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.slot[data-on="false"] .slot__label {
+  color: var(--ink-3);
+  font-weight: 500;
+}
+.slot__dose {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 72px;
+  margin-top: 4px;
+}
+.slot__none {
+  font: 500 28px/1 var(--font-mono);
+  color: var(--ink-4);
+}
+
+.rx__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+.fact {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: 14px;
+  border-radius: var(--r-md);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.fact__pics {
   display: flex;
+  align-items: center;
   gap: 8px;
-  align-items: flex-start;
-  flex-wrap: wrap;
 }
 .step-mark {
   flex: none;
-  width: 24px;
-  height: 24px;
-  margin-top: calc(var(--pic) / 2 - 12px);
+  width: 26px;
+  height: 26px;
   color: var(--ink-3);
+}
+.rx__check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
+}
+.rx__check svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+.rx__check[data-done="true"] svg {
+  color: var(--success);
 }
 
 .word {
@@ -282,47 +337,51 @@
   color: var(--ink);
 }
 .word--big {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: var(--display-weight);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   color: var(--ink);
 }
 
-/* ---------- Picture tiles ---------- */
+/* ---------- Pictures ---------- */
 .pic {
-  display: grid;
-  gap: 5px;
-  margin: 0;
-}
-.pic__frame {
   position: relative;
   display: grid;
   place-items: center;
+  width: min(100%, var(--pic, 96px));
+  aspect-ratio: 1;
   overflow: hidden;
   border-radius: var(--r-md);
   background: #fff;
-  box-shadow: var(--ring);
-  transition: box-shadow var(--dur-ui) var(--ease-out);
 }
-.pic__frame[data-status="accepted"] {
-  box-shadow: 0 0 0 1.5px var(--success);
-}
-.pic__frame[data-status="fallback"] {
-  box-shadow: 0 0 0 1.5px var(--ink-3);
-}
-.pic__frame[data-status="error"] {
-  box-shadow: 0 0 0 1.5px var(--danger);
-}
-.pic__frame img {
+.pic__img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: opacity var(--dur-ui) var(--ease-out);
+}
+.pic__img[data-settled="false"] {
+  opacity: 0.4;
+}
+.pic[data-status="working"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 2px var(--line-2);
+  animation: pic-pulse 1.2s var(--ease-out) infinite;
+}
+@keyframes pic-pulse {
+  50% {
+    box-shadow: inset 0 0 0 2px var(--ink-3);
+  }
 }
 .pic__wait {
-  width: 20px;
-  height: 20px;
+  width: 34%;
+  max-width: 28px;
+  aspect-ratio: 1;
   border: 2.5px solid var(--line-2);
-  border-top-color: var(--accent);
+  border-top-color: var(--ink);
   border-radius: 50%;
   animation: pic-spin 0.9s linear infinite;
 }
@@ -333,40 +392,64 @@
 }
 .pic__cross {
   position: absolute;
-  inset: 5%;
+  inset: 4%;
   color: var(--danger);
 }
 .pic__count {
   position: absolute;
-  right: 5px;
-  bottom: 5px;
+  right: 4%;
+  bottom: 4%;
   display: grid;
   place-items: center;
-  min-width: 30px;
-  height: 30px;
-  padding: 0 7px;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
   border-radius: var(--r-pill);
   background: var(--ink);
   color: var(--bg);
-  font: 500 17px/1 var(--font-mono);
+  font: 500 19px/1 var(--font-mono);
+  box-shadow: 0 0 0 2px #fff;
 }
-.pic__caption {
+.pic__error {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  background: var(--danger-wash);
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--danger);
   text-align: center;
 }
-.pic__note:empty {
-  display: none;
+
+/* A dose: one checked unit picture, repeated by code. */
+.dose {
+  grid-template-columns: repeat(var(--cols, 1), 1fr);
+  gap: 2%;
+  padding: 8% 8% 12%;
 }
-.pic__note {
-  min-height: 15px;
-  font-size: 12px;
-  line-height: 1.25;
-  color: var(--ink-3);
+.dose[data-n="1"] {
+  padding: 4%;
+}
+.dose[data-n="2"],
+.dose[data-n="4"] {
+  --cols: 2;
+}
+.dose[data-n="3"],
+.dose[data-n="5"],
+.dose[data-n="6"] {
+  --cols: 3;
+}
+.dose .pic__img {
+  aspect-ratio: 1;
+  height: auto;
 }
 
 /* The calendar is drawn by code, one box per day. */
 .calendar {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 .calendar__boxes {
   display: flex;
@@ -379,32 +462,70 @@
   width: 26px;
   height: 26px;
   border-radius: var(--r-xs);
-  background: var(--accent-wash);
-  color: var(--accent-ink);
+  background: var(--sunk);
+  color: var(--ink-2);
   font: 500 12px/1 var(--font-mono);
 }
 
 .group {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 .group__items {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 16px;
 }
 .group__item {
   display: grid;
   justify-items: center;
-  gap: 6px;
-  max-width: 124px;
+  gap: 8px;
+  max-width: 132px;
   text-align: center;
 }
 .exercise {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
   align-items: center;
+}
+.exercise__facts {
+  display: grid;
+  gap: 6px;
+}
+.visit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+}
+.leaf {
+  display: grid;
+  width: 88px;
+  overflow: hidden;
+  border-radius: var(--r-md);
+  box-shadow: var(--ring);
+  text-align: center;
+}
+.leaf__month {
+  padding: 5px 0;
+  background: var(--danger);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.leaf__day {
+  padding: 8px 0 10px;
+  font: var(--display-weight) 38px/1 var(--font-display);
+  letter-spacing: -0.04em;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pic[data-status="working"]::after,
+  .pic__wait {
+    animation: none;
+  }
 }
 
 /* ---------- Rejected pictures ---------- */

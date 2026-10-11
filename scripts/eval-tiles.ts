@@ -16,13 +16,21 @@ const dir = new URL(`../training/eval/${arm}/`, import.meta.url);
 const logFile = new URL(`../training/eval/${arm}.jsonl`, import.meta.url);
 
 function allSpecs(): TileSpec[] {
-  const fromCases = tilesFor(buildTestSet().map((c, i) => planMedicine(c.answer, i)));
+  const cases = buildTestSet();
+  const fromCases = tilesFor(cases.map((c, i) => planMedicine(c.answer, i)));
+  // Whole doses drawn in one picture. The cards no longer use these; they are measured
+  // to show how often a generator miscounts when asked to draw several.
+  const counted = new Map<string, TileSpec>();
+  for (const c of cases) {
+    const t: TileSpec = { kind: "dose", form: c.answer.form, count: c.answer.count };
+    counted.set(tileKey(t), t);
+  }
   const warnings: TileSpec[] = WARNINGS.map((sign) => ({ kind: "warning", sign }));
   const angles: Record<string, number> = {
     knee_bend: 90, straight_leg_raise: 45, arm_raise_front: 90, arm_raise_side: 90, elbow_bend: 90,
   };
   const exercises: TileSpec[] = MOVEMENTS.map((movement) => ({ kind: "exercise", movement, angle: angles[movement] }));
-  return [...fromCases, ...warnings, ...exercises];
+  return [...fromCases, ...counted.values(), ...warnings, ...exercises];
 }
 
 function seedFor(key: string, i: number) {

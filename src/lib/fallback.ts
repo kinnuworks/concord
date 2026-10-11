@@ -128,6 +128,8 @@ export function fallbackSvg(t: TileSpec): string {
       return timeTile(t.time);
     case "dose":
       return doseTile(t.form, t.count);
+    case "unit":
+      return doseTile(t.form, 1);
     case "meal":
       return mealTile();
     case "avoid":
