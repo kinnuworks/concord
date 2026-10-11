@@ -13,7 +13,7 @@ import { geminiJson, openaiJson, type ImageInput } from "./models";
 const INSTRUCTIONS = `You convert hospital discharge instructions into JSON. Copy what the sheet says. Do not add advice, do not fix doses, do not guess.
 
 Return one JSON object with these keys:
-- "medicines": array of { "name": string, "form": one of ${JSON.stringify(FORMS)}, "count": whole number of units per dose, "times": array from ${JSON.stringify(TIMES)}, "food": one of ${JSON.stringify(FOODS)}, "days": whole number of days or null if not stated, "avoid": array from ${JSON.stringify(AVOIDS)} }
+- "medicines": array of { "name": the medicine name with its strength as written on the sheet (for example "Amoxicillin 500 mg"), "form": one of ${JSON.stringify(FORMS)}, "count": whole number of units per dose, "times": array from ${JSON.stringify(TIMES)}, "food": one of ${JSON.stringify(FOODS)}, "days": whole number of days or null if not stated, "avoid": array from ${JSON.stringify(AVOIDS)} }
 - "exercises": array of { "name": string, "movement": one of ${JSON.stringify(MOVEMENTS)}, "angle": target joint angle in degrees, "reps": number, "sets": number, "timesPerDay": number }
 - "warnings": array from ${JSON.stringify(WARNINGS)} for symptoms the sheet says should bring the patient back
 - "followUp": { "date": "YYYY-MM-DD" or null, "place": string or null } or null
@@ -46,8 +46,13 @@ function canonical(raw: unknown): Regimen {
   return r;
 }
 
+// Two readers may name the same medicine with or without its form ("Moxifloxacin eye
+// drops", "Moxifloxacin"). The form is compared as its own field, so it is left out here.
 function key(name: string) {
-  return name.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return name
+    .toLowerCase()
+    .replace(/\b(eye|ear|nose|oral)\b|\b(tablets?|capsules?|drops?|syrup|suspension|solution|inhaler|puffs?)\b/g, "")
+    .replace(/[^a-z0-9]/g, "");
 }
 
 // Field-by-field comparison of two independent readings of the same sheet.
@@ -57,12 +62,15 @@ export function compare(a: Regimen, b: Regimen): Disagreement[] {
 
   const bMeds = new Map(b.medicines.map((m) => [key(m.name), m]));
   for (const [i, m] of a.medicines.entries()) {
-    const other = bMeds.get(key(m.name));
-    if (!other) {
+    // The same medicine written with and without its strength still pairs up.
+    const k = key(m.name);
+    const match = bMeds.has(k) ? k : [...bMeds.keys()].find((o) => o.startsWith(k) || k.startsWith(o));
+    const other = match === undefined ? undefined : bMeds.get(match);
+    if (match === undefined || !other) {
       out.push({ path: `medicines[${i}]`, a: m.name, b: null });
       continue;
     }
-    bMeds.delete(key(m.name));
+    bMeds.delete(match);
     for (const f of ["form", "count", "times", "food", "days", "avoid"] as const) {
       if (!same(m[f], other[f])) {
         out.push({ path: `medicines[${i}].${f}`, a: m[f], b: other[f] });

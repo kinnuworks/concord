@@ -30,7 +30,7 @@ Paste the text of a discharge sheet, or photograph it. Concord returns:
 - **A warning card** for the symptoms that should bring the patient back.
 - **A follow-up card** with the date.
 
-Labels come in seven languages. A card can be read aloud or printed. Anything the sheet says that the cards cannot hold (half tablets, tapering doses, "as needed") is shown as text and never drawn.
+Labels come in nine languages: English, Spanish, Chinese, Tagalog, Vietnamese, Arabic, Hindi, Telugu and Tamil. A card can be read aloud or printed. Anything the sheet says that the cards cannot hold (half tablets, tapering doses, "as needed") is shown as text and never drawn.
 
 ## How it works
 
@@ -64,7 +64,7 @@ The plain model returns a different drawing style for almost every picture. We t
 
 | What was measured | Result |
 |---|---|
-| Whole doses the image model drew with the wrong number of pills | 83 of 168 |
+| Whole doses an image model on its own drew with the wrong number of pills | 83 of 168 |
 | Single-unit pictures that passed the read-back on the first try | 58 of 60 |
 | Pictures both readers called a flat outlined pictogram, before our adapter | 56 of 270 (21%) |
 | The same, with our adapter | 210 of 270 (78%) |

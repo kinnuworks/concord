@@ -191,9 +191,9 @@
   },
   "warning-severe_pain": {
     "file": "/tiles/warning-severe_pain.png",
-    "seed": 12752126254488630000,
+    "seed": 159414,
     "adapter": true,
-    "tries": 2,
+    "tries": 1,
     "checkedBy": [
       "gemini",
       "openai"

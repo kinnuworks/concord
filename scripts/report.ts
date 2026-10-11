@@ -114,10 +114,10 @@ function main() {
   const said = (r: Row) => r.readings.map((x) => String(x.reading?.shows ?? ""));
   const STOPPED: [string, number][] = [
     ["warning-swelling", 1],
-    ["warning-fever", 3],
-    ["warning-bleeding", 0],
     ["warning-chest_pain", 1],
     ["warning-severe_pain", 3],
+    ["warning-fever", 3],
+    ["warning-bleeding", 0],
     ["warning-breathlessness", 0],
   ];
   const misread = STOPPED.flatMap(([key, i]) => {

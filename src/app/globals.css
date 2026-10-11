@@ -69,6 +69,35 @@
   align-content: start;
   padding: 28px;
 }
+.stat-card__tag {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: var(--r-pill);
+  background: var(--tint);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+}
+.stat-card__tag[data-side="alone"] {
+  background: var(--danger-wash);
+  color: var(--danger);
+}
+.stat-card__tag[data-side="concord"] {
+  background: var(--success-wash);
+  color: var(--success);
+}
+.stat-card__answer {
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.stat-card__answer b {
+  font-weight: 650;
+  color: var(--ink);
+}
 .stat-card__figure {
   font: var(--display-weight) clamp(48px, 6vw, 68px) / 1 var(--font-display);
   letter-spacing: -0.045em;
@@ -148,10 +177,14 @@
 }
 .select {
   height: 36px;
-  padding: 0 12px;
+  padding: 0 36px 0 16px;
   border: 0;
   border-radius: var(--r-pill);
-  background: var(--surface);
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--surface)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23515154' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5'/%3E%3C/svg%3E")
+    no-repeat right 14px center / 12px 12px;
   box-shadow: inset 0 0 0 1px var(--line-2);
   color: var(--ink);
   font: 550 13.5px/1 var(--font-body);
@@ -244,37 +277,6 @@
   .rx__speak {
     width: 44px;
     height: 44px;
-  }
-}
-
-/* Printing gives the cards alone, one clean sheet for the patient to take home. */
-@media print {
-  body * {
-    visibility: hidden;
-  }
-  .sheet,
-  .sheet * {
-    visibility: visible;
-  }
-  .sheet {
-    position: absolute;
-    inset: 0 auto auto 0;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .stage {
-    padding: 0;
-    background: none;
-    box-shadow: none;
-  }
-  .rx {
-    break-inside: avoid;
-    box-shadow: 0 0 0 1px #999;
-  }
-  .rx__speak,
-  .rx__check {
-    display: none;
   }
 }
 
@@ -548,13 +550,14 @@
   bottom: 4%;
   display: grid;
   place-items: center;
-  min-width: 34px;
-  height: 34px;
-  padding: 0 8px;
+  /* The badge shrinks with a small tile so it never covers the pill beside it. */
+  min-width: clamp(18px, 29cqw, 34px);
+  height: clamp(18px, 29cqw, 34px);
+  padding: 0 clamp(4px, 6cqw, 8px);
   border-radius: var(--r-pill);
   background: var(--ink);
   color: var(--bg);
-  font: 500 19px/1 var(--font-mono);
+  font: 500 clamp(11px, 16cqw, 19px) / 1 var(--font-mono);
   box-shadow: 0 0 0 2px #fff;
 }
 .pic__error {
@@ -572,6 +575,7 @@
 
 /* A dose: one checked unit picture, repeated by code. */
 .dose {
+  container-type: inline-size;
   grid-template-columns: repeat(var(--cols, 1), 1fr);
   gap: 2%;
   padding: 8% 8% 12%;
@@ -797,5 +801,68 @@
   }
   .follow__attempt {
     grid-template-columns: 96px minmax(0, 1fr);
+  }
+}
+
+/* ---------- Print ---------- */
+/* Printing gives the cards alone, a clean sheet for the patient to take home. These rules
+   come last so they win over the screen layout above. */
+@media print {
+  @page {
+    margin: 12mm;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    background: #fff;
+  }
+  .hero,
+  .footer,
+  main > section:not(#make),
+  #make .card.block,
+  #make .block__head {
+    display: none !important;
+  }
+  #make,
+  #make .container,
+  #make .block {
+    display: block;
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+  #make .stage {
+    padding: 0;
+    overflow: visible;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+  #make .sheet {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: start;
+  }
+  #make .rx {
+    break-inside: avoid;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1px #999;
+  }
+  #make .rx__speak,
+  #make .rx__check {
+    display: none;
+  }
+  #make .schedule {
+    gap: 5px;
+  }
+  #make .slot {
+    padding: 8px 3px;
+  }
+  #make .slot__label {
+    font-size: 11.5px;
   }
 }

@@ -1,8 +1,9 @@
 // Translates the card labels and keeps only the ones that survive a round trip.
 // One model translates, a different model translates back without seeing the original,
 // and a label is kept when the round trip still means the same thing.
-// Run: pnpm tsx --env-file=.env.local scripts/labels.ts
-import { writeFileSync } from "node:fs";
+// Run: pnpm tsx --env-file=.env.local scripts/labels.ts [language code ...]
+// With codes, only those languages are translated and the others are kept as they are.
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { EN } from "../src/lib/labels";
 import { LANGUAGES } from "../src/lib/schema";
 import { geminiJson, openaiJson } from "../src/lib/models";
@@ -32,10 +33,14 @@ async function sameMeaning(back: Table): Promise<Record<string, boolean>> {
 }
 
 async function main() {
-  const tables: Record<string, Table> = {};
-  const report: Record<string, { kept: number; dropped: string[] }> = {};
+  const only = process.argv.slice(2);
+  const tablesFile = new URL("../src/data/labels.json", import.meta.url);
+  const reportFile = new URL("../src/data/labels-report.json", import.meta.url);
+  const tables: Record<string, Table> = only.length && existsSync(tablesFile) ? JSON.parse(readFileSync(tablesFile, "utf8")) : {};
+  const report: Record<string, { kept: number; dropped: string[] }> =
+    only.length && existsSync(reportFile) ? JSON.parse(readFileSync(reportFile, "utf8")) : {};
   for (const [code, name] of Object.entries(LANGUAGES)) {
-    if (code === "en") continue;
+    if (code === "en" || (only.length && !only.includes(code))) continue;
     const forward = await translate(name);
     const back = await backTranslate(name, forward);
     const ok = await sameMeaning(back);
@@ -49,8 +54,8 @@ async function main() {
     report[code] = { kept: Object.keys(kept).length, dropped };
     console.log(name, `${Object.keys(kept).length}/${Object.keys(source).length}`, dropped.length ? `dropped: ${dropped.join(", ")}` : "");
   }
-  writeFileSync(new URL("../src/data/labels.json", import.meta.url), JSON.stringify(tables, null, 2) + "\n");
-  writeFileSync(new URL("../src/data/labels-report.json", import.meta.url), JSON.stringify(report, null, 2) + "\n");
+  writeFileSync(tablesFile, JSON.stringify(tables, null, 2) + "\n");
+  writeFileSync(reportFile, JSON.stringify(report, null, 2) + "\n");
 }
 
 main();

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11T21:01:21.014Z",
+  "generatedAt": "2026-10-11T21:21:21.849Z",
   "base": {
     "pictures": 270,
     "tiles": 45,
@@ -563,24 +563,6 @@
       ]
     },
     {
-      "file": "/evidence/misread-adapter-warning-fever__3.png",
-      "arm": "adapter",
-      "meant": "a person with a fever or high temperature",
-      "saw": [
-        "a person's face with red tears and blue drool.",
-        "a person crying with tears and an open mouth"
-      ]
-    },
-    {
-      "file": "/evidence/misread-adapter-warning-bleeding__0.png",
-      "arm": "adapter",
-      "meant": "bleeding",
-      "saw": [
-        "an arm with a closed fist and a gold bracelet.",
-        "a hand with a yellow wristband"
-      ]
-    },
-    {
       "file": "/evidence/misread-adapter-warning-chest_pain__1.png",
       "arm": "adapter",
       "meant": "chest pain",
@@ -596,6 +578,24 @@
       "saw": [
         "a person with a red spot on their stomach.",
         "a person with a red apple on their belly."
+      ]
+    },
+    {
+      "file": "/evidence/misread-adapter-warning-fever__3.png",
+      "arm": "adapter",
+      "meant": "a person with a fever or high temperature",
+      "saw": [
+        "a person's face with red tears and blue drool.",
+        "a person crying with tears and an open mouth"
+      ]
+    },
+    {
+      "file": "/evidence/misread-adapter-warning-bleeding__0.png",
+      "arm": "adapter",
+      "meant": "bleeding",
+      "saw": [
+        "an arm with a closed fist and a gold bracelet.",
+        "a hand with a yellow wristband"
       ]
     },
     {
@@ -627,44 +627,6 @@
           "a foot with a swollen, red ankle"
         ],
         "plain": true
-      }
-    },
-    {
-      "key": "warning-fever",
-      "prompt": "rdbk pictogram, the face of a sick person with red cheeks and sweat drops, holding a thermometer in the mouth, flat vector pictogram icon, bold thick black outlines, solid flat colours, simple rounded shapes, pure white background, centred with wide margins, no shadows, no gradients, no texture, no text, no letters, no numbers",
-      "meant": "a person with a fever or high temperature",
-      "stopped": {
-        "file": "/evidence/example-adapter-warning-fever__3.png",
-        "saw": [
-          "a person's face with red tears and blue drool.",
-          "a person crying with tears and an open mouth"
-        ]
-      },
-      "kept": {
-        "file": "/evidence/example-adapter-warning-fever__1.png",
-        "saw": [
-          "a cartoon face with a thermometer in its mouth, red cheeks.",
-          "a person with flushed cheeks and a thermometer"
-        ]
-      }
-    },
-    {
-      "key": "warning-bleeding",
-      "prompt": "rdbk pictogram, a bandaged arm with red drops falling from it, flat vector pictogram icon, bold thick black outlines, solid flat colours, simple rounded shapes, pure white background, centred with wide margins, no shadows, no gradients, no texture, no text, no letters, no numbers",
-      "meant": "bleeding",
-      "stopped": {
-        "file": "/evidence/example-adapter-warning-bleeding__0.png",
-        "saw": [
-          "an arm with a closed fist and a gold bracelet.",
-          "a hand with a yellow wristband"
-        ]
-      },
-      "kept": {
-        "file": "/evidence/example-adapter-warning-bleeding__2.png",
-        "saw": [
-          "a hand with a drop of blood falling from it.",
-          "a hand bleeding from a cut"
-        ]
       }
     },
     {
@@ -703,6 +665,44 @@
         "saw": [
           "a stick figure holding their stomach with red pain indicators.",
           "a person bending over, clutching their stomach in pain."
+        ]
+      }
+    },
+    {
+      "key": "warning-fever",
+      "prompt": "rdbk pictogram, the face of a sick person with red cheeks and sweat drops, holding a thermometer in the mouth, flat vector pictogram icon, bold thick black outlines, solid flat colours, simple rounded shapes, pure white background, centred with wide margins, no shadows, no gradients, no texture, no text, no letters, no numbers",
+      "meant": "a person with a fever or high temperature",
+      "stopped": {
+        "file": "/evidence/example-adapter-warning-fever__3.png",
+        "saw": [
+          "a person's face with red tears and blue drool.",
+          "a person crying with tears and an open mouth"
+        ]
+      },
+      "kept": {
+        "file": "/evidence/example-adapter-warning-fever__1.png",
+        "saw": [
+          "a cartoon face with a thermometer in its mouth, red cheeks.",
+          "a person with flushed cheeks and a thermometer"
+        ]
+      }
+    },
+    {
+      "key": "warning-bleeding",
+      "prompt": "rdbk pictogram, a bandaged arm with red drops falling from it, flat vector pictogram icon, bold thick black outlines, solid flat colours, simple rounded shapes, pure white background, centred with wide margins, no shadows, no gradients, no texture, no text, no letters, no numbers",
+      "meant": "bleeding",
+      "stopped": {
+        "file": "/evidence/example-adapter-warning-bleeding__0.png",
+        "saw": [
+          "an arm with a closed fist and a gold bracelet.",
+          "a hand with a yellow wristband"
+        ]
+      },
+      "kept": {
+        "file": "/evidence/example-adapter-warning-bleeding__2.png",
+        "saw": [
+          "a hand with a drop of blood falling from it.",
+          "a hand bleeding from a cut"
         ]
       }
     }
@@ -790,6 +790,18 @@
       ]
     },
     "ar": {
+      "kept": 33,
+      "dropped": [
+        "drawn_by_code"
+      ]
+    },
+    "tl": {
+      "kept": 33,
+      "dropped": [
+        "drawn_by_code"
+      ]
+    },
+    "vi": {
       "kept": 33,
       "dropped": [
         "drawn_by_code"

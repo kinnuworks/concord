@@ -341,7 +341,7 @@
   },
   {
     "name": "Heart medicines",
-    "text": "Atorvastatin 20 mg: 1 tablet at bedtime.\nAspirin 75 mg: 1 tablet every morning after breakfast.\nReturn immediately if you have chest pain, trouble breathing or dizziness.",
+    "text": "Atorvastatin 20 mg: 1 tablet at bedtime.\nAspirin 75 mg: 1 tablet every morning after breakfast.\nReturn immediately if you have chest pain, bleeding or dizziness.",
     "parsed": {
       "regimen": {
         "medicines": [
@@ -370,7 +370,7 @@
         ],
         "exercises": [],
         "warnings": [
-          "breathlessness",
+          "bleeding",
           "chest_pain",
           "dizziness"
         ],
@@ -452,10 +452,10 @@
           "id": "warnings",
           "signs": [
             {
-              "sign": "breathlessness",
+              "sign": "bleeding",
               "tile": {
                 "kind": "warning",
-                "sign": "breathlessness"
+                "sign": "bleeding"
               }
             },
             {
@@ -473,6 +473,216 @@
               }
             }
           ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "After eye surgery",
+    "text": "Moxifloxacin eye drops: 1 drop four times a day for 7 days. Do not drive.\nParacetamol 500 mg: 1 tablet at night after food for 3 days. Do not lift heavy things.\nCome back to the hospital if you have strong pain, vomiting or a rash.\nFollow-up appointment on 2026-10-19 at the eye clinic.",
+    "parsed": {
+      "regimen": {
+        "medicines": [
+          {
+            "name": "Moxifloxacin eye drops",
+            "form": "drops",
+            "count": 1,
+            "times": [
+              "morning",
+              "afternoon",
+              "evening",
+              "night"
+            ],
+            "food": "any",
+            "days": 7,
+            "avoid": [
+              "driving"
+            ]
+          },
+          {
+            "name": "Paracetamol 500 mg",
+            "form": "tablet",
+            "count": 1,
+            "times": [
+              "night"
+            ],
+            "food": "after_food",
+            "days": 3,
+            "avoid": [
+              "heavy_lifting"
+            ]
+          }
+        ],
+        "exercises": [],
+        "warnings": [
+          "rash",
+          "severe_pain",
+          "vomiting"
+        ],
+        "followUp": {
+          "date": "2026-10-19",
+          "place": "eye clinic"
+        },
+        "unparsed": []
+      },
+      "disagreements": [],
+      "readers": [
+        "gemini",
+        "openai"
+      ],
+      "cards": [
+        {
+          "kind": "medicine",
+          "id": "med-0",
+          "medicine": {
+            "name": "Moxifloxacin eye drops",
+            "form": "drops",
+            "count": 1,
+            "times": [
+              "morning",
+              "afternoon",
+              "evening",
+              "night"
+            ],
+            "food": "any",
+            "days": 7,
+            "avoid": [
+              "driving"
+            ]
+          },
+          "rows": [
+            {
+              "time": "morning",
+              "timeTile": {
+                "kind": "time",
+                "time": "morning"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "drops"
+              },
+              "meal": "none",
+              "count": 1
+            },
+            {
+              "time": "afternoon",
+              "timeTile": {
+                "kind": "time",
+                "time": "afternoon"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "drops"
+              },
+              "meal": "none",
+              "count": 1
+            },
+            {
+              "time": "evening",
+              "timeTile": {
+                "kind": "time",
+                "time": "evening"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "drops"
+              },
+              "meal": "none",
+              "count": 1
+            },
+            {
+              "time": "night",
+              "timeTile": {
+                "kind": "time",
+                "time": "night"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "drops"
+              },
+              "meal": "none",
+              "count": 1
+            }
+          ],
+          "days": 7,
+          "avoid": [
+            {
+              "kind": "avoid",
+              "item": "driving"
+            }
+          ]
+        },
+        {
+          "kind": "medicine",
+          "id": "med-1",
+          "medicine": {
+            "name": "Paracetamol 500 mg",
+            "form": "tablet",
+            "count": 1,
+            "times": [
+              "night"
+            ],
+            "food": "after_food",
+            "days": 3,
+            "avoid": [
+              "heavy_lifting"
+            ]
+          },
+          "rows": [
+            {
+              "time": "night",
+              "timeTile": {
+                "kind": "time",
+                "time": "night"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "tablet"
+              },
+              "meal": "before_dose",
+              "count": 1
+            }
+          ],
+          "days": 3,
+          "avoid": [
+            {
+              "kind": "avoid",
+              "item": "heavy_lifting"
+            }
+          ]
+        },
+        {
+          "kind": "warning",
+          "id": "warnings",
+          "signs": [
+            {
+              "sign": "rash",
+              "tile": {
+                "kind": "warning",
+                "sign": "rash"
+              }
+            },
+            {
+              "sign": "severe_pain",
+              "tile": {
+                "kind": "warning",
+                "sign": "severe_pain"
+              }
+            },
+            {
+              "sign": "vomiting",
+              "tile": {
+                "kind": "warning",
+                "sign": "vomiting"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "followup",
+          "id": "followup",
+          "date": "2026-10-19",
+          "place": "eye clinic"
         }
       ]
     }

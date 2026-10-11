@@ -85,13 +85,16 @@ export type Regimen = z.infer<typeof Regimen>;
 
 export type Disagreement = { path: string; a: unknown; b: unknown };
 
+// Listed in the order they are most spoken in the United States, then three from India.
 export const LANGUAGES = {
   en: "English",
+  es: "Spanish",
+  zh: "Chinese",
+  tl: "Tagalog",
+  vi: "Vietnamese",
+  ar: "Arabic",
   hi: "Hindi",
   te: "Telugu",
   ta: "Tamil",
-  es: "Spanish",
-  zh: "Chinese",
-  ar: "Arabic",
 } as const;
 export type Lang = keyof typeof LANGUAGES;

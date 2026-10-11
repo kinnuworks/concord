@@ -28,7 +28,7 @@ A discharge sheet is a page of dense text handed to someone who is unwell and ab
 
 ## What it does
 
-Concord takes a discharge sheet, typed or photographed, and returns picture cards. Each medicine gets a card with a morning-to-night schedule, the dose under each time, the food rule, a box for every day, and things to avoid. Exercises, warning signs and the next visit get cards too. Labels come in seven languages, and a card can be read aloud or printed.
+Concord takes a discharge sheet, typed or photographed, and returns picture cards. Each medicine gets a card with a morning-to-night schedule, the dose under each time, the food rule, a box for every day, and things to avoid. Exercises, warning signs and the next visit get cards too. Labels come in nine languages, and a card can be read aloud or printed.
 
 ## How image generation is used
 
@@ -40,7 +40,7 @@ Then two vision models from different companies look at each picture with no hin
 
 Code places and counts, the model paints. Two models read the sheet separately and any field they disagree on is flagged. I measured before trusting anything: 540 pictures for 100 test instructions.
 
-- Asked for a whole dose in one picture, the image model drew the wrong number 83 times out of 168. Concord asks for one unit, checks that it is exactly one, and repeats it by code, so the count is exact.
+- On its own, an image model asked for a whole dose drew the wrong number 83 times out of 168. With Concord it draws one unit, readers check that it is exactly one, and code repeats it, so the count is exact.
 - The adapter gave the cards one look: pictures both readers call a flat pictogram went from 21% to 78%.
 - The read-back stopped a "swollen foot" that both readers saw as a red sock.
 - The sheet reader got 100 of 100 test instructions right.
@@ -68,12 +68,12 @@ Target length 2:42. The limit is 3:00 and it is strict, so the final cut must en
 
 | Time | On screen | Say |
 |---|---|---|
-| 0:00 to 0:14 | Scroll to "Miscounted doses the read-back stopped" and hold on the first picture (spoons). | "I asked an image model to draw one spoonful of medicine. It drew eight. On a patient's medicine card, that picture is dangerous. This is Concord." |
+| 0:00 to 0:14 | Scroll to "Why an image model needs a check" and hold on the first picture in the row of spoons. | "I asked an image model to draw one spoonful of medicine. It drew eight. On a patient's medicine card, that picture is dangerous. This is Concord." |
 | 0:14 to 0:34 | Top of the page, then scroll slowly through the statistics. | "When people leave hospital they get a page of dense text. In one study, 78% of emergency patients went home with a gap in understanding their care. Pictures help, and image models can draw anything now. But they miscount, and nobody checks the pictures." |
 | 0:34 to 0:58 | Click "A photo of a printed sheet", then "Make the cards". Hold on the readers panel, then the cards. | "Concord takes a discharge sheet, typed or photographed. Two models from different companies read it separately, and any field they disagree on is flagged. Then code lays out the cards: the schedule, the calendar, every number." |
 | 0:58 to 1:34 | Scroll to "Where the image model works". "Swelling" is already selected: pause on the two pictures, then click "Fever". | "Every pictogram on these cards is generated. Code writes the prompt, and FLUX with my own fine-tuned adapter draws it. Then two vision models look at the picture. They get no hint and no list to pick from. Here the model was asked for a swollen foot. Both readers saw a red sock, so it was thrown away. This one they read correctly, so it was kept. A picture the readers cannot read never reaches a card." |
-| 1:34 to 1:58 | Scroll up. Click "After knee surgery". Scroll the cards. Change the language to Telugu or Hindi. Press the speaker button. Click "Print the cards" and cancel. | "Here is a full set. Four parts of the day, the dose under each one, food, and a box for every day. The dose is one checked picture repeated by code, so the count is always right. Labels come in seven languages, and a card can be read aloud or printed." |
-| 1:58 to 2:30 | Scroll to "What we measured". Point at each number as you say it. | "I measured before I trusted any of this. 540 pictures. Asked for a whole dose, the image model drew the wrong number of pills 83 times out of 168, which is why code repeats one checked unit. My adapter took flat pictograms from 21 percent of pictures to 78. And the sheet reader got 100 out of 100 test instructions right." |
+| 1:34 to 1:58 | Scroll up. Click "After knee surgery". Scroll the cards. Change the language to Spanish. Press the speaker button. Click "Print the cards" and cancel. | "Here is a full set. Four parts of the day, the dose under each one, food, and a box for every day. The dose is one checked picture repeated by code, so the count is always right. Labels come in nine languages, and a card can be read aloud or printed." |
+| 1:58 to 2:30 | Scroll to "Why an image model needs a check". Point at each number as you say it. | "This is why an image model needs a check. I asked for 540 pictures. On its own, the model drew the wrong number of pills 83 times out of 168. With Concord, code repeats one checked pill, so the count is always right. My adapter took flat pictograms from 21 percent of pictures to 78. And the sheet reader got 100 out of 100 test instructions right." |
 | 2:30 to 2:42 | Back to the top of the page. | "Next is a comprehension study with patients and a pharmacist. Concord: visual discharge instructions, verified before the patient sees them." |
 
 ### If something goes wrong while recording

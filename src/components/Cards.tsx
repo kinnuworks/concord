@@ -51,7 +51,7 @@ function Dose({ spec, shared, count, size }: { spec: TileSpec; shared: Shared; c
 }
 
 const VOICE: Record<Lang, string> = {
-  en: "en-US", hi: "hi-IN", te: "te-IN", ta: "ta-IN", es: "es-ES", zh: "zh-CN", ar: "ar-SA",
+  en: "en-US", es: "es-US", zh: "zh-CN", tl: "fil-PH", vi: "vi-VN", ar: "ar-SA", hi: "hi-IN", te: "te-IN", ta: "ta-IN",
 };
 
 // Reads a card aloud in the chosen language, for people who would rather listen.
