@@ -18,19 +18,23 @@ async function step<T>(name: string, fn: () => Promise<T>): Promise<T | null> {
   }
 }
 
-const ask = 'Reply with the JSON object {"ok": true}.';
-await step("gemini text", () => geminiJson(ask));
-await step("openai text", () => openaiJson(ask));
+async function main() {
+  const ask = 'Reply with the JSON object {"ok": true}.';
+  await step("gemini text", () => geminiJson(ask));
+  await step("openai text", () => openaiJson(ask));
 
-const parsed = await step("parse", () =>
-  parseSheet({ text: "Amoxicillin 500 mg: take 2 capsules twice a day after meals for 5 days. Do not drink alcohol." }),
-);
-if (parsed) console.log(JSON.stringify(parsed.regimen.medicines), "disagreements:", parsed.disagreements.length);
+  const parsed = await step("parse", () =>
+    parseSheet({ text: "Amoxicillin 500 mg: take 2 capsules twice a day after meals for 5 days. Do not drink alcohol." }),
+  );
+  if (parsed) console.log(JSON.stringify(parsed.regimen.medicines), "disagreements:", parsed.disagreements.length);
 
-const spec: TileSpec = { kind: "dose", form: "tablet", count: 3 };
-const tile = await step("fal image", () => generateTile(spec, { adapter: false }));
-if (tile) {
-  console.log(tile.url);
-  const verdict = await step("read-back", async () => readBack(spec, await fetchImage(tile.url)));
-  if (verdict) console.log(JSON.stringify(verdict.readers), "pass:", verdict.pass);
+  const spec: TileSpec = { kind: "dose", form: "tablet", count: 3 };
+  const tile = await step("fal image", () => generateTile(spec, { adapter: false }));
+  if (tile) {
+    console.log(tile.url);
+    const verdict = await step("read-back", async () => readBack(spec, await fetchImage(tile.url)));
+    if (verdict) console.log(JSON.stringify(verdict.readers), "pass:", verdict.pass);
+  }
 }
+
+main();

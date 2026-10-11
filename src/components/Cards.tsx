@@ -18,6 +18,7 @@ function GatedTile({
   badge,
   crossed,
   alt,
+  caption,
 }: {
   spec: TileSpec;
   shared: Shared;
@@ -25,6 +26,7 @@ function GatedTile({
   badge?: string;
   crossed?: boolean;
   alt: string;
+  caption?: string;
 }) {
   const state = useTile(spec, { fresh: shared.fresh, adapter: shared.adapter, run: shared.run });
   const { report } = shared;
@@ -34,7 +36,7 @@ function GatedTile({
     // The spec is stable for a given key.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key, state, report]);
-  return <TileView state={state} size={size} badge={badge} crossed={crossed} alt={alt} />;
+  return <TileView state={state} size={size} badge={badge} crossed={crossed} alt={alt} caption={caption} />;
 }
 
 const Arrow = () => (
@@ -57,8 +59,7 @@ function Row({ row, shared }: { row: DoseRow; shared: Shared }) {
   return (
     <div className="dose-row">
       <div className="dose-when">
-        <GatedTile spec={row.timeTile} shared={shared} size={96} alt={row.time} />
-        <span className="word">{label(shared.lang, row.time)}</span>
+        <GatedTile spec={row.timeTile} shared={shared} size={96} alt={row.time} caption={label(shared.lang, row.time)} />
       </div>
       <div className="dose-steps">
         {row.meal === "before_dose" ? (
@@ -129,8 +130,7 @@ function MedicineView({ card, shared }: { card: MedicineCard; shared: Shared }) 
             {card.avoid.map((t) =>
               t.kind === "avoid" ? (
                 <div key={t.item} className="group__item">
-                  <GatedTile spec={t} shared={shared} size={88} crossed alt={t.item} />
-                  <span className="word">{label(shared.lang, t.item)}</span>
+                  <GatedTile spec={t} shared={shared} size={88} crossed alt={t.item} caption={label(shared.lang, t.item)} />
                 </div>
               ) : null,
             )}
@@ -170,8 +170,7 @@ function WarningView({ card, shared }: { card: WarningCard; shared: Shared }) {
       <div className="group__items">
         {card.signs.map(({ sign, tile }) => (
           <div key={sign} className="group__item">
-            <GatedTile spec={tile} shared={shared} size={110} alt={sign} />
-            <span className="word">{label(shared.lang, sign)}</span>
+            <GatedTile spec={tile} shared={shared} size={110} alt={sign} caption={label(shared.lang, sign)} />
           </div>
         ))}
       </div>

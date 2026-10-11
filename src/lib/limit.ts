@@ -4,6 +4,7 @@ const hits = new Map<string, { count: number; resetAt: number }>();
 const WINDOW_MS = 60 * 60 * 1000;
 
 export function allow(request: Request, bucket: string, perHour: number) {
+  if (process.env.NODE_ENV !== "production") return { ok: true as const };
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
   const key = `${bucket}:${ip}`;
   const now = Date.now();

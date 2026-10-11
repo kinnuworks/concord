@@ -33,7 +33,71 @@
 }
 
 .hero--app {
-  padding-bottom: clamp(32px, 5vw, 56px);
+  padding-top: clamp(48px, 7vw, 88px);
+  padding-bottom: clamp(40px, 6vw, 72px);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.brand--sm {
+  margin-bottom: 0;
+  font-size: 15px;
+}
+.link {
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-decoration-color: var(--line-2);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--dur-hover) var(--ease-out), color var(--dur-hover) var(--ease-out);
+}
+.link:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink);
+}
+
+/* ---------- Evidence ---------- */
+.stat-card {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: 28px;
+}
+.stat-card__figure {
+  font: var(--display-weight) clamp(48px, 6vw, 68px) / 1 var(--font-display);
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+}
+.stat-card__text {
+  max-width: 44ch;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.stat-card__source {
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
+  text-decoration: underline;
+  text-decoration-color: var(--line-2);
+  text-underline-offset: 3px;
+}
+.stat-card__source:hover {
+  color: var(--ink);
+}
+.compare {
+  margin-top: 16px;
+}
+.compare .card {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  padding: 28px;
 }
 .workspace {
   padding-block: 0 var(--section-y);
@@ -97,11 +161,11 @@
   gap: 10px 14px;
   align-items: center;
 }
-.toolbar .btn-candy {
+.toolbar .btn-ink {
   margin-left: auto;
 }
 @media (max-width: 640px) {
-  .toolbar .btn-candy {
+  .toolbar .btn-ink {
     margin-left: 0;
     width: 100%;
   }
@@ -285,6 +349,12 @@
   background: var(--ink);
   color: var(--bg);
   font: 500 17px/1 var(--font-mono);
+}
+.pic__caption {
+  text-align: center;
+}
+.pic__note:empty {
+  display: none;
 }
 .pic__note {
   min-height: 15px;

@@ -1,4 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, ThinkingLevel } from "@google/genai";
 import OpenAI from "openai";
 import { fal } from "@fal-ai/client";
 
@@ -47,11 +47,30 @@ function extractJson(text: string): unknown {
   return JSON.parse(text.slice(start, end + 1));
 }
 
-export async function geminiJson(
-  prompt: string,
-  images: ImageInput[] = [],
-  model: string = MODELS.gemini,
-): Promise<unknown> {
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+function isBusy(e: unknown): boolean {
+  const msg = e instanceof Error ? e.message : String(e);
+  return /\b(429|500|502|503|504)\b|UNAVAILABLE|overloaded|high demand|rate limit/i.test(msg);
+}
+
+// Retries a busy service with a short backoff, then gives the caller's fallback a turn.
+async function withRetry<T>(run: () => Promise<T>, fallback?: () => Promise<T>): Promise<T> {
+  let last: unknown;
+  for (const wait of [0, 700]) {
+    if (wait) await sleep(wait);
+    try {
+      return await run();
+    } catch (e) {
+      last = e;
+      if (!isBusy(e)) throw e;
+    }
+  }
+  if (fallback) return fallback();
+  throw last;
+}
+
+async function geminiOnce(prompt: string, images: ImageInput[], model: string): Promise<unknown> {
   const res = await geminiClient().models.generateContent({
     model,
     contents: [
@@ -63,9 +82,25 @@ export async function geminiJson(
         ],
       },
     ],
-    config: { responseMimeType: "application/json", temperature: 0 },
+    config: {
+      responseMimeType: "application/json",
+      temperature: 0,
+      // Reading a pictogram or a short sheet needs little deliberation, and low keeps it fast.
+      ...(model === MODELS.gemini ? { thinkingConfig: { thinkingLevel: ThinkingLevel.LOW } } : {}),
+    },
   });
   return extractJson(res.text ?? "");
+}
+
+export async function geminiJson(
+  prompt: string,
+  images: ImageInput[] = [],
+  model: string = MODELS.gemini,
+): Promise<unknown> {
+  return withRetry(
+    () => geminiOnce(prompt, images, model),
+    model === MODELS.geminiFast ? undefined : () => geminiOnce(prompt, images, MODELS.geminiFast),
+  );
 }
 
 export async function openaiJson(
@@ -73,23 +108,25 @@ export async function openaiJson(
   images: ImageInput[] = [],
   model: string = MODELS.openaiFast,
 ): Promise<unknown> {
-  const res = await openaiClient().chat.completions.create({
-    model,
-    response_format: { type: "json_object" },
-    messages: [
-      {
-        role: "user",
-        content: [
-          { type: "text", text: prompt },
-          ...images.map((i) => ({
-            type: "image_url" as const,
-            image_url: { url: `data:${i.mime};base64,${i.base64}` },
-          })),
-        ],
-      },
-    ],
+  return withRetry(async () => {
+    const res = await openaiClient().chat.completions.create({
+      model,
+      response_format: { type: "json_object" },
+      messages: [
+        {
+          role: "user",
+          content: [
+            { type: "text", text: prompt },
+            ...images.map((i) => ({
+              type: "image_url" as const,
+              image_url: { url: `data:${i.mime};base64,${i.base64}` },
+            })),
+          ],
+        },
+      ],
+    });
+    return extractJson(res.choices[0]?.message?.content ?? "");
   });
-  return extractJson(res.choices[0]?.message?.content ?? "");
 }
 
 export async function fetchImage(url: string): Promise<ImageInput> {

@@ -14,13 +14,13 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Readback",
+  title: "Readback: discharge instructions every patient can follow",
   description: "Discharge instructions as picture cards, checked by read-back before you see them.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-accent="amber" data-theme="light" className={`${inter.variable} ${jetbrains.variable}`}>
+    <html lang="en" data-accent="mono" data-theme="light" className={`${inter.variable} ${jetbrains.variable}`}>
       <body>{children}</body>
     </html>
   );

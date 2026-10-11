@@ -2,6 +2,7 @@
 
 import { useCallback, useMemo, useRef, useState } from "react";
 import { CardSheet } from "@/components/Cards";
+import { HowItIsChecked, Mark, Questions, WhoItIsFor, Why } from "@/components/Landing";
 import type { TileState } from "@/components/Tile";
 import type { Card } from "@/lib/plan";
 import { LANGUAGES, type Disagreement, type Lang, type Regimen } from "@/lib/schema";
@@ -91,32 +92,32 @@ export default function Home() {
 
   return (
     <>
-      <header className="nav">
-        <div className="nav__bar">
-          <a className="nav__brand" href="#top">
-            <span className="app-icon app-mark" aria-hidden>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 12.5l4 4L15 9" />
-                <path d="M12 16.5l1 1L21 9" />
-              </svg>
-            </span>
-            Readback
-          </a>
-          <a className="btn btn-ink btn-sm" href="#make" style={{ marginLeft: "auto" }}>
-            Make the cards
-          </a>
-        </div>
-      </header>
-
       <main id="top">
         <section className="hero hero--app">
           <div className="container">
+            <p className="brand">
+              <Mark />
+              Readback
+            </p>
             <h1>
-              Discharge instructions <span className="t-muted">as picture cards.</span>
+              Discharge instructions <span className="t-muted">every patient can follow.</span>
             </h1>
             <p className="lead">
-              Every picture is read back by two separate models before you see it, and a picture they misread
-              is thrown away.
+              Readback turns a discharge sheet into picture cards in the patient&rsquo;s language. Two independent
+              models read every picture back before anyone sees it, and a picture they misread is thrown away.
+            </p>
+            <div className="cta-row">
+              <a className="btn btn-ink" href="#make">
+                Make the cards
+              </a>
+              <a className="btn btn-outline" href="#why">
+                Why it matters
+              </a>
+            </div>
+            <p className="trust">
+              <span>No account needed</span>
+              <span>Text or a photo of the sheet</span>
+              <span>A reading aid, not medical advice</span>
             </p>
           </div>
         </section>
@@ -183,7 +184,7 @@ export default function Home() {
                   />
                   Draw every picture new
                 </label>
-                <button type="button" className="btn btn-candy" onClick={submit} disabled={busy}>
+                <button type="button" className="btn btn-ink" onClick={submit} disabled={busy}>
                   {busy ? "Reading the sheet" : "Make the cards"}
                 </button>
               </div>
@@ -267,12 +268,23 @@ export default function Home() {
             ) : null}
           </div>
         </section>
+
+        <Why />
+        <HowItIsChecked />
+        <WhoItIsFor />
+        <Questions />
       </main>
 
       <footer className="footer">
         <div className="container">
-          <span>Readback</span>
-          <span>Discharge instructions as picture cards, checked by read-back before you see them.</span>
+          <span className="brand brand--sm">
+            <Mark />
+            Readback
+          </span>
+          <span>Discharge instructions every patient can follow.</span>
+          <a className="link" href="https://github.com/kinnuworks/readback" target="_blank" rel="noreferrer">
+            Source on GitHub
+          </a>
         </div>
       </footer>
     </>
