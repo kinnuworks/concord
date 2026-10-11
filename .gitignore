@@ -46,3 +46,6 @@ training/eval/*/
 training/dataset/
 training/dataset.zip
 training/train.log
+
+# the demo video is built in its own project
+video/

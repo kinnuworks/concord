@@ -551,13 +551,13 @@
   display: grid;
   place-items: center;
   /* The badge shrinks with a small tile so it never covers the pill beside it. */
-  min-width: clamp(18px, 29cqw, 34px);
-  height: clamp(18px, 29cqw, 34px);
+  min-width: clamp(22px, 32cqw, 34px);
+  height: clamp(22px, 32cqw, 34px);
   padding: 0 clamp(4px, 6cqw, 8px);
   border-radius: var(--r-pill);
   background: var(--ink);
   color: var(--bg);
-  font: 500 clamp(11px, 16cqw, 19px) / 1 var(--font-mono);
+  font: 500 clamp(13px, 18cqw, 19px) / 1 var(--font-mono);
   box-shadow: 0 0 0 2px #fff;
 }
 .pic__error {

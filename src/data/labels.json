@@ -107,7 +107,7 @@
   "es": {
     "morning": "Por la mañana",
     "afternoon": "Por la tarde",
-    "evening": "Por la tarde",
+    "evening": "Al anochecer",
     "night": "Por la noche",
     "before_food": "Antes de comer",
     "with_food": "Con comida",
@@ -212,7 +212,7 @@
   "tl": {
     "morning": "Umaga",
     "afternoon": "Hapon",
-    "evening": "Gabi",
+    "evening": "Dapit-hapon",
     "night": "Sa gabi",
     "before_food": "Bago kumain",
     "with_food": "Kasabay ng pagkain",
