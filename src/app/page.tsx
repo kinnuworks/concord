@@ -1,69 +1,228 @@
-import Image from "next/image";
+"use client";
+
+import { useCallback, useMemo, useRef, useState } from "react";
+import { CardSheet } from "@/components/Cards";
+import type { TileState } from "@/components/Tile";
+import type { Card } from "@/lib/plan";
+import { LANGUAGES, type Disagreement, type Lang, type Regimen } from "@/lib/schema";
+import type { TileSpec } from "@/lib/tiles";
+
+const SAMPLES: { name: string; text: string }[] = [
+  {
+    name: "Antibiotic",
+    text: "Amoxicillin 500 mg: take 2 capsules twice a day after meals for 5 days. Do not drink alcohol while taking this medicine.",
+  },
+  {
+    name: "After knee surgery",
+    text: "Paracetamol 500 mg: 1 tablet three times a day after food for 7 days.\nIbuprofen 400 mg: 1 tablet in the morning and at night with food for 5 days. Do not drive.\nKnee bends: lying on your back, bend the knee to 90 degrees, 10 times, 3 sets, twice a day.\nStraight leg raise: lift the leg to 45 degrees, 10 times, 2 sets, twice a day.\nCome back to the hospital if you have fever, swelling in the leg, or fluid from the wound.\nFollow-up appointment on 2026-10-26 at the orthopaedic clinic.",
+  },
+  {
+    name: "Heart medicines",
+    text: "Atorvastatin 20 mg: 1 tablet at bedtime.\nAspirin 75 mg: 1 tablet every morning after breakfast.\nReturn immediately if you have chest pain, trouble breathing or dizziness.",
+  },
+];
+
+type Parsed = {
+  regimen: Regimen;
+  disagreements: Disagreement[];
+  cards: Card[];
+  readers: [string, string];
+};
+
+type Report = { spec: TileSpec; state: TileState };
 
 export default function Home() {
+  const [text, setText] = useState(SAMPLES[0].text);
+  const [photo, setPhoto] = useState<{ mime: string; base64: string; name: string } | null>(null);
+  const [lang, setLang] = useState<Lang>("en");
+  const [fresh, setFresh] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [parsed, setParsed] = useState<Parsed | null>(null);
+  const [run, setRun] = useState(0);
+  const [reports, setReports] = useState<Record<string, Report>>({});
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const report = useCallback((key: string, spec: TileSpec, state: TileState) => {
+    setReports((r) => (r[key]?.state === state ? r : { ...r, [key]: { spec, state } }));
+  }, []);
+
+  async function onFile(file: File | undefined) {
+    if (!file) return setPhoto(null);
+    const buf = new Uint8Array(await file.arrayBuffer());
+    let bin = "";
+    for (const b of buf) bin += String.fromCharCode(b);
+    setPhoto({ mime: file.type || "image/jpeg", base64: btoa(bin), name: file.name });
+  }
+
+  async function submit() {
+    setBusy(true);
+    setError(null);
+    setReports({});
+    try {
+      const res = await fetch("/api/parse", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(photo ? { image: { mime: photo.mime, base64: photo.base64 } } : { text }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Could not read the instructions.");
+      setParsed(data as Parsed);
+      setRun((n) => n + 1);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const stats = useMemo(() => {
+    const all = Object.values(reports);
+    const rejected = all.flatMap((r) =>
+      r.state.attempts.filter((a) => a.verdict && !a.verdict.pass).map((a) => ({ ...a, spec: r.spec })),
+    );
+    return {
+      total: all.length,
+      done: all.filter((r) => r.state.status === "accepted" || r.state.status === "fallback").length,
+      fallback: all.filter((r) => r.state.status === "fallback").length,
+      rejected,
+    };
+  }, [reports]);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="page">
+      <header className="top">
+        <h1>Readback</h1>
+        <p>
+          Discharge instructions as picture cards. Every picture is read back by two separate models before
+          you see it, and a picture they misread is thrown away.
+        </p>
+      </header>
+
+      <section className="panel">
+        <div className="samples">
+          {SAMPLES.map((s) => (
+            <button
+              key={s.name}
+              type="button"
+              className="ghost"
+              onClick={() => {
+                setText(s.text);
+                setPhoto(null);
+              }}
+            >
+              {s.name}
+            </button>
+          ))}
+        </div>
+        <textarea
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          rows={7}
+          disabled={Boolean(photo)}
+          aria-label="Discharge instructions"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+        <div className="controls">
+          <input
+            ref={fileRef}
+            type="file"
+            accept="image/*"
+            hidden
+            onChange={(e) => onFile(e.target.files?.[0])}
+          />
+          <button type="button" className="ghost" onClick={() => fileRef.current?.click()}>
+            {photo ? `Photo: ${photo.name}` : "Use a photo of the sheet"}
+          </button>
+          {photo ? (
+            <button type="button" className="ghost" onClick={() => setPhoto(null)}>
+              Remove photo
+            </button>
+          ) : null}
+          <label className="field">
+            Language
+            <select value={lang} onChange={(e) => setLang(e.target.value as Lang)}>
+              {Object.entries(LANGUAGES).map(([code, name]) => (
+                <option key={code} value={code}>
+                  {name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="field check">
+            <input type="checkbox" checked={fresh} onChange={(e) => setFresh(e.target.checked)} />
+            Draw every picture new
+          </label>
+          <button type="button" className="primary" onClick={submit} disabled={busy}>
+            {busy ? "Reading the sheet" : "Make the cards"}
+          </button>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        {error ? <p className="error">{error}</p> : null}
+      </section>
+
+      {parsed ? (
+        <>
+          <section className="panel">
+            <h2>What the two readers found</h2>
+            {parsed.disagreements.length === 0 ? (
+              <p className="ok">Both readers agree on every field.</p>
+            ) : (
+              <ul className="disagree">
+                {parsed.disagreements.map((d) => (
+                  <li key={d.path}>
+                    <code>{d.path}</code>: {parsed.readers[0]} read <b>{JSON.stringify(d.a)}</b>,{" "}
+                    {parsed.readers[1]} read <b>{JSON.stringify(d.b)}</b>. Check the sheet.
+                  </li>
+                ))}
+              </ul>
+            )}
+            {parsed.regimen.unparsed.length ? (
+              <div className="unparsed">
+                <p>Not drawn, shown as written:</p>
+                <ul>
+                  {parsed.regimen.unparsed.map((u) => (
+                    <li key={u}>{u}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+          </section>
+
+          <section className="panel">
+            <div className="sheet-head">
+              <h2>Cards</h2>
+              <p className="muted">
+                {stats.done} of {stats.total} pictures ready · {stats.rejected.length} rejected by the check ·{" "}
+                {stats.fallback} drawn from the numbers
+              </p>
+            </div>
+            <CardSheet cards={parsed.cards} lang={lang} fresh={fresh} run={run} report={report} />
+          </section>
+
+          {stats.rejected.length ? (
+            <section className="panel">
+              <h2>What the check caught</h2>
+              <ul className="caught">
+                {stats.rejected.map((a) => (
+                  <li key={a.url}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={a.url} alt="Rejected picture" width={96} height={96} />
+                    <div>
+                      <p>
+                        Wanted <b>{JSON.stringify(a.verdict!.expected)}</b>
+                      </p>
+                      {a.verdict!.mismatches.map((m) => (
+                        <p key={m} className="muted">
+                          {m}
+                        </p>
+                      ))}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+        </>
+      ) : null}
+    </main>
   );
 }
