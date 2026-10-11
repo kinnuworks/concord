@@ -12,3 +12,18 @@ meal: kept
 avoid-alcohol: kept
 avoid-driving: kept
 avoid-smoking: no longer passes (openai saw "a smoking matchstick", meant to show a cigarette or smoking)
+avoid-dairy: kept
+avoid-heavy_lifting: redrawn, passed on try 1
+avoid-smoking: redrawn, passed on try 1
+warning-fever: kept
+warning-bleeding: no longer passes (gemini saw "hand with a drop of blood and a yellow wristband", meant to show bleeding; openai saw "an arm with a yellow band and a blood drop", meant )
+avoid-sunlight: redrawn, passed on try 2
+warning-chest_pain: kept
+warning-severe_pain: kept
+warning-bleeding: redrawn, passed on try 1
+warning-vomiting: kept
+warning-rash: kept
+warning-dizziness: kept
+warning-swelling: no drawing passed in 5 tries, card will use the code-drawn picture
+warning-breathlessness: no drawing passed in 5 tries, card will use the code-drawn picture
+warning-wound_discharge: redrawn, passed on try 5

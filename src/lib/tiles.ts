@@ -69,9 +69,9 @@ const AVOID_OBJECT: Record<Avoid, string> = {
 const WARNING_SCENE: Record<Warning, string> = {
   fever: "the face of a sick person with red cheeks and sweat drops, holding a thermometer in the mouth",
   bleeding: "a bandaged arm with red drops falling from it",
-  swelling: "two lower legs and feet side by side, the left leg thin and normal, the right leg badly swollen to twice the width with a puffy round ankle and foot",
+  swelling: "one bare foot and ankle swollen up like a balloon, far bigger than a normal foot, red and puffy, with small arrows pointing outward from the swelling",
   chest_pain: "a person holding the chest with both hands, pain lines at the chest",
-  breathlessness: "a person bent forward with hands on the knees, mouth wide open panting hard, several puffs of breath in front of the mouth, sweat drops",
+  breathlessness: "a person clutching the throat with one hand, mouth wide open gasping for air, face turning blue, a pair of lungs drawn on the chest",
   severe_pain: "a person bent forward clutching the belly with both hands, eyes shut tight and teeth clenched in pain, red jagged pain marks at the belly",
   vomiting: "the head and shoulders of a person in profile with the mouth wide open and green vomit pouring out of the mouth into a bucket",
   rash: "an arm covered in red spots",

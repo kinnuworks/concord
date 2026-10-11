@@ -11,7 +11,7 @@ for path in sorted(glob.glob("public/tiles/unit-*.png")):
     if not box:
         continue
     w, h = box[2] - box[0], box[3] - box[1]
-    side = int(max(w, h) * 1.16)
+    side = int(max(w, h) * 1.3)
     cx, cy = (box[0] + box[2]) // 2, (box[1] + box[3]) // 2
     canvas = Image.new("RGB", (side, side), (255, 255, 255))
     canvas.paste(im.crop(box), (side // 2 - (cx - box[0]), side // 2 - (cy - box[1])))

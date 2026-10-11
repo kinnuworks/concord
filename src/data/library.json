@@ -31,7 +31,7 @@
   },
   "unit-tablet": {
     "file": "/tiles/unit-tablet.png",
-    "seed": 7286548412801911000,
+    "seed": 14524865247687930000,
     "adapter": true,
     "tries": 1,
     "checkedBy": [
@@ -101,7 +101,7 @@
   },
   "avoid-smoking": {
     "file": "/tiles/avoid-smoking.png",
-    "seed": 3448124427058538000,
+    "seed": 4364209362512780300,
     "adapter": true,
     "tries": 1,
     "checkedBy": [
@@ -141,9 +141,9 @@
   },
   "warning-bleeding": {
     "file": "/tiles/warning-bleeding.png",
-    "seed": 7430347569886495000,
+    "seed": 1871620974505116000,
     "adapter": true,
-    "tries": 3,
+    "tries": 2,
     "checkedBy": [
       "gemini",
       "openai"
@@ -204,6 +204,46 @@
     "seed": 7477281761902975000,
     "adapter": true,
     "tries": 3,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "avoid-heavy_lifting": {
+    "file": "/tiles/avoid-heavy_lifting.png",
+    "seed": 14688374971658127000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "avoid-sunlight": {
+    "file": "/tiles/avoid-sunlight.png",
+    "seed": 3816731170288469000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "warning-wound_discharge": {
+    "file": "/tiles/warning-wound_discharge.png",
+    "seed": 12095072718070600000,
+    "adapter": true,
+    "tries": 5,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "warning-swelling": {
+    "file": "/tiles/warning-swelling.png",
+    "seed": 4611676703170970600,
+    "adapter": true,
+    "tries": 4,
     "checkedBy": [
       "gemini",
       "openai"
