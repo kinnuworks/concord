@@ -1,718 +1,21 @@
 {
   "summary": {
     "cases": 100,
-    "correct": 37,
-    "wrong": 63,
-    "wrongAndFlagged": 63,
+    "correct": 100,
+    "wrong": 0,
+    "wrongAndFlagged": 0,
     "wrongAndUnflagged": 0,
-    "agreed": 37,
-    "correctWhenAgreed": 37,
-    "flaggedButCorrect": 0,
-    "errors": 60,
-    "ranAt": "2026-10-11T18:25:53.564Z"
+    "agreed": 96,
+    "correctWhenAgreed": 96,
+    "flaggedButCorrect": 4,
+    "errors": 0,
+    "ranAt": "2026-10-11T19:19:20.913Z"
   },
-  "wrong": [
-    {
-      "id": "t007",
-      "text": "Metformin 500 mg: take 2 capsules once a day in the morning after food for 5 days. Do not take it with milk or cheese.",
-      "correct": false,
-      "wrongFields": [
-        "missing"
-      ],
-      "agreed": false,
-      "flagged": [
-        "medicines[+]"
-      ]
-    },
-    {
-      "id": "t009",
-      "text": "Cetirizine 10 mg: take 1 tablet four times a day: morning, afternoon, evening and night for 3 days. Do not take it with milk or cheese.",
-      "correct": false,
-      "wrongFields": [
-        "missing"
-      ],
-      "agreed": false,
-      "flagged": [
-        "medicines[+]"
-      ]
-    },
-    {
-      "id": "t015",
-      "text": "Paracetamol 500 mg: take 4 tablets three times a day with meals for 5 days.",
-      "correct": false,
-      "wrongFields": [
-        "missing"
-      ],
-      "agreed": false,
-      "flagged": [
-        "medicines[+]"
-      ]
-    },
-    {
-      "id": "t021",
-      "text": "Ibuprofen 400 mg: take 4 tablets four times a day: morning, afternoon, evening and night after meals for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t022",
-      "text": "Cough syrup: take 1 spoonful once a day in the morning on an empty stomach for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t023",
-      "text": "Atorvastatin 20 mg: take 1 tablet once a day in the morning on an empty stomach for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t024",
-      "text": "Amlodipine 5 mg: take 2 capsules twice a day before meals. Stay out of strong sunlight.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t025",
-      "text": "Antacid suspension: take 2 spoonfuls once a day in the morning after meals for 5 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t026",
-      "text": "Atorvastatin 20 mg: take 3 capsules four times a day: morning, afternoon, evening and night with food for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t027",
-      "text": "Cough syrup: take 2 spoonfuls four times a day: morning, afternoon, evening and night for 10 days. Do not smoke.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t028",
-      "text": "Paracetamol 500 mg: take 4 tablets three times a day after food for 5 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t029",
-      "text": "Antacid suspension: take 2 spoonfuls in the morning and in the evening on an empty stomach. Do not drink alcohol.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t030",
-      "text": "Amoxicillin 500 mg: take 3 tablets in the morning and at night for 10 days. Do not smoke.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t031",
-      "text": "Ibuprofen 400 mg: take 2 capsules in the morning and at night after food for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t032",
-      "text": "Paracetamol 500 mg: take 3 capsules four times a day: morning, afternoon, evening and night with meals for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t033",
-      "text": "Metformin 500 mg: take 4 capsules four times a day: morning, afternoon, evening and night with food.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t034",
-      "text": "Ear drops: take 2 drops morning, afternoon and night for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t035",
-      "text": "Antacid suspension: take 2 spoonfuls once a day at night for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t036",
-      "text": "Cetirizine 10 mg: take 3 capsules once a day in the morning after meals for 14 days. Do not take it with milk or cheese.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t037",
-      "text": "Antacid suspension: take 2 spoonfuls at bedtime after food for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t038",
-      "text": "Cough syrup: take 1 spoonful in the morning and in the evening with meals for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t039",
-      "text": "Ear drops: take 2 drops at bedtime for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t040",
-      "text": "Atorvastatin 20 mg: take 3 capsules at bedtime after meals for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t041",
-      "text": "Salbutamol inhaler: take 2 puffs in the morning and at night for 3 days. Do not drink alcohol.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t042",
-      "text": "Salbutamol inhaler: take 2 puffs every morning after food.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t043",
-      "text": "Amlodipine 5 mg: take 4 capsules four times a day: morning, afternoon, evening and night for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t044",
-      "text": "Eye drops: take 1 drop three times a day for 14 days. Do not lift heavy things.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t045",
-      "text": "Paracetamol 500 mg: take 4 capsules in the morning and in the evening after food for 5 days. Do not lift heavy things.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t046",
-      "text": "Paracetamol 500 mg: take 3 tablets twice a day after food. Do not drink alcohol.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t047",
-      "text": "Ear drops: take 2 drops once a day at night with food for 5 days. Do not lift heavy things.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t048",
-      "text": "Amlodipine 5 mg: take 2 tablets in the morning and in the evening for 3 days. Do not smoke.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t049",
-      "text": "Eye drops: take 1 drop three times a day before meals for 5 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t050",
-      "text": "Cetirizine 10 mg: take 2 tablets three times a day after food for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t051",
-      "text": "Amoxicillin 500 mg: take 1 capsule at bedtime with food for 7 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t052",
-      "text": "Cetirizine 10 mg: take 2 capsules once a day in the morning with food for 14 days. Stay out of strong sunlight.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t053",
-      "text": "Prednisolone 5 mg: take 4 tablets in the morning and at night with meals.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t054",
-      "text": "Amoxicillin 500 mg: take 2 capsules in the morning and in the evening after food for 5 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t055",
-      "text": "Atorvastatin 20 mg: take 1 capsule in the morning and in the evening for 7 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t056",
-      "text": "Prednisolone 5 mg: take 2 capsules once a day at night for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t057",
-      "text": "Amoxicillin 500 mg: take 2 tablets twice a day for 5 days. Do not drive.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t058",
-      "text": "Omeprazole 20 mg: take 3 capsules four times a day: morning, afternoon, evening and night with food for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t059",
-      "text": "Omeprazole 20 mg: take 2 capsules three times a day after food for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t060",
-      "text": "Ibuprofen 400 mg: take 3 capsules in the morning and at night for 3 days. Do not smoke.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t081",
-      "text": "Eye drops: take 1 drop in the morning and at night with food.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t082",
-      "text": "Amoxicillin 500 mg: take 1 tablet four times a day: morning, afternoon, evening and night on an empty stomach.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t083",
-      "text": "Antacid suspension: take 2 spoonfuls once a day at night for 10 days. Do not take it with milk or cheese.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t084",
-      "text": "Omeprazole 20 mg: take 1 tablet in the morning and in the evening with food for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t085",
-      "text": "Paracetamol 500 mg: take 2 capsules in the morning and at night on an empty stomach. Stay out of strong sunlight.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t086",
-      "text": "Ibuprofen 400 mg: take 4 capsules in the morning and in the evening after meals for 5 days. Do not lift heavy things.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t087",
-      "text": "Atorvastatin 20 mg: take 3 capsules every morning after meals for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t088",
-      "text": "Azithromycin 250 mg: take 2 tablets once a day in the morning with food for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t089",
-      "text": "Paracetamol 500 mg: take 1 capsule morning, afternoon and night with meals.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t090",
-      "text": "Salbutamol inhaler: take 2 puffs in the morning and at night for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t091",
-      "text": "Metformin 500 mg: take 2 capsules in the morning and in the evening after meals. Do not drink alcohol.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t092",
-      "text": "Ear drops: take 1 drop once a day at night for 7 days. Do not drive.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t093",
-      "text": "Eye drops: take 4 drops at bedtime after food for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t094",
-      "text": "Amoxicillin 500 mg: take 3 capsules in the morning and in the evening with meals for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t095",
-      "text": "Azithromycin 250 mg: take 2 capsules in the morning and at night before meals for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t096",
-      "text": "Cough syrup: take 2 spoonfuls three times a day with meals for 7 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t097",
-      "text": "Ibuprofen 400 mg: take 2 tablets in the morning and in the evening before meals for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t098",
-      "text": "Omeprazole 20 mg: take 2 tablets in the morning and in the evening after meals.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t099",
-      "text": "Ibuprofen 400 mg: take 3 tablets in the morning and at night for 7 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    },
-    {
-      "id": "t100",
-      "text": "Ibuprofen 400 mg: take 4 tablets every morning for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
-    }
-  ],
+  "wrong": [],
   "rows": [
     {
       "id": "t001",
-      "text": "Omeprazole 20 mg: take 3 capsules at bedtime after food for 7 days.",
+      "text": "Omeprazole 20 mg: take 1 capsule morning, afternoon and night after food.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -720,7 +23,7 @@
     },
     {
       "id": "t002",
-      "text": "Paracetamol 500 mg: take 1 capsule four times a day: morning, afternoon, evening and night after food for 10 days. Stay out of strong sunlight.",
+      "text": "Cough syrup: take 1 spoonful every morning.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -728,7 +31,7 @@
     },
     {
       "id": "t003",
-      "text": "Prednisolone 5 mg: take 4 capsules every morning after meals for 10 days.",
+      "text": "Cough syrup: take 1 spoonful twice a day for 7 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -736,7 +39,7 @@
     },
     {
       "id": "t004",
-      "text": "Prednisolone 5 mg: take 1 tablet at bedtime with meals for 5 days. Do not take it with milk or cheese.",
+      "text": "Amoxicillin 500 mg: take 2 capsules in the morning and in the evening with meals for 10 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -744,7 +47,7 @@
     },
     {
       "id": "t005",
-      "text": "Atorvastatin 20 mg: take 4 capsules morning, afternoon and night with meals.",
+      "text": "Atorvastatin 20 mg: take 1 tablet in the morning and in the evening before meals.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -752,7 +55,7 @@
     },
     {
       "id": "t006",
-      "text": "Paracetamol 500 mg: take 2 capsules once a day in the morning after meals for 7 days.",
+      "text": "Omeprazole 20 mg: take 1 capsule four times a day: morning, afternoon, evening and night with meals for 3 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -760,19 +63,15 @@
     },
     {
       "id": "t007",
-      "text": "Metformin 500 mg: take 2 capsules once a day in the morning after food for 5 days. Do not take it with milk or cheese.",
-      "correct": false,
-      "wrongFields": [
-        "missing"
-      ],
-      "agreed": false,
-      "flagged": [
-        "medicines[+]"
-      ]
+      "text": "Paracetamol 500 mg: take 2 tablets twice a day after food. Do not smoke.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t008",
-      "text": "Cetirizine 10 mg: take 3 capsules once a day at night before meals for 7 days.",
+      "text": "Omeprazole 20 mg: take 1 capsule in the morning and in the evening before meals. Do not drive.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -780,19 +79,15 @@
     },
     {
       "id": "t009",
-      "text": "Cetirizine 10 mg: take 1 tablet four times a day: morning, afternoon, evening and night for 3 days. Do not take it with milk or cheese.",
-      "correct": false,
-      "wrongFields": [
-        "missing"
-      ],
-      "agreed": false,
-      "flagged": [
-        "medicines[+]"
-      ]
+      "text": "Eye drops: take 2 drops in the morning and at night on an empty stomach for 7 days. Stay out of strong sunlight.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t010",
-      "text": "Metformin 500 mg: take 4 capsules in the morning and in the evening with food for 3 days.",
+      "text": "Prednisolone 5 mg: take 2 tablets in the morning and in the evening on an empty stomach for 3 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -800,7 +95,7 @@
     },
     {
       "id": "t011",
-      "text": "Paracetamol 500 mg: take 4 tablets at bedtime for 3 days. Do not take it with milk or cheese.",
+      "text": "Paracetamol 500 mg: take 1 tablet four times a day: morning, afternoon, evening and night with food. Do not lift heavy things.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -808,7 +103,7 @@
     },
     {
       "id": "t012",
-      "text": "Ibuprofen 400 mg: take 2 tablets in the morning and in the evening on an empty stomach for 7 days.",
+      "text": "Prednisolone 5 mg: take 5 tablets once a day in the morning for 14 days. Do not drive.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -816,7 +111,7 @@
     },
     {
       "id": "t013",
-      "text": "Amoxicillin 500 mg: take 3 tablets once a day at night after meals for 3 days. Do not smoke.",
+      "text": "Eye drops: take 1 drop once a day in the morning after meals for 7 days. Do not drive.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -824,7 +119,7 @@
     },
     {
       "id": "t014",
-      "text": "Atorvastatin 20 mg: take 2 capsules in the morning and at night after meals.",
+      "text": "Iron 100 mg: take 1 tablet three times a day before meals for 10 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -832,19 +127,15 @@
     },
     {
       "id": "t015",
-      "text": "Paracetamol 500 mg: take 4 tablets three times a day with meals for 5 days.",
-      "correct": false,
-      "wrongFields": [
-        "missing"
-      ],
-      "agreed": false,
-      "flagged": [
-        "medicines[+]"
-      ]
+      "text": "Cough syrup: take 1 spoonful once a day at night with meals. Do not smoke.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t016",
-      "text": "Antacid suspension: take 2 spoonfuls once a day in the morning for 3 days.",
+      "text": "Omeprazole 20 mg: take 1 capsule once a day at night before meals. Do not lift heavy things.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -852,7 +143,7 @@
     },
     {
       "id": "t017",
-      "text": "Omeprazole 20 mg: take 4 capsules at bedtime with food for 5 days. Stay out of strong sunlight.",
+      "text": "Paracetamol 500 mg: take 1 tablet in the morning and in the evening with meals for 5 days. Do not smoke.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -860,7 +151,7 @@
     },
     {
       "id": "t018",
-      "text": "Cough syrup: take 1 spoonful four times a day: morning, afternoon, evening and night after meals for 14 days.",
+      "text": "Antacid suspension: take 2 spoonfuls once a day in the morning for 3 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -868,15 +159,18 @@
     },
     {
       "id": "t019",
-      "text": "Paracetamol 500 mg: take 3 tablets once a day in the morning with meals for 7 days.",
+      "text": "Omeprazole 20 mg: take 1 capsule four times a day: morning, afternoon, evening and night after meals for 10 days.",
       "correct": true,
       "wrongFields": [],
-      "agreed": true,
-      "flagged": []
+      "agreed": false,
+      "flagged": [
+        "medicines[0]",
+        "medicines[+]"
+      ]
     },
     {
       "id": "t020",
-      "text": "Omeprazole 20 mg: take 1 capsule in the morning and in the evening on an empty stomach.",
+      "text": "Iron 100 mg: take 1 tablet in the morning and in the evening after food for 3 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -884,447 +178,333 @@
     },
     {
       "id": "t021",
-      "text": "Ibuprofen 400 mg: take 4 tablets four times a day: morning, afternoon, evening and night after meals for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Cetirizine 10 mg: take 1 tablet once a day in the morning before meals for 3 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t022",
-      "text": "Cough syrup: take 1 spoonful once a day in the morning on an empty stomach for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Omeprazole 20 mg: take 1 capsule once a day in the morning before meals for 3 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t023",
-      "text": "Atorvastatin 20 mg: take 1 tablet once a day in the morning on an empty stomach for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Cough syrup: take 2 spoonfuls three times a day after meals for 14 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t024",
-      "text": "Amlodipine 5 mg: take 2 capsules twice a day before meals. Stay out of strong sunlight.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Ibuprofen 400 mg: take 1 tablet once a day at night for 5 days. Stay out of strong sunlight.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t025",
-      "text": "Antacid suspension: take 2 spoonfuls once a day in the morning after meals for 5 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Prednisolone 5 mg: take 6 tablets once a day at night after food for 5 days. Stay out of strong sunlight.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t026",
-      "text": "Atorvastatin 20 mg: take 3 capsules four times a day: morning, afternoon, evening and night with food for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Salbutamol inhaler: take 2 puffs twice a day with meals for 7 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t027",
-      "text": "Cough syrup: take 2 spoonfuls four times a day: morning, afternoon, evening and night for 10 days. Do not smoke.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Metformin 500 mg: take 1 tablet once a day in the morning after meals for 10 days. Do not drive.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t028",
-      "text": "Paracetamol 500 mg: take 4 tablets three times a day after food for 5 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Iron 100 mg: take 1 tablet once a day at night after food for 7 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t029",
-      "text": "Antacid suspension: take 2 spoonfuls in the morning and in the evening on an empty stomach. Do not drink alcohol.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Antacid suspension: take 1 spoonful morning, afternoon and night with food for 14 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t030",
-      "text": "Amoxicillin 500 mg: take 3 tablets in the morning and at night for 10 days. Do not smoke.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Cough syrup: take 1 spoonful three times a day for 3 days. Do not lift heavy things.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t031",
-      "text": "Ibuprofen 400 mg: take 2 capsules in the morning and at night after food for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Eye drops: take 1 drop twice a day for 10 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t032",
-      "text": "Paracetamol 500 mg: take 3 capsules four times a day: morning, afternoon, evening and night with meals for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Metformin 500 mg: take 1 tablet every morning for 3 days. Do not smoke.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t033",
-      "text": "Metformin 500 mg: take 4 capsules four times a day: morning, afternoon, evening and night with food.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Cough syrup: take 2 spoonfuls at bedtime with meals for 10 days. Do not smoke.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t034",
-      "text": "Ear drops: take 2 drops morning, afternoon and night for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Amoxicillin 500 mg: take 2 capsules every morning with food for 10 days. Do not smoke.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t035",
-      "text": "Antacid suspension: take 2 spoonfuls once a day at night for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Prednisolone 5 mg: take 5 tablets in the morning and in the evening with food. Do not drive.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t036",
-      "text": "Cetirizine 10 mg: take 3 capsules once a day in the morning after meals for 14 days. Do not take it with milk or cheese.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Ear drops: take 3 drops once a day at night before meals for 14 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t037",
-      "text": "Antacid suspension: take 2 spoonfuls at bedtime after food for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Ear drops: take 2 drops in the morning and in the evening for 7 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t038",
-      "text": "Cough syrup: take 1 spoonful in the morning and in the evening with meals for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Cough syrup: take 2 spoonfuls every morning for 7 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t039",
-      "text": "Ear drops: take 2 drops at bedtime for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Amoxicillin 500 mg: take 1 capsule morning, afternoon and night for 14 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t040",
-      "text": "Atorvastatin 20 mg: take 3 capsules at bedtime after meals for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Cough syrup: take 1 spoonful once a day at night before meals for 10 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t041",
-      "text": "Salbutamol inhaler: take 2 puffs in the morning and at night for 3 days. Do not drink alcohol.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Ibuprofen 400 mg: take 1 tablet morning, afternoon and night before meals.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t042",
-      "text": "Salbutamol inhaler: take 2 puffs every morning after food.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Ear drops: take 2 drops at bedtime for 14 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t043",
-      "text": "Amlodipine 5 mg: take 4 capsules four times a day: morning, afternoon, evening and night for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Atorvastatin 20 mg: take 1 tablet three times a day after meals for 10 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t044",
-      "text": "Eye drops: take 1 drop three times a day for 14 days. Do not lift heavy things.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Cetirizine 10 mg: take 1 tablet three times a day before meals for 5 days. Do not drink alcohol.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t045",
-      "text": "Paracetamol 500 mg: take 4 capsules in the morning and in the evening after food for 5 days. Do not lift heavy things.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Cough syrup: take 2 spoonfuls in the morning and in the evening after food. Do not take it with milk or cheese.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t046",
-      "text": "Paracetamol 500 mg: take 3 tablets twice a day after food. Do not drink alcohol.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Iron 100 mg: take 2 tablets in the morning and in the evening for 7 days. Do not lift heavy things.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t047",
-      "text": "Ear drops: take 2 drops once a day at night with food for 5 days. Do not lift heavy things.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Eye drops: take 1 drop three times a day for 14 days. Do not lift heavy things.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t048",
-      "text": "Amlodipine 5 mg: take 2 tablets in the morning and in the evening for 3 days. Do not smoke.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Paracetamol 500 mg: take 2 tablets four times a day: morning, afternoon, evening and night for 7 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t049",
-      "text": "Eye drops: take 1 drop three times a day before meals for 5 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Iron 100 mg: take 2 tablets once a day in the morning after meals for 7 days. Do not drive.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t050",
-      "text": "Cetirizine 10 mg: take 2 tablets three times a day after food for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Prednisolone 5 mg: take 1 tablet four times a day: morning, afternoon, evening and night before meals for 10 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t051",
-      "text": "Amoxicillin 500 mg: take 1 capsule at bedtime with food for 7 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Antacid suspension: take 2 spoonfuls in the morning and in the evening with food for 5 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t052",
-      "text": "Cetirizine 10 mg: take 2 capsules once a day in the morning with food for 14 days. Stay out of strong sunlight.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Ibuprofen 400 mg: take 1 tablet morning, afternoon and night with meals for 14 days. Do not smoke.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t053",
-      "text": "Prednisolone 5 mg: take 4 tablets in the morning and at night with meals.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Cetirizine 10 mg: take 1 tablet twice a day after meals for 3 days. Do not smoke.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t054",
-      "text": "Amoxicillin 500 mg: take 2 capsules in the morning and in the evening after food for 5 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Cough syrup: take 2 spoonfuls four times a day: morning, afternoon, evening and night after meals.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t055",
-      "text": "Atorvastatin 20 mg: take 1 capsule in the morning and in the evening for 7 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Vitamin D 1000 IU: take 1 capsule twice a day on an empty stomach for 5 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t056",
-      "text": "Prednisolone 5 mg: take 2 capsules once a day at night for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Paracetamol 500 mg: take 2 tablets three times a day.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t057",
-      "text": "Amoxicillin 500 mg: take 2 tablets twice a day for 5 days. Do not drive.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Prednisolone 5 mg: take 3 tablets four times a day: morning, afternoon, evening and night before meals for 3 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t058",
-      "text": "Omeprazole 20 mg: take 3 capsules four times a day: morning, afternoon, evening and night with food for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
+      "text": "Amoxicillin 500 mg: take 2 capsules in the morning and at night. Do not drive.",
+      "correct": true,
+      "wrongFields": [],
       "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "flagged": [
+        "medicines[0]",
+        "medicines[+]"
+      ]
     },
     {
       "id": "t059",
-      "text": "Omeprazole 20 mg: take 2 capsules three times a day after food for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
+      "text": "Amoxicillin 500 mg: take 1 capsule in the morning and in the evening after food for 14 days.",
+      "correct": true,
+      "wrongFields": [],
       "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "flagged": [
+        "medicines[0]",
+        "medicines[+]"
+      ]
     },
     {
       "id": "t060",
-      "text": "Ibuprofen 400 mg: take 3 capsules in the morning and at night for 3 days. Do not smoke.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Azithromycin 250 mg: take 2 tablets morning, afternoon and night for 3 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t061",
-      "text": "Ibuprofen 400 mg: take 4 capsules twice a day with food.",
+      "text": "Salbutamol inhaler: take 1 puff four times a day: morning, afternoon, evening and night after food for 5 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1332,7 +512,7 @@
     },
     {
       "id": "t062",
-      "text": "Eye drops: take 4 drops three times a day before meals for 7 days. Do not drive.",
+      "text": "Omeprazole 20 mg: take 1 capsule once a day at night after food for 5 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1340,7 +520,7 @@
     },
     {
       "id": "t063",
-      "text": "Metformin 500 mg: take 2 tablets in the morning and in the evening with meals for 3 days.",
+      "text": "Vitamin D 1000 IU: take 1 capsule once a day in the morning on an empty stomach for 7 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1348,7 +528,7 @@
     },
     {
       "id": "t064",
-      "text": "Cough syrup: take 2 spoonfuls three times a day for 7 days. Stay out of strong sunlight.",
+      "text": "Prednisolone 5 mg: take 2 tablets morning, afternoon and night for 10 days. Do not drink alcohol.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1356,7 +536,7 @@
     },
     {
       "id": "t065",
-      "text": "Omeprazole 20 mg: take 2 capsules at bedtime after food for 7 days.",
+      "text": "Cetirizine 10 mg: take 1 tablet four times a day: morning, afternoon, evening and night after meals.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1364,7 +544,7 @@
     },
     {
       "id": "t066",
-      "text": "Antacid suspension: take 2 spoonfuls in the morning and in the evening with food for 3 days.",
+      "text": "Ibuprofen 400 mg: take 1 tablet in the morning and in the evening on an empty stomach for 3 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1372,7 +552,7 @@
     },
     {
       "id": "t067",
-      "text": "Omeprazole 20 mg: take 1 capsule in the morning and in the evening with meals for 5 days. Do not take it with milk or cheese.",
+      "text": "Eye drops: take 2 drops three times a day before meals for 7 days. Do not drive.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1380,7 +560,7 @@
     },
     {
       "id": "t068",
-      "text": "Antacid suspension: take 1 spoonful in the morning and in the evening before meals for 5 days.",
+      "text": "Atorvastatin 20 mg: take 1 tablet twice a day for 10 days. Do not smoke.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1388,7 +568,7 @@
     },
     {
       "id": "t069",
-      "text": "Atorvastatin 20 mg: take 2 capsules four times a day: morning, afternoon, evening and night after food for 10 days. Do not smoke.",
+      "text": "Cough syrup: take 2 spoonfuls three times a day for 7 days. Stay out of strong sunlight.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1396,15 +576,18 @@
     },
     {
       "id": "t070",
-      "text": "Ibuprofen 400 mg: take 2 capsules morning, afternoon and night after food for 7 days. Do not lift heavy things.",
+      "text": "Cetirizine 10 mg: take 1 tablet in the morning and at night after meals. Do not smoke.",
       "correct": true,
       "wrongFields": [],
-      "agreed": true,
-      "flagged": []
+      "agreed": false,
+      "flagged": [
+        "medicines[0]",
+        "medicines[+]"
+      ]
     },
     {
       "id": "t071",
-      "text": "Amoxicillin 500 mg: take 4 tablets once a day in the morning on an empty stomach for 14 days.",
+      "text": "Paracetamol 500 mg: take 2 tablets in the morning and in the evening for 10 days. Stay out of strong sunlight.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1412,7 +595,7 @@
     },
     {
       "id": "t072",
-      "text": "Prednisolone 5 mg: take 2 capsules in the morning and in the evening before meals for 5 days.",
+      "text": "Omeprazole 20 mg: take 1 capsule once a day in the morning for 14 days. Do not drive.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1420,7 +603,7 @@
     },
     {
       "id": "t073",
-      "text": "Eye drops: take 3 drops twice a day before meals for 3 days. Do not drink alcohol.",
+      "text": "Vitamin D 1000 IU: take 2 capsules at bedtime for 14 days. Do not smoke.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1428,7 +611,7 @@
     },
     {
       "id": "t074",
-      "text": "Eye drops: take 2 drops three times a day after meals for 10 days. Do not drive.",
+      "text": "Atorvastatin 20 mg: take 1 tablet in the morning and at night for 10 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1436,7 +619,7 @@
     },
     {
       "id": "t075",
-      "text": "Atorvastatin 20 mg: take 4 capsules every morning after food.",
+      "text": "Vitamin D 1000 IU: take 1 capsule at bedtime with meals for 7 days. Do not lift heavy things.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1444,7 +627,7 @@
     },
     {
       "id": "t076",
-      "text": "Atorvastatin 20 mg: take 2 capsules four times a day: morning, afternoon, evening and night with meals for 3 days.",
+      "text": "Cough syrup: take 2 spoonfuls four times a day: morning, afternoon, evening and night after food for 10 days. Stay out of strong sunlight.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1452,7 +635,7 @@
     },
     {
       "id": "t077",
-      "text": "Paracetamol 500 mg: take 4 tablets four times a day: morning, afternoon, evening and night. Stay out of strong sunlight.",
+      "text": "Ear drops: take 3 drops in the morning and at night with meals for 7 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1460,7 +643,7 @@
     },
     {
       "id": "t078",
-      "text": "Atorvastatin 20 mg: take 4 capsules in the morning and in the evening with food for 10 days. Stay out of strong sunlight.",
+      "text": "Atorvastatin 20 mg: take 1 tablet once a day in the morning after meals for 10 days.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1468,7 +651,7 @@
     },
     {
       "id": "t079",
-      "text": "Cough syrup: take 2 spoonfuls twice a day with meals for 3 days.",
+      "text": "Ibuprofen 400 mg: take 1 tablet every morning after meals.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1476,7 +659,7 @@
     },
     {
       "id": "t080",
-      "text": "Azithromycin 250 mg: take 1 capsule once a day in the morning for 10 days. Do not smoke.",
+      "text": "Atorvastatin 20 mg: take 1 tablet in the morning and in the evening after food for 3 days. Do not drive.",
       "correct": true,
       "wrongFields": [],
       "agreed": true,
@@ -1484,223 +667,163 @@
     },
     {
       "id": "t081",
-      "text": "Eye drops: take 1 drop in the morning and at night with food.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Amoxicillin 500 mg: take 1 capsule every morning for 10 days. Do not smoke.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t082",
-      "text": "Amoxicillin 500 mg: take 1 tablet four times a day: morning, afternoon, evening and night on an empty stomach.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Iron 100 mg: take 1 tablet once a day at night on an empty stomach for 10 days. Do not drive.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t083",
-      "text": "Antacid suspension: take 2 spoonfuls once a day at night for 10 days. Do not take it with milk or cheese.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Cough syrup: take 1 spoonful every morning on an empty stomach for 14 days. Do not lift heavy things.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t084",
-      "text": "Omeprazole 20 mg: take 1 tablet in the morning and in the evening with food for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Vitamin D 1000 IU: take 2 capsules in the morning and in the evening after food for 10 days. Do not lift heavy things.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t085",
-      "text": "Paracetamol 500 mg: take 2 capsules in the morning and at night on an empty stomach. Stay out of strong sunlight.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Vitamin D 1000 IU: take 1 capsule once a day in the morning on an empty stomach for 5 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t086",
-      "text": "Ibuprofen 400 mg: take 4 capsules in the morning and in the evening after meals for 5 days. Do not lift heavy things.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Amoxicillin 500 mg: take 2 capsules in the morning and in the evening.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t087",
-      "text": "Atorvastatin 20 mg: take 3 capsules every morning after meals for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Eye drops: take 1 drop in the morning and at night with food.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t088",
-      "text": "Azithromycin 250 mg: take 2 tablets once a day in the morning with food for 10 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Amoxicillin 500 mg: take 1 capsule once a day in the morning for 3 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t089",
-      "text": "Paracetamol 500 mg: take 1 capsule morning, afternoon and night with meals.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Antacid suspension: take 2 spoonfuls once a day at night for 10 days. Do not take it with milk or cheese.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t090",
-      "text": "Salbutamol inhaler: take 2 puffs in the morning and at night for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Omeprazole 20 mg: take 1 capsule at bedtime for 14 days. Stay out of strong sunlight.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t091",
-      "text": "Metformin 500 mg: take 2 capsules in the morning and in the evening after meals. Do not drink alcohol.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Paracetamol 500 mg: take 2 tablets in the morning and at night on an empty stomach for 3 days. Stay out of strong sunlight.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t092",
-      "text": "Ear drops: take 1 drop once a day at night for 7 days. Do not drive.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Ibuprofen 400 mg: take 1 tablet in the morning and in the evening.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t093",
-      "text": "Eye drops: take 4 drops at bedtime after food for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Eye drops: take 1 drop morning, afternoon and night after food for 10 days. Do not drink alcohol.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t094",
-      "text": "Amoxicillin 500 mg: take 3 capsules in the morning and in the evening with meals for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Cetirizine 10 mg: take 1 tablet in the morning and in the evening with meals.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t095",
-      "text": "Azithromycin 250 mg: take 2 capsules in the morning and at night before meals for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Azithromycin 250 mg: take 2 tablets in the morning and at night. Do not smoke.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t096",
-      "text": "Cough syrup: take 2 spoonfuls three times a day with meals for 7 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Vitamin D 1000 IU: take 1 capsule in the morning and at night after meals for 14 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t097",
-      "text": "Ibuprofen 400 mg: take 2 tablets in the morning and in the evening before meals for 14 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Eye drops: take 2 drops morning, afternoon and night with meals for 5 days.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t098",
-      "text": "Omeprazole 20 mg: take 2 tablets in the morning and in the evening after meals.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Omeprazole 20 mg: take 1 capsule once a day in the morning after meals. Do not take it with milk or cheese.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t099",
-      "text": "Ibuprofen 400 mg: take 3 tablets in the morning and at night for 7 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Eye drops: take 1 drop morning, afternoon and night on an empty stomach. Do not take it with milk or cheese.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     },
     {
       "id": "t100",
-      "text": "Ibuprofen 400 mg: take 4 tablets every morning for 3 days.",
-      "correct": false,
-      "wrongFields": [
-        "error"
-      ],
-      "agreed": false,
-      "flagged": [],
-      "error": "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-lim"
+      "text": "Metformin 500 mg: take 1 tablet in the morning and at night after food for 7 days. Do not drink alcohol.",
+      "correct": true,
+      "wrongFields": [],
+      "agreed": true,
+      "flagged": []
     }
   ]
 }

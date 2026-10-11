@@ -21,7 +21,7 @@
   },
   "unit-drops": {
     "file": "/tiles/unit-drops.png",
-    "seed": 9418033119432620000,
+    "seed": 9057926075129148000,
     "adapter": true,
     "tries": 1,
     "checkedBy": [
@@ -109,16 +109,6 @@
       "openai"
     ]
   },
-  "avoid-sunlight": {
-    "file": "/tiles/avoid-sunlight.png",
-    "seed": 14652297202889933000,
-    "adapter": true,
-    "tries": 1,
-    "checkedBy": [
-      "gemini",
-      "openai"
-    ]
-  },
   "time-morning": {
     "file": "/tiles/time-morning.png",
     "seed": 13091638462664665000,
@@ -139,16 +129,6 @@
       "openai"
     ]
   },
-  "avoid-heavy_lifting": {
-    "file": "/tiles/avoid-heavy_lifting.png",
-    "seed": 803430703139632800,
-    "adapter": true,
-    "tries": 1,
-    "checkedBy": [
-      "gemini",
-      "openai"
-    ]
-  },
   "avoid-dairy": {
     "file": "/tiles/avoid-dairy.png",
     "seed": 13431489537440910000,
@@ -161,19 +141,9 @@
   },
   "warning-bleeding": {
     "file": "/tiles/warning-bleeding.png",
-    "seed": 7963206976642649000,
+    "seed": 7430347569886495000,
     "adapter": true,
-    "tries": 1,
-    "checkedBy": [
-      "gemini",
-      "openai"
-    ]
-  },
-  "warning-swelling": {
-    "file": "/tiles/warning-swelling.png",
-    "seed": 14770730924039102000,
-    "adapter": true,
-    "tries": 1,
+    "tries": 3,
     "checkedBy": [
       "gemini",
       "openai"
@@ -191,7 +161,7 @@
   },
   "warning-vomiting": {
     "file": "/tiles/warning-vomiting.png",
-    "seed": 4317140680381611000,
+    "seed": 15221404881847896000,
     "adapter": true,
     "tries": 1,
     "checkedBy": [
@@ -201,9 +171,9 @@
   },
   "warning-chest_pain": {
     "file": "/tiles/warning-chest_pain.png",
-    "seed": 15998306639945890000,
+    "seed": 15653263167974808000,
     "adapter": true,
-    "tries": 3,
+    "tries": 4,
     "checkedBy": [
       "gemini",
       "openai"
@@ -221,9 +191,9 @@
   },
   "warning-severe_pain": {
     "file": "/tiles/warning-severe_pain.png",
-    "seed": 5460822393844809000,
+    "seed": 12752126254488630000,
     "adapter": true,
-    "tries": 3,
+    "tries": 2,
     "checkedBy": [
       "gemini",
       "openai"
@@ -231,19 +201,9 @@
   },
   "warning-dizziness": {
     "file": "/tiles/warning-dizziness.png",
-    "seed": 16183315568725557000,
+    "seed": 7477281761902975000,
     "adapter": true,
-    "tries": 1,
-    "checkedBy": [
-      "gemini",
-      "openai"
-    ]
-  },
-  "warning-wound_discharge": {
-    "file": "/tiles/warning-wound_discharge.png",
-    "seed": 16538590245758677000,
-    "adapter": true,
-    "tries": 1,
+    "tries": 3,
     "checkedBy": [
       "gemini",
       "openai"

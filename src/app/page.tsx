@@ -248,6 +248,9 @@ export default function Home() {
                 <div className="block">
                   <div className="block__head">
                     <h2 className="t-title">Cards</h2>
+                    <button type="button" className="btn btn-outline btn-sm" onClick={() => window.print()}>
+                      Print the cards
+                    </button>
                     <div className="chips">
                       <span className="chip chip--soft">
                         <span className="stat">

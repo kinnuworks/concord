@@ -1,122 +1,73 @@
 {
-  "generatedAt": "2026-10-11T19:04:36.625Z",
+  "generatedAt": "2026-10-11T19:26:33.787Z",
   "base": {
-    "pictures": 200,
-    "tiles": 40,
+    "pictures": 270,
+    "tiles": 45,
     "firstTry": {
-      "k": 138,
-      "n": 200,
-      "pct": 69,
+      "k": 167,
+      "n": 270,
+      "pct": 61.9,
       "ci": [
-        62.3,
-        75
+        55.9,
+        67.4
       ]
     },
     "byKind": {
       "time": {
-        "k": 15,
-        "n": 20,
+        "k": 18,
+        "n": 24,
         "pct": 75,
         "ci": [
-          53.1,
-          88.8
+          55.1,
+          88
         ]
       },
       "dose": {
-        "k": 41,
-        "n": 70,
-        "pct": 58.6,
+        "k": 47,
+        "n": 84,
+        "pct": 56,
         "ci": [
-          46.9,
-          69.4
+          45.3,
+          66.1
         ]
       },
       "meal": {
-        "k": 5,
-        "n": 5,
+        "k": 6,
+        "n": 6,
         "pct": 100,
         "ci": [
-          56.6,
+          61,
           100
         ]
       },
       "avoid": {
-        "k": 30,
-        "n": 30,
-        "pct": 100,
+        "k": 24,
+        "n": 36,
+        "pct": 66.7,
         "ci": [
-          88.6,
-          100
+          50.3,
+          79.8
         ]
       },
       "warning": {
-        "k": 32,
-        "n": 50,
-        "pct": 64,
+        "k": 25,
+        "n": 60,
+        "pct": 41.7,
         "ci": [
-          50.1,
-          75.9
+          30.1,
+          54.3
         ]
       },
       "exercise": {
-        "k": 15,
-        "n": 25,
+        "k": 18,
+        "n": 30,
         "pct": 60,
         "ci": [
-          40.7,
-          76.6
-        ]
-      }
-    },
-    "expectedFallbackPct": 18.2,
-    "neverPassed": [
-      "time-afternoon",
-      "warning-swelling",
-      "warning-breathlessness",
-      "exercise-straight_leg_raise-45"
-    ]
-  },
-  "adapter": {
-    "pictures": 200,
-    "tiles": 40,
-    "firstTry": {
-      "k": 125,
-      "n": 200,
-      "pct": 62.5,
-      "ci": [
-        55.6,
-        68.9
-      ]
-    },
-    "byKind": {
-      "time": {
-        "k": 14,
-        "n": 20,
-        "pct": 70,
-        "ci": [
-          48.1,
-          85.5
+          42.3,
+          75.4
         ]
       },
-      "dose": {
-        "k": 33,
-        "n": 70,
-        "pct": 47.1,
-        "ci": [
-          35.9,
-          58.7
-        ]
-      },
-      "meal": {
-        "k": 4,
-        "n": 5,
-        "pct": 80,
-        "ci": [
-          37.6,
-          96.4
-        ]
-      },
-      "avoid": {
+      "unit": {
         "k": 29,
         "n": 30,
         "pct": 96.7,
@@ -124,34 +75,108 @@
           83.3,
           99.4
         ]
+      }
+    },
+    "expectedFallbackPct": 22,
+    "neverPassed": [
+      "avoid-sunlight",
+      "warning-swelling",
+      "warning-breathlessness",
+      "warning-wound_discharge",
+      "exercise-straight_leg_raise-45"
+    ]
+  },
+  "adapter": {
+    "pictures": 270,
+    "tiles": 45,
+    "firstTry": {
+      "k": 178,
+      "n": 270,
+      "pct": 65.9,
+      "ci": [
+        60.1,
+        71.3
+      ]
+    },
+    "byKind": {
+      "time": {
+        "k": 17,
+        "n": 24,
+        "pct": 70.8,
+        "ci": [
+          50.8,
+          85.1
+        ]
+      },
+      "dose": {
+        "k": 38,
+        "n": 84,
+        "pct": 45.2,
+        "ci": [
+          35,
+          55.9
+        ]
+      },
+      "meal": {
+        "k": 5,
+        "n": 6,
+        "pct": 83.3,
+        "ci": [
+          43.6,
+          97
+        ]
+      },
+      "avoid": {
+        "k": 34,
+        "n": 36,
+        "pct": 94.4,
+        "ci": [
+          81.9,
+          98.5
+        ]
       },
       "warning": {
-        "k": 34,
-        "n": 50,
-        "pct": 68,
+        "k": 41,
+        "n": 60,
+        "pct": 68.3,
         "ci": [
-          54.2,
-          79.2
+          55.8,
+          78.7
         ]
       },
       "exercise": {
-        "k": 11,
-        "n": 25,
-        "pct": 44,
+        "k": 14,
+        "n": 30,
+        "pct": 46.7,
         "ci": [
-          26.7,
-          62.9
+          30.2,
+          63.9
+        ]
+      },
+      "unit": {
+        "k": 29,
+        "n": 30,
+        "pct": 96.7,
+        "ci": [
+          83.3,
+          99.4
         ]
       }
     },
-    "expectedFallbackPct": 22.4,
+    "expectedFallbackPct": 18.5,
     "neverPassed": [
-      "time-afternoon",
-      "dose-tablet-6",
       "dose-puff-2",
       "warning-breathlessness",
-      "exercise-knee_bend-90",
       "exercise-straight_leg_raise-45"
+    ]
+  },
+  "counting": {
+    "k": 85,
+    "n": 168,
+    "pct": 50.6,
+    "ci": [
+      43.1,
+      58.1
     ]
   },
   "caught": [
@@ -495,15 +520,22 @@
   ],
   "reader": {
     "cases": 100,
-    "correct": 37,
-    "wrong": 63,
-    "wrongAndFlagged": 63,
+    "correct": 100,
+    "wrong": 0,
+    "wrongAndFlagged": 0,
     "wrongAndUnflagged": 0,
-    "agreed": 37,
-    "correctWhenAgreed": 37,
-    "flaggedButCorrect": 0,
-    "errors": 60,
-    "ranAt": "2026-10-11T18:25:53.564Z"
+    "agreed": 96,
+    "correctWhenAgreed": 96,
+    "flaggedButCorrect": 4,
+    "errors": 0,
+    "ranAt": "2026-10-11T19:19:20.913Z"
+  },
+  "training": {
+    "steps": 1000,
+    "images": 70,
+    "seconds": 218,
+    "base": "FLUX.1 [dev]",
+    "source": "OpenMoji 15 (CC BY-SA 4.0), 70 pictograms with written captions"
   },
   "labels": {
     "hi": {

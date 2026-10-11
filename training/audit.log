@@ -18,3 +18,16 @@ warning-fever: no longer passes (gemini saw "person with dark hair, red cheeks, 
 warning-bleeding: no longer passes (gemini saw "hand pointing with two blood drops", meant to show bleeding)
 warning-fever: redrawn, passed on try 1
 warning-swelling: no longer passes (gemini saw "two legs, one light-skinned, one red-skinned", meant to show a swollen leg, foot or body part; openai saw "two lower legs and feet, one wi)
+warning-bleeding: redrawn, passed on try 3
+avoid-heavy_lifting: no drawing passed in 5 tries, card will use the code-drawn picture
+avoid-sunlight: no drawing passed in 5 tries, card will use the code-drawn picture
+warning-chest_pain: no longer passes (gemini saw "a person with a red heart on their chest.", meant to show chest pain; openai saw "a person holding a red heart to their chest", meant to s)
+warning-severe_pain: redrawn, passed on try 2
+warning-swelling: no drawing passed in 5 tries, card will use the code-drawn picture
+warning-vomiting: redrawn, passed on try 1
+warning-rash: kept
+warning-dizziness: no longer passes (openai saw "person raising both arms beneath two swirling marks", meant to show a dizzy person)
+warning-chest_pain: redrawn, passed on try 4
+warning-breathlessness: no drawing passed in 5 tries, card will use the code-drawn picture
+warning-dizziness: redrawn, passed on try 3
+warning-wound_discharge: no drawing passed in 5 tries, card will use the code-drawn picture

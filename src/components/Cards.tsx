@@ -50,6 +50,34 @@ function Dose({ spec, shared, count, size }: { spec: TileSpec; shared: Shared; c
   return <DoseView state={state} count={count} size={size} alt={`${count} to take`} />;
 }
 
+const VOICE: Record<Lang, string> = {
+  en: "en-US", hi: "hi-IN", te: "te-IN", ta: "ta-IN", es: "es-ES", zh: "zh-CN", ar: "ar-SA",
+};
+
+// Reads a card aloud in the chosen language, for people who would rather listen.
+function Speak({ text, lang }: { text: string; lang: Lang }) {
+  return (
+    <button
+      type="button"
+      className="rx__speak"
+      aria-label="Read this card aloud"
+      onClick={() => {
+        if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = VOICE[lang];
+        u.rate = 0.9;
+        window.speechSynthesis.speak(u);
+      }}
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M4 9.5v5h3.5L12 18V6L7.5 9.5H4z" />
+        <path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" />
+      </svg>
+    </button>
+  );
+}
+
 // One line under each card saying how its pictures fared in the check.
 function Checked({ specs, shared }: { specs: TileSpec[]; shared: Shared }) {
   const s = useTileSummary(specs, { fresh: shared.fresh, adapter: shared.adapter, run: shared.run });
@@ -119,6 +147,18 @@ function MedicineView({ card, shared }: { card: MedicineCard; shared: Shared }) 
     <article className="card rx">
       <header className="rx__head">
         <h3>{m.name}</h3>
+        <Speak
+          lang={shared.lang}
+          text={[
+            m.name,
+            ...m.times.map((t) => `${label(shared.lang, t)}: ${m.count}`),
+            label(shared.lang, m.food),
+            card.days === null ? label(shared.lang, "every_day") : `${card.days} ${label(shared.lang, "days")}`,
+            ...(m.avoid.length ? [`${label(shared.lang, "do_not")}: ${m.avoid.map((x) => label(shared.lang, x)).join(", ")}`] : []),
+          ]
+            .filter(Boolean)
+            .join(". ")}
+        />
       </header>
 
       {/* The four parts of the day always appear in the same order, taken or not. */}
@@ -237,6 +277,10 @@ function WarningView({ card, shared }: { card: WarningCard; shared: Shared }) {
     <article className="card rx rx--warning">
       <header className="rx__head">
         <h3>{label(shared.lang, "come_back")}</h3>
+        <Speak
+          lang={shared.lang}
+          text={`${label(shared.lang, "come_back")}: ${card.signs.map((x) => label(shared.lang, x.sign)).join(", ")}`}
+        />
       </header>
       <div className="group__items">
         {card.signs.map(({ sign, tile }) => (

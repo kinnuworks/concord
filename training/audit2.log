@@ -1,0 +1,14 @@
+unit-spoon: kept
+unit-drops: no longer passes (openai read count as 2, expected 1)
+unit-capsule: kept
+unit-tablet: kept
+unit-puff: kept
+time-afternoon: kept
+time-evening: kept
+time-morning: kept
+unit-drops: redrawn, passed on try 1
+time-night: kept
+meal: kept
+avoid-alcohol: kept
+avoid-driving: kept
+avoid-smoking: no longer passes (openai saw "a smoking matchstick", meant to show a cigarette or smoking)

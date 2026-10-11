@@ -116,7 +116,9 @@
   flex-wrap: wrap;
   gap: 10px 16px;
   align-items: center;
-  justify-content: space-between;
+}
+.block__head .chips {
+  margin-left: auto;
 }
 
 /* ---------- Form ---------- */
@@ -212,6 +214,68 @@
   font-family: var(--font-mono);
   font-weight: 500;
   color: var(--ink);
+}
+
+.rx__speak {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--tint);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background-color var(--dur-hover) var(--ease-out), transform var(--dur-press) var(--ease-spring);
+}
+.rx__speak:hover {
+  background: var(--line-2);
+  color: var(--ink);
+}
+.rx__speak:active {
+  transform: scale(0.94);
+}
+.rx__speak svg {
+  width: 18px;
+  height: 18px;
+}
+@media (pointer: coarse) {
+  .rx__speak {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Printing gives the cards alone, one clean sheet for the patient to take home. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .sheet,
+  .sheet * {
+    visibility: visible;
+  }
+  .sheet {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .stage {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .rx {
+    break-inside: avoid;
+    box-shadow: 0 0 0 1px #999;
+  }
+  .rx__speak,
+  .rx__check {
+    display: none;
+  }
 }
 
 /* ---------- Measured results ---------- */
@@ -506,7 +570,7 @@
   padding: 8% 8% 12%;
 }
 .dose[data-n="1"] {
-  padding: 6% 6% 10%;
+  padding: 14% 20% 20% 14%;
 }
 .dose[data-n="2"],
 .dose[data-n="4"] {

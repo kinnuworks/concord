@@ -60,23 +60,23 @@ const FORM_UNIT: Record<Form, string> = {
 const AVOID_OBJECT: Record<Avoid, string> = {
   alcohol: "a wine glass and a beer bottle",
   driving: "a car seen from the side",
-  sunlight: "a person standing under a strong sun with rays",
+  sunlight: "a person sweating under a huge blazing sun with long strong rays, shading the eyes with one hand, red sunburnt skin",
   smoking: "one large lit cigarette lying on its side, white with an orange filter, a glowing red tip and grey smoke curling up",
-  heavy_lifting: "a person lifting a heavy box",
+  heavy_lifting: "a person straining with bent knees to lift a very heavy barbell with big weight plates, sweat drops flying",
   dairy: "a glass of milk and a wedge of cheese",
 };
 
 const WARNING_SCENE: Record<Warning, string> = {
   fever: "the face of a sick person with red cheeks and sweat drops, holding a thermometer in the mouth",
   bleeding: "a bandaged arm with red drops falling from it",
-  swelling: "two lower legs and feet side by side, the left one normal and the right one swollen red and much larger",
+  swelling: "two lower legs and feet side by side, the left leg thin and normal, the right leg badly swollen to twice the width with a puffy round ankle and foot",
   chest_pain: "a person holding the chest with both hands, pain lines at the chest",
-  breathlessness: "a person with one hand on the chest, mouth wide open gasping for air, blue curved air lines in front of the mouth and sweat drops on the forehead",
+  breathlessness: "a person bent forward with hands on the knees, mouth wide open panting hard, several puffs of breath in front of the mouth, sweat drops",
   severe_pain: "a person bent forward clutching the belly with both hands, eyes shut tight and teeth clenched in pain, red jagged pain marks at the belly",
   vomiting: "the head and shoulders of a person in profile with the mouth wide open and green vomit pouring out of the mouth into a bucket",
   rash: "an arm covered in red spots",
   dizziness: "a person holding the head with small spirals circling above it",
-  wound_discharge: "a close-up of a forearm with a long cut closed by black stitches, with yellow pus dripping out of the cut",
+  wound_discharge: "a forearm with a stitched cut, thick yellow-green pus oozing out of the cut and dripping down",
 };
 
 const EXERCISE_SCENE: Record<Movement, (angle: number) => string> = {
