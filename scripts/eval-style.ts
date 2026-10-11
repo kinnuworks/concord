@@ -1,13 +1,12 @@
 // Two follow-up passes over the saved evaluation pictures, without drawing anything new.
-// 1. Pictures of things: the readers' saved descriptions are judged again with the current
-//    written rules, so every row in the table was judged the same way.
+// 1. Pictures of things: the readers' saved descriptions are judged again by the current
+//    judge, so every row was judged the same way.
 // 2. Style: both readers label each picture's drawing style, to measure what the adapter changes.
 // Run: pnpm tsx --env-file=.env.local scripts/eval-style.ts [judge|style]
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { googleVisionJson, openaiJson } from "../src/lib/models";
-import { judge, judged } from "../src/lib/readback";
-import type { Avoid, TimeOfDay, Warning } from "../src/lib/schema";
-import type { TileSpec } from "../src/lib/tiles";
+import { judge, meaning } from "../src/lib/readback";
+import { tileFromKey } from "../src/lib/tiles";
 
 type Row = {
   key: string; kind: string; i: number; file: string; pass: boolean; expected: unknown;
@@ -20,15 +19,6 @@ const STYLES = ["flat pictogram with outlines", "photo or 3d render", "other ill
 const QUESTION = `Look only at how this picture is drawn, not at what it shows. Answer with one JSON object: {"style": one of ${JSON.stringify(STYLES)}}. "flat pictogram with outlines" means flat solid colours with clear dark outlines and no realistic shading.`;
 
 const root = new URL("../", import.meta.url);
-
-function specFromKey(key: string): TileSpec {
-  if (key === "meal") return { kind: "meal" };
-  const [kind, ...rest] = key.split("-");
-  const value = rest.join("-");
-  if (kind === "time") return { kind: "time", time: value as TimeOfDay };
-  if (kind === "avoid") return { kind: "avoid", item: value as Avoid };
-  return { kind: "warning", sign: value as Warning };
-}
 
 async function pool<T>(items: T[], n: number, fn: (x: T) => Promise<void>) {
   const queue = [...items];
@@ -46,15 +36,15 @@ async function main() {
     if (only !== "style") {
       const again = rows.filter((r) => ["time", "meal", "avoid", "warning"].includes(r.kind));
       await pool(again, 6, async (r) => {
-        const j = judged(specFromKey(r.key))!;
+        const intended = meaning(tileFromKey(r.key))!;
         const described = r.readings.map((x) => (typeof x.reading?.shows === "string" ? x.reading.shows : "unclear"));
-        const understood = await judge(j.intended, j.mustMention, described);
-        r.expected = { meaning: j.intended };
+        const understood = await judge(intended, described);
+        r.expected = { meaning: intended };
         r.mismatches = [];
         r.readings.forEach((x, i) => {
           if (!x.reading) return void r.mismatches.push(`${x.reader} could not read the picture`);
           x.reading.understood = understood[i];
-          if (!understood[i]) r.mismatches.push(`${x.reader} saw "${described[i]}", meant to show ${j.intended}`);
+          if (!understood[i]) r.mismatches.push(`${x.reader} saw "${described[i]}", meant to show ${intended}`);
         });
         r.pass = r.mismatches.length === 0;
       });

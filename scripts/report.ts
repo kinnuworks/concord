@@ -1,6 +1,7 @@
 // Turns the raw evaluation logs into the numbers shown on the site and in the README.
 // Run: pnpm tsx scripts/report.ts
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { tileFromKey, tilePrompt } from "../src/lib/tiles";
 
 type Row = {
   key: string;
@@ -107,27 +108,49 @@ function main() {
 
   out.caught = caught;
 
-  // Pictures of things that neither reader could make sense of, one per meaning. The
-  // adapter arm comes first because that is what the site draws with.
-  const seen = new Set<string>();
-  const order = ["warning", "avoid", "time"];
-  const misread = [...adapter, ...base]
-    .filter((r) => order.includes(r.kind) && r.readings.every((x) => x.reading?.understood === false))
-    .sort((a, b) => order.indexOf(a.kind) - order.indexOf(b.kind))
-    .filter((r) => (seen.has(r.key) ? false : (seen.add(r.key), true)))
-    .slice(0, 8)
-    .map((r) => {
-      const arm = adapter.includes(r) ? "adapter" : "base";
-      const name = `misread-${arm}-${r.file}`;
-      copyFileSync(new URL(`training/eval/${arm}/${r.file}`, root), new URL(name, dir));
-      return {
-        file: `/evidence/${name}`,
-        arm,
-        meant: String(r.expected.meaning ?? ""),
-        saw: r.readings.map((x) => String(x.reading?.shows ?? "")),
-      };
-    });
+  // Hand-picked pictures from the adapter arm that the read-back stopped, chosen so the
+  // mistake is plain at a glance. Each is listed as [picture, attempt number].
+  const find = (rows: Row[], key: string, i: number) => rows.find((r) => r.key === key && r.i === i);
+  const said = (r: Row) => r.readings.map((x) => String(x.reading?.shows ?? ""));
+  const STOPPED: [string, number][] = [
+    ["warning-swelling", 1],
+    ["warning-fever", 3],
+    ["warning-bleeding", 0],
+    ["warning-chest_pain", 1],
+    ["warning-severe_pain", 3],
+    ["warning-breathlessness", 0],
+  ];
+  const misread = STOPPED.flatMap(([key, i]) => {
+    const r = find(adapter, key, i);
+    if (!r || r.pass) return [];
+    const name = `misread-adapter-${r.file}`;
+    copyFileSync(new URL(`training/eval/adapter/${r.file}`, root), new URL(name, dir));
+    return [{ file: `/evidence/${name}`, arm: "adapter", meant: String(r.expected.meaning ?? ""), saw: said(r) }];
+  });
   out.misread = misread;
+
+  // For the walk-through on the site: the prompt code wrote, the stopped picture above,
+  // and a picture of the same thing that both readers understood. A redraw goes to the
+  // plain model, so where the styled arm has no clear pass the kept picture comes from there.
+  const KEPT: Record<string, ["adapter" | "base", number]> = {
+    "warning-swelling": ["base", 0],
+    "warning-chest_pain": ["base", 0],
+    "warning-severe_pain": ["adapter", 1],
+  };
+  const examples = STOPPED.flatMap(([key, i]) => {
+    const stopped = find(adapter, key, i);
+    const want = KEPT[key];
+    const kept = want ? find(want[0] === "base" ? base : adapter, key, want[1]) : adapter.find((r) => r.key === key && r.pass);
+    if (!stopped || stopped.pass || !kept || !kept.pass) return [];
+    const save = (r: Row) => {
+      const arm = adapter.includes(r) ? "adapter" : "base";
+      const name = `example-${arm}-${r.file}`;
+      copyFileSync(new URL(`training/eval/${arm}/${r.file}`, root), new URL(name, dir));
+      return { file: `/evidence/${name}`, saw: said(r), ...(arm === "base" ? { plain: true } : {}) };
+    };
+    return [{ key, prompt: tilePrompt(tileFromKey(key), true), meant: String(kept.expected.meaning ?? ""), stopped: save(stopped), kept: save(kept) }];
+  });
+  out.examples = examples;
 
   const parseFile = new URL("src/data/eval-parse.json", root);
   if (existsSync(parseFile)) out.reader = (JSON.parse(readFileSync(parseFile, "utf8")) as { summary: unknown }).summary;

@@ -120,18 +120,23 @@ type RouterResult = { data: { output?: string; error?: string | null } };
 // The Google reader for pictures. It goes through fal's model router, which has no
 // free-tier request cap, so a busy hour cannot be mistaken for an unreadable picture.
 export async function googleVisionJson(prompt: string, images: ImageInput[]): Promise<unknown> {
-  return withRetry(async () => {
-    const res = (await falClient().subscribe(MODELS.routerVision, {
-      input: {
-        model: MODELS.routerGoogle,
-        prompt,
-        temperature: 0,
-        image_urls: images.map((i) => `data:${i.mime};base64,${i.base64}`),
-      },
-    })) as unknown as RouterResult;
-    if (res.data.error) throw new Error(res.data.error);
-    return extractJson(res.data.output ?? "");
-  });
+  try {
+    return await withRetry(async () => {
+      const res = (await falClient().subscribe(MODELS.routerVision, {
+        input: {
+          model: MODELS.routerGoogle,
+          prompt,
+          temperature: 0,
+          image_urls: images.map((i) => `data:${i.mime};base64,${i.base64}`),
+        },
+      })) as unknown as RouterResult;
+      if (res.data.error) throw new Error(res.data.error);
+      return extractJson(res.data.output ?? "");
+    });
+  } catch {
+    // The router is unreachable: ask the same vendor directly instead.
+    return withRetry(() => geminiOnce(prompt, images, MODELS.geminiFast));
+  }
 }
 
 export async function googleTextJson(prompt: string): Promise<unknown> {

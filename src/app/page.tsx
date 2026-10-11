@@ -3,6 +3,7 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import { CardSheet } from "@/components/Cards";
 import { HowItIsChecked, Mark, Questions, WhoItIsFor, Why } from "@/components/Landing";
+import { Follow } from "@/components/Follow";
 import { Results } from "@/components/Results";
 import type { TileState } from "@/components/Tile";
 import { tilesFor, type Card } from "@/lib/plan";
@@ -24,6 +25,10 @@ const SAMPLES = samples as unknown as { name: string; text: string; parsed: Pars
 const SAMPLE_PHOTO = { src: "/samples/discharge-sheet.jpg", name: "discharge-sheet.jpg" };
 
 type Report = { spec: TileSpec; state: TileState };
+
+// Pictures normally come from the saved, already-checked set. With this set to 1 the
+// page also offers to draw every picture again, which needs the image service's key.
+const LIVE_DRAWING = process.env.NEXT_PUBLIC_LIVE_DRAWING === "1";
 
 export default function Home() {
   const [text, setText] = useState(SAMPLES[0].text);
@@ -204,15 +209,17 @@ export default function Home() {
                     ))}
                   </select>
                 </label>
-                <label className="field">
-                  <input
-                    type="checkbox"
-                    className="switch"
-                    checked={fresh}
-                    onChange={(e) => setFresh(e.target.checked)}
-                  />
-                  Draw every picture new
-                </label>
+                {LIVE_DRAWING ? (
+                  <label className="field">
+                    <input
+                      type="checkbox"
+                      className="switch"
+                      checked={fresh}
+                      onChange={(e) => setFresh(e.target.checked)}
+                    />
+                    Draw every picture new
+                  </label>
+                ) : null}
                 <button type="button" className="btn btn-ink" onClick={submit} disabled={busy}>
                   {busy ? "Reading the sheet" : "Make the cards"}
                 </button>
@@ -303,6 +310,7 @@ export default function Home() {
 
         <Why />
         <HowItIsChecked />
+        <Follow />
         <Results />
         <WhoItIsFor />
         <Questions />

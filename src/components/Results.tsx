@@ -21,14 +21,6 @@ type Results = {
 
 const r = data as unknown as Results;
 
-const KINDS: [string, string][] = [
-  ["unit", "One unit of a medicine"],
-  ["time", "Time of day"],
-  ["meal", "Meal"],
-  ["avoid", "Things to avoid"],
-  ["warning", "Warning signs"],
-];
-
 const share = (x?: { agreeFlat: number; total: number }) => (x && x.total ? Math.round((x.agreeFlat / x.total) * 100) : null);
 
 // Our own measurements. Every figure here is read from the evaluation logs at build time.
@@ -37,14 +29,13 @@ export function Results() {
   if (!total) return null;
   const counting = r.counting;
   const unit = r.adapter?.byKind.unit;
-  const warnA = r.adapter?.byKind.warning;
-  const warnB = r.base?.byKind.warning;
+  const unitBase = r.base?.byKind.unit;
   const flatAdapter = share(r.style?.adapter);
   const flatBase = share(r.style?.base);
   const reader = r.reader && r.reader.errors === 0 ? r.reader : null;
 
   return (
-    <section className="section section--alt" id="results">
+    <section className="section" id="results">
       <div className="container">
         <div className="section-head">
           <p className="eyebrow">
@@ -53,8 +44,8 @@ export function Results() {
           </p>
           <h2>We tested the generator before we trusted it.</h2>
           <p className="lead">
-            {total} pictures drawn for a fixed set of 100 written instructions, each read by both readers. These
-            are the results, including the ones that did not go our way.
+            {total} pictures drawn for a fixed set of 100 written instructions, each read by both readers. Every
+            figure here comes from the evaluation logs in the repository.
           </p>
         </div>
 
@@ -65,19 +56,20 @@ export function Results() {
                 {counting.n - counting.k} of {counting.n}
               </p>
               <p className="stat-card__text">
-                pictures showed the wrong number of pills when the generator was asked to draw a whole dose at
-                once. So Concord never asks it to count. It draws one unit, checks it, and code repeats it.
+                times the image model drew the wrong number of pills when asked for a whole dose in one
+                picture. Concord never asks it to count. It draws one unit, checks it, and code repeats it, so
+                the number on a card is exact.
               </p>
             </div>
           ) : null}
-          {unit ? (
+          {unit && unitBase ? (
             <div className="card stat-card">
               <p className="stat-card__figure">
-                {unit.k} of {unit.n}
+                {unit.k + unitBase.k} of {unit.n + unitBase.n}
               </p>
               <p className="stat-card__text">
-                single-unit pictures passed the read-back on the first try. The rest were thrown away and
-                redrawn before anyone saw them.
+                single-unit pictures passed the read-back on the first try. The other{" "}
+                {unit.n + unitBase.n - unit.k - unitBase.k} were thrown away and redrawn before anyone saw them.
               </p>
             </div>
           ) : null}
@@ -87,10 +79,11 @@ export function Results() {
                 {flatBase}% to {flatAdapter}%
               </p>
               <p className="stat-card__text">
-                The share of pictures both readers called a flat outlined pictogram, without and with our
-                fine-tuned style adapter. The adapter gave the cards one look. It also made warning signs harder
-                to read{warnA && warnB ? `: ${warnA.k} of ${warnA.n} passed first time, against ${warnB.k} of ${warnB.n} without it` : ""}.
-                So a redraw drops the adapter.
+                The share of pictures both readers called a flat outlined pictogram, before and after our
+                fine-tuned style adapter. A set of cards now shares one look.
+                {r.training
+                  ? ` The adapter was trained for ${r.training.steps} steps on ${r.training.images} OpenMoji pictograms in ${r.training.seconds} seconds.`
+                  : ""}
               </p>
             </div>
           ) : null}
@@ -111,48 +104,9 @@ export function Results() {
           ) : null}
         </div>
 
-        {r.base && r.adapter ? (
-          <div className="card results-table">
-            <p className="t-title">Pictures that passed the read-back on the first try</p>
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">Kind of picture</th>
-                  <th scope="col">Plain model</th>
-                  <th scope="col">With our adapter</th>
-                </tr>
-              </thead>
-              <tbody>
-                {KINDS.map(([kind, name]) => {
-                  const b = r.base!.byKind[kind];
-                  const a = r.adapter!.byKind[kind];
-                  if (!a && !b) return null;
-                  return (
-                    <tr key={kind}>
-                      <th scope="row">{name}</th>
-                      <td>{b ? `${b.k} of ${b.n}` : "not run"}</td>
-                      <td>{a ? `${a.k} of ${a.n}` : "not run"}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-            <p className="t-small">
-              A picture that fails is redrawn up to three times, the first attempt in our style and the rest with
-              the plain model. If none passes, the card shows a plain pictogram drawn by code.
-              {r.redrawRule
-                ? ` Worked out from these rates, that rule leaves about ${Math.round(r.redrawRule.styledThenPlainFallbackPct)}% of freshly drawn warning signs on the code-drawn marker, against ${Math.round(r.redrawRule.styledOnlyFallbackPct)}% if every attempt used the adapter.`
-                : ""}
-              {r.training
-                ? ` The adapter was trained for ${r.training.steps} steps on ${r.training.images} OpenMoji pictograms in ${r.training.seconds} seconds.`
-                : ""}
-            </p>
-          </div>
-        ) : null}
-
         {r.caught?.length ? (
           <div className="card results-caught">
-            <p className="t-title">Miscounted doses the check threw away</p>
+            <p className="t-title">Miscounted doses the read-back stopped</p>
             <ul>
               {r.caught.slice(0, 6).map((c) => {
                 const seen = [...new Set(c.readings.map((x) => x.reading?.count).filter((n) => typeof n === "number"))];
@@ -172,7 +126,7 @@ export function Results() {
 
         {r.misread?.length ? (
           <div className="card results-caught">
-            <p className="t-title">Warning signs the readers could not make sense of</p>
+            <p className="t-title">Misleading pictures the read-back stopped</p>
             <ul>
               {r.misread.slice(0, 6).map((c) => (
                 <li key={c.file}>
@@ -187,10 +141,6 @@ export function Results() {
           </div>
         ) : null}
 
-        <p className="results-note">
-          What this does not show: the readers are models, the test instructions are written from templates, and
-          no patient has used these cards yet.
-        </p>
       </div>
     </section>
   );

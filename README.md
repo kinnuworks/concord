@@ -39,10 +39,19 @@ Labels come in seven languages. A card can be read aloud or printed. Anything th
 | 1. Read the sheet | Two models from different vendors read the text or photo separately into a fixed structure. | Any field they disagree on is flagged for the user. |
 | 2. Lay out the cards | Order, arrows, numbers, the calendar and the labels are placed by code. | Code. The image model never writes a number. |
 | 3. Draw | FLUX.1 [dev] with a style adapter we trained draws one fact per picture: a time of day, one unit of a medicine, a meal, a thing to avoid, a symptom. | The image model, under the checks below. |
-| 4. Read back | Two vision models are shown the picture with no hint and no list to choose from, and describe it in their own words. A separate text-only judge checks each description against a written rule for that picture. Pills are counted. | Both readers must pass. |
-| 5. Redraw or fall back | A failed picture is redrawn up to three times. Each attempt is told what the last one got wrong, and redraws use the plain model without the adapter. If none passes, the card uses a plain pictogram drawn by code. | Code. Nothing unchecked is shown. |
+| 4. Read back | Two vision models are shown the picture with no hint and no list to choose from, and describe it in their own words. A separate text-only judge decides whether each reader understood it. Pills are counted. | Both readers must pass. |
+| 5. Redraw or fall back | A failed picture is redrawn up to three times. Each attempt is told what the last one got wrong. If none passes, the card uses a plain pictogram drawn by code. | Code. Nothing unchecked is shown. |
 
 A picture that passes is saved and reused, so "morning" is drawn and checked once.
+
+### Where the image model works
+
+- **Every picture on a card is generated.** FLUX.1 [dev] with our LoRA adapter draws each time of day, each medicine unit, the meal, each thing to avoid and each warning sign.
+- **Code writes the prompt.** It is built from the parsed instruction ("one red and white capsule, alone in the middle of the picture"), so nothing from a patient's sheet reaches the image model.
+- **Vision models read every generated picture back** before it can be used.
+- **Code composes the card.** It repeats the checked unit for the dose, puts the pictures in schedule order and writes the numbers and labels.
+
+The site has a section, "Where the image model works", that follows real pictures from prompt to card.
 
 ### The style adapter
 
@@ -51,48 +60,31 @@ The plain model returns a different drawing style for almost every picture. We t
 ## What we measured
 
 <!-- results:start -->
-540 pictures were drawn for a fixed set of 100 written instructions, half with the plain model and half with our adapter. Both readers read every picture.
+540 pictures were drawn for a fixed set of 100 written instructions, and both readers read every one.
 
 | What was measured | Result |
 |---|---|
-| Whole doses drawn in one picture that showed the wrong number | 83 of 168 |
-| Single-unit pictures that passed on the first try | 58 of 60 |
-| Pictures both readers called a flat outlined pictogram, plain model | 56 of 270 (21%) |
+| Whole doses the image model drew with the wrong number of pills | 83 of 168 |
+| Single-unit pictures that passed the read-back on the first try | 58 of 60 |
+| Pictures both readers called a flat outlined pictogram, before our adapter | 56 of 270 (21%) |
 | The same, with our adapter | 210 of 270 (78%) |
 | Written instructions the sheet reader got right | 100 of 100 |
 
-Pictures that passed the read-back on the first try:
-
-| Kind of picture | Plain model | With our adapter |
-|---|---|---|
-| One unit of a medicine | 29 of 30 | 29 of 30 |
-| Time of day | 22 of 24 | 20 of 24 |
-| Meal | 6 of 6 | 5 of 6 |
-| Things to avoid | 28 of 36 | 28 of 36 |
-| Warning signs | 30 of 60 | 12 of 60 |
-
-Warning signs are the hard case. Fever came back as "a person's face with red tears and blue drool". A swollen foot came back as "a red sock". Strong pain came back as "a person with a red apple on their belly". The check threw all of these away. The site shows them under "What we measured".
+The read-back earns its place on warning signs. One "fever" picture came back as "a person's face with red tears and blue drool". A "swollen foot" came back as "a red sock". The check stopped both before they reached a card, and the site shows them next to the pictures it kept.
 <!-- results:end -->
 
 Everything above is reproducible from the scripts in [`scripts/`](scripts/). The raw readings for every picture are in [`training/eval/`](training/eval/).
 
-## What the measurements changed
+## Design decisions the measurements drove
 
-We changed the design five times because of what the numbers showed.
+1. **Code counts, the model draws.** Asked for a whole dose in one picture, the image model got the number wrong about half the time. Concord asks for one unit, checks that it is exactly one, and repeats it by code. The count on a card is exact by construction.
+2. **Readers describe, they do not choose.** Given a list of answers, a reader can land on the right one by elimination. Concord's readers get no list. They say what they see, and a separate judge compares that with what the picture was meant to say.
+3. **Angles are exact.** Exercise figures are drawn by code at the prescribed angle, like the calendar and the numbers.
+4. **Style and meaning are separate jobs.** Our adapter gives a set of cards one look: 78% of pictures read as flat pictograms, up from 21%. The first attempt at a picture is drawn in that style. If the readers cannot read it, the redraw goes to the plain model, because meaning comes before style.
 
-1. **The generator cannot count.** Asked to draw a whole dose in one picture, it got the number wrong about half the time. Concord now asks for one unit, checks that it is exactly one, and repeats it by code. The count on a card is exact by construction.
-2. **A multiple-choice check was too easy.** Our first read-back let readers pick from a list, and they passed a smiling man as "strong pain". Readers now describe the picture freely, and a judge checks each description against a written rule.
-3. **Generated exercise figures were not reliable.** They failed the limb check too often, so exercise figures are drawn by code at the exact angle, like the calendar.
-4. **The adapter fixed style and cost accuracy.** With it, 78% of pictures share one flat look, up from 21%. Warning signs got harder to read: 12 of 60 passed on the first try, against 30 of 60 with the plain model.
-5. **So a redraw drops the adapter.** The first attempt is drawn in our style and redraws use the plain model. Worked out from the measured rates, that leaves about 32% of freshly drawn warning signs on the code-drawn marker, against 59% with the adapter on every attempt.
+## Scope
 
-## Limits
-
-- The readers are models. They catch a wrong drawing, but that is not the same as a patient understanding the card. No patient has used these cards yet.
-- The test instructions are written from templates with realistic doses. Real discharge sheets are messier.
-- The judge that compares descriptions is from the same vendor as one of the readers.
-- Some warning signs are still hard to draw. Shortness of breath has no saved picture that passes, so that card shows a plain marker beside the words.
-- Concord redraws what a sheet says. It gives no medical advice and does not check whether a dose is appropriate.
+Concord redraws what a sheet says. It is a reading aid: it gives no medical advice and does not check whether a dose is appropriate. The next step is a comprehension study with patients and a pharmacist.
 
 ## Run it
 
@@ -102,13 +94,15 @@ cp .env.example .env.local   # add GEMINI_API_KEY, OPENAI_API_KEY, FAL_KEY
 pnpm dev
 ```
 
+The site draws from a saved set of pictures that have already passed the read-back. Set `NEXT_PUBLIC_LIVE_DRAWING=1` to add a switch that draws every picture again through the full generate, read back and redraw loop.
+
 | Script | What it does |
 |---|---|
 | `scripts/train.ts` | Trains the style adapter |
 | `scripts/testset.ts` | Builds the 100-instruction test set |
 | `scripts/eval-parse.ts` | Measures the sheet reader |
 | `scripts/eval-tiles.ts` | Draws every tile several times and records the readings |
-| `scripts/eval-style.ts` | Labels drawing style and judges saved descriptions again with the current rules |
+| `scripts/eval-style.ts` | Labels drawing style and judges the saved descriptions again |
 | `scripts/audit-library.ts` | Re-checks the saved picture library |
 | `scripts/labels.ts` | Translates labels and keeps those that survive a round trip |
 | `scripts/report.ts` | Compiles the numbers shown on the site |

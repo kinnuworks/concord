@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-10-11T20:26:12.741Z",
+  "generatedAt": "2026-10-11T20:59:06.946Z",
   "base": {
     "pictures": 270,
     "tiles": 45,
     "firstTry": {
-      "k": 180,
+      "k": 184,
       "n": 270,
-      "pct": 66.7,
+      "pct": 68.1,
       "ci": [
-        60.8,
-        72
+        62.4,
+        73.4
       ]
     },
     "byKind": {
@@ -41,12 +41,12 @@
         ]
       },
       "time": {
-        "k": 22,
+        "k": 20,
         "n": 24,
-        "pct": 91.7,
+        "pct": 83.3,
         "ci": [
-          74.2,
-          97.7
+          64.1,
+          93.3
         ]
       },
       "meal": {
@@ -59,25 +59,25 @@
         ]
       },
       "avoid": {
-        "k": 28,
+        "k": 29,
         "n": 36,
-        "pct": 77.8,
+        "pct": 80.6,
         "ci": [
-          61.9,
-          88.3
+          65,
+          90.2
         ]
       },
       "warning": {
-        "k": 30,
+        "k": 35,
         "n": 60,
-        "pct": 50,
+        "pct": 58.3,
         "ci": [
-          37.7,
-          62.3
+          45.7,
+          69.9
         ]
       }
     },
-    "expectedFallbackPct": 16.9,
+    "expectedFallbackPct": 14.7,
     "neverPassed": [
       "exercise-straight_leg_raise-45",
       "warning-breathlessness"
@@ -87,12 +87,12 @@
     "pictures": 270,
     "tiles": 45,
     "firstTry": {
-      "k": 146,
+      "k": 147,
       "n": 270,
-      "pct": 54.1,
+      "pct": 54.4,
       "ci": [
-        48.1,
-        59.9
+        48.5,
+        60.3
       ]
     },
     "byKind": {
@@ -124,47 +124,47 @@
         ]
       },
       "time": {
-        "k": 20,
+        "k": 13,
         "n": 24,
-        "pct": 83.3,
+        "pct": 54.2,
         "ci": [
-          64.1,
-          93.3
+          35.1,
+          72.1
         ]
       },
       "meal": {
-        "k": 5,
+        "k": 6,
         "n": 6,
-        "pct": 83.3,
+        "pct": 100,
         "ci": [
-          43.6,
-          97
+          61,
+          100
         ]
       },
       "avoid": {
-        "k": 28,
+        "k": 32,
         "n": 36,
-        "pct": 77.8,
+        "pct": 88.9,
         "ci": [
-          61.9,
-          88.3
+          74.7,
+          95.6
         ]
       },
       "warning": {
-        "k": 12,
+        "k": 15,
         "n": 60,
-        "pct": 20,
+        "pct": 25,
         "ci": [
-          11.8,
-          31.8
+          15.8,
+          37.2
         ]
       }
     },
-    "expectedFallbackPct": 27.4,
+    "expectedFallbackPct": 27.7,
     "neverPassed": [
       "dose-puff-2",
       "exercise-straight_leg_raise-45",
-      "warning-swelling",
+      "warning-chest_pain",
       "warning-breathlessness",
       "warning-wound_discharge"
     ]
@@ -211,8 +211,8 @@
   },
   "redrawRule": {
     "signs": 10,
-    "styledOnlyFallbackPct": 58.6,
-    "styledThenPlainFallbackPct": 32.1
+    "styledOnlyFallbackPct": 53.2,
+    "styledThenPlainFallbackPct": 22.7
   },
   "caught": [
     {
@@ -555,6 +555,15 @@
   ],
   "misread": [
     {
+      "file": "/evidence/misread-adapter-warning-swelling__1.png",
+      "arm": "adapter",
+      "meant": "a swollen leg, foot or body part",
+      "saw": [
+        "a red sock",
+        "a red sock"
+      ]
+    },
+    {
       "file": "/evidence/misread-adapter-warning-fever__3.png",
       "arm": "adapter",
       "meant": "a person with a fever or high temperature",
@@ -573,30 +582,12 @@
       ]
     },
     {
-      "file": "/evidence/misread-adapter-warning-swelling__1.png",
-      "arm": "adapter",
-      "meant": "a swollen leg, foot or body part",
-      "saw": [
-        "a red sock",
-        "a red sock"
-      ]
-    },
-    {
-      "file": "/evidence/misread-adapter-warning-chest_pain__0.png",
+      "file": "/evidence/misread-adapter-warning-chest_pain__1.png",
       "arm": "adapter",
       "meant": "chest pain",
       "saw": [
-        "a person with hands raised to their chest, palms facing in.",
-        "a person in an orange shirt holding both hands near their chest"
-      ]
-    },
-    {
-      "file": "/evidence/misread-adapter-warning-breathlessness__0.png",
-      "arm": "adapter",
-      "meant": "a person struggling to breathe",
-      "saw": [
-        "a person with a sore throat or difficulty swallowing.",
-        "a person touching their chin with one hand."
+        "a person with a dumbbell symbol on their shirt",
+        "a person holding their stomach with red plus signs."
       ]
     },
     {
@@ -609,22 +600,112 @@
       ]
     },
     {
-      "file": "/evidence/misread-adapter-warning-vomiting__3.png",
+      "file": "/evidence/misread-adapter-warning-breathlessness__0.png",
       "arm": "adapter",
-      "meant": "a person vomiting or being sick",
+      "meant": "a person struggling to breathe",
       "saw": [
-        "a person spitting a green drop into a cup with green liquid.",
-        "a face dripping green liquid into a cup"
+        "a person with a sore throat or difficulty swallowing.",
+        "a person touching their chin with one hand."
       ]
+    }
+  ],
+  "examples": [
+    {
+      "key": "warning-swelling",
+      "prompt": "rdbk pictogram, one bare foot and ankle swollen up like a balloon, far bigger than a normal foot, red and puffy, with small arrows pointing outward from the swelling, flat vector pictogram icon, bold thick black outlines, solid flat colours, simple rounded shapes, pure white background, centred with wide margins, no shadows, no gradients, no texture, no text, no letters, no numbers",
+      "meant": "a swollen leg, foot or body part",
+      "stopped": {
+        "file": "/evidence/example-adapter-warning-swelling__1.png",
+        "saw": [
+          "a red sock",
+          "a red sock"
+        ]
+      },
+      "kept": {
+        "file": "/evidence/example-base-warning-swelling__0.png",
+        "saw": [
+          "swollen foot and ankle with red arrows indicating pain",
+          "a foot with a swollen, red ankle"
+        ],
+        "plain": true
+      }
     },
     {
-      "file": "/evidence/misread-adapter-warning-dizziness__0.png",
-      "arm": "adapter",
-      "meant": "a dizzy person",
-      "saw": [
-        "a person wearing headphones with sound waves above their head.",
-        "a person holding their hands to their head beneath curved lines"
-      ]
+      "key": "warning-fever",
+      "prompt": "rdbk pictogram, the face of a sick person with red cheeks and sweat drops, holding a thermometer in the mouth, flat vector pictogram icon, bold thick black outlines, solid flat colours, simple rounded shapes, pure white background, centred with wide margins, no shadows, no gradients, no texture, no text, no letters, no numbers",
+      "meant": "a person with a fever or high temperature",
+      "stopped": {
+        "file": "/evidence/example-adapter-warning-fever__3.png",
+        "saw": [
+          "a person's face with red tears and blue drool.",
+          "a person crying with tears and an open mouth"
+        ]
+      },
+      "kept": {
+        "file": "/evidence/example-adapter-warning-fever__1.png",
+        "saw": [
+          "a cartoon face with a thermometer in its mouth, red cheeks.",
+          "a person with flushed cheeks and a thermometer"
+        ]
+      }
+    },
+    {
+      "key": "warning-bleeding",
+      "prompt": "rdbk pictogram, a bandaged arm with red drops falling from it, flat vector pictogram icon, bold thick black outlines, solid flat colours, simple rounded shapes, pure white background, centred with wide margins, no shadows, no gradients, no texture, no text, no letters, no numbers",
+      "meant": "bleeding",
+      "stopped": {
+        "file": "/evidence/example-adapter-warning-bleeding__0.png",
+        "saw": [
+          "an arm with a closed fist and a gold bracelet.",
+          "a hand with a yellow wristband"
+        ]
+      },
+      "kept": {
+        "file": "/evidence/example-adapter-warning-bleeding__2.png",
+        "saw": [
+          "a hand with a drop of blood falling from it.",
+          "a hand bleeding from a cut"
+        ]
+      }
+    },
+    {
+      "key": "warning-chest_pain",
+      "prompt": "rdbk pictogram, a person holding the chest with both hands, pain lines at the chest, flat vector pictogram icon, bold thick black outlines, solid flat colours, simple rounded shapes, pure white background, centred with wide margins, no shadows, no gradients, no texture, no text, no letters, no numbers",
+      "meant": "chest pain",
+      "stopped": {
+        "file": "/evidence/example-adapter-warning-chest_pain__1.png",
+        "saw": [
+          "a person with a dumbbell symbol on their shirt",
+          "a person holding their stomach with red plus signs."
+        ]
+      },
+      "kept": {
+        "file": "/evidence/example-base-warning-chest_pain__0.png",
+        "saw": [
+          "person holding chest with red glow, indicating pain.",
+          "a person clutching a glowing red chest"
+        ],
+        "plain": true
+      }
+    },
+    {
+      "key": "warning-severe_pain",
+      "prompt": "rdbk pictogram, a person bent forward clutching the belly with both hands, eyes shut tight and teeth clenched in pain, red jagged pain marks at the belly, flat vector pictogram icon, bold thick black outlines, solid flat colours, simple rounded shapes, pure white background, centred with wide margins, no shadows, no gradients, no texture, no text, no letters, no numbers",
+      "meant": "a person in strong pain",
+      "stopped": {
+        "file": "/evidence/example-adapter-warning-severe_pain__3.png",
+        "saw": [
+          "a person with a red spot on their stomach.",
+          "a person with a red apple on their belly."
+        ]
+      },
+      "kept": {
+        "file": "/evidence/example-adapter-warning-severe_pain__1.png",
+        "saw": [
+          "a stick figure holding their stomach with red pain indicators.",
+          "a person bending over, clutching their stomach in pain."
+        ]
+      }
     }
   ],
   "reader": {

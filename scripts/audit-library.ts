@@ -1,6 +1,6 @@
 // Re-checks every saved library picture with the current read-back. A picture that no
 // longer passes is redrawn through the gate, or dropped so the card falls back to code.
-// Run: READBACK_SAVE_TILES=1 pnpm tsx --env-file=.env.local scripts/audit-library.ts [key ...]
+// Run: READBACK_SAVE_TILES=1 pnpm tsx --env-file=.env.local scripts/audit-library.ts [check | key ...]
 import { readFileSync, writeFileSync, existsSync, rmSync } from "node:fs";
 import { AVOIDS, FORMS, TIMES, WARNINGS } from "../src/lib/schema";
 import { gateOnce } from "../src/lib/gate";
@@ -18,12 +18,14 @@ const ALL: TileSpec[] = [
 type Entry = { file: string; seed: number; adapter: boolean; tries: number; checkedBy: string[] };
 
 async function main() {
-  const force = new Set(process.argv.slice(2));
+  // "check" only reads the saved pictures again and reports. Nothing is redrawn or removed.
+  const checkOnly = process.argv[2] === "check";
+  const force = new Set(checkOnly ? [] : process.argv.slice(2));
   const manifestFile = new URL("src/data/library.json", root);
   const manifest = JSON.parse(readFileSync(manifestFile, "utf8")) as Record<string, Entry>;
   const queue = [...ALL];
   await Promise.all(
-    Array.from({ length: 4 }, async () => {
+    Array.from({ length: checkOnly ? 1 : 4 }, async () => {
       for (let spec = queue.shift(); spec; spec = queue.shift()) {
         const key = tileKey(spec);
         const path = new URL(`public/tiles/${key}.png`, root);
@@ -37,6 +39,7 @@ async function main() {
           console.log(`${key}: kept`);
           continue;
         }
+        if (checkOnly) continue;
         const r = await gateOnce(spec, { adapter: true, maxTries: 5 });
         if (r.source === "generated") {
           const res = await fetch(r.url);
