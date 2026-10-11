@@ -90,139 +90,191 @@ export default function Home() {
   }, [reports]);
 
   return (
-    <main className="page">
-      <header className="top">
-        <h1>Readback</h1>
-        <p>
-          Discharge instructions as picture cards. Every picture is read back by two separate models before
-          you see it, and a picture they misread is thrown away.
-        </p>
+    <>
+      <header className="nav">
+        <div className="nav__bar">
+          <a className="nav__brand" href="#top">
+            <span className="app-icon app-mark" aria-hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 12.5l4 4L15 9" />
+                <path d="M12 16.5l1 1L21 9" />
+              </svg>
+            </span>
+            Readback
+          </a>
+          <a className="btn btn-ink btn-sm" href="#make" style={{ marginLeft: "auto" }}>
+            Make the cards
+          </a>
+        </div>
       </header>
 
-      <section className="panel">
-        <div className="samples">
-          {SAMPLES.map((s) => (
-            <button
-              key={s.name}
-              type="button"
-              className="ghost"
-              onClick={() => {
-                setText(s.text);
-                setPhoto(null);
-              }}
-            >
-              {s.name}
-            </button>
-          ))}
-        </div>
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          rows={7}
-          disabled={Boolean(photo)}
-          aria-label="Discharge instructions"
-        />
-        <div className="controls">
-          <input
-            ref={fileRef}
-            type="file"
-            accept="image/*"
-            hidden
-            onChange={(e) => onFile(e.target.files?.[0])}
-          />
-          <button type="button" className="ghost" onClick={() => fileRef.current?.click()}>
-            {photo ? `Photo: ${photo.name}` : "Use a photo of the sheet"}
-          </button>
-          {photo ? (
-            <button type="button" className="ghost" onClick={() => setPhoto(null)}>
-              Remove photo
-            </button>
-          ) : null}
-          <label className="field">
-            Language
-            <select value={lang} onChange={(e) => setLang(e.target.value as Lang)}>
-              {Object.entries(LANGUAGES).map(([code, name]) => (
-                <option key={code} value={code}>
-                  {name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="field check">
-            <input type="checkbox" checked={fresh} onChange={(e) => setFresh(e.target.checked)} />
-            Draw every picture new
-          </label>
-          <button type="button" className="primary" onClick={submit} disabled={busy}>
-            {busy ? "Reading the sheet" : "Make the cards"}
-          </button>
-        </div>
-        {error ? <p className="error">{error}</p> : null}
-      </section>
+      <main id="top">
+        <section className="hero hero--app">
+          <div className="container">
+            <h1>
+              Discharge instructions <span className="t-muted">as picture cards.</span>
+            </h1>
+            <p className="lead">
+              Every picture is read back by two separate models before you see it, and a picture they misread
+              is thrown away.
+            </p>
+          </div>
+        </section>
 
-      {parsed ? (
-        <>
-          <section className="panel">
-            <h2>What the two readers found</h2>
-            {parsed.disagreements.length === 0 ? (
-              <p className="ok">Both readers agree on every field.</p>
-            ) : (
-              <ul className="disagree">
-                {parsed.disagreements.map((d) => (
-                  <li key={d.path}>
-                    <code>{d.path}</code>: {parsed.readers[0]} read <b>{JSON.stringify(d.a)}</b>,{" "}
-                    {parsed.readers[1]} read <b>{JSON.stringify(d.b)}</b>. Check the sheet.
-                  </li>
+        <section className="workspace" id="make">
+          <div className="container">
+            <div className="card block">
+              <div className="chips">
+                {SAMPLES.map((s) => (
+                  <button
+                    key={s.name}
+                    type="button"
+                    className="chip"
+                    aria-pressed={!photo && text === s.text}
+                    onClick={() => {
+                      setText(s.text);
+                      setPhoto(null);
+                    }}
+                  >
+                    {s.name}
+                  </button>
                 ))}
-              </ul>
-            )}
-            {parsed.regimen.unparsed.length ? (
-              <div className="unparsed">
-                <p>Not drawn, shown as written:</p>
-                <ul>
-                  {parsed.regimen.unparsed.map((u) => (
-                    <li key={u}>{u}</li>
-                  ))}
-                </ul>
               </div>
-            ) : null}
-          </section>
-
-          <section className="panel">
-            <div className="sheet-head">
-              <h2>Cards</h2>
-              <p className="muted">
-                {stats.done} of {stats.total} pictures ready · {stats.rejected.length} rejected by the check ·{" "}
-                {stats.fallback} drawn from the numbers
-              </p>
+              <textarea
+                className="input"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                rows={7}
+                disabled={Boolean(photo)}
+                aria-label="Discharge instructions"
+              />
+              <div className="toolbar">
+                <input
+                  ref={fileRef}
+                  type="file"
+                  accept="image/*"
+                  hidden
+                  onChange={(e) => onFile(e.target.files?.[0])}
+                />
+                <button type="button" className="btn btn-outline btn-sm" onClick={() => fileRef.current?.click()}>
+                  {photo ? `Photo: ${photo.name}` : "Use a photo of the sheet"}
+                </button>
+                {photo ? (
+                  <button type="button" className="btn btn-ghost btn-sm" onClick={() => setPhoto(null)}>
+                    Remove photo
+                  </button>
+                ) : null}
+                <label className="field">
+                  Language
+                  <select className="select" value={lang} onChange={(e) => setLang(e.target.value as Lang)}>
+                    {Object.entries(LANGUAGES).map(([code, name]) => (
+                      <option key={code} value={code}>
+                        {name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="field">
+                  <input
+                    type="checkbox"
+                    className="switch"
+                    checked={fresh}
+                    onChange={(e) => setFresh(e.target.checked)}
+                  />
+                  Draw every picture new
+                </label>
+                <button type="button" className="btn btn-candy" onClick={submit} disabled={busy}>
+                  {busy ? "Reading the sheet" : "Make the cards"}
+                </button>
+              </div>
+              {error ? <p className="note note--bad">{error}</p> : null}
             </div>
-            <CardSheet cards={parsed.cards} lang={lang} fresh={fresh} run={run} report={report} />
-          </section>
 
-          {stats.rejected.length ? (
-            <section className="panel">
-              <h2>What the check caught</h2>
-              <ul className="caught">
-                {stats.rejected.map((a) => (
-                  <li key={a.url}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={a.url} alt="Rejected picture" width={96} height={96} />
-                    <div>
-                      <p>
-                        Wanted <b>{JSON.stringify(a.verdict!.expected)}</b>
-                      </p>
-                      {a.verdict!.mismatches.map((m) => (
-                        <p key={m} className="muted">
-                          {m}
-                        </p>
+            {parsed ? (
+              <>
+                <div className="card block">
+                  <h2 className="t-title">What the two readers found</h2>
+                  {parsed.disagreements.length === 0 ? (
+                    <p className="note note--ok">Both readers agree on every field.</p>
+                  ) : (
+                    <ul className="list list--flag">
+                      {parsed.disagreements.map((d) => (
+                        <li key={d.path}>
+                          <span className="t-mono">{d.path}</span>: {parsed.readers[0]} read{" "}
+                          <b>{JSON.stringify(d.a)}</b>, {parsed.readers[1]} read <b>{JSON.stringify(d.b)}</b>.
+                          Check the sheet.
+                        </li>
                       ))}
+                    </ul>
+                  )}
+                  {parsed.regimen.unparsed.length ? (
+                    <>
+                      <p className="note">Not drawn, shown as written:</p>
+                      <ul className="list">
+                        {parsed.regimen.unparsed.map((u) => (
+                          <li key={u}>{u}</li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : null}
+                </div>
+
+                <div className="block">
+                  <div className="block__head">
+                    <h2 className="t-title">Cards</h2>
+                    <div className="chips">
+                      <span className="chip chip--soft">
+                        <span className="stat">
+                          {stats.done} of {stats.total}
+                        </span>
+                        pictures ready
+                      </span>
+                      <span className="chip chip--soft">
+                        <span className="stat">{stats.rejected.length}</span> rejected by the check
+                      </span>
+                      <span className="chip chip--soft">
+                        <span className="stat">{stats.fallback}</span> drawn from the numbers
+                      </span>
                     </div>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ) : null}
-        </>
-      ) : null}
-    </main>
+                  </div>
+                  <div className="stage stage--soft">
+                    <CardSheet cards={parsed.cards} lang={lang} fresh={fresh} run={run} report={report} />
+                  </div>
+                </div>
+
+                {stats.rejected.length ? (
+                  <div className="card block">
+                    <h2 className="t-title">What the check caught</h2>
+                    <ul className="caught">
+                      {stats.rejected.map((a) => (
+                        <li key={a.url}>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={a.url} alt="Rejected picture" width={88} height={88} />
+                          <div>
+                            <p>
+                              Wanted <span className="t-mono">{JSON.stringify(a.verdict!.expected)}</span>
+                            </p>
+                            {a.verdict!.mismatches.map((m) => (
+                              <p key={m}>{m}</p>
+                            ))}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+              </>
+            ) : null}
+          </div>
+        </section>
+      </main>
+
+      <footer className="footer">
+        <div className="container">
+          <span>Readback</span>
+          <span>Discharge instructions as picture cards, checked by read-back before you see them.</span>
+        </div>
+      </footer>
+    </>
   );
 }

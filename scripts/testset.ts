@@ -2,7 +2,7 @@
 // The text is produced from the answer, so the answer is exact by construction.
 // Run: pnpm tsx scripts/testset.ts
 import { writeFileSync } from "node:fs";
-import { AVOIDS, FORMS, type Avoid, type Food, type Form, type Medicine, type TimeOfDay } from "../src/lib/schema";
+import { AVOIDS, type Avoid, type Food, type Form, type Medicine, type TimeOfDay } from "../src/lib/schema";
 import { planMedicine, tilesFor } from "../src/lib/plan";
 import { tileKey } from "../src/lib/tiles";
 

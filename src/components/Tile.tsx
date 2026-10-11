@@ -99,24 +99,24 @@ export function TileView({
   const rejected = state.attempts.filter((a) => a.verdict && !a.verdict.pass);
   const current = state.url ?? state.attempts[state.attempts.length - 1]?.url;
   return (
-    <figure className="tile" style={{ width: size }}>
-      <div className="tile-frame" style={{ width: size, height: size }} data-status={state.status}>
+    <figure className="pic" style={{ width: size }}>
+      <div className="pic__frame" style={{ width: size, height: size }} data-status={state.status}>
         {current ? (
           // Tiles come from several hosts and from data URLs, so a plain img is used.
           // eslint-disable-next-line @next/next/no-img-element
           <img src={current} alt={alt} width={size} height={size} />
         ) : (
-          <span className="tile-wait" aria-label="Drawing" />
+          <span className="pic__wait" aria-label="Drawing" />
         )}
         {crossed && state.url ? (
-          <svg className="tile-cross" viewBox="0 0 100 100" aria-hidden>
-            <circle cx="50" cy="50" r="44" fill="none" stroke="#d92d20" strokeWidth="8" />
-            <line x1="19" y1="19" x2="81" y2="81" stroke="#d92d20" strokeWidth="8" />
+          <svg className="pic__cross" viewBox="0 0 100 100" aria-hidden>
+            <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" strokeWidth="8" />
+            <line x1="19" y1="19" x2="81" y2="81" stroke="currentColor" strokeWidth="8" />
           </svg>
         ) : null}
-        {badge ? <span className="tile-badge">{badge}</span> : null}
+        {badge ? <span className="pic__count">{badge}</span> : null}
       </div>
-      <figcaption className="tile-note">
+      <figcaption className="pic__note">
         {state.status === "working" && state.attempts.length > 0 ? `Checking try ${state.attempts.length}` : null}
         {state.status === "working" && state.attempts.length === 0 ? "Drawing" : null}
         {state.status === "accepted" && rejected.length > 0

@@ -38,13 +38,13 @@ function GatedTile({
 }
 
 const Arrow = () => (
-  <svg className="arrow" viewBox="0 0 40 24" aria-hidden>
+  <svg className="step-mark" viewBox="0 0 40 24" aria-hidden>
     <path d="M2 12h32m-10 -9l10 9l-10 9" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const Plus = () => (
-  <svg className="arrow" viewBox="0 0 24 24" aria-hidden>
+  <svg className="step-mark" viewBox="0 0 24 24" aria-hidden>
     <path d="M12 3v18M3 12h18" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
   </svg>
 );
@@ -89,19 +89,19 @@ function Row({ row, shared }: { row: DoseRow; shared: Shared }) {
 
 // The calendar is drawn by code: one box per day, so the count can't be wrong.
 function Calendar({ days, lang }: { days: number | null; lang: Lang }) {
-  if (days === null) return <p className="word strong">{label(lang, "every_day")}</p>;
+  if (days === null) return <p className="word word--strong">{label(lang, "every_day")}</p>;
   const shown = Math.min(days, 31);
   return (
     <div className="calendar">
-      <div className="calendar-boxes" aria-hidden>
+      <div className="calendar__boxes" aria-hidden>
         {Array.from({ length: shown }, (_, i) => (
-          <span key={i} className="day">
+          <span key={i} className="calendar__day">
             {i + 1}
           </span>
         ))}
       </div>
-      <p className="word strong">
-        {days} {label(lang, "days")}
+      <p className="word word--strong">
+        <span className="t-mono">{days}</span> {label(lang, "days")}
       </p>
     </div>
   );
@@ -111,10 +111,10 @@ function MedicineView({ card, shared }: { card: MedicineCard; shared: Shared }) 
   const m = card.medicine;
   const food = label(shared.lang, m.food);
   return (
-    <article className="card">
-      <header className="card-head">
+    <article className="card rx">
+      <header className="rx__head">
         <h3>{m.name}</h3>
-        {food ? <span className="chip">{food}</span> : null}
+        {food ? <span className="chip chip--soft">{food}</span> : null}
       </header>
       <div className="dose-rows">
         {card.rows.map((row) => (
@@ -123,12 +123,12 @@ function MedicineView({ card, shared }: { card: MedicineCard; shared: Shared }) 
       </div>
       <Calendar days={card.days} lang={shared.lang} />
       {card.avoid.length ? (
-        <div className="avoid">
-          <p className="word strong">{label(shared.lang, "do_not")}</p>
-          <div className="avoid-tiles">
+        <div className="group">
+          <p className="word word--strong">{label(shared.lang, "do_not")}</p>
+          <div className="group__items">
             {card.avoid.map((t) =>
               t.kind === "avoid" ? (
-                <div key={t.item} className="avoid-item">
+                <div key={t.item} className="group__item">
                   <GatedTile spec={t} shared={shared} size={88} crossed alt={t.item} />
                   <span className="word">{label(shared.lang, t.item)}</span>
                 </div>
@@ -144,14 +144,14 @@ function MedicineView({ card, shared }: { card: MedicineCard; shared: Shared }) 
 function ExerciseView({ card, shared }: { card: ExerciseCard; shared: Shared }) {
   const e = card.exercise;
   return (
-    <article className="card">
-      <header className="card-head">
+    <article className="card rx">
+      <header className="rx__head">
         <h3>{e.name}</h3>
-        <span className="chip">{Math.round(e.angle)}°</span>
+        <span className="chip chip--soft t-mono">{Math.round(e.angle)}°</span>
       </header>
       <div className="exercise">
         <GatedTile spec={card.tile} shared={shared} size={200} alt={e.name} />
-        <p className="word strong">
+        <p className="word word--strong">
           {e.reps} {label(shared.lang, "times")} × {e.sets} {label(shared.lang, "sets")}
           <br />
           {e.timesPerDay} {label(shared.lang, "times_a_day")}
@@ -163,13 +163,13 @@ function ExerciseView({ card, shared }: { card: ExerciseCard; shared: Shared }) 
 
 function WarningView({ card, shared }: { card: WarningCard; shared: Shared }) {
   return (
-    <article className="card card-warning">
-      <header className="card-head">
+    <article className="card rx rx--warning">
+      <header className="rx__head">
         <h3>{label(shared.lang, "come_back")}</h3>
       </header>
-      <div className="avoid-tiles">
+      <div className="group__items">
         {card.signs.map(({ sign, tile }) => (
-          <div key={sign} className="avoid-item">
+          <div key={sign} className="group__item">
             <GatedTile spec={tile} shared={shared} size={110} alt={sign} />
             <span className="word">{label(shared.lang, sign)}</span>
           </div>
@@ -192,11 +192,11 @@ export function CardSheet({ cards, ...shared }: { cards: Card[] } & Shared) {
             return <WarningView key={card.id} card={card} shared={shared} />;
           case "followup":
             return (
-              <article key={card.id} className="card">
-                <header className="card-head">
+              <article key={card.id} className="card rx">
+                <header className="rx__head">
                   <h3>{label(shared.lang, "next_visit")}</h3>
                 </header>
-                <p className="word strong big">
+                <p className="word word--big">
                   {card.date
                     ? new Date(`${card.date}T00:00:00`).toLocaleDateString(shared.lang, {
                         weekday: "long",
