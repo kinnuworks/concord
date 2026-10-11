@@ -104,7 +104,14 @@ export async function geminiJson(
   // through the router instead, so one reader's bad minute doesn't stop the sheet being read.
   return withRetry(
     () => geminiOnce(prompt, images, model),
-    () => (images.length ? googleVisionJson(prompt, images) : googleTextJson(prompt)),
+    async () => {
+      try {
+        return await (images.length ? googleVisionJson(prompt, images) : googleTextJson(prompt));
+      } catch {
+        // Last resort: the vendor's lighter model, which has its own allowance.
+        return geminiOnce(prompt, images, MODELS.geminiFast);
+      }
+    },
   );
 }
 

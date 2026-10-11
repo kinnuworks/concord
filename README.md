@@ -117,7 +117,7 @@ pnpm dev
 
 - **Pictures:** FLUX.1 [dev] by Black Forest Labs, run and fine-tuned on [fal](https://fal.ai).
 - **Training set:** [OpenMoji](https://openmoji.org), CC BY-SA 4.0. The adapter and the pictures in `public/tiles/` are derived from it and are shared under the same licence.
-- **Readers:** Gemini 3.8 Flash and Gemini 2.5 Flash (Google), GPT-6 Luna (OpenAI).
+- **Readers:** Gemini 3.8 Flash and Gemini 2.5 Flash (Google), GPT-6 Luna (OpenAI). Gemini 3.5 Flash-Lite is the last fallback for reading a sheet when the others are busy.
 - **Libraries:** Next.js, React, zod, the fal, Google GenAI and OpenAI clients.
 - **Evidence:** the studies linked above.
 
