@@ -101,7 +101,7 @@
   },
   "avoid-smoking": {
     "file": "/tiles/avoid-smoking.png",
-    "seed": 15854489279364872000,
+    "seed": 3448124427058538000,
     "adapter": true,
     "tries": 1,
     "checkedBy": [
@@ -181,9 +181,9 @@
   },
   "warning-fever": {
     "file": "/tiles/warning-fever.png",
-    "seed": 10955088612719227000,
+    "seed": 10963387612129171000,
     "adapter": true,
-    "tries": 2,
+    "tries": 1,
     "checkedBy": [
       "gemini",
       "openai"

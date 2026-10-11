@@ -3,3 +3,18 @@ unit-tablet: kept
 unit-drops: kept
 unit-capsule: kept
 unit-puff: kept
+time-morning: kept
+time-afternoon: kept
+time-evening: kept
+time-night: kept
+meal: kept
+avoid-alcohol: kept
+avoid-driving: kept
+avoid-sunlight: no longer passes (gemini saw "a black human figure with a yellow gear behind its head.", meant to show a person in strong sunlight)
+avoid-heavy_lifting: no longer passes (gemini saw "stick figure person with yellow hat carrying a box", meant to show a person lifting or carrying something heavy; openai saw "a person wear)
+avoid-dairy: kept
+avoid-smoking: redrawn, passed on try 1
+warning-fever: no longer passes (gemini saw "person with dark hair, red cheeks, and a pill in mouth.", meant to show a person with a fever or high temperature)
+warning-bleeding: no longer passes (gemini saw "hand pointing with two blood drops", meant to show bleeding)
+warning-fever: redrawn, passed on try 1
+warning-swelling: no longer passes (gemini saw "two legs, one light-skinned, one red-skinned", meant to show a swollen leg, foot or body part; openai saw "two lower legs and feet, one wi)

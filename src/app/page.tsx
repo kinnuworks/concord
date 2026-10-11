@@ -21,6 +21,8 @@ type Parsed = {
 // on screen when the page opens. "Make the cards" always runs the real reader again.
 const SAMPLES = samples as unknown as { name: string; text: string; parsed: Parsed }[];
 
+const SAMPLE_PHOTO = { src: "/samples/discharge-sheet.jpg", name: "discharge-sheet.jpg" };
+
 type Report = { spec: TileSpec; state: TileState };
 
 export default function Home() {
@@ -39,12 +41,23 @@ export default function Home() {
     setReports((r) => (r[key]?.state === state ? r : { ...r, [key]: { spec, state } }));
   }, []);
 
+  // Photos are shrunk in the browser before upload: a phone photo is far larger than
+  // a reader needs, and small uploads keep the request inside hosting limits.
   async function onFile(file: File | undefined) {
     if (!file) return setPhoto(null);
-    const buf = new Uint8Array(await file.arrayBuffer());
-    let bin = "";
-    for (const b of buf) bin += String.fromCharCode(b);
-    setPhoto({ mime: file.type || "image/jpeg", base64: btoa(bin), name: file.name });
+    try {
+      const bitmap = await createImageBitmap(file);
+      const scale = Math.min(1, 1600 / Math.max(bitmap.width, bitmap.height));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(bitmap.width * scale);
+      canvas.height = Math.round(bitmap.height * scale);
+      canvas.getContext("2d")!.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      const dataUrl = canvas.toDataURL("image/jpeg", 0.85);
+      setPhoto({ mime: "image/jpeg", base64: dataUrl.slice(dataUrl.indexOf(",") + 1), name: file.name });
+      setParsed(null);
+    } catch {
+      setError("That file could not be opened as a picture.");
+    }
   }
 
   async function submit() {
@@ -136,8 +149,24 @@ export default function Home() {
                     {s.name}
                   </button>
                 ))}
+                <button
+                  type="button"
+                  className="chip"
+                  aria-pressed={photo?.name === SAMPLE_PHOTO.name}
+                  onClick={async () => {
+                    const blob = await (await fetch(SAMPLE_PHOTO.src)).blob();
+                    await onFile(new File([blob], SAMPLE_PHOTO.name, { type: "image/jpeg" }));
+                  }}
+                >
+                  A photo of a printed sheet
+                </button>
               </div>
+              {photo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className="sheet-photo" src={`data:${photo.mime};base64,${photo.base64}`} alt="The photographed discharge sheet" />
+              ) : null}
               <textarea
+                hidden={Boolean(photo)}
                 className="input"
                 value={text}
                 onChange={(e) => setText(e.target.value)}

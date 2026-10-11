@@ -136,6 +136,14 @@
   color: var(--ink-3);
   background: var(--tint);
 }
+.sheet-photo {
+  width: 100%;
+  max-height: 340px;
+  object-fit: contain;
+  border-radius: var(--r-md);
+  background: var(--sunk);
+  box-shadow: var(--ring);
+}
 .select {
   height: 36px;
   padding: 0 12px;
