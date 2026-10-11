@@ -15,7 +15,7 @@ Everything to paste into Devpost, then the video script.
 
 **Built with:** nextjs, typescript, react, fal, flux, lora, gemini, openai, openmoji, vercel
 
-**AI tools used (the rules ask for this):** Claude Code for writing code. FLUX.1 [dev] with our own LoRA adapter for the pictures. Gemini 3.8 Flash, Gemini 2.5 Flash and GPT-6 Luna as readers.
+**AI tools used (the rules ask for this):** Claude Code for writing code. FLUX.1 [dev] with our own LoRA adapter for the pictures. Gemini 3.8 Flash, Gemini 2.5 Flash, Gemini 3.5 Flash-Lite and GPT-6 Luna as readers.
 
 ## Write-up
 
