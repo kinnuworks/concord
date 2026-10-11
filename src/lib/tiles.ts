@@ -29,11 +29,12 @@ export function tileKey(t: TileSpec): string {
 
 const NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six"];
 
+// Sunrise and sunset look alike, so morning and evening each carry a second cue.
 const TIME_SCENE: Record<TimeOfDay, string> = {
-  morning: "a sun rising over a low horizon, half of the sun visible, pale morning sky",
-  afternoon: "a full round sun high in the middle of a clear sky",
-  evening: "a sun setting behind a low horizon, orange sky",
-  night: "a crescent moon and a few stars in a dark sky",
+  morning: "a yellow sun rising behind green hills in a light blue sky, with a rooster crowing in the foreground",
+  afternoon: "a full round yellow sun with rays, high in a bright blue sky",
+  evening: "an orange sun sinking into the sea under a purple dusk sky with one early star",
+  night: "a crescent moon and a few stars in a dark blue night sky",
 };
 
 const FORM_OBJECT: Record<Form, (n: number) => string> = {
