@@ -49,3 +49,6 @@ training/train.log
 
 # the demo video is built in its own project
 video/
+
+# rendered demo video
+concord-demo.mp4

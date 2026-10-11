@@ -15,7 +15,7 @@ Everything to paste into Devpost, then the video script.
 
 **Built with:** nextjs, typescript, react, fal, flux, lora, gemini, openai, openmoji, vercel
 
-**AI tools used (the rules ask for this):** Claude Code for writing code. FLUX.1 [dev] with our own LoRA adapter for the pictures. Gemini 3.8 Flash, Gemini 2.5 Flash, Gemini 3.5 Flash-Lite and GPT-6 Luna as readers.
+**AI tools used (the rules ask for this):** Claude Code for writing code and building the demo video (rendered with Remotion, music synthesized by a script). FLUX.1 [dev] with our own LoRA adapter for the pictures. Gemini 3.8 Flash, Gemini 2.5 Flash, Gemini 3.5 Flash-Lite and GPT-6 Luna as readers.
 
 ## Write-up
 
@@ -54,7 +54,17 @@ FLUX.1 [dev] and LoRA training on fal. Gemini 3.8 Flash, Gemini 2.5 Flash, Gemin
 The live site runs with no sign-in and opens on finished cards. A section called "Where the image model works" follows real pictures from prompt to card, and the repository holds every script and raw reading behind the numbers. A comprehension study with patients and a pharmacist comes next.
 ```
 
-## Video script
+## Video
+
+The video is ready: `concord-demo.mp4` in the project folder (1920 by 1080, 1 minute 45 seconds, music and captions, no voice-over). It was built in code with Remotion from the real generated pictures, the recorded reader quotes and a screen capture of the live site.
+
+1. Watch it once with the sound on.
+2. Upload it to YouTube as Public (not Unlisted, the rules ask for public). Title: "Concord: visual discharge instructions, verified (Banana Hacks 2026)". Use `docs/thumbnail.png` as the thumbnail.
+3. Paste the link into the Devpost video field.
+
+On the paper sheet in the video, the hospital name and patient number are made up. Everything else on screen is real.
+
+## Spoken script (only if you want to add your voice or record the screen yourself)
 
 Target length 2:42. The limit is 3:00 and it is strict, so the final cut must end by 2:55.
 
