@@ -7,6 +7,7 @@ export const MODELS = {
   gemini: "gemini-3.8-flash",
   openaiFast: "gpt-6-luna",
   routerVision: "openrouter/router/vision",
+  routerText: "openrouter/router",
   routerGoogle: "google/gemini-2.5-flash",
   falImage: "fal-ai/flux-lora",
   falTrain: "fal-ai/flux-lora-fast-training",
@@ -99,9 +100,11 @@ export async function geminiJson(
   images: ImageInput[] = [],
   model: string = MODELS.gemini,
 ): Promise<unknown> {
+  // If the direct service is busy or over its quota, the same vendor's model is reached
+  // through the router instead, so one reader's bad minute doesn't stop the sheet being read.
   return withRetry(
     () => geminiOnce(prompt, images, model),
-    model === MODELS.geminiFast ? undefined : () => geminiOnce(prompt, images, MODELS.geminiFast),
+    () => (images.length ? googleVisionJson(prompt, images) : googleTextJson(prompt)),
   );
 }
 
@@ -118,6 +121,16 @@ export async function googleVisionJson(prompt: string, images: ImageInput[]): Pr
         temperature: 0,
         image_urls: images.map((i) => `data:${i.mime};base64,${i.base64}`),
       },
+    })) as unknown as RouterResult;
+    if (res.data.error) throw new Error(res.data.error);
+    return extractJson(res.data.output ?? "");
+  });
+}
+
+export async function googleTextJson(prompt: string): Promise<unknown> {
+  return withRetry(async () => {
+    const res = (await falClient().subscribe(MODELS.routerText, {
+      input: { model: MODELS.routerGoogle, prompt, temperature: 0 },
     })) as unknown as RouterResult;
     if (res.data.error) throw new Error(res.data.error);
     return extractJson(res.data.output ?? "");

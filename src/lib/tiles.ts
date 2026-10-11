@@ -61,7 +61,7 @@ const AVOID_OBJECT: Record<Avoid, string> = {
   alcohol: "a wine glass and a beer bottle",
   driving: "a car seen from the side",
   sunlight: "a person standing under a strong sun with rays",
-  smoking: "a lit cigarette with smoke",
+  smoking: "one large lit cigarette lying on its side, white with an orange filter, a glowing red tip and grey smoke curling up",
   heavy_lifting: "a person lifting a heavy box",
   dairy: "a glass of milk and a wedge of cheese",
 };
@@ -71,12 +71,12 @@ const WARNING_SCENE: Record<Warning, string> = {
   bleeding: "a bandaged arm with red drops falling from it",
   swelling: "two lower legs and feet side by side, the left one normal and the right one swollen red and much larger",
   chest_pain: "a person holding the chest with both hands, pain lines at the chest",
-  breathlessness: "a person bent forward breathing hard, short breath marks at the mouth",
-  severe_pain: "a person grimacing and clutching the stomach, pain lines",
-  vomiting: "a person leaning over a bowl being sick",
+  breathlessness: "a person with one hand on the chest, mouth wide open gasping for air, blue curved air lines in front of the mouth and sweat drops on the forehead",
+  severe_pain: "a person bent forward clutching the belly with both hands, eyes shut tight and teeth clenched in pain, red jagged pain marks at the belly",
+  vomiting: "the head and shoulders of a person in profile with the mouth wide open and green vomit pouring out of the mouth into a bucket",
   rash: "an arm covered in red spots",
   dizziness: "a person holding the head with small spirals circling above it",
-  wound_discharge: "a forearm with a row of stitches and yellow drops of fluid dripping from the wound",
+  wound_discharge: "a close-up of a forearm with a long cut closed by black stitches, with yellow pus dripping out of the cut",
 };
 
 const EXERCISE_SCENE: Record<Movement, (angle: number) => string> = {
@@ -107,7 +107,7 @@ export function tilePrompt(t: TileSpec, useTrigger: boolean): string {
       case "unit":
         return `${FORM_UNIT[t.form]}, alone in the middle of the picture with wide empty margins, nothing else`;
       case "meal":
-        return "a round plate of food seen from above, with a fork on the left and a spoon on the right";
+        return "a white round dinner plate filled with rice and vegetables seen from above, a fork lying to the left of the plate and a knife to the right";
       case "avoid":
         return AVOID_OBJECT[t.item];
       case "warning":

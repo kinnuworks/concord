@@ -140,7 +140,7 @@ const STEPS: { title: string; text: string; icon: ReactNode }[] = [
   },
   {
     title: "Every picture is read back",
-    text: "Both readers are shown the picture with no hint of what it should be. What they see must match the instruction.",
+    text: "Both readers describe the picture in their own words, with no list to choose from. A separate judge decides whether each one understood it.",
     icon: (
       <>
         <path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2" />
@@ -251,7 +251,7 @@ const PEOPLE: { title: string; text: string; icon: ReactNode }[] = [
 
 export function WhoItIsFor() {
   return (
-    <section className="section section--alt" id="who">
+    <section className="section" id="who">
       <div className="container">
         <div className="section-head">
           <p className="eyebrow">
@@ -303,7 +303,7 @@ const QUESTIONS: { q: string; a: string }[] = [
 
 export function Questions() {
   return (
-    <section className="section" id="questions">
+    <section className="section section--alt" id="questions">
       <div className="container">
         <div className="section-head">
           <h2>Plain answers.</h2>

@@ -13,3 +13,9 @@ warning-bleeding           generated tries 1
 warning-swelling           generated tries 1
 warning-fever              generated tries 2
 warning-vomiting           generated tries 1
+warning-chest_pain         generated tries 3
+warning-rash               generated tries 1
+warning-severe_pain        generated tries 3
+warning-dizziness          generated tries 1
+warning-wound_discharge    generated tries 1
+warning-breathlessness     fallback  tries 4

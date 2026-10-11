@@ -53,9 +53,12 @@ async function main() {
   const cases = buildTestSet();
   const rows: Row[] = [];
   const queue = [...cases];
-  const workers = Array.from({ length: 4 }, async () => {
+  // The free tier of one reader allows only a few requests a minute, so this run is paced.
+  const pause = Number(process.env.PARSE_PAUSE_MS ?? 0);
+  const workers = Array.from({ length: Number(process.env.PARSE_WORKERS ?? 4) }, async () => {
     for (let c = queue.shift(); c; c = queue.shift()) {
       rows.push(await one(c));
+      if (pause) await new Promise((r) => setTimeout(r, pause));
       if (rows.length % 10 === 0) console.log(`${rows.length}/${cases.length}`);
     }
   });

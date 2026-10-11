@@ -3,25 +3,12 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import { CardSheet } from "@/components/Cards";
 import { HowItIsChecked, Mark, Questions, WhoItIsFor, Why } from "@/components/Landing";
+import { Results } from "@/components/Results";
 import type { TileState } from "@/components/Tile";
 import type { Card } from "@/lib/plan";
 import { LANGUAGES, type Disagreement, type Lang, type Regimen } from "@/lib/schema";
 import type { TileSpec } from "@/lib/tiles";
-
-const SAMPLES: { name: string; text: string }[] = [
-  {
-    name: "Antibiotic",
-    text: "Amoxicillin 500 mg: take 2 capsules twice a day after meals for 5 days. Do not drink alcohol while taking this medicine.",
-  },
-  {
-    name: "After knee surgery",
-    text: "Paracetamol 500 mg: 1 tablet three times a day after food for 7 days.\nIbuprofen 400 mg: 1 tablet in the morning and at night with food for 5 days. Do not drive.\nKnee bends: lying on your back, bend the knee to 90 degrees, 10 times, 3 sets, twice a day.\nStraight leg raise: lift the leg to 45 degrees, 10 times, 2 sets, twice a day.\nCome back to the hospital if you have fever, swelling in the leg, or fluid from the wound.\nFollow-up appointment on 2026-10-26 at the orthopaedic clinic.",
-  },
-  {
-    name: "Heart medicines",
-    text: "Atorvastatin 20 mg: 1 tablet at bedtime.\nAspirin 75 mg: 1 tablet every morning after breakfast.\nReturn immediately if you have chest pain, trouble breathing or dizziness.",
-  },
-];
+import samples from "@/data/samples.json";
 
 type Parsed = {
   regimen: Regimen;
@@ -29,6 +16,10 @@ type Parsed = {
   cards: Card[];
   readers: [string, string];
 };
+
+// The sample sheets, with the reader's saved output for each, so finished cards are
+// on screen when the page opens. "Make the cards" always runs the real reader again.
+const SAMPLES = samples as unknown as { name: string; text: string; parsed: Parsed }[];
 
 type Report = { spec: TileSpec; state: TileState };
 
@@ -39,7 +30,7 @@ export default function Home() {
   const [fresh, setFresh] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [parsed, setParsed] = useState<Parsed | null>(null);
+  const [parsed, setParsed] = useState<Parsed | null>(SAMPLES[0].parsed);
   const [run, setRun] = useState(0);
   const [reports, setReports] = useState<Record<string, Report>>({});
   const fileRef = useRef<HTMLInputElement>(null);
@@ -136,6 +127,10 @@ export default function Home() {
                     onClick={() => {
                       setText(s.text);
                       setPhoto(null);
+                      setError(null);
+                      setReports({});
+                      setParsed(s.parsed);
+                      setRun((n) => n + 1);
                     }}
                   >
                     {s.name}
@@ -272,6 +267,7 @@ export default function Home() {
 
         <Why />
         <HowItIsChecked />
+        <Results />
         <WhoItIsFor />
         <Questions />
       </main>

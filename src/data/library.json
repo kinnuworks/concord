@@ -131,9 +131,9 @@
   },
   "meal": {
     "file": "/tiles/meal.png",
-    "seed": 11862769745816388000,
+    "seed": 15002898775656032000,
     "adapter": true,
-    "tries": 3,
+    "tries": 1,
     "checkedBy": [
       "gemini",
       "openai"
@@ -192,6 +192,56 @@
   "warning-vomiting": {
     "file": "/tiles/warning-vomiting.png",
     "seed": 4317140680381611000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "warning-chest_pain": {
+    "file": "/tiles/warning-chest_pain.png",
+    "seed": 15998306639945890000,
+    "adapter": true,
+    "tries": 3,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "warning-rash": {
+    "file": "/tiles/warning-rash.png",
+    "seed": 17411071039246698000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "warning-severe_pain": {
+    "file": "/tiles/warning-severe_pain.png",
+    "seed": 5460822393844809000,
+    "adapter": true,
+    "tries": 3,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "warning-dizziness": {
+    "file": "/tiles/warning-dizziness.png",
+    "seed": 16183315568725557000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "warning-wound_discharge": {
+    "file": "/tiles/warning-wound_discharge.png",
+    "seed": 16538590245758677000,
     "adapter": true,
     "tries": 1,
     "checkedBy": [

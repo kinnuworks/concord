@@ -1,0 +1,480 @@
+[
+  {
+    "name": "Antibiotic",
+    "text": "Amoxicillin 500 mg: take 2 capsules twice a day after meals for 5 days. Do not drink alcohol while taking this medicine.",
+    "parsed": {
+      "regimen": {
+        "medicines": [
+          {
+            "name": "Amoxicillin 500 mg",
+            "form": "capsule",
+            "count": 2,
+            "times": [
+              "morning",
+              "night"
+            ],
+            "food": "after_food",
+            "days": 5,
+            "avoid": [
+              "alcohol"
+            ]
+          }
+        ],
+        "exercises": [],
+        "warnings": [],
+        "followUp": null,
+        "unparsed": []
+      },
+      "disagreements": [],
+      "readers": [
+        "gemini",
+        "openai"
+      ],
+      "cards": [
+        {
+          "kind": "medicine",
+          "id": "med-0",
+          "medicine": {
+            "name": "Amoxicillin 500 mg",
+            "form": "capsule",
+            "count": 2,
+            "times": [
+              "morning",
+              "night"
+            ],
+            "food": "after_food",
+            "days": 5,
+            "avoid": [
+              "alcohol"
+            ]
+          },
+          "rows": [
+            {
+              "time": "morning",
+              "timeTile": {
+                "kind": "time",
+                "time": "morning"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "capsule"
+              },
+              "meal": "before_dose",
+              "count": 2
+            },
+            {
+              "time": "night",
+              "timeTile": {
+                "kind": "time",
+                "time": "night"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "capsule"
+              },
+              "meal": "before_dose",
+              "count": 2
+            }
+          ],
+          "days": 5,
+          "avoid": [
+            {
+              "kind": "avoid",
+              "item": "alcohol"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "After knee surgery",
+    "text": "Paracetamol 500 mg: 1 tablet three times a day after food for 7 days.\nIbuprofen 400 mg: 1 tablet in the morning and at night with food for 5 days. Do not drive.\nKnee bends: lying on your back, bend the knee to 90 degrees, 10 times, 3 sets, twice a day.\nStraight leg raise: lift the leg to 45 degrees, 10 times, 2 sets, twice a day.\nCome back to the hospital if you have fever, swelling in the leg, or fluid from the wound.\nFollow-up appointment on 2026-10-26 at the orthopaedic clinic.",
+    "parsed": {
+      "regimen": {
+        "medicines": [
+          {
+            "name": "Paracetamol 500 mg",
+            "form": "tablet",
+            "count": 1,
+            "times": [
+              "morning",
+              "afternoon",
+              "night"
+            ],
+            "food": "after_food",
+            "days": 7,
+            "avoid": []
+          },
+          {
+            "name": "Ibuprofen 400 mg",
+            "form": "tablet",
+            "count": 1,
+            "times": [
+              "morning",
+              "night"
+            ],
+            "food": "with_food",
+            "days": 5,
+            "avoid": [
+              "driving"
+            ]
+          }
+        ],
+        "exercises": [
+          {
+            "name": "Knee bends",
+            "movement": "knee_bend",
+            "angle": 90,
+            "reps": 10,
+            "sets": 3,
+            "timesPerDay": 2
+          },
+          {
+            "name": "Straight leg raise",
+            "movement": "straight_leg_raise",
+            "angle": 45,
+            "reps": 10,
+            "sets": 2,
+            "timesPerDay": 2
+          }
+        ],
+        "warnings": [
+          "fever",
+          "swelling",
+          "wound_discharge"
+        ],
+        "followUp": {
+          "date": "2026-10-26",
+          "place": "orthopaedic clinic"
+        },
+        "unparsed": []
+      },
+      "disagreements": [],
+      "readers": [
+        "gemini",
+        "openai"
+      ],
+      "cards": [
+        {
+          "kind": "medicine",
+          "id": "med-0",
+          "medicine": {
+            "name": "Paracetamol 500 mg",
+            "form": "tablet",
+            "count": 1,
+            "times": [
+              "morning",
+              "afternoon",
+              "night"
+            ],
+            "food": "after_food",
+            "days": 7,
+            "avoid": []
+          },
+          "rows": [
+            {
+              "time": "morning",
+              "timeTile": {
+                "kind": "time",
+                "time": "morning"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "tablet"
+              },
+              "meal": "before_dose",
+              "count": 1
+            },
+            {
+              "time": "afternoon",
+              "timeTile": {
+                "kind": "time",
+                "time": "afternoon"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "tablet"
+              },
+              "meal": "before_dose",
+              "count": 1
+            },
+            {
+              "time": "night",
+              "timeTile": {
+                "kind": "time",
+                "time": "night"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "tablet"
+              },
+              "meal": "before_dose",
+              "count": 1
+            }
+          ],
+          "days": 7,
+          "avoid": []
+        },
+        {
+          "kind": "medicine",
+          "id": "med-1",
+          "medicine": {
+            "name": "Ibuprofen 400 mg",
+            "form": "tablet",
+            "count": 1,
+            "times": [
+              "morning",
+              "night"
+            ],
+            "food": "with_food",
+            "days": 5,
+            "avoid": [
+              "driving"
+            ]
+          },
+          "rows": [
+            {
+              "time": "morning",
+              "timeTile": {
+                "kind": "time",
+                "time": "morning"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "tablet"
+              },
+              "meal": "with_dose",
+              "count": 1
+            },
+            {
+              "time": "night",
+              "timeTile": {
+                "kind": "time",
+                "time": "night"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "tablet"
+              },
+              "meal": "with_dose",
+              "count": 1
+            }
+          ],
+          "days": 5,
+          "avoid": [
+            {
+              "kind": "avoid",
+              "item": "driving"
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "id": "ex-0",
+          "exercise": {
+            "name": "Knee bends",
+            "movement": "knee_bend",
+            "angle": 90,
+            "reps": 10,
+            "sets": 3,
+            "timesPerDay": 2
+          },
+          "tile": {
+            "kind": "exercise",
+            "movement": "knee_bend",
+            "angle": 90
+          }
+        },
+        {
+          "kind": "exercise",
+          "id": "ex-1",
+          "exercise": {
+            "name": "Straight leg raise",
+            "movement": "straight_leg_raise",
+            "angle": 45,
+            "reps": 10,
+            "sets": 2,
+            "timesPerDay": 2
+          },
+          "tile": {
+            "kind": "exercise",
+            "movement": "straight_leg_raise",
+            "angle": 45
+          }
+        },
+        {
+          "kind": "warning",
+          "id": "warnings",
+          "signs": [
+            {
+              "sign": "fever",
+              "tile": {
+                "kind": "warning",
+                "sign": "fever"
+              }
+            },
+            {
+              "sign": "swelling",
+              "tile": {
+                "kind": "warning",
+                "sign": "swelling"
+              }
+            },
+            {
+              "sign": "wound_discharge",
+              "tile": {
+                "kind": "warning",
+                "sign": "wound_discharge"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "followup",
+          "id": "followup",
+          "date": "2026-10-26",
+          "place": "orthopaedic clinic"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Heart medicines",
+    "text": "Atorvastatin 20 mg: 1 tablet at bedtime.\nAspirin 75 mg: 1 tablet every morning after breakfast.\nReturn immediately if you have chest pain, trouble breathing or dizziness.",
+    "parsed": {
+      "regimen": {
+        "medicines": [
+          {
+            "name": "Atorvastatin 20 mg",
+            "form": "tablet",
+            "count": 1,
+            "times": [
+              "night"
+            ],
+            "food": "any",
+            "days": null,
+            "avoid": []
+          },
+          {
+            "name": "Aspirin 75 mg",
+            "form": "tablet",
+            "count": 1,
+            "times": [
+              "morning"
+            ],
+            "food": "after_food",
+            "days": null,
+            "avoid": []
+          }
+        ],
+        "exercises": [],
+        "warnings": [
+          "breathlessness",
+          "chest_pain",
+          "dizziness"
+        ],
+        "followUp": null,
+        "unparsed": []
+      },
+      "disagreements": [],
+      "readers": [
+        "gemini",
+        "openai"
+      ],
+      "cards": [
+        {
+          "kind": "medicine",
+          "id": "med-0",
+          "medicine": {
+            "name": "Atorvastatin 20 mg",
+            "form": "tablet",
+            "count": 1,
+            "times": [
+              "night"
+            ],
+            "food": "any",
+            "days": null,
+            "avoid": []
+          },
+          "rows": [
+            {
+              "time": "night",
+              "timeTile": {
+                "kind": "time",
+                "time": "night"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "tablet"
+              },
+              "meal": "none",
+              "count": 1
+            }
+          ],
+          "days": null,
+          "avoid": []
+        },
+        {
+          "kind": "medicine",
+          "id": "med-1",
+          "medicine": {
+            "name": "Aspirin 75 mg",
+            "form": "tablet",
+            "count": 1,
+            "times": [
+              "morning"
+            ],
+            "food": "after_food",
+            "days": null,
+            "avoid": []
+          },
+          "rows": [
+            {
+              "time": "morning",
+              "timeTile": {
+                "kind": "time",
+                "time": "morning"
+              },
+              "doseTile": {
+                "kind": "unit",
+                "form": "tablet"
+              },
+              "meal": "before_dose",
+              "count": 1
+            }
+          ],
+          "days": null,
+          "avoid": []
+        },
+        {
+          "kind": "warning",
+          "id": "warnings",
+          "signs": [
+            {
+              "sign": "breathlessness",
+              "tile": {
+                "kind": "warning",
+                "sign": "breathlessness"
+              }
+            },
+            {
+              "sign": "chest_pain",
+              "tile": {
+                "kind": "warning",
+                "sign": "chest_pain"
+              }
+            },
+            {
+              "sign": "dizziness",
+              "tile": {
+                "kind": "warning",
+                "sign": "dizziness"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

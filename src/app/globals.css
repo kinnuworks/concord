@@ -206,6 +206,74 @@
   color: var(--ink);
 }
 
+/* ---------- Measured results ---------- */
+.results-table,
+.results-caught {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+  padding: 28px;
+}
+.results-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.results-table th,
+.results-table td {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  font-weight: 400;
+  color: var(--ink-2);
+}
+.results-table thead th {
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.results-table td {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--ink);
+}
+.results-table tbody th {
+  color: var(--ink);
+  font-weight: 550;
+}
+.results-caught ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.results-caught li {
+  display: grid;
+  gap: 8px;
+  font-size: var(--fs-micro);
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+.results-caught img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: var(--r-md);
+  background: #fff;
+  box-shadow: 0 0 0 1.5px var(--danger);
+}
+.results-note {
+  max-width: var(--text-max);
+  margin: 24px auto 0;
+  font-size: var(--fs-small);
+  color: var(--ink-3);
+  text-align: center;
+}
+
 /* ---------- Instruction cards ---------- */
 .sheet {
   display: grid;

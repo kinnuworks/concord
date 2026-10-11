@@ -64,6 +64,10 @@ function main() {
   if (base.length) out.base = summarise(base);
   if (adapter.length) out.adapter = summarise(adapter);
 
+  // Whole doses drawn in one picture, pooled over both arms: how often the count was right.
+  const counted = [...base, ...adapter].filter((r) => r.kind === "dose");
+  out.counting = rate(counted.filter((r) => r.pass).length, counted.length);
+
   // A few rejected dose pictures, copied into the site as examples of what the check catches.
   const dir = new URL("public/evidence/", root);
   mkdirSync(dir, { recursive: true });
@@ -80,6 +84,13 @@ function main() {
 
   const parseFile = new URL("src/data/eval-parse.json", root);
   if (existsSync(parseFile)) out.reader = (JSON.parse(readFileSync(parseFile, "utf8")) as { summary: unknown }).summary;
+  const style = new URL("src/data/eval-style.json", root);
+  if (existsSync(style)) out.style = JSON.parse(readFileSync(style, "utf8"));
+  const adapterFile = new URL("src/data/adapter.json", root);
+  if (existsSync(adapterFile)) {
+    const a = JSON.parse(readFileSync(adapterFile, "utf8")) as { steps: number; images: number; seconds: number; base: string; source: string };
+    out.training = { steps: a.steps, images: a.images, seconds: a.seconds, base: a.base, source: a.source };
+  }
   const labels = new URL("src/data/labels-report.json", root);
   if (existsSync(labels)) out.labels = JSON.parse(readFileSync(labels, "utf8"));
 

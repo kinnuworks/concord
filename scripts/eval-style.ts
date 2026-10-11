@@ -1,11 +1,12 @@
 // Two follow-up passes over the saved evaluation pictures, without drawing anything new.
 // 1. Style: a reader labels each picture's drawing style, to measure what the adapter changes.
-// 2. Time tiles: re-read with the current question (what the sky shows).
+// 2. Pictures of things: re-read with the current open-ended question.
 // Run: pnpm tsx --env-file=.env.local scripts/eval-style.ts
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { googleVisionJson, openaiJson } from "../src/lib/models";
 import { readBack } from "../src/lib/readback";
-import type { TimeOfDay } from "../src/lib/schema";
+import type { Avoid, TimeOfDay, Warning } from "../src/lib/schema";
+import type { TileSpec } from "../src/lib/tiles";
 
 type Row = { key: string; kind: string; i: number; file: string; pass: boolean; expected: unknown; readings: unknown; mismatches: string[] };
 
@@ -13,6 +14,15 @@ const STYLES = ["flat pictogram with outlines", "photo or 3d render", "other ill
 const QUESTION = `Look only at how this picture is drawn, not at what it shows. Answer with one JSON object: {"style": one of ${JSON.stringify(STYLES)}}. "flat pictogram with outlines" means flat solid colours with clear dark outlines and no realistic shading.`;
 
 const root = new URL("../", import.meta.url);
+
+function specFromKey(key: string): TileSpec {
+  if (key === "meal") return { kind: "meal" };
+  const [kind, ...rest] = key.split("-");
+  const value = rest.join("-");
+  if (kind === "time") return { kind: "time", time: value as TimeOfDay };
+  if (kind === "avoid") return { kind: "avoid", item: value as Avoid };
+  return { kind: "warning", sign: value as Warning };
+}
 
 async function pool<T>(items: T[], n: number, fn: (x: T) => Promise<void>) {
   const queue = [...items];
@@ -26,12 +36,11 @@ async function main() {
     if (!existsSync(file)) continue;
     const rows = readFileSync(file, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l) as Row);
 
-    // Time tiles, read again with the sky question.
-    const timeRows = rows.filter((r) => r.kind === "time");
-    await pool(timeRows, 4, async (r) => {
+    // Pictures of things, read again with the current open-ended question.
+    const again = rows.filter((r) => ["time", "meal", "avoid", "warning"].includes(r.kind));
+    await pool(again, 4, async (r) => {
       const buf = readFileSync(new URL(`training/eval/${arm}/${r.file}`, root));
-      const time = r.key.replace("time-", "") as TimeOfDay;
-      const v = await readBack({ kind: "time", time }, { mime: "image/png", base64: buf.toString("base64") });
+      const v = await readBack(specFromKey(r.key), { mime: "image/png", base64: buf.toString("base64") });
       r.pass = v.pass; r.expected = v.expected; r.readings = v.readers; r.mismatches = v.mismatches;
     });
     writeFileSync(file, rows.map((r) => JSON.stringify(r)).join("\n") + "\n");
