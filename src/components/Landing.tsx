@@ -97,7 +97,7 @@ export function Why() {
             <p className="eyebrow">But only when they are read correctly</p>
             <p className="t-title">In one study, 1 of 12 standard medicine pictograms was understood well enough to pass the ISO bar.</p>
             <p className="t-small">
-              A picture that is misread is worse than none. Readback tests every picture before it is shown.{" "}
+              A picture that is misread is worse than none. Concord tests every picture before it is shown.{" "}
               <a
                 className="link"
                 href="https://turkmedline.net/detay/comprehensibility-of-pharmaceutical-pictograms-in-patient-information-leaflets-a-cross-sectional-study-in-ankara-turkiye/019dc352747347da/tr/409"
@@ -281,7 +281,7 @@ export function WhoItIsFor() {
 const QUESTIONS: { q: string; a: string }[] = [
   {
     q: "Is this medical advice?",
-    a: "No. Readback redraws what the sheet says and adds nothing of its own. Check the cards against the sheet, and ask your doctor or pharmacist about anything that is unclear.",
+    a: "No. Concord redraws what the sheet says and adds nothing of its own. Check the cards against the sheet, and ask your doctor or pharmacist about anything that is unclear.",
   },
   {
     q: "Has it been tested with patients?",

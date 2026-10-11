@@ -1,0 +1,1 @@
+{"key":"time-morning","kind":"time","i":0,"seed":544997,"file":"time-morning__0.png","pass":true,"expected":{"time":"morning"},"readings":[{"reader":"gemini","reading":{"time":"morning"}},{"reader":"openai","reading":{"time":"morning"}}],"mismatches":[]}

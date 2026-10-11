@@ -97,14 +97,15 @@ export default function Home() {
           <div className="container">
             <p className="brand">
               <Mark />
-              Readback
+              Concord
             </p>
             <h1>
-              Discharge instructions <span className="t-muted">every patient can follow.</span>
+              Visual discharge instructions,{" "}
+              <span className="t-muted">verified before the patient sees them.</span>
             </h1>
             <p className="lead">
-              Readback turns a discharge sheet into picture cards in the patient&rsquo;s language. Two independent
-              models read every picture back before anyone sees it, and a picture they misread is thrown away.
+              Concord turns a discharge sheet into picture cards in the patient&rsquo;s language. Two independent
+              models read every picture back, and a picture they misread is thrown away.
             </p>
             <div className="cta-row">
               <a className="btn btn-ink" href="#make">
@@ -279,10 +280,10 @@ export default function Home() {
         <div className="container">
           <span className="brand brand--sm">
             <Mark />
-            Readback
+            Concord
           </span>
-          <span>Discharge instructions every patient can follow.</span>
-          <a className="link" href="https://github.com/kinnuworks/readback" target="_blank" rel="noreferrer">
+          <span>Visual discharge instructions, verified before the patient sees them.</span>
+          <a className="link" href="https://github.com/kinnuworks/concord" target="_blank" rel="noreferrer">
             Source on GitHub
           </a>
         </div>

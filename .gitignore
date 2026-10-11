@@ -40,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# evaluation images are large; the result files are committed separately
+training/eval/*/
+training/dataset/
+training/dataset.zip
+training/train.log

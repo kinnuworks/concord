@@ -37,8 +37,8 @@ const TIME_SCENE: Record<TimeOfDay, string> = {
 };
 
 const FORM_OBJECT: Record<Form, (n: number) => string> = {
-  tablet: (n) => `${NUMBER_WORDS[n]} round white tablet${n > 1 ? "s" : ""}`,
-  capsule: (n) => `${NUMBER_WORDS[n]} two-coloured capsule${n > 1 ? "s" : ""}`,
+  tablet: (n) => `${NUMBER_WORDS[n]} round pale-blue tablet${n > 1 ? "s" : ""} with a score line`,
+  capsule: (n) => `${NUMBER_WORDS[n]} red-and-white capsule${n > 1 ? "s" : ""}`,
   spoon: (n) => `${NUMBER_WORDS[n]} spoon${n > 1 ? "s" : ""} filled with liquid medicine`,
   drops: (n) => `a dropper releasing ${NUMBER_WORDS[n]} separate drop${n > 1 ? "s" : ""}`,
   puff: (n) => `an inhaler with ${NUMBER_WORDS[n]} small puff cloud${n > 1 ? "s" : ""} beside it`,
@@ -82,7 +82,7 @@ const EXERCISE_SCENE: Record<Movement, (angle: number) => string> = {
 export const STYLE_TRIGGER = "rdbk pictogram";
 
 const STYLE =
-  "flat pictogram, thick even black outlines, a few solid colours, plain white background, centred, no shading, no text, no letters, no numbers";
+  "flat vector pictogram icon, bold thick black outlines, solid flat colours, simple rounded shapes, pure white background, centred with wide margins, no shadows, no gradients, no texture, no text, no letters, no numbers";
 
 export function tilePrompt(t: TileSpec, useTrigger: boolean): string {
   const subject = (() => {

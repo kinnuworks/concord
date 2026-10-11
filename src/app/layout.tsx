@@ -14,8 +14,8 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Readback: discharge instructions every patient can follow",
-  description: "Discharge instructions as picture cards, checked by read-back before you see them.",
+  title: "Concord: visual discharge instructions, verified",
+  description: "Concord turns a discharge sheet into picture cards and checks every picture by read-back before the patient sees it.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
