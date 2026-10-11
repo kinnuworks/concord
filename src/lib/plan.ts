@@ -94,8 +94,7 @@ export function tilesFor(cards: Card[]): TileSpec[] {
         if (row.meal !== "none") add({ kind: "meal" });
       }
       c.avoid.forEach(add);
-    } else if (c.kind === "exercise") add(c.tile);
-    else if (c.kind === "warning") c.signs.forEach((s) => add(s.tile));
+    } else if (c.kind === "warning") c.signs.forEach((s) => add(s.tile));
   }
   return [...seen.values()];
 }

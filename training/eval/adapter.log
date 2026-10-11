@@ -3,3 +3,11 @@ adapter: 20 drawn
 adapter: 40 drawn
 adapter: 60 drawn
 adapter: 80 drawn
+adapter: 100 drawn
+adapter: 120 drawn
+adapter: 140 drawn
+adapter: 160 drawn
+adapter: 180 drawn
+adapter: 200 drawn
+adapter: done
+exit 0

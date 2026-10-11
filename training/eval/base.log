@@ -3,3 +3,11 @@ base: 20 drawn
 base: 40 drawn
 base: 60 drawn
 base: 80 drawn
+base: 100 drawn
+base: 120 drawn
+base: 140 drawn
+base: 160 drawn
+base: 180 drawn
+base: 200 drawn
+base: done
+exit 0

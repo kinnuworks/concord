@@ -1,0 +1,544 @@
+{
+  "generatedAt": "2026-10-11T19:04:36.625Z",
+  "base": {
+    "pictures": 200,
+    "tiles": 40,
+    "firstTry": {
+      "k": 138,
+      "n": 200,
+      "pct": 69,
+      "ci": [
+        62.3,
+        75
+      ]
+    },
+    "byKind": {
+      "time": {
+        "k": 15,
+        "n": 20,
+        "pct": 75,
+        "ci": [
+          53.1,
+          88.8
+        ]
+      },
+      "dose": {
+        "k": 41,
+        "n": 70,
+        "pct": 58.6,
+        "ci": [
+          46.9,
+          69.4
+        ]
+      },
+      "meal": {
+        "k": 5,
+        "n": 5,
+        "pct": 100,
+        "ci": [
+          56.6,
+          100
+        ]
+      },
+      "avoid": {
+        "k": 30,
+        "n": 30,
+        "pct": 100,
+        "ci": [
+          88.6,
+          100
+        ]
+      },
+      "warning": {
+        "k": 32,
+        "n": 50,
+        "pct": 64,
+        "ci": [
+          50.1,
+          75.9
+        ]
+      },
+      "exercise": {
+        "k": 15,
+        "n": 25,
+        "pct": 60,
+        "ci": [
+          40.7,
+          76.6
+        ]
+      }
+    },
+    "expectedFallbackPct": 18.2,
+    "neverPassed": [
+      "time-afternoon",
+      "warning-swelling",
+      "warning-breathlessness",
+      "exercise-straight_leg_raise-45"
+    ]
+  },
+  "adapter": {
+    "pictures": 200,
+    "tiles": 40,
+    "firstTry": {
+      "k": 125,
+      "n": 200,
+      "pct": 62.5,
+      "ci": [
+        55.6,
+        68.9
+      ]
+    },
+    "byKind": {
+      "time": {
+        "k": 14,
+        "n": 20,
+        "pct": 70,
+        "ci": [
+          48.1,
+          85.5
+        ]
+      },
+      "dose": {
+        "k": 33,
+        "n": 70,
+        "pct": 47.1,
+        "ci": [
+          35.9,
+          58.7
+        ]
+      },
+      "meal": {
+        "k": 4,
+        "n": 5,
+        "pct": 80,
+        "ci": [
+          37.6,
+          96.4
+        ]
+      },
+      "avoid": {
+        "k": 29,
+        "n": 30,
+        "pct": 96.7,
+        "ci": [
+          83.3,
+          99.4
+        ]
+      },
+      "warning": {
+        "k": 34,
+        "n": 50,
+        "pct": 68,
+        "ci": [
+          54.2,
+          79.2
+        ]
+      },
+      "exercise": {
+        "k": 11,
+        "n": 25,
+        "pct": 44,
+        "ci": [
+          26.7,
+          62.9
+        ]
+      }
+    },
+    "expectedFallbackPct": 22.4,
+    "neverPassed": [
+      "time-afternoon",
+      "dose-tablet-6",
+      "dose-puff-2",
+      "warning-breathlessness",
+      "exercise-knee_bend-90",
+      "exercise-straight_leg_raise-45"
+    ]
+  },
+  "caught": [
+    {
+      "file": "/evidence/caught-base-dose-spoon-1__0.png",
+      "arm": "base",
+      "expected": {
+        "form": "spoon",
+        "count": 1
+      },
+      "readings": [
+        {
+          "reader": "gemini",
+          "reading": {
+            "form": "spoon",
+            "count": 8
+          }
+        },
+        {
+          "reader": "openai",
+          "reading": {
+            "form": "spoon",
+            "count": 8
+          }
+        }
+      ],
+      "mismatches": [
+        "gemini read count as 8, expected 1",
+        "openai read count as 8, expected 1"
+      ]
+    },
+    {
+      "file": "/evidence/caught-base-dose-spoon-1__2.png",
+      "arm": "base",
+      "expected": {
+        "form": "spoon",
+        "count": 1
+      },
+      "readings": [
+        {
+          "reader": "gemini",
+          "reading": {
+            "form": "spoon",
+            "count": 5
+          }
+        },
+        {
+          "reader": "openai",
+          "reading": {
+            "form": "spoon",
+            "count": 5
+          }
+        }
+      ],
+      "mismatches": [
+        "gemini read count as 5, expected 1",
+        "openai read count as 5, expected 1"
+      ]
+    },
+    {
+      "file": "/evidence/caught-base-dose-spoon-1__1.png",
+      "arm": "base",
+      "expected": {
+        "form": "spoon",
+        "count": 1
+      },
+      "readings": [
+        {
+          "reader": "gemini",
+          "reading": {
+            "form": "spoon",
+            "count": 4
+          }
+        },
+        {
+          "reader": "openai",
+          "reading": {
+            "form": "spoon",
+            "count": 4
+          }
+        }
+      ],
+      "mismatches": [
+        "gemini read count as 4, expected 1",
+        "openai read count as 4, expected 1"
+      ]
+    },
+    {
+      "file": "/evidence/caught-base-dose-spoon-1__3.png",
+      "arm": "base",
+      "expected": {
+        "form": "spoon",
+        "count": 1
+      },
+      "readings": [
+        {
+          "reader": "gemini",
+          "reading": {
+            "form": "spoon",
+            "count": 1
+          }
+        },
+        {
+          "reader": "openai",
+          "reading": {
+            "form": "capsule",
+            "count": 3
+          }
+        }
+      ],
+      "mismatches": [
+        "openai read form as \"capsule\", expected \"spoon\"",
+        "openai read count as 3, expected 1"
+      ]
+    },
+    {
+      "file": "/evidence/caught-base-dose-capsule-2__4.png",
+      "arm": "base",
+      "expected": {
+        "form": "capsule",
+        "count": 2
+      },
+      "readings": [
+        {
+          "reader": "gemini",
+          "reading": {
+            "form": "capsule",
+            "count": 1
+          }
+        },
+        {
+          "reader": "openai",
+          "reading": {
+            "form": "capsule",
+            "count": 1
+          }
+        }
+      ],
+      "mismatches": [
+        "gemini read count as 1, expected 2",
+        "openai read count as 1, expected 2"
+      ]
+    },
+    {
+      "file": "/evidence/caught-base-dose-capsule-2__3.png",
+      "arm": "base",
+      "expected": {
+        "form": "capsule",
+        "count": 2
+      },
+      "readings": [
+        {
+          "reader": "gemini",
+          "reading": {
+            "form": "capsule",
+            "count": 1
+          }
+        },
+        {
+          "reader": "openai",
+          "reading": {
+            "form": "capsule",
+            "count": 1
+          }
+        }
+      ],
+      "mismatches": [
+        "gemini read count as 1, expected 2",
+        "openai read count as 1, expected 2"
+      ]
+    },
+    {
+      "file": "/evidence/caught-base-dose-tablet-1__1.png",
+      "arm": "base",
+      "expected": {
+        "form": "tablet",
+        "count": 1
+      },
+      "readings": [
+        {
+          "reader": "gemini",
+          "reading": {
+            "form": "tablet",
+            "count": 9
+          }
+        },
+        {
+          "reader": "openai",
+          "reading": {
+            "form": "tablet",
+            "count": 9
+          }
+        }
+      ],
+      "mismatches": [
+        "gemini read count as 9, expected 1",
+        "openai read count as 9, expected 1"
+      ]
+    },
+    {
+      "file": "/evidence/caught-base-dose-tablet-1__3.png",
+      "arm": "base",
+      "expected": {
+        "form": "tablet",
+        "count": 1
+      },
+      "readings": [
+        {
+          "reader": "gemini",
+          "reading": {
+            "form": "tablet",
+            "count": 3
+          }
+        },
+        {
+          "reader": "openai",
+          "reading": {
+            "form": "tablet",
+            "count": 3
+          }
+        }
+      ],
+      "mismatches": [
+        "gemini read count as 3, expected 1",
+        "openai read count as 3, expected 1"
+      ]
+    },
+    {
+      "file": "/evidence/caught-base-dose-drops-2__1.png",
+      "arm": "base",
+      "expected": {
+        "form": "drops",
+        "count": 2
+      },
+      "readings": [
+        {
+          "reader": "gemini",
+          "reading": {
+            "form": "drops",
+            "count": 1
+          }
+        },
+        {
+          "reader": "openai",
+          "reading": {
+            "form": "drops",
+            "count": 1
+          }
+        }
+      ],
+      "mismatches": [
+        "gemini read count as 1, expected 2",
+        "openai read count as 1, expected 2"
+      ]
+    },
+    {
+      "file": "/evidence/caught-base-dose-drops-2__3.png",
+      "arm": "base",
+      "expected": {
+        "form": "drops",
+        "count": 2
+      },
+      "readings": [
+        {
+          "reader": "gemini",
+          "reading": {
+            "form": "drops",
+            "count": 3
+          }
+        },
+        {
+          "reader": "openai",
+          "reading": {
+            "form": "drops",
+            "count": 3
+          }
+        }
+      ],
+      "mismatches": [
+        "gemini read count as 3, expected 2",
+        "openai read count as 3, expected 2"
+      ]
+    },
+    {
+      "file": "/evidence/caught-base-dose-drops-2__4.png",
+      "arm": "base",
+      "expected": {
+        "form": "drops",
+        "count": 2
+      },
+      "readings": [
+        {
+          "reader": "gemini",
+          "reading": {
+            "form": "spoon",
+            "count": 3
+          }
+        },
+        {
+          "reader": "openai",
+          "reading": {
+            "form": "drops",
+            "count": 3
+          }
+        }
+      ],
+      "mismatches": [
+        "gemini read form as \"spoon\", expected \"drops\"",
+        "gemini read count as 3, expected 2",
+        "openai read count as 3, expected 2"
+      ]
+    },
+    {
+      "file": "/evidence/caught-base-dose-tablet-5__1.png",
+      "arm": "base",
+      "expected": {
+        "form": "tablet",
+        "count": 5
+      },
+      "readings": [
+        {
+          "reader": "gemini",
+          "reading": {
+            "form": "tablet",
+            "count": 4
+          }
+        },
+        {
+          "reader": "openai",
+          "reading": {
+            "form": "tablet",
+            "count": 4
+          }
+        }
+      ],
+      "mismatches": [
+        "gemini read count as 4, expected 5",
+        "openai read count as 4, expected 5"
+      ]
+    }
+  ],
+  "reader": {
+    "cases": 100,
+    "correct": 37,
+    "wrong": 63,
+    "wrongAndFlagged": 63,
+    "wrongAndUnflagged": 0,
+    "agreed": 37,
+    "correctWhenAgreed": 37,
+    "flaggedButCorrect": 0,
+    "errors": 60,
+    "ranAt": "2026-10-11T18:25:53.564Z"
+  },
+  "labels": {
+    "hi": {
+      "kept": 33,
+      "dropped": [
+        "drawn_by_code"
+      ]
+    },
+    "te": {
+      "kept": 32,
+      "dropped": [
+        "sunlight",
+        "drawn_by_code"
+      ]
+    },
+    "ta": {
+      "kept": 34,
+      "dropped": []
+    },
+    "es": {
+      "kept": 34,
+      "dropped": []
+    },
+    "zh": {
+      "kept": 32,
+      "dropped": [
+        "sunlight",
+        "drawn_by_code"
+      ]
+    },
+    "ar": {
+      "kept": 33,
+      "dropped": [
+        "drawn_by_code"
+      ]
+    }
+  }
+}

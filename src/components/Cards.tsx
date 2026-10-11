@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import type { Card, ExerciseCard, MedicineCard, WarningCard } from "@/lib/plan";
 import { TIMES, type Lang } from "@/lib/schema";
+import { exerciseSvg, svgDataUrl } from "@/lib/fallback";
 import { label } from "@/lib/labels";
 import { tileKey, type TileSpec } from "@/lib/tiles";
 import { DoseView, TileView, useTile, useTileSummary, type TileState } from "./Tile";
@@ -197,14 +198,18 @@ function MedicineView({ card, shared }: { card: MedicineCard; shared: Shared }) 
 
 function ExerciseView({ card, shared }: { card: ExerciseCard; shared: Shared }) {
   const e = card.exercise;
+  // Exercise figures are drawn by code, like the calendar, so the angle shown is exact.
+  const figure = svgDataUrl(exerciseSvg(e.movement, e.angle));
   return (
     <article className="card rx">
       <header className="rx__head">
         <h3>{e.name}</h3>
-        <span className="chip chip--soft t-mono">{Math.round(e.angle)}°</span>
       </header>
       <div className="exercise">
-        <GatedTile spec={card.tile} shared={shared} size={200} alt={e.name} />
+        <span className="pic" style={{ "--pic": "220px" } as React.CSSProperties}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="pic__img" src={figure} alt={`${e.name}, ${Math.round(e.angle)} degrees`} />
+        </span>
         <div className="exercise__facts">
           <p className="word word--big">
             <span className="t-mono">{e.reps}</span> {label(shared.lang, "times")}
@@ -217,7 +222,12 @@ function ExerciseView({ card, shared }: { card: ExerciseCard; shared: Shared }) 
           </p>
         </div>
       </div>
-      <Checked specs={[card.tile]} shared={shared} />
+      <p className="rx__check" data-done="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <path d="M5 12.5l4.5 4.5L19 7.5" />
+        </svg>
+        Figure drawn from the prescribed angle
+      </p>
     </article>
   );
 }

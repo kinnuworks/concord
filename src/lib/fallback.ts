@@ -75,51 +75,72 @@ const markerTile = (symbol: "!" | "?") =>
   );
 
 type Pt = [number, number];
-const seg = (a: Pt, b: Pt, w = 22) =>
-  `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${INK}" stroke-width="${w}" stroke-linecap="round"/>`;
-const polar = (o: Pt, len: number, deg: number): Pt => [
-  o[0] + len * Math.cos((deg * Math.PI) / 180),
-  o[1] - len * Math.sin((deg * Math.PI) / 180),
-];
+const MOVE = "#C8321F";
+const rad = (deg: number) => (deg * Math.PI) / 180;
+const limb = (a: Pt, b: Pt, colour = INK, w = 24) =>
+  `<line x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${colour}" stroke-width="${w}" stroke-linecap="round"/>`;
+// A point at a distance from an origin. 0 degrees points right, angles turn anticlockwise.
+const polar = (o: Pt, len: number, deg: number): Pt => [o[0] + len * Math.cos(rad(deg)), o[1] - len * Math.sin(rad(deg))];
 
-// Stick figure with the moving joint drawn at exactly the prescribed angle.
-function exerciseTile(movement: string, angle: number) {
-  const hi = "#e0483e";
+// A dashed arc between two directions, with the angle written beside it.
+function angleMark(centre: Pt, from: number, to: number, shown: number) {
+  const r = 64;
+  const steps = 24;
+  const pts = Array.from({ length: steps + 1 }, (_, i) => polar(centre, r, from + ((to - from) * i) / steps));
+  const mid = polar(centre, r + 46, (from + to) / 2);
+  return `<polyline points="${pts.map((p) => `${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ")}" fill="none" stroke="${MOVE}" stroke-width="6" stroke-dasharray="3 11" stroke-linecap="round"/><text x="${mid[0].toFixed(1)}" y="${(mid[1] + 14).toFixed(1)}" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="middle" fill="${MOVE}">${Math.round(shown)}\u00B0</text>`;
+}
+
+// A figure drawn by code with the moving joint at exactly the prescribed angle.
+// The body is ink, the moving limb is red, and the angle is written out.
+export function exerciseSvg(movement: string, angle: number): string {
   let body = "";
   if (movement === "knee_bend" || movement === "straight_leg_raise") {
-    const hip: Pt = [250, 380];
-    const shoulder: Pt = [110, 380];
-    body += `<circle cx="70" cy="380" r="30" fill="#fff" stroke="${INK}" stroke-width="14"/>`;
-    body += seg(shoulder, hip) + seg(hip, [450, 380]);
+    const floor = 392;
+    const hip: Pt = [250, 364];
+    const shoulder: Pt = [112, 364];
+    body += `<line x1="28" y1="${floor}" x2="484" y2="${floor}" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>`;
+    body += `<circle cx="72" cy="356" r="30" fill="#fff" stroke="${INK}" stroke-width="14"/>`;
+    body += limb(shoulder, hip) + limb(hip, [462, 364]);
     if (movement === "straight_leg_raise") {
-      const foot = polar(hip, 200, angle);
-      body += `<line x1="${hip[0]}" y1="${hip[1]}" x2="${foot[0]}" y2="${foot[1]}" stroke="${hi}" stroke-width="22" stroke-linecap="round"/>`;
+      body += limb(hip, polar(hip, 208, angle), MOVE);
+      body += angleMark(hip, 0, angle, angle);
     } else {
-      // The knee sits above the floor; thigh and shin meet at the prescribed angle.
-      const half = (angle / 2) * (Math.PI / 180);
-      const knee: Pt = [hip[0] + 120 * Math.sin(half), hip[1] - 120 * Math.cos(half)];
-      const foot: Pt = [knee[0] + 120 * Math.sin(half), hip[1]];
-      body += `<polyline points="${hip.join(",")} ${knee.join(",")} ${foot.join(",")}" fill="none" stroke="${hi}" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>`;
+      // The heel stays on the floor. Thigh and shin meet at the knee at the prescribed angle.
+      const L = 112;
+      const half = rad(angle / 2);
+      const knee: Pt = [hip[0] + L * Math.sin(half), hip[1] - L * Math.cos(half)];
+      const foot: Pt = [hip[0] + 2 * L * Math.sin(half), hip[1]];
+      body += limb(hip, knee, MOVE) + limb(knee, foot, MOVE);
+      const toHip = (Math.atan2(knee[1] - hip[1], hip[0] - knee[0]) * 180) / Math.PI;
+      const toFoot = (Math.atan2(knee[1] - foot[1], foot[0] - knee[0]) * 180) / Math.PI;
+      body += angleMark(knee, toHip, toFoot - 0, angle).replace(/<text[^>]*>/, (m) => m.replace(/y="[^"]*"/, `y="${(knee[1] - 26).toFixed(1)}"`).replace(/x="[^"]*"/, `x="${knee[0].toFixed(1)}"`));
     }
-    body += `<line x1="30" y1="408" x2="482" y2="408" stroke="${INK}" stroke-width="8"/>`;
   } else {
-    const shoulder: Pt = [256, 170];
-    const hip: Pt = [256, 320];
-    body += `<circle cx="256" cy="110" r="34" fill="#fff" stroke="${INK}" stroke-width="14"/>`;
-    body += seg(shoulder, hip) + seg(hip, [216, 470]) + seg(hip, [296, 470]);
+    const shoulder: Pt = [256, 168];
+    const hip: Pt = [256, 318];
+    body += `<line x1="150" y1="478" x2="362" y2="478" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>`;
+    body += `<circle cx="256" cy="104" r="34" fill="#fff" stroke="${INK}" stroke-width="14"/>`;
+    body += limb(shoulder, hip) + limb(hip, [226, 466]) + limb(hip, [286, 466]);
     if (movement === "elbow_bend") {
-      const elbow: Pt = [256, 270];
-      const hand = polar(elbow, 100, 90 - (180 - angle));
-      body += seg(shoulder, elbow);
-      body += `<line x1="${elbow[0]}" y1="${elbow[1]}" x2="${hand[0]}" y2="${hand[1]}" stroke="${hi}" stroke-width="22" stroke-linecap="round"/>`;
+      const elbow: Pt = [256, 276];
+      // 180 degrees is a straight arm hanging down; smaller angles bring the hand up in front.
+      const hand = polar(elbow, 104, 270 + (180 - angle));
+      body += limb(shoulder, elbow, MOVE) + limb(elbow, hand, MOVE);
+      body += angleMark(elbow, 90, 270 + (180 - angle) - 360, angle);
     } else {
       // 0 degrees hangs straight down, 90 is level with the shoulder.
-      const hand = polar(shoulder, 170, -90 + angle);
-      body += `<line x1="${shoulder[0]}" y1="${shoulder[1]}" x2="${hand[0]}" y2="${hand[1]}" stroke="${hi}" stroke-width="22" stroke-linecap="round"/>`;
-      body += seg(shoulder, [226, 300]);
+      body += limb(shoulder, [232, 300], INK, 20);
+      body += limb(shoulder, polar(shoulder, 170, 270 + angle), MOVE);
+      body += angleMark(shoulder, 270, 270 + angle, angle);
     }
   }
   return frame(body);
+}
+
+// Works in the browser and on the server.
+export function svgDataUrl(svg: string): string {
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
 export function fallbackSvg(t: TileSpec): string {
@@ -137,10 +158,10 @@ export function fallbackSvg(t: TileSpec): string {
     case "warning":
       return markerTile("!");
     case "exercise":
-      return exerciseTile(t.movement, t.angle);
+      return exerciseSvg(t.movement, t.angle);
   }
 }
 
 export function fallbackDataUrl(t: TileSpec): string {
-  return `data:image/svg+xml;base64,${Buffer.from(fallbackSvg(t)).toString("base64")}`;
+  return svgDataUrl(fallbackSvg(t));
 }

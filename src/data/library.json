@@ -1,1 +1,202 @@
-{}
+{
+  "unit-spoon": {
+    "file": "/tiles/unit-spoon.png",
+    "seed": 8715234535720763000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "unit-capsule": {
+    "file": "/tiles/unit-capsule.png",
+    "seed": 12701617979478305000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "unit-drops": {
+    "file": "/tiles/unit-drops.png",
+    "seed": 9418033119432620000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "unit-tablet": {
+    "file": "/tiles/unit-tablet.png",
+    "seed": 7286548412801911000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "unit-puff": {
+    "file": "/tiles/unit-puff.png",
+    "seed": 5549675134384588000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "time-evening": {
+    "file": "/tiles/time-evening.png",
+    "seed": 7717549609602976000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "time-night": {
+    "file": "/tiles/time-night.png",
+    "seed": 1530244583015199700,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "time-afternoon": {
+    "file": "/tiles/time-afternoon.png",
+    "seed": 485460605616010500,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "avoid-alcohol": {
+    "file": "/tiles/avoid-alcohol.png",
+    "seed": 2782510279434611700,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "avoid-driving": {
+    "file": "/tiles/avoid-driving.png",
+    "seed": 7822174340586300000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "avoid-smoking": {
+    "file": "/tiles/avoid-smoking.png",
+    "seed": 15854489279364872000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "avoid-sunlight": {
+    "file": "/tiles/avoid-sunlight.png",
+    "seed": 14652297202889933000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "time-morning": {
+    "file": "/tiles/time-morning.png",
+    "seed": 13091638462664665000,
+    "adapter": true,
+    "tries": 4,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "meal": {
+    "file": "/tiles/meal.png",
+    "seed": 11862769745816388000,
+    "adapter": true,
+    "tries": 3,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "avoid-heavy_lifting": {
+    "file": "/tiles/avoid-heavy_lifting.png",
+    "seed": 803430703139632800,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "avoid-dairy": {
+    "file": "/tiles/avoid-dairy.png",
+    "seed": 13431489537440910000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "warning-bleeding": {
+    "file": "/tiles/warning-bleeding.png",
+    "seed": 7963206976642649000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "warning-swelling": {
+    "file": "/tiles/warning-swelling.png",
+    "seed": 14770730924039102000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "warning-fever": {
+    "file": "/tiles/warning-fever.png",
+    "seed": 10955088612719227000,
+    "adapter": true,
+    "tries": 2,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  },
+  "warning-vomiting": {
+    "file": "/tiles/warning-vomiting.png",
+    "seed": 4317140680381611000,
+    "adapter": true,
+    "tries": 1,
+    "checkedBy": [
+      "gemini",
+      "openai"
+    ]
+  }
+}

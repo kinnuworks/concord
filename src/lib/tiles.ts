@@ -50,11 +50,11 @@ const FORM_OBJECT: Record<Form, (n: number) => string> = {
 };
 
 const FORM_UNIT: Record<Form, string> = {
-  tablet: "one round pale-blue tablet with a score line",
-  capsule: "one medicine capsule lying on its side, one half red and one half white",
+  tablet: "one small round pink medicine tablet pill seen from above, flat pink colour, thick black outline, with one straight black score line across its middle dividing it in two halves",
+  capsule: "one medicine capsule pill lying on its side, one half red and one half white",
   spoon: "one metal spoon seen from the side, holding red liquid medicine",
   drops: "one dropper bottle with a single drop falling from its tip",
-  puff: "one blue asthma inhaler",
+  puff: "one L-shaped asthma inhaler drawn with a thick black outline, a blue plastic body with a grey metal canister on top and a mouthpiece at the bottom pointing to the right",
 };
 
 const AVOID_OBJECT: Record<Avoid, string> = {
@@ -69,14 +69,14 @@ const AVOID_OBJECT: Record<Avoid, string> = {
 const WARNING_SCENE: Record<Warning, string> = {
   fever: "the face of a sick person with red cheeks and sweat drops, holding a thermometer in the mouth",
   bleeding: "a bandaged arm with red drops falling from it",
-  swelling: "two legs side by side, one clearly swollen and larger",
+  swelling: "two lower legs and feet side by side, the left one normal and the right one swollen red and much larger",
   chest_pain: "a person holding the chest with both hands, pain lines at the chest",
   breathlessness: "a person bent forward breathing hard, short breath marks at the mouth",
   severe_pain: "a person grimacing and clutching the stomach, pain lines",
   vomiting: "a person leaning over a bowl being sick",
   rash: "an arm covered in red spots",
   dizziness: "a person holding the head with small spirals circling above it",
-  wound_discharge: "a stitched wound with yellow fluid leaking from it",
+  wound_discharge: "a forearm with a row of stitches and yellow drops of fluid dripping from the wound",
 };
 
 const EXERCISE_SCENE: Record<Movement, (angle: number) => string> = {
@@ -105,7 +105,7 @@ export function tilePrompt(t: TileSpec, useTrigger: boolean): string {
       case "dose":
         return `exactly ${FORM_OBJECT[t.form](t.count)} laid out in a row on a plain surface, each one fully visible and separate, nothing else in the picture`;
       case "unit":
-        return `${FORM_UNIT[t.form]}, large, alone in the middle of the picture, nothing else`;
+        return `${FORM_UNIT[t.form]}, alone in the middle of the picture with wide empty margins, nothing else`;
       case "meal":
         return "a round plate of food seen from above, with a fork on the left and a spoon on the right";
       case "avoid":
