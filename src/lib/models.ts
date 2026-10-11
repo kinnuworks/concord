@@ -6,6 +6,8 @@ export const MODELS = {
   geminiFast: "gemini-3.5-flash-lite",
   gemini: "gemini-3.8-flash",
   openaiFast: "gpt-6-luna",
+  routerVision: "openrouter/router/vision",
+  routerGoogle: "google/gemini-2.5-flash",
   falImage: "fal-ai/flux-lora",
   falTrain: "fal-ai/flux-lora-fast-training",
 } as const;
@@ -101,6 +103,25 @@ export async function geminiJson(
     () => geminiOnce(prompt, images, model),
     model === MODELS.geminiFast ? undefined : () => geminiOnce(prompt, images, MODELS.geminiFast),
   );
+}
+
+type RouterResult = { data: { output?: string; error?: string | null } };
+
+// The Google reader for pictures. It goes through fal's model router, which has no
+// free-tier request cap, so a busy hour cannot be mistaken for an unreadable picture.
+export async function googleVisionJson(prompt: string, images: ImageInput[]): Promise<unknown> {
+  return withRetry(async () => {
+    const res = (await falClient().subscribe(MODELS.routerVision, {
+      input: {
+        model: MODELS.routerGoogle,
+        prompt,
+        temperature: 0,
+        image_urls: images.map((i) => `data:${i.mime};base64,${i.base64}`),
+      },
+    })) as unknown as RouterResult;
+    if (res.data.error) throw new Error(res.data.error);
+    return extractJson(res.data.output ?? "");
+  });
 }
 
 export async function openaiJson(

@@ -1,5 +1,5 @@
 import { AVOIDS, FORMS, TIMES, WARNINGS } from "./schema";
-import { geminiJson, openaiJson, MODELS, type ImageInput } from "./models";
+import { googleVisionJson, openaiJson, MODELS, type ImageInput } from "./models";
 import type { TileSpec } from "./tiles";
 
 export type Reading = Record<string, string | number | boolean | null>;
@@ -60,7 +60,7 @@ function asReading(raw: unknown): Reading {
 }
 
 const READERS: { name: string; run: (q: string, img: ImageInput) => Promise<unknown> }[] = [
-  { name: "gemini", run: (q, img) => geminiJson(q, [img], MODELS.gemini) },
+  { name: "gemini", run: (q, img) => googleVisionJson(q, [img]) },
   { name: "openai", run: (q, img) => openaiJson(q, [img], MODELS.openaiFast) },
 ];
 
