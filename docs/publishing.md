@@ -38,7 +38,7 @@ On the site this must be called a technical report. It is not peer reviewed, and
 2. Click "Create Post".
 3. Title: `Seven in ten could read the label. One in three could take the right dose.`
 4. Paste the body of `docs/article.md`, leaving out the title line and the italic note under it.
-5. Cover image: `docs/cards.png`.
+5. Cover image: `docs/cover-devto.png` (wide, 1000 by 420, the shape dev.to uses).
 6. Tags: `healthtech`, `ai`, `opensource`, `a11y`.
 7. Where the article says "[image: ...]", upload `docs/gallery/4-drawn-live-and-read-back.jpg`. It shows the red sock being thrown away and a new picture being drawn and kept.
 8. Publish, then send the link.

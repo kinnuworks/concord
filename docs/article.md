@@ -1,6 +1,6 @@
 # Seven in ten could read the label. One in three could take the right dose.
 
-*Post this on dev.to, Medium or LinkedIn under your own name. Suggested tags: healthtech, ai, opensource, accessibility. Attach `docs/cards.png` as the cover and the gallery image where marked.*
+*Post this on dev.to, Medium or LinkedIn under your own name. Suggested tags: healthtech, ai, opensource, accessibility. Attach `docs/cover-devto.png` as the cover and the gallery image where marked.*
 
 In 2006, researchers handed 395 adults a pill bottle. The label said "Take two tablets by mouth twice daily." Then they asked each person to count out the pills they would take in a day.
 
