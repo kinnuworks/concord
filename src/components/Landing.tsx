@@ -637,10 +637,10 @@ const EVIDENCE: { title: string; text: string; link: string; href: string; icon:
     ),
   },
   {
-    title: "Open source",
-    text: "Code, scripts and every raw reading, under the MIT licence, with 29 tests run on every commit.",
-    link: "github.com/kinnuworks/concord",
-    href: "https://github.com/kinnuworks/concord",
+    title: "Open source, archived with a DOI",
+    text: "Code, scripts and every raw reading, under the MIT licence, with 29 tests run on every commit. Archived on Zenodo.",
+    link: "doi.org/10.5281/zenodo.23346012",
+    href: "https://doi.org/10.5281/zenodo.23346012",
     icon: (
       <>
         <path d="M8 6l-6 6 6 6M16 6l6 6-6 6" />

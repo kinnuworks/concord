@@ -7,6 +7,7 @@ authors:
 repository-code: "https://github.com/kinnuworks/concord"
 url: "https://concord-health.vercel.app"
 license: MIT
+doi: 10.5281/zenodo.23346012
 version: 1.0.0
 date-released: "2026-10-13"
 keywords:

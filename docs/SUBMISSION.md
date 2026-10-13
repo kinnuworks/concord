@@ -17,6 +17,7 @@ Everything to paste into Devpost, then the video script.
 - https://dev.to/kinnuworks/seven-in-ten-could-read-the-label-one-in-three-could-take-the-right-dose-2jb2
 - https://www.producthunt.com/products/concord-2?launch=concord-3
 - https://github.com/kinnuworks/concord/blob/main/docs/Concord-technical-report.pdf
+- https://doi.org/10.5281/zenodo.23346012
 
 **Built with:** nextjs, typescript, react, fal, flux, lora, gemini, openai, huggingface, openmoji, wikidata, rxnorm, vercel
 

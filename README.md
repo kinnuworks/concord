@@ -2,7 +2,7 @@
 
 Visual discharge instructions, verified before the patient sees them.
 
-[![CI](https://github.com/kinnuworks/concord/actions/workflows/ci.yml/badge.svg)](https://github.com/kinnuworks/concord/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Lighthouse: 100 performance, 100 accessibility, 100 best practices, 100 SEO](https://img.shields.io/badge/Lighthouse-100%20%C2%B7%20100%20%C2%B7%20100%20%C2%B7%20100-brightgreen.svg)](docs/lighthouse-desktop.html)
+[![CI](https://github.com/kinnuworks/concord/actions/workflows/ci.yml/badge.svg)](https://github.com/kinnuworks/concord/actions/workflows/ci.yml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23346012.svg)](https://doi.org/10.5281/zenodo.23346012) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Lighthouse: 100 performance, 100 accessibility, 100 best practices, 100 SEO](https://img.shields.io/badge/Lighthouse-100%20%C2%B7%20100%20%C2%B7%20100%20%C2%B7%20100-brightgreen.svg)](docs/lighthouse-desktop.html)
 
 **Live site:** https://concord-health.vercel.app
 **Adapter:** https://huggingface.co/heykinnu/concord-pictogram-lora (DOI [10.57967/hf/10889](https://doi.org/10.57967/hf/10889))
