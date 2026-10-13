@@ -2,19 +2,19 @@
   "source": "RxNorm, U.S. National Library of Medicine: every ingredient of a currently prescribable medicine that carries a WHO ATC code",
   "url": "https://www.nlm.nih.gov/research/umls/rxnorm/",
   "medicines": 1830,
-  "languages": 31,
-  "written": 56730,
-  "matched": 55497,
+  "languages": 34,
+  "written": 62220,
+  "matched": 60722,
   "wikidata": {
-    "names": 18447,
-    "kept": 17623,
-    "used": 13807
+    "names": 18908,
+    "kept": 18053,
+    "used": 14207
   },
-  "readBack": 75177,
+  "readBack": 81128,
   "agreement": {
-    "compared": 17561,
-    "identical": 13515,
-    "close": 16206
+    "compared": 17956,
+    "identical": 13729,
+    "close": 16551
   },
   "perLanguage": {
     "es": {
@@ -197,11 +197,29 @@
       "wikidata": 48,
       "wikidataKept": 46
     },
+    "th": {
+      "written": 1830,
+      "matched": 1577,
+      "wikidata": 304,
+      "wikidataKept": 283
+    },
     "id": {
       "written": 1830,
       "matched": 1809,
       "wikidata": 976,
       "wikidataKept": 944
+    },
+    "ms": {
+      "written": 1830,
+      "matched": 1820,
+      "wikidata": 157,
+      "wikidataKept": 147
+    },
+    "hmn": {
+      "written": 1830,
+      "matched": 1828,
+      "wikidata": 0,
+      "wikidataKept": 0
     }
   },
   "samples": {
@@ -231,7 +249,8 @@
       "or": "ମେଟ୍‌ଫର୍ମିନ",
       "as": "মেটফৰ্মিন",
       "ne": "मेटफर्मिन",
-      "si": "මෙට්ෆෝමින්"
+      "si": "මෙට්ෆෝමින්",
+      "th": "เมตฟอร์มิน"
     },
     "amoxicillin": {
       "es": "amoxicilina",
@@ -262,7 +281,9 @@
       "as": "এম’ক্সিচিলিন",
       "ne": "एमोक्सिसिलिन",
       "si": "ඇමොක්සිසිලින්",
-      "id": "Amoksisilin"
+      "th": "อะม็อกซีซิลลิน",
+      "id": "Amoksisilin",
+      "ms": "Amoksisilin"
     },
     "ibuprofen": {
       "es": "ibuprofeno",
@@ -289,7 +310,8 @@
       "or": "ଆଇବୁପ୍ରୋଫେନ୍",
       "as": "আইবুপ্ৰ'ফেন",
       "ne": "इबुप्रोफेन",
-      "si": "ඉබුප්‍රොෆෙන්"
+      "si": "ඉබුප්‍රොෆෙන්",
+      "th": "ไอบูโปรเฟน"
     }
   }
 }

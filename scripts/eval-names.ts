@@ -143,7 +143,7 @@ async function main() {
   const queue = LANGUAGE_LIST.filter(([code]) => code !== "en" && hasLanguage(code) && (only.length === 0 || only.includes(code)));
   const results: Record<string, NameCheck[]> = {};
   await Promise.all(
-    Array.from({ length: 12 }, async () => {
+    Array.from({ length: 5 }, async () => {
       for (let job = queue.shift(); job; job = queue.shift()) {
         const [code, name] = job;
         try {

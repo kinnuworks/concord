@@ -53,6 +53,7 @@ video/
 # rendered demo video
 concord-demo.mp4
 concord-demo-preview.mp4
+concord-demo-v2*.mp4
 concord-submission.zip
 training/names/parts/
-training/adapter/*.safetensors
+training/weights/

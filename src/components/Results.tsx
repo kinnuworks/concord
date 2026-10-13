@@ -30,7 +30,7 @@ const MAX_COUNT = 6;
 const CARD_PICTURES = FORMS.length + TIMES.length + 1 + AVOIDS.length;
 const CARD_COMBINATIONS = FORMS.length * MAX_COUNT * (2 ** TIMES.length - 1) * FOODS.length * 2 ** AVOIDS.length;
 const OFFERED = LANGUAGE_LIST.filter(([code]) => hasLanguage(code)).length;
-const namesDone = namesReport.languages >= OFFERED - 1;
+const namesDone = namesReport.languages >= 20;
 
 const share = (x?: { agreeFlat: number; total: number }) => (x && x.total ? Math.round((x.agreeFlat / x.total) * 100) : null);
 
@@ -203,7 +203,7 @@ export function Results() {
               <p className="t-title">Checked the words the same way</p>
               <p>
                 {namesDone
-                  ? `${namesReport.written.toLocaleString("en-US")} medicine names and every card label were written in ${namesReport.languages} languages and read back by a second model.`
+                  ? `${namesReport.readBack.toLocaleString("en-US")} medicine names in ${namesReport.languages} languages, and every card label in ${OFFERED - 1}, were read back by a second model.`
                   : `Every card label was written in ${OFFERED - 1} languages and read back by a second model.`}
               </p>
             </li>

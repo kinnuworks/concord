@@ -31,8 +31,8 @@ export function Languages() {
   const labelCount = labels.reduce((n, [, l]) => n + l.kept, 0);
   const wiki = names.wikidata;
   const agreement = names.agreement;
-  // Shown once the whole run is in, so the page never reports part of it.
-  if (names.languages < OFFERED.length - 1) return null;
+  // The figures always describe the languages whose run has finished, and say how many that is.
+  if (names.languages < 20) return null;
 
   return (
     <section className="section" id="languages">

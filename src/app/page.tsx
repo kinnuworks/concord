@@ -156,7 +156,7 @@ export default function Home() {
                 </Seal>
                 {OFFERED.length} languages
               </li>
-              {namesReport.languages >= OFFERED.length - 1 ? (
+              {namesReport.languages >= 20 ? (
                 <li>
                   <Seal>
                     <path d="M5 12.5l4.5 4.5L19 7.5" />

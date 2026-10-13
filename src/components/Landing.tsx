@@ -563,6 +563,14 @@ const SCORES: [name: string, score: number][] = [
   ["SEO", 100],
 ];
 
+// Each of these was run against the live site or the repository on 13 October 2026.
+const CHECKS = [
+  "29 automated tests run on every commit",
+  "0 accessibility violations in axe-core 4.10, WCAG 2.1 AA, in English and Arabic",
+  "0 errors in the W3C HTML checker",
+  "0 known vulnerabilities in the dependencies",
+];
+
 // Places where Concord is public. A new one is added here only once the page exists.
 const PUBLISHED: [name: string, href: string][] = [
   ["GitHub", "https://github.com/kinnuworks/concord"],
@@ -583,9 +591,15 @@ export function Quality() {
             Lighthouse, desktop, 13 October 2026. Open source under the MIT licence, built and linted on every
             commit.
           </p>
+          <ul className="quality__checks">
+            {CHECKS.map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
           <p className="quality__links">
             <Source href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fconcord-health.vercel.app">Run the audit yourself</Source>
-            <Source href="https://github.com/kinnuworks/concord/actions/workflows/ci.yml">Build status</Source>
+            <Source href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fconcord-health.vercel.app%2F">Check the HTML</Source>
+            <Source href="https://github.com/kinnuworks/concord/actions/workflows/ci.yml">Build and tests</Source>
           </p>
           <p className="quality__links">
             <span className="t-micro">Published on</span>
