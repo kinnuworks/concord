@@ -577,10 +577,10 @@ const CHECKS = [
 // here only once that page exists.
 const EVIDENCE: { title: string; text: string; link: string; href: string; icon: ReactNode }[] = [
   {
-    title: "Technical report",
+    title: "Technical report, with a DOI",
     text: "Six pages on the method, the full evaluation and its limits. Not peer reviewed.",
-    link: "Read the report",
-    href: "https://github.com/kinnuworks/concord/blob/main/docs/Concord-technical-report.pdf",
+    link: "doi.org/10.5281/zenodo.23346534",
+    href: "https://doi.org/10.5281/zenodo.23346534",
     icon: (
       <>
         <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" />

@@ -7,7 +7,7 @@ Visual discharge instructions, verified before the patient sees them.
 **Live site:** https://concord-health.vercel.app
 **Adapter:** https://huggingface.co/heykinnu/concord-pictogram-lora (DOI [10.57967/hf/10889](https://doi.org/10.57967/hf/10889))
 **Checked medicine names (155,637 rows):** https://huggingface.co/datasets/heykinnu/concord-medicine-names (DOI [10.57967/hf/10890](https://doi.org/10.57967/hf/10890))
-**Technical report:** [docs/Concord-technical-report.pdf](docs/Concord-technical-report.pdf)
+**Technical report:** [docs/Concord-technical-report.pdf](docs/Concord-technical-report.pdf) (DOI [10.5281/zenodo.23346534](https://doi.org/10.5281/zenodo.23346534))
 **Write-up:** https://dev.to/kinnuworks/seven-in-ten-could-read-the-label-one-in-three-could-take-the-right-dose-2jb2
 **Product Hunt:** https://www.producthunt.com/products/concord-2?launch=concord-3
 **Built for:** Banana Hacks 2026 (image AI), solo, 9 to 12 October 2026
