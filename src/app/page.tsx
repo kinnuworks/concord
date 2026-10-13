@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo, useRef, useState, type ReactNode } from "react";
 import { CardSheet } from "@/components/Cards";
-import { HowItIsChecked, Mark, PicturesWork, Questions, References, WhoItIsFor, Why } from "@/components/Landing";
+import { HowItIsChecked, Mark, PicturesWork, Quality, Questions, References, WhoItIsFor, Why } from "@/components/Landing";
 import { Follow } from "@/components/Follow";
 import { Languages } from "@/components/Languages";
 import { Results } from "@/components/Results";
@@ -370,6 +370,7 @@ export default function Home() {
         <Languages />
         <WhoItIsFor />
         <Questions />
+        <Quality />
         <References />
       </main>
 

@@ -41,13 +41,26 @@ export type NameCheck = { name: string; local: string; readBack: string; ok: boo
 export async function checkNames(lang: string, names: string[]): Promise<NameCheck[]> {
   const language = LANGUAGES[lang];
   if (!language || !names.length) return [];
-  const forward = (await openaiJson(
-    `You are preparing a medicine instruction card for a patient who reads ${language}.\n` +
-      `"names" are medicine names exactly as printed on the box. Write each one the way it is written in ${language}, in the usual script for ${language}: use the standard ${language} name of the medicine if one exists, otherwise spell out how it sounds. Keep numbers and units such as "500 mg" in digits and Latin letters. If ${language} uses Latin letters and the name is used unchanged, return it unchanged.\n` +
-      `Answer with one JSON object: {"names": {"<original>": "<in ${language}>"}}.\n\n` +
-      JSON.stringify({ names }),
-  )) as { names?: Record<string, string> };
-  const local = names.map((n) => String(forward.names?.[n] ?? "").trim());
+  // Long lists are written in slices side by side. Numbered, so one skipped name cannot shift the rest.
+  const SLICE = 122;
+  const started = Date.now();
+  const slices = await Promise.all(
+    Array.from({ length: Math.ceil(names.length / SLICE) }, async (_, s) => {
+      const part = names.slice(s * SLICE, (s + 1) * SLICE);
+      const forward = (await openaiJson(
+        `You are preparing a medicine instruction card for a patient who reads ${language}.\n` +
+          `Each value is a medicine name exactly as printed on the box. Write each one the way it is written in ${language}, in the usual script for ${language}: use the standard ${language} name of the medicine if one exists, otherwise spell out how it sounds. Keep numbers and units such as "500 mg" in digits and Latin letters. If ${language} uses Latin letters and the name is used unchanged, return it unchanged.\n` +
+          `Answer with one JSON object that has the same keys: {"1": "<in ${language}>", "2": "<in ${language}>"}.\n\n` +
+          JSON.stringify(Object.fromEntries(part.map((n, i) => [String(i + 1), n]))),
+        [],
+        MODELS.openaiFast,
+        "low",
+      )) as Record<string, string>;
+      return part.map((_, i) => String(forward[String(i + 1)] ?? "").trim());
+    }),
+  );
+  const local = slices.flat();
+  const written = Date.now();
   // Numbered, so one skipped name cannot shift every answer after it.
   const back = (await geminiJson(
     `These medicine names are from an instruction card written in ${language}. For each, give the English name of the medicine in Latin letters as it is used in the United States (for example acetaminophen, albuterol, epinephrine), keeping any numbers and units.\n` +
@@ -56,6 +69,7 @@ export async function checkNames(lang: string, names: string[]): Promise<NameChe
     [],
     MODELS.geminiFast,
   )) as Record<string, string>;
+  if (process.env.NAMES_TIMING) console.log(`    ${lang}: written in ${Math.round((written - started) / 1000)}s, read back in ${Math.round((Date.now() - written) / 1000)}s`);
   return names.map((name, i) => {
     const readBack = String(back[String(i + 1)] ?? "");
     return { name, local: local[i], readBack, ok: Boolean(local[i]) && sameName(name, readBack) };

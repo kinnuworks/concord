@@ -2,7 +2,7 @@
 
 Visual discharge instructions, verified before the patient sees them.
 
-[![CI](https://github.com/kinnuworks/concord/actions/workflows/ci.yml/badge.svg)](https://github.com/kinnuworks/concord/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![CI](https://github.com/kinnuworks/concord/actions/workflows/ci.yml/badge.svg)](https://github.com/kinnuworks/concord/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Lighthouse: 100 performance, 100 accessibility, 100 best practices, 100 SEO](https://img.shields.io/badge/Lighthouse-100%20%C2%B7%20100%20%C2%B7%20100%20%C2%B7%20100-brightgreen.svg)](docs/lighthouse-desktop.html)
 
 **Live site:** https://concord-health.vercel.app
 **Built for:** Banana Hacks 2026 (image AI), solo, 9 to 12 October 2026

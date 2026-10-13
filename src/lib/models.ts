@@ -153,10 +153,13 @@ export async function openaiJson(
   prompt: string,
   images: ImageInput[] = [],
   model: string = MODELS.openaiFast,
+  effort?: "low",
 ): Promise<unknown> {
   return withRetry(async () => {
     const res = await openaiClient().chat.completions.create({
       model,
+      // Long lists of names need little deliberation, and low keeps them inside the rate limit.
+      ...(effort ? { reasoning_effort: effort } : {}),
       response_format: { type: "json_object" },
       messages: [
         {

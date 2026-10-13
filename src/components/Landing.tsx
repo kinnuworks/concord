@@ -535,7 +535,7 @@ const REFERENCES: [text: string, href: string][] = [
 
 export function References() {
   return (
-    <section className="section section--alt references" id="sources">
+    <section className="section references" id="sources">
       <div className="container">
         <p className="eyebrow">
           <span className="dot" />
@@ -550,6 +550,45 @@ export function References() {
             </li>
           ))}
         </ol>
+      </div>
+    </section>
+  );
+}
+
+// Lighthouse 12.8 against the live site, desktop preset, 13 October 2026. The report is in docs/.
+const SCORES: [name: string, score: number][] = [
+  ["Performance", 100],
+  ["Accessibility", 100],
+  ["Best practices", 100],
+  ["SEO", 100],
+];
+
+export function Quality() {
+  return (
+    <section className="section quality" id="quality">
+      <div className="container">
+        <div>
+          <p className="eyebrow">
+            <span className="dot" />
+            Measured on the live site
+          </p>
+          <p className="t-small">
+            Lighthouse, desktop, 13 October 2026. Open source under the MIT licence, built and linted on every
+            commit.
+          </p>
+          <p className="quality__links">
+            <Source href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fconcord-health.vercel.app">Run the audit yourself</Source>
+            <Source href="https://github.com/kinnuworks/concord/actions/workflows/ci.yml">Build status</Source>
+          </p>
+        </div>
+        <ul className="scores">
+          {SCORES.map(([name, score]) => (
+            <li key={name}>
+              <span className="scores__ring">{score}</span>
+              {name}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
