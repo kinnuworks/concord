@@ -783,6 +783,53 @@
     grid-template-columns: 1fr;
   }
 }
+.totals {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 16px;
+  padding: 26px 28px;
+  border-radius: var(--r-lg);
+  background: var(--ink);
+  color: var(--bg);
+}
+.totals div {
+  display: grid;
+  gap: 6px;
+}
+.totals dt {
+  font: var(--display-weight) clamp(34px, 4vw, 50px) / 1 var(--font-display);
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+}
+.totals dd {
+  margin: 0;
+  font-size: var(--fs-small);
+  color: color-mix(in oklab, var(--bg) 72%, var(--ink));
+}
+.doi {
+  display: inline-flex;
+  margin-top: 10px;
+  border-radius: 6px;
+  overflow: hidden;
+  font: 500 12px/1 var(--font-mono);
+  color: #fff !important;
+  background: #0b72b5;
+}
+.doi span {
+  padding: 6px 7px;
+  background: #3a3a3c;
+}
+.doi {
+  align-items: center;
+  padding-right: 8px;
+  gap: 7px;
+}
+@media (max-width: 760px) {
+  .totals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 .evidence {
   color: inherit;
 }

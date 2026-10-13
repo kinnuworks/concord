@@ -1,6 +1,6 @@
 # Concord: read-back verification of generated pictograms for medicine instructions
 
-**Dhiraj (kinnuworks)**  
+**Dhiraj Kavuri**  
 Technical report, version 1.0, 13 October 2026. Not peer reviewed.  
 Code: https://github.com/kinnuworks/concord · Live: https://concord-health.vercel.app
 

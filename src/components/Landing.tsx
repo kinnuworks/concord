@@ -575,11 +575,12 @@ const CHECKS = [
 
 // What has been published about Concord, each with the page that proves it. An entry is added
 // here only once that page exists.
-const EVIDENCE: { title: string; text: string; link: string; href: string; icon: ReactNode }[] = [
+const EVIDENCE: { title: string; text: string; link: string; href: string; doi?: string; icon: ReactNode }[] = [
   {
     title: "Technical report, with a DOI",
     text: "Six pages on the method, the full evaluation and its limits. Not peer reviewed.",
     link: "doi.org/10.5281/zenodo.23346534",
+    doi: "10.5281/zenodo.23346534",
     href: "https://doi.org/10.5281/zenodo.23346534",
     icon: (
       <>
@@ -592,6 +593,7 @@ const EVIDENCE: { title: string; text: string; link: string; href: string; icon:
     title: "Open data, with a DOI",
     text: "All 155,637 medicine names with what the second model read back, in 69 languages.",
     link: "doi.org/10.57967/hf/10890",
+    doi: "10.57967/hf/10890",
     href: "https://doi.org/10.57967/hf/10890",
     icon: (
       <>
@@ -604,6 +606,7 @@ const EVIDENCE: { title: string; text: string; link: string; href: string; icon:
     title: "Fine-tuned adapter, with a DOI",
     text: "The style adapter trained for Concord, published with its training settings and results.",
     link: "doi.org/10.57967/hf/10889",
+    doi: "10.57967/hf/10889",
     href: "https://doi.org/10.57967/hf/10889",
     icon: (
       <>
@@ -640,6 +643,7 @@ const EVIDENCE: { title: string; text: string; link: string; href: string; icon:
     title: "Open source, archived with a DOI",
     text: "Code, scripts and every raw reading, under the MIT licence, with 29 tests run on every commit. Archived on Zenodo.",
     link: "doi.org/10.5281/zenodo.23346012",
+    doi: "10.5281/zenodo.23346012",
     href: "https://doi.org/10.5281/zenodo.23346012",
     icon: (
       <>
@@ -647,6 +651,13 @@ const EVIDENCE: { title: string; text: string; link: string; href: string; icon:
       </>
     ),
   },
+];
+
+const TOTALS: [figure: string, what: string][] = [
+  ["4", "permanent DOIs"],
+  ["155,637", "rows of open data"],
+  ["540", "generated pictures, all published"],
+  ["15", "cited sources"],
 ];
 
 export function Evidence() {
@@ -661,6 +672,14 @@ export function Evidence() {
           <h2>Built in the open. Backed by experiments.</h2>
           <p className="lead">Everything behind the numbers on this page is published, and each item below opens the page that proves it.</p>
         </div>
+        <dl className="totals">
+          {TOTALS.map(([figure, what]) => (
+            <div key={what}>
+              <dt>{figure}</dt>
+              <dd>{what}</dd>
+            </div>
+          ))}
+        </dl>
         <div className="grid grid-3">
           {EVIDENCE.map((e) => (
             <a key={e.title} className="tile evidence" href={e.href} target="_blank" rel="noreferrer">
@@ -670,7 +689,14 @@ export function Evidence() {
               <div>
                 <p className="t-title">{e.title}</p>
                 <p>{e.text}</p>
-                <p className="evidence__link">{e.link}</p>
+                {e.doi ? (
+                  <p className="doi">
+                    <span>DOI</span>
+                    {e.doi}
+                  </p>
+                ) : (
+                  <p className="evidence__link">{e.link}</p>
+                )}
               </div>
             </a>
           ))}

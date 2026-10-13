@@ -21,6 +21,8 @@ size_categories:
 
 - **Medicines:** 1,830 ingredients of currently prescribable medicines that carry a WHO ATC code, from [RxNorm](https://www.nlm.nih.gov/research/umls/rxnorm/) (U.S. National Library of Medicine).
 - **Rows:** 126,270 names written by a language model (1,830 in each of 69 languages) and 29,367 names that [Wikidata](https://www.wikidata.org) already has for the same medicines, matched through their RxNorm id.
+- **Author:** Dhiraj Kavuri
+- **Technical report:** https://doi.org/10.5281/zenodo.23346534
 - **Code:** https://github.com/kinnuworks/concord (`scripts/eval-names.ts`, `scripts/wikidata-labels.ts`, `scripts/wikidata-names.ts`)
 
 ## How each name was checked

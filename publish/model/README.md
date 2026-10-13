@@ -20,6 +20,8 @@ A LoRA style adapter that makes FLUX.1 [dev] draw flat, outlined pictograms in o
 - **Trigger phrase:** `rdbk pictogram`
 - **Training set:** 70 [OpenMoji](https://openmoji.org) pictograms with written captions (CC BY-SA 4.0)
 - **Training:** 1,000 steps, learning rate 0.0005, style mode, 218 seconds on fal
+- **Author:** Dhiraj Kavuri
+- **Technical report:** https://doi.org/10.5281/zenodo.23346534
 - **Code and evaluation:** https://github.com/kinnuworks/concord
 - **Checked medicine names in 69 languages:** https://huggingface.co/datasets/heykinnu/concord-medicine-names
 
