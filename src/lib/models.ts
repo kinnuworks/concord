@@ -54,7 +54,7 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 function isBusy(e: unknown): boolean {
   const msg = e instanceof Error ? e.message : String(e);
-  return /\b(429|500|502|503|504)\b|UNAVAILABLE|overloaded|high demand|rate limit/i.test(msg);
+  return /\b(429|500|502|503|504)\b|UNAVAILABLE|overloaded|high demand|rate limit|timed? ?out|aborted|fetch failed/i.test(msg);
 }
 
 // Retries a busy service with a short backoff, then gives the caller's fallback a turn.
@@ -78,18 +78,23 @@ async function withRetry<T>(run: () => Promise<T>, fallback?: () => Promise<T>):
 const GOOGLE_LIGHT = [MODELS.geminiFast, "gemini-3.1-flash-lite", "gemini-3.5-flash", "gemini-3.6-flash", "gemma-4-26b-a4b-it"];
 const usedUp = new Map<string, number>();
 
+// Over its daily limit, a model is skipped for an hour. Busy or slow, for two minutes.
+function rest(model: string, e: unknown) {
+  const daily = /PerDay/.test(e instanceof Error ? e.message : String(e));
+  usedUp.set(model, Date.now() + (daily ? 60 : 2) * 60 * 1000);
+}
+
 async function googleLight(prompt: string, images: ImageInput[]): Promise<unknown> {
   let last: unknown;
   for (const model of GOOGLE_LIGHT) {
-    // A model that hit its daily limit is skipped for an hour, then tried again.
+    // A model that is resting is skipped.
     if ((usedUp.get(model) ?? 0) > Date.now()) continue;
     try {
       return await geminiOnce(prompt, images, model);
     } catch (e) {
       last = e;
-      // Over its daily limit: skip it for an hour. Busy right now: try the next one this time.
-      if (/PerDay/.test(e instanceof Error ? e.message : String(e))) usedUp.set(model, Date.now() + 60 * 60 * 1000);
-      else if (!isBusy(e)) throw e;
+      if (!isBusy(e)) throw e;
+      rest(model, e);
     }
   }
   throw last ?? new Error("every Google reader is busy or over its daily limit");
@@ -108,7 +113,8 @@ async function geminiOnce(prompt: string, images: ImageInput[], model: string): 
       },
     ],
     config: {
-      httpOptions: { timeout: 25000 },
+      // A reader that has not answered in this time is treated as busy and the next one is asked.
+      httpOptions: { timeout: 12000 },
       // Gemma has no JSON mode. Its reply is still parsed as JSON below.
       ...(model.startsWith("gemma") ? {} : { responseMimeType: "application/json" }),
       temperature: 0,
@@ -124,19 +130,23 @@ export async function geminiJson(
   images: ImageInput[] = [],
   model: string = MODELS.gemini,
 ): Promise<unknown> {
-  // If the direct service is busy or over its quota, the same vendor's model is reached
-  // through the router instead, so one reader's bad minute doesn't stop the sheet being read.
-  return withRetry(
-    () => (model === MODELS.geminiFast ? googleLight(prompt, images) : geminiOnce(prompt, images, model)),
-    async () => {
-      try {
-        return await (images.length ? googleVisionJson(prompt, images) : googleTextJson(prompt));
-      } catch {
-        // Last resort: the vendor's lighter models, each with its own allowance.
-        return googleLight(prompt, images);
-      }
-    },
-  );
+  // If the direct service is busy, slow or over its quota, the same vendor's model is reached
+  // through the router or one of its lighter models, so one reader's bad minute doesn't stop
+  // the sheet being read.
+  if (model === MODELS.geminiFast) return withRetry(() => googleLight(prompt, images));
+  if ((usedUp.get(model) ?? 0) <= Date.now()) {
+    try {
+      return await geminiOnce(prompt, images, model);
+    } catch (e) {
+      if (!isBusy(e)) throw e;
+      rest(model, e);
+    }
+  }
+  try {
+    return await (images.length ? googleVisionJson(prompt, images) : googleTextJson(prompt));
+  } catch {
+    return googleLight(prompt, images);
+  }
 }
 
 type RouterResult = { data: { output?: string; error?: string | null } };
