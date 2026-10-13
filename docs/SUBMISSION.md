@@ -21,7 +21,7 @@ Everything to paste into Devpost, then the video script.
 
 **Built with:** nextjs, typescript, react, fal, flux, lora, gemini, openai, huggingface, openmoji, wikidata, rxnorm, vercel
 
-**AI tools used (the rules ask for this):** Claude Code for writing code and building the demo video (rendered with Remotion, music synthesized by a script). FLUX.1 [dev] with our own LoRA adapter for the pictures, and OpenAI gpt-image-2.5-flare for pictures drawn live on the site. Gemini 3.8 Flash, Gemini 2.5 Flash, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite and GPT-6 Luna as readers.
+**AI tools used (the rules ask for this):** Claude Code for writing code and building the demo video (rendered with Remotion, music synthesized by a script). ElevenLabs for the narration, in a clone of my own voice. FLUX.1 [dev] with our own LoRA adapter for the pictures, and OpenAI gpt-image-2.5-flare for pictures drawn live on the site. Gemini 3.8 Flash, Gemini 2.5 Flash, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite and GPT-6 Luna as readers.
 
 **Upload a file (additional info for judges):** `docs/Concord-notes-for-judges.pdf`. Two pages: where to look for each judging criterion, how to try the site in two minutes, and the measured numbers.
 
@@ -85,14 +85,13 @@ A generated picture is a claim, and a claim about medicine has to be checked bef
 
 ## Video
 
-The new cut is `concord-demo-v2.mp4` in the project folder (1920 by 1080, 2 minutes 51 seconds, music and captions). It was built in code with Remotion from the real generated pictures, the recorded reader quotes, 70 cards captured from the live site and a screen capture of the live site.
+The final cut is `concord-demo-v3.mp4` in the project folder (1920 by 1080, 2 minutes 35 seconds, with voice, music and captions). It was built in code with Remotion from the real generated pictures, the recorded reader quotes, 70 cards captured from the live site and a screen capture of the live site. The voice is a clone of the author's own voice made with ElevenLabs, and the faces in the opening are free-licence stock photographs and footage from Pexels.
 
-It opens on the prescription label, shows who a page of text leaves behind (one dot for every million people), the trials of picture instructions, the miscounting image model, the read-back, how it was built, the 70 languages and the live site.
+It opens on people, shows who a page of text leaves behind, the label study, the miscounting image model, the read-back, how it was built, the 70 languages, the seven-person test and the live site.
 
-1. Record the voice-over from `docs/voiceover.md` if you can. Send the recordings and they are mixed in under the music.
-2. Watch the result once with the sound on.
-3. Upload it to YouTube as Public (the rules ask for public). Title: "Concord: visual discharge instructions, verified (Banana Hacks 2026)". Thumbnail: `docs/thumbnail-youtube.png`.
-4. Replace the link in the Devpost video field.
+1. Watch it once with the sound on.
+2. Upload it to YouTube as Public (the rules ask for public). Title: "Concord: visual discharge instructions, verified (Banana Hacks 2026)". Thumbnail: `docs/thumbnail-youtube.png`.
+3. Replace the link in the Devpost video field.
 
 On the paper sheet in the video, the hospital name and patient number are made up. Everything else on screen is real.
 
@@ -110,7 +109,7 @@ Edits are open until Wednesday 14 October, 2:30 AM.
 
 ## Checklist before you press submit
 
-- [ ] Video is public on YouTube and under 3:00 (the new cut is 2:51).
+- [ ] Video is public on YouTube and under 3:00 (the final cut is 2:35).
 - [ ] Live link opens in a private window and shows cards without any setup.
 - [ ] GitHub repo is public.
 - [ ] Write-up is under 500 words.
