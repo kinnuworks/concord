@@ -214,7 +214,7 @@ function MedicineView({ card, shared }: { card: MedicineCard; shared: Shared }) 
                 {on ? (
                   <Dose spec={dose} shared={shared} count={m.count} size={132} />
                 ) : (
-                  <span className="slot__none" aria-label="None">
+                  <span className="slot__none" role="img" aria-label="None">
                     &ndash;
                   </span>
                 )}

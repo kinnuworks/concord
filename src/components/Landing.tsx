@@ -537,10 +537,10 @@ export function References() {
   return (
     <section className="section references" id="sources">
       <div className="container">
-        <p className="eyebrow">
+        <h2 className="eyebrow">
           <span className="dot" />
           Sources
-        </p>
+        </h2>
         <ol>
           {REFERENCES.map(([text, href]) => (
             <li key={href}>
@@ -575,10 +575,10 @@ export function Quality() {
     <section className="section quality" id="quality">
       <div className="container">
         <div>
-          <p className="eyebrow">
+          <h2 className="eyebrow">
             <span className="dot" />
             Measured on the live site
-          </p>
+          </h2>
           <p className="t-small">
             Lighthouse, desktop, 13 October 2026. Open source under the MIT licence, built and linted on every
             commit.

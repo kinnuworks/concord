@@ -34,6 +34,27 @@ export function sameName(original: string, readBack: string): boolean {
   return distance(a, b) / Math.max(a.length, b.length) <= 0.15;
 }
 
+// A name written half in the patient's script and half in Latin letters is a failed
+// transliteration, even when a reader can still guess the medicine from it.
+export function mixedScript(local: string): boolean {
+  return /[^\u0000-\u024F\s\d\p{P}]/u.test(local) && /[A-Za-z]{3,}/.test(local);
+}
+
+// A second model, which never sees the originals, gives the English name of each one.
+// Numbered, so one skipped name cannot shift every answer after it.
+export async function readNamesBack(lang: string, local: string[]): Promise<string[]> {
+  const language = LANGUAGES[lang];
+  if (!language || !local.length) return [];
+  const back = (await geminiJson(
+    `These medicine names are from an instruction card written in ${language}. For each, give the English name of the medicine in Latin letters as it is used in the United States (for example acetaminophen, albuterol, epinephrine), keeping any numbers and units.\n` +
+      `Answer with one JSON object that has the same keys: {"1": "English name", "2": "English name"}.\n\n` +
+      JSON.stringify(Object.fromEntries(local.map((l, i) => [String(i + 1), l]))),
+    [],
+    MODELS.geminiFast,
+  )) as Record<string, string>;
+  return local.map((_, i) => String(back[String(i + 1)] ?? ""));
+}
+
 export type NameCheck = { name: string; local: string; readBack: string; ok: boolean };
 
 // One model writes each medicine name in the patient's language. A second model, which never
@@ -61,18 +82,11 @@ export async function checkNames(lang: string, names: string[]): Promise<NameChe
   );
   const local = slices.flat();
   const written = Date.now();
-  // Numbered, so one skipped name cannot shift every answer after it.
-  const back = (await geminiJson(
-    `These medicine names are from an instruction card written in ${language}. For each, give the English name of the medicine in Latin letters as it is used in the United States (for example acetaminophen, albuterol, epinephrine), keeping any numbers and units.\n` +
-      `Answer with one JSON object that has the same keys: {"1": "English name", "2": "English name"}.\n\n` +
-      JSON.stringify(Object.fromEntries(local.map((l, i) => [String(i + 1), l]))),
-    [],
-    MODELS.geminiFast,
-  )) as Record<string, string>;
+  const back = await readNamesBack(lang, local);
   if (process.env.NAMES_TIMING) console.log(`    ${lang}: written in ${Math.round((written - started) / 1000)}s, read back in ${Math.round((Date.now() - written) / 1000)}s`);
   return names.map((name, i) => {
-    const readBack = String(back[String(i + 1)] ?? "");
-    return { name, local: local[i], readBack, ok: Boolean(local[i]) && sameName(name, readBack) };
+    const readBack = back[i];
+    return { name, local: local[i], readBack, ok: Boolean(local[i]) && !mixedScript(local[i]) && sameName(name, readBack) };
   });
 }
 

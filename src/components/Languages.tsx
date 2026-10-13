@@ -9,6 +9,9 @@ type NamesReport = {
   languages: number;
   written: number;
   matched: number;
+  readBack?: number;
+  wikidata?: { names: number; kept: number; used: number };
+  agreement?: { compared: number; identical: number; close: number };
   samples?: Record<string, Record<string, string>>;
 };
 
@@ -26,9 +29,10 @@ export function Languages() {
   const sample = names.samples?.metformin ?? {};
   const shown = SHOWN.filter((code) => sample[code]);
   const labelCount = labels.reduce((n, [, l]) => n + l.kept, 0);
+  const wiki = names.wikidata;
+  const agreement = names.agreement;
   // Shown once the whole run is in, so the page never reports part of it.
   if (names.languages < OFFERED.length - 1) return null;
-  const pct = ((names.matched / names.written) * 100).toFixed(1);
 
   return (
     <section className="section" id="languages">
@@ -45,19 +49,34 @@ export function Languages() {
           </p>
         </div>
 
-        <div className="grid grid-2">
+        <div className="grid grid-3 stat-grid--compact">
           <div className="card stat-card">
             <p className="stat-card__tag" data-side="concord">Medicine names</p>
-            <p className="stat-card__figure">{count(names.written)}</p>
+            <p className="stat-card__figure">{count(names.readBack ?? names.written)}</p>
             <p className="stat-card__text">
-              medicine names written and read back: {count(names.medicines)} prescribable medicines in each of{" "}
-              {names.languages} languages. {pct}% came back as the same medicine. A name that does not come
-              back is left in Latin letters on the card.
+              medicine names read back by a model that never saw the English: {count(names.medicines)}{" "}
+              prescribable medicines written in each of {names.languages} languages
+              {wiki ? `, and ${count(wiki.names)} names from Wikidata` : ""}. A name that does not come back as
+              the same medicine is left in Latin letters on the card.
             </p>
             <a className="source-tag" href={names.url} target="_blank" rel="noreferrer">
               Medicine list: RxNorm, U.S. National Library of Medicine
             </a>
           </div>
+          {wiki && agreement ? (
+            <div className="card stat-card">
+              <p className="stat-card__tag" data-side="concord">Checked against Wikidata</p>
+              <p className="stat-card__figure">{count(wiki.used)}</p>
+              <p className="stat-card__text">
+                names on the cards come from Wikidata, the open knowledge base behind Wikipedia, so a reader sees
+                the name their own pharmacy uses. Where Concord had also written the name itself,{" "}
+                {count(agreement.close)} of {count(agreement.compared)} agreed to within a letter or two.
+              </p>
+              <a className="source-tag" href="https://www.wikidata.org/wiki/Property:P3345" target="_blank" rel="noreferrer">
+                Matched by RxNorm id on Wikidata
+              </a>
+            </div>
+          ) : null}
           <div className="card stat-card">
             <p className="stat-card__tag" data-side="concord">Card labels</p>
             <p className="stat-card__figure">{count(labelCount)}</p>

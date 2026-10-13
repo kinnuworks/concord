@@ -2,13 +2,294 @@
   "source": "RxNorm, U.S. National Library of Medicine: every ingredient of a currently prescribable medicine that carries a WHO ATC code",
   "url": "https://www.nlm.nih.gov/research/umls/rxnorm/",
   "medicines": 1830,
-  "languages": 1,
-  "written": 1830,
-  "matched": 1804,
+  "languages": 31,
+  "written": 56730,
+  "matched": 55497,
+  "wikidata": {
+    "names": 18447,
+    "kept": 17623,
+    "used": 13807
+  },
+  "readBack": 75177,
+  "agreement": {
+    "compared": 17561,
+    "identical": 13515,
+    "close": 16206
+  },
   "perLanguage": {
+    "es": {
+      "written": 1830,
+      "matched": 1807,
+      "wikidata": 1253,
+      "wikidataKept": 1214
+    },
+    "zh": {
+      "written": 1830,
+      "matched": 1723,
+      "wikidata": 1178,
+      "wikidataKept": 1116
+    },
+    "zh-Hant": {
+      "written": 1830,
+      "matched": 1706,
+      "wikidata": 490,
+      "wikidataKept": 471
+    },
+    "tl": {
+      "written": 1830,
+      "matched": 1829,
+      "wikidata": 33,
+      "wikidataKept": 33
+    },
+    "vi": {
+      "written": 1830,
+      "matched": 1775,
+      "wikidata": 1050,
+      "wikidataKept": 997
+    },
+    "ar": {
+      "written": 1830,
+      "matched": 1771,
+      "wikidata": 1270,
+      "wikidataKept": 1219
+    },
+    "fr": {
+      "written": 1830,
+      "matched": 1790,
+      "wikidata": 1348,
+      "wikidataKept": 1281
+    },
+    "ko": {
+      "written": 1830,
+      "matched": 1787,
+      "wikidata": 661,
+      "wikidataKept": 630
+    },
+    "ru": {
+      "written": 1830,
+      "matched": 1781,
+      "wikidata": 960,
+      "wikidataKept": 913
+    },
+    "pt": {
+      "written": 1830,
+      "matched": 1800,
+      "wikidata": 1051,
+      "wikidataKept": 1018
+    },
+    "ht": {
+      "written": 1830,
+      "matched": 1818,
+      "wikidata": 17,
+      "wikidataKept": 17
+    },
     "hi": {
       "written": 1830,
-      "matched": 1804
+      "matched": 1794,
+      "wikidata": 190,
+      "wikidataKept": 177
+    },
+    "de": {
+      "written": 1830,
+      "matched": 1794,
+      "wikidata": 1190,
+      "wikidataKept": 1134
+    },
+    "pl": {
+      "written": 1830,
+      "matched": 1788,
+      "wikidata": 1065,
+      "wikidataKept": 1017
+    },
+    "it": {
+      "written": 1830,
+      "matched": 1799,
+      "wikidata": 1074,
+      "wikidataKept": 1031
+    },
+    "ur": {
+      "written": 1830,
+      "matched": 1775,
+      "wikidata": 157,
+      "wikidataKept": 128
+    },
+    "fa": {
+      "written": 1830,
+      "matched": 1770,
+      "wikidata": 1144,
+      "wikidataKept": 1078
+    },
+    "te": {
+      "written": 1830,
+      "matched": 1803,
+      "wikidata": 435,
+      "wikidataKept": 418
+    },
+    "ja": {
+      "written": 1830,
+      "matched": 1779,
+      "wikidata": 1201,
+      "wikidataKept": 1162
+    },
+    "gu": {
+      "written": 1830,
+      "matched": 1809,
+      "wikidata": 14,
+      "wikidataKept": 12
+    },
+    "bn": {
+      "written": 1830,
+      "matched": 1806,
+      "wikidata": 182,
+      "wikidataKept": 176
+    },
+    "ta": {
+      "written": 1830,
+      "matched": 1771,
+      "wikidata": 126,
+      "wikidataKept": 112
+    },
+    "pa": {
+      "written": 1830,
+      "matched": 1802,
+      "wikidata": 37,
+      "wikidataKept": 34
+    },
+    "mr": {
+      "written": 1830,
+      "matched": 1801,
+      "wikidata": 25,
+      "wikidataKept": 19
+    },
+    "kn": {
+      "written": 1830,
+      "matched": 1803,
+      "wikidata": 38,
+      "wikidataKept": 30
+    },
+    "ml": {
+      "written": 1830,
+      "matched": 1809,
+      "wikidata": 131,
+      "wikidataKept": 125
+    },
+    "or": {
+      "written": 1830,
+      "matched": 1806,
+      "wikidata": 1065,
+      "wikidataKept": 1037
+    },
+    "as": {
+      "written": 1830,
+      "matched": 1798,
+      "wikidata": 11,
+      "wikidataKept": 9
+    },
+    "ne": {
+      "written": 1830,
+      "matched": 1801,
+      "wikidata": 27,
+      "wikidataKept": 25
+    },
+    "si": {
+      "written": 1830,
+      "matched": 1793,
+      "wikidata": 48,
+      "wikidataKept": 46
+    },
+    "id": {
+      "written": 1830,
+      "matched": 1809,
+      "wikidata": 976,
+      "wikidataKept": 944
+    }
+  },
+  "samples": {
+    "metformin": {
+      "es": "metformina",
+      "zh": "二甲双胍",
+      "zh-Hant": "二甲雙胍",
+      "ar": "ميتفورمين",
+      "fr": "Metformine",
+      "ko": "메트포민",
+      "ru": "метформин",
+      "pt": "metformina",
+      "hi": "मेटफॉर्मिन",
+      "pl": "metformina",
+      "it": "metformina",
+      "ur": "میٹفارمین",
+      "fa": "متفورمین",
+      "te": "మెట్ఫార్మిన్",
+      "ja": "メトホルミン",
+      "gu": "મેટફોર્મિન",
+      "bn": "মেটফরমিন",
+      "ta": "மெட்பார்மின்",
+      "pa": "ਮੈਟਫੌਰਮਿਨ",
+      "mr": "मेटफॉर्मिन",
+      "kn": "ಮೆಟ್‌ಫಾರ್ಮಿನ್",
+      "ml": "മെറ്റ്ഫോർമിൻ",
+      "or": "ମେଟ୍‌ଫର୍ମିନ",
+      "as": "মেটফৰ্মিন",
+      "ne": "मेटफर्मिन",
+      "si": "මෙට්ෆෝමින්"
+    },
+    "amoxicillin": {
+      "es": "amoxicilina",
+      "zh": "阿莫西林",
+      "zh-Hant": "阿莫西林",
+      "vi": "amoxycillin",
+      "ar": "أموكسيسيلين",
+      "fr": "amoxicilline",
+      "ko": "아목시실린",
+      "ru": "амоксициллин",
+      "pt": "amoxicilina",
+      "ht": "amoksisilin",
+      "hi": "एमॉक्सिसिलिन",
+      "pl": "amoksycylina",
+      "it": "amoxicillina",
+      "ur": "اموکسیلین",
+      "fa": "آموکسی سیلین",
+      "te": "అమోక్సిసిలిన్",
+      "ja": "アモキシシリン",
+      "gu": "એમોક્સિસિલિન",
+      "bn": "এমোক্সিসিলিন",
+      "ta": "அமாக்சிசிலின்",
+      "pa": "ਅਮੋਕਸੀਸਿਲਿਨ",
+      "mr": "अमॉक्सिसिलिन",
+      "kn": "ಅಮೋಕ್ಸಿಸಿಲಿನ್",
+      "ml": "അമോക്സിലിൻ",
+      "or": "ଆମୋକ୍ସିସିଲିନ",
+      "as": "এম’ক্সিচিলিন",
+      "ne": "एमोक्सिसिलिन",
+      "si": "ඇමොක්සිසිලින්",
+      "id": "Amoksisilin"
+    },
+    "ibuprofen": {
+      "es": "ibuprofeno",
+      "zh": "布洛芬",
+      "zh-Hant": "布洛芬",
+      "ar": "إيبوبروفين",
+      "fr": "ibuprofène",
+      "ko": "이부프로펜",
+      "ru": "ибупрофен",
+      "pt": "ibuprofeno",
+      "hi": "इबुप्रोफेन",
+      "it": "ibuprofene",
+      "ur": "آئبوپروفین",
+      "fa": "ایبوپروفن",
+      "te": "ఐబుప్రోఫెన్",
+      "ja": "イブプロフェン",
+      "gu": "આઇબુપ્રોફેન",
+      "bn": "আইবুপ্রোফেন",
+      "ta": "ஐப்யூபுரூஃபன்",
+      "pa": "ਇਬੂਪ੍ਰੋਫ਼ੇਨ",
+      "mr": "इबुप्रोफेन",
+      "kn": "ಐಬುಪ್ರೊಫೇನ್",
+      "ml": "ഐബുപ്രോഫൻ",
+      "or": "ଆଇବୁପ୍ରୋଫେନ୍",
+      "as": "আইবুপ্ৰ'ফেন",
+      "ne": "इबुप्रोफेन",
+      "si": "ඉබුප්‍රොෆෙන්"
     }
   }
 }

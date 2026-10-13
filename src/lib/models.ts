@@ -73,6 +73,27 @@ async function withRetry<T>(run: () => Promise<T>, fallback?: () => Promise<T>):
   throw last;
 }
 
+// Google's lighter models, in the order they are tried. Each has its own daily allowance, so
+// when one is used up the next takes over and the second reader stays a Google model.
+const GOOGLE_LIGHT = [MODELS.geminiFast, "gemini-3.1-flash-lite", "gemini-3.5-flash", "gemma-4-26b-a4b-it"];
+const usedUp = new Map<string, number>();
+
+async function googleLight(prompt: string, images: ImageInput[]): Promise<unknown> {
+  let last: unknown;
+  for (const model of GOOGLE_LIGHT) {
+    // A model that hit its daily limit is skipped for an hour, then tried again.
+    if ((usedUp.get(model) ?? 0) > Date.now()) continue;
+    try {
+      return await geminiOnce(prompt, images, model);
+    } catch (e) {
+      last = e;
+      if (!/PerDay/.test(e instanceof Error ? e.message : String(e))) throw e;
+      usedUp.set(model, Date.now() + 60 * 60 * 1000);
+    }
+  }
+  throw last ?? new Error("every Google reader is over its daily limit");
+}
+
 async function geminiOnce(prompt: string, images: ImageInput[], model: string): Promise<unknown> {
   const res = await geminiClient().models.generateContent({
     model,
@@ -86,7 +107,8 @@ async function geminiOnce(prompt: string, images: ImageInput[], model: string): 
       },
     ],
     config: {
-      responseMimeType: "application/json",
+      // Gemma has no JSON mode. Its reply is still parsed as JSON below.
+      ...(model.startsWith("gemma") ? {} : { responseMimeType: "application/json" }),
       temperature: 0,
       // Reading a pictogram or a short sheet needs little deliberation, and low keeps it fast.
       ...(model === MODELS.gemini ? { thinkingConfig: { thinkingLevel: ThinkingLevel.LOW } } : {}),
@@ -103,13 +125,13 @@ export async function geminiJson(
   // If the direct service is busy or over its quota, the same vendor's model is reached
   // through the router instead, so one reader's bad minute doesn't stop the sheet being read.
   return withRetry(
-    () => geminiOnce(prompt, images, model),
+    () => (model === MODELS.geminiFast ? googleLight(prompt, images) : geminiOnce(prompt, images, model)),
     async () => {
       try {
         return await (images.length ? googleVisionJson(prompt, images) : googleTextJson(prompt));
       } catch {
-        // Last resort: the vendor's lighter model, which has its own allowance.
-        return geminiOnce(prompt, images, MODELS.geminiFast);
+        // Last resort: the vendor's lighter models, each with its own allowance.
+        return googleLight(prompt, images);
       }
     },
   );
@@ -135,7 +157,7 @@ export async function googleVisionJson(prompt: string, images: ImageInput[]): Pr
     });
   } catch {
     // The router is unreachable: ask the same vendor directly instead.
-    return withRetry(() => geminiOnce(prompt, images, MODELS.geminiFast));
+    return withRetry(() => googleLight(prompt, images));
   }
 }
 

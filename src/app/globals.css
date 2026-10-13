@@ -350,6 +350,14 @@
     min-height: 0;
   }
 }
+.stat-grid--compact .stat-card__figure {
+  font-size: clamp(40px, 4.2vw, 52px);
+}
+@media (max-width: 900px) {
+  .stat-grid--compact {
+    grid-template-columns: 1fr;
+  }
+}
 .scripts {
   margin-top: 16px;
   padding: 28px;

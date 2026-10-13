@@ -161,7 +161,7 @@ export default function Home() {
                   <Seal>
                     <path d="M5 12.5l4.5 4.5L19 7.5" />
                   </Seal>
-                  {namesReport.written.toLocaleString("en-US")} medicine names read back
+                  {((namesReport as { readBack?: number }).readBack ?? namesReport.written).toLocaleString("en-US")} medicine names read back
                 </li>
               ) : null}
               <li>
