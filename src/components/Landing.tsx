@@ -563,6 +563,13 @@ const SCORES: [name: string, score: number][] = [
   ["SEO", 100],
 ];
 
+// Places where Concord is public. A new one is added here only once the page exists.
+const PUBLISHED: [name: string, href: string][] = [
+  ["GitHub", "https://github.com/kinnuworks/concord"],
+  ["Devpost", "https://devpost.com/software/concord-qayso0"],
+  ["YouTube", "https://www.youtube.com/watch?v=fIPK5c8TOQg"],
+];
+
 export function Quality() {
   return (
     <section className="section quality" id="quality">
@@ -579,6 +586,14 @@ export function Quality() {
           <p className="quality__links">
             <Source href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fconcord-health.vercel.app">Run the audit yourself</Source>
             <Source href="https://github.com/kinnuworks/concord/actions/workflows/ci.yml">Build status</Source>
+          </p>
+          <p className="quality__links">
+            <span className="t-micro">Published on</span>
+            {PUBLISHED.map(([name, href]) => (
+              <a key={name} className="source-tag" href={href} target="_blank" rel="noreferrer">
+                {name}
+              </a>
+            ))}
           </p>
         </div>
         <ul className="scores">

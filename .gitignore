@@ -55,3 +55,4 @@ concord-demo.mp4
 concord-demo-preview.mp4
 concord-submission.zip
 training/names/parts/
+training/adapter/*.safetensors

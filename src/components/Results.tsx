@@ -1,4 +1,7 @@
+import namesReport from "@/data/names-report.json";
 import data from "@/data/results.json";
+import { hasLanguage } from "@/lib/labels";
+import { AVOIDS, FOODS, FORMS, LANGUAGE_LIST, TIMES } from "@/lib/schema";
 
 type Rate = { k: number; n: number; pct: number; ci: [number, number] };
 type Arm = { pictures: number; tiles: number; firstTry: Rate; byKind: Record<string, Rate>; expectedFallbackPct: number };
@@ -20,6 +23,14 @@ type Results = {
 };
 
 const r = data as unknown as Results;
+
+// A medicine card is put together by code from pictures that have each passed the read-back:
+// one unit per kind of dose, the four times of day, the meal and the things to avoid.
+const MAX_COUNT = 6;
+const CARD_PICTURES = FORMS.length + TIMES.length + 1 + AVOIDS.length;
+const CARD_COMBINATIONS = FORMS.length * MAX_COUNT * (2 ** TIMES.length - 1) * FOODS.length * 2 ** AVOIDS.length;
+const OFFERED = LANGUAGE_LIST.filter(([code]) => hasLanguage(code)).length;
+const namesDone = namesReport.languages >= OFFERED - 1;
 
 const share = (x?: { agreeFlat: number; total: number }) => (x && x.total ? Math.round((x.agreeFlat / x.total) * 100) : null);
 
@@ -111,6 +122,16 @@ export function Results() {
               </p>
             </div>
           ) : null}
+          <div className="card stat-card stat-card--wide">
+            <p className="stat-card__tag" data-side="concord">With Concord</p>
+            <p className="stat-card__figure">{CARD_COMBINATIONS.toLocaleString("en-US")}</p>
+            <p className="stat-card__text">
+              different medicine cards can be put together from {CARD_PICTURES} checked pictures: {FORMS.length} kinds of
+              dose, up to {MAX_COUNT} at a time, every mix of the {TIMES.length} times of day, {FOODS.length} food rules
+              and {AVOIDS.length} things to avoid. Every picture on every one has passed the read-back, and the
+              count is exact because code repeats one checked pill.
+            </p>
+          </div>
         </div>
 
         {r.caught?.length ? (
@@ -150,6 +171,44 @@ export function Results() {
           </div>
         ) : null}
 
+        <div className="process">
+          <p className="eyebrow">
+            <span className="dot" />
+            How it was built
+          </p>
+          <ol>
+            <li>
+              <p className="t-title">Trained a style adapter</p>
+              <p>
+                The plain model drew a different style almost every time. A LoRA adapter trained on{" "}
+                {r.training?.images} OpenMoji pictograms for {r.training?.steps.toLocaleString("en-US")} steps took
+                flat pictograms from {flatBase}% of pictures to {flatAdapter}%.
+              </p>
+            </li>
+            <li>
+              <p className="t-title">Drew {total} pictures and read every one</p>
+              <p>
+                Two readers described each picture with no hint. Whole doses came back with the wrong number
+                of pills {counting ? counting.n - counting.k : ""} times out of {counting?.n}.
+              </p>
+            </li>
+            <li>
+              <p className="t-title">Took counting away from the model</p>
+              <p>
+                The model now draws one pill, two readers confirm it is exactly one, and code repeats it. Warning
+                signs the readers misread are thrown away and drawn again.
+              </p>
+            </li>
+            <li>
+              <p className="t-title">Checked the words the same way</p>
+              <p>
+                {namesDone
+                  ? `${namesReport.written.toLocaleString("en-US")} medicine names and every card label were written in ${namesReport.languages} languages and read back by a second model.`
+                  : `Every card label was written in ${OFFERED - 1} languages and read back by a second model.`}
+              </p>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
   );

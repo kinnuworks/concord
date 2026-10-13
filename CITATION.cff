@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use Concord, its evaluation data or its checked medicine names, please cite it."
+title: "Concord: visual discharge instructions, verified before the patient sees them"
+type: software
+authors:
+  - name: "Dhiraj (kinnuworks)"
+repository-code: "https://github.com/kinnuworks/concord"
+url: "https://concord-health.vercel.app"
+license: MIT
+version: 1.0.0
+date-released: "2026-10-13"
+keywords:
+  - health literacy
+  - pictograms
+  - discharge instructions
+  - image generation
+  - read-back verification
