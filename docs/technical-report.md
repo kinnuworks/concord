@@ -78,7 +78,7 @@ Wikidata entries were matched to medicines through their RxNorm id. Where both a
 
 ### 3.5 Software checks
 
-The repository has 29 automated tests that run on every commit. They include the properties the safety argument rests on: no card ever requests a whole-dose picture, a non-integer dose is refused, and every saved picture was checked by two readers. On the live site, Lighthouse reports 100 in all four categories on desktop and axe-core reports no WCAG 2.1 AA violations.
+The repository has 56 automated tests that run on every commit. They include the properties the safety argument rests on: no card ever requests a whole-dose picture, a non-integer dose is refused, and every saved picture was checked by two readers. On the live site, Lighthouse reports 100 in all four categories on desktop and axe-core reports no WCAG 2.1 AA violations.
 
 ## 4. Limitations
 

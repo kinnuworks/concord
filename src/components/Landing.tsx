@@ -567,7 +567,7 @@ const SCORES: [name: string, score: number][] = [
 
 // Each of these was run against the live site or the repository on 13 October 2026.
 const CHECKS = [
-  "29 automated tests run on every commit",
+  "56 automated tests run on every commit",
   "0 accessibility violations in axe-core 4.10, WCAG 2.1 AA, in English and Arabic",
   "0 errors in the W3C HTML checker",
   "0 known vulnerabilities in the dependencies",
@@ -641,7 +641,7 @@ const EVIDENCE: { title: string; text: string; link: string; href: string; doi?:
   },
   {
     title: "Open source, archived with a DOI",
-    text: "Code, scripts and every raw reading, under the MIT licence, with 29 tests run on every commit. Archived on Zenodo.",
+    text: "Code, scripts and every raw reading, under the MIT licence, with 56 tests run on every commit. Archived on Zenodo.",
     link: "doi.org/10.5281/zenodo.23346012",
     doi: "10.5281/zenodo.23346012",
     href: "https://doi.org/10.5281/zenodo.23346012",

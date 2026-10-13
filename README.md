@@ -119,7 +119,7 @@ The medicines are every ingredient of a currently prescribable medicine in [RxNo
 
 | Check | Result on 13 October 2026 | How to run it |
 |---|---|---|
-| Test suite | 29 of 29 pass | `pnpm test`, also run on every commit |
+| Test suite | 56 of 56 pass | `pnpm test`, also run on every commit |
 | Lighthouse, desktop, live site | 100 performance, 100 accessibility, 100 best practices, 100 SEO | [PageSpeed Insights](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fconcord-health.vercel.app), saved report in [`docs/lighthouse-desktop.html`](docs/lighthouse-desktop.html) |
 | Accessibility scan | 0 violations of WCAG 2.1 AA in English and Arabic | axe-core 4.10 |
 | HTML | 0 errors | [W3C checker](https://validator.w3.org/nu/?doc=https%3A%2F%2Fconcord-health.vercel.app%2F) |
