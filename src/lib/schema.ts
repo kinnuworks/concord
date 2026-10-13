@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+// The site sends a content security policy without eval, so zod must not probe for it.
+z.config({ jitless: true });
+
 export const TIMES = ["morning", "afternoon", "evening", "night"] as const;
 export const FOODS = ["before_food", "with_food", "after_food", "any"] as const;
 export const FORMS = ["tablet", "capsule", "spoon", "drops", "puff"] as const;

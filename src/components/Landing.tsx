@@ -412,7 +412,7 @@ const PEOPLE: { title: string; figure: string; text: string; help: string; pics:
 
 export function WhoItIsFor() {
   return (
-    <section className="section" id="who">
+    <section className="section section--alt" id="who">
       <div className="container">
         <div className="section-head">
           <p className="eyebrow">
@@ -497,7 +497,7 @@ const QUESTIONS: { q: string; a: string }[] = [
 
 export function Questions() {
   return (
-    <section className="section section--alt" id="questions">
+    <section className="section" id="questions">
       <div className="container">
         <div className="section-head">
           <h2>Plain answers.</h2>
@@ -535,7 +535,7 @@ const REFERENCES: [text: string, href: string][] = [
 
 export function References() {
   return (
-    <section className="section references" id="sources">
+    <section className="section section--alt references" id="sources">
       <div className="container">
         <p className="eyebrow">
           <span className="dot" />

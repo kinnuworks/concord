@@ -1,0 +1,14 @@
+{
+  "source": "RxNorm, U.S. National Library of Medicine: every ingredient of a currently prescribable medicine that carries a WHO ATC code",
+  "url": "https://www.nlm.nih.gov/research/umls/rxnorm/",
+  "medicines": 1830,
+  "languages": 1,
+  "written": 1830,
+  "matched": 1804,
+  "perLanguage": {
+    "hi": {
+      "written": 1830,
+      "matched": 1804
+    }
+  }
+}

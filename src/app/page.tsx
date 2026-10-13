@@ -4,8 +4,10 @@ import { useCallback, useMemo, useRef, useState, type ReactNode } from "react";
 import { CardSheet } from "@/components/Cards";
 import { HowItIsChecked, Mark, PicturesWork, Questions, References, WhoItIsFor, Why } from "@/components/Landing";
 import { Follow } from "@/components/Follow";
+import { Languages } from "@/components/Languages";
 import { Results } from "@/components/Results";
 import type { TileState } from "@/components/Tile";
+import namesReport from "@/data/names-report.json";
 import { tilesFor, type Card } from "@/lib/plan";
 import { LANGUAGE_LIST, type Disagreement, type Lang, type Regimen } from "@/lib/schema";
 import { hasLanguage } from "@/lib/labels";
@@ -154,6 +156,14 @@ export default function Home() {
                 </Seal>
                 {OFFERED.length} languages
               </li>
+              {namesReport.languages >= OFFERED.length - 1 ? (
+                <li>
+                  <Seal>
+                    <path d="M5 12.5l4.5 4.5L19 7.5" />
+                  </Seal>
+                  {namesReport.written.toLocaleString("en-US")} medicine names read back
+                </li>
+              ) : null}
               <li>
                 <Seal>
                   <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" />
@@ -357,6 +367,7 @@ export default function Home() {
         <HowItIsChecked />
         <Follow />
         <Results />
+        <Languages />
         <WhoItIsFor />
         <Questions />
         <References />
