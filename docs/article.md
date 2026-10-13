@@ -1,6 +1,6 @@
 # Seven in ten could read the label. One in three could take the right dose.
 
-*Post this on dev.to, Medium or LinkedIn under your own name. Suggested tags: healthtech, ai, opensource, accessibility. Attach `docs/cards.png` as the cover and `docs/gallery/` images where marked.*
+*Post this on dev.to, Medium or LinkedIn under your own name. Suggested tags: healthtech, ai, opensource, accessibility. Attach `docs/cards.png` as the cover and the gallery image where marked.*
 
 In 2006, researchers handed 395 adults a pill bottle. The label said "Take two tablets by mouth twice daily." Then they asked each person to count out the pills they would take in a day.
 
@@ -38,7 +38,7 @@ So I built Concord around one rule. A generated picture is shown to a patient on
 
 The image model is never asked to count. It draws one pill. The check confirms it is exactly one. Code repeats it for the dose, so the number on a card is exact.
 
-*[image: docs/gallery/2 or the "red sock" example]*
+*[image: docs/gallery/4-drawn-live-and-read-back.jpg]*
 
 The check earns its place. Asked for a swollen foot, the model drew something both readers called "a red sock". That picture never reached a card.
 

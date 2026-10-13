@@ -40,7 +40,7 @@ On the site this must be called a technical report. It is not peer reviewed, and
 4. Paste the body of `docs/article.md`, leaving out the title line and the italic note under it.
 5. Cover image: `docs/cards.png`.
 6. Tags: `healthtech`, `ai`, `opensource`, `a11y`.
-7. Where the article says "[image: ...]", upload `docs/gallery/3-how-a-picture-is-checked.jpg`.
+7. Where the article says "[image: ...]", upload `docs/gallery/4-drawn-live-and-read-back.jpg`. It shows the red sock being thrown away and a new picture being drawn and kept.
 8. Publish, then send the link.
 
 ## 3. LinkedIn (5 minutes)
@@ -84,7 +84,7 @@ Do not ask anyone to upvote. Answer every comment, especially the critical ones.
    - Description (260 characters at most): `Concord turns a hospital discharge sheet into picture cards in 70 languages. Every picture is drawn by an image model, and none is shown until two other models have read it back correctly. Free, open source, no account.`
    - Topics: Health, Artificial Intelligence, Open Source, Accessibility
    - Thumbnail: `docs/logo.png`
-   - Gallery: the six images in `docs/gallery/`, in their numbered order
+   - Gallery: the eight images in `docs/gallery/`, in their numbered order
    - Video: the YouTube link
    - Pricing: Free
 4. First comment, as the maker: the same points as the Hacker News comment, in your own words.
