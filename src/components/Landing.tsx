@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Proof } from "@/components/Proof";
 import { hasLanguage } from "@/lib/labels";
 import { LANGUAGE_LIST } from "@/lib/schema";
 
@@ -323,6 +324,7 @@ export function HowItIsChecked() {
             reaches a patient on trust.
           </p>
         </div>
+        <Proof />
         <div className="grid grid-3">
           {STEPS.map((s) => (
             <div key={s.title} className="tile">

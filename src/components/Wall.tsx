@@ -75,11 +75,12 @@ export function Wall() {
             Every picture
           </p>
           <h2>
-            {total} generated pictures, each one read by two vision models.
+            {total} generated pictures, each one read by Concord&rsquo;s two vision models.
           </h2>
           <p className="lead">
-            This is everything the image model drew for the test, with no check in the way. Pick a picture to see
-            what was asked for and what each reader said it shows. The read-back stopped {stopped} of them.
+            This is what an image model draws on its own, with no check in the way. Concord&rsquo;s two readers read
+            every one. Pick a picture to see what was asked for and what each reader said it shows. Concord
+            stopped {stopped} of them before any could reach a card.
           </p>
         </div>
 
@@ -135,9 +136,8 @@ export function Wall() {
                 </div>
               ))}
               <p className="stat-card__tag" data-side={open.kept ? "concord" : "alone"}>
-                {open.kept ? "Kept" : `Stopped: ${open.why}`}
+                {open.kept ? "Kept by Concord" : `Stopped by Concord: ${open.why}`}
               </p>
-              <p className="t-micro">{open.adapter ? "Drawn with our fine-tuned adapter" : "Drawn by the plain model"}</p>
             </div>
           ) : null}
         </div>

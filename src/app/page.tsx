@@ -5,7 +5,6 @@ import { CardSheet } from "@/components/Cards";
 import { HowItIsChecked, Mark, PicturesWork, Quality, Questions, References, WhoItIsFor, Why } from "@/components/Landing";
 import { Follow } from "@/components/Follow";
 import { Languages } from "@/components/Languages";
-import { Proof } from "@/components/Proof";
 import { Results } from "@/components/Results";
 import { Wall } from "@/components/Wall";
 import type { TileState } from "@/components/Tile";
@@ -42,6 +41,17 @@ function Seal({ children }: { children: ReactNode }) {
 }
 
 const OFFERED = LANGUAGE_LIST.filter(([code]) => hasLanguage(code));
+
+// The pictures for the instruction on the first screen, all from the saved, checked set.
+const HERO_PICS: [name: string, alt: string][] = [
+  ["time-morning", "Morning"],
+  ["unit-capsule", "One capsule"],
+  ["unit-capsule", "One capsule"],
+  ["time-night", "Night"],
+  ["unit-capsule", "One capsule"],
+  ["unit-capsule", "One capsule"],
+  ["meal", "After a meal"],
+];
 
 // Pictures normally come from the saved, already-checked set. With this set to 1 the
 // page also offers to draw every picture again, which needs the image service's key.
@@ -195,7 +205,19 @@ export default function Home() {
                 </a>
               </li>
             </ul>
-            <Proof />
+            <div className="hero-card">
+              <p className="hero-card__text">&ldquo;Take 2 capsules in the morning and at night, after food.&rdquo;</p>
+              <svg className="hero-card__arrow" viewBox="0 0 40 24" aria-hidden>
+                <path d="M3 12h30m-9 -8l9 8l-9 8" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <div className="hero-card__pics">
+                {HERO_PICS.map(([name, alt], i) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img key={i} src={`/tiles/${name}.png`} alt={alt} width={64} height={64} data-gap={name.startsWith("time") && i > 0 ? "" : undefined} />
+                ))}
+              </div>
+              <p className="hero-card__note">Every picture is drawn by an image model, then checked by two more before it reaches a card.</p>
+            </div>
             <p className="trust">
               <span>No account needed</span>
               <span>Text or a photo of the sheet</span>

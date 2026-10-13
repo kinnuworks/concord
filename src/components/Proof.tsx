@@ -12,8 +12,9 @@ const EXAMPLES: { f: string; asked: string; saw: [string, string]; kept: boolean
   { f: "a198", asked: "alcohol", saw: ["wine glass with red wine and a bottle", "a glass of red wine beside a bottle"], kept: true },
 ];
 
-// The product in one strip: what was asked for, the picture the model drew, what two vision
-// models said they saw, and whether it was kept. It steps on by itself unless motion is reduced.
+// What the check is for, in one strip: a picture an image model drew on its own, what
+// Concord's two readers said they saw, and what Concord did. It steps on by itself unless
+// motion is reduced.
 export function Proof() {
   const [i, setI] = useState(0);
   const [held, setHeld] = useState(false);
@@ -29,18 +30,18 @@ export function Proof() {
     <div className="proof" onMouseEnter={() => setHeld(true)} onMouseLeave={() => setHeld(false)} onFocus={() => setHeld(true)} onBlur={() => setHeld(false)}>
       <div className="proof__row" key={e.f}>
         <div className="proof__step">
-          <p className="proof__label">The image model was asked for</p>
+          <p className="proof__label">An image model, on its own, was asked for</p>
           <p className="proof__asked">{e.asked}</p>
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="proof__pic" src={`/gallery/${e.f}.webp`} alt={`The picture it drew when asked for ${e.asked}`} width={112} height={112} />
         <div className="proof__step">
-          <p className="proof__label">Two vision models, told nothing, saw</p>
+          <p className="proof__label">Concord&rsquo;s two readers, told nothing, saw</p>
           <p className="proof__saw">&ldquo;{e.saw[0]}&rdquo;</p>
           <p className="proof__saw">&ldquo;{e.saw[1]}&rdquo;</p>
         </div>
         <p className="proof__verdict" data-kept={e.kept}>
-          {e.kept ? "Kept" : "Thrown away"}
+          {e.kept ? "Concord kept it" : "Concord threw it away"}
         </p>
       </div>
       <div className="proof__dots">
