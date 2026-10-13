@@ -1,48 +1,379 @@
 {
   "hi": {
-    "kept": 33,
-    "dropped": [
-      "drawn_by_code"
-    ]
+    "kept": 36,
+    "dropped": [],
+    "offered": true
   },
   "te": {
-    "kept": 32,
-    "dropped": [
-      "sunlight",
-      "drawn_by_code"
-    ]
+    "kept": 36,
+    "dropped": [],
+    "offered": true
   },
   "ta": {
-    "kept": 34,
-    "dropped": []
+    "kept": 36,
+    "dropped": [],
+    "offered": true
   },
   "es": {
-    "kept": 34,
-    "dropped": []
+    "kept": 36,
+    "dropped": [],
+    "offered": true
   },
   "zh": {
-    "kept": 32,
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "ar": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "tl": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "vi": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "zh-Hant": {
+    "kept": 35,
+    "dropped": [
+      "drawn_by_code"
+    ],
+    "offered": true
+  },
+  "fr": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "ko": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "ru": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "pt": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "ht": {
+    "kept": 35,
+    "dropped": [
+      "sunlight"
+    ],
+    "offered": true
+  },
+  "de": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "pl": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "ur": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "it": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "fa": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "ja": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "gu": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "bn": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "mr": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "pa": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "kn": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "ml": {
+    "kept": 35,
+    "dropped": [
+      "times_a_day"
+    ],
+    "offered": true
+  },
+  "as": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "or": {
+    "kept": 35,
+    "dropped": [
+      "read_back"
+    ],
+    "offered": true
+  },
+  "ne": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "si": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "th": {
+    "kept": 35,
+    "dropped": [
+      "sunlight"
+    ],
+    "offered": true
+  },
+  "km": {
+    "kept": 35,
+    "dropped": [
+      "drawn_by_code"
+    ],
+    "offered": true
+  },
+  "lo": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "my": {
+    "kept": 35,
+    "dropped": [
+      "sunlight"
+    ],
+    "offered": true
+  },
+  "id": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "ms": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "hmn": {
+    "kept": 34,
     "dropped": [
       "sunlight",
       "drawn_by_code"
-    ]
+    ],
+    "offered": true
   },
-  "ar": {
-    "kept": 33,
+  "he": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "el": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "hy": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "tr": {
+    "kept": 35,
+    "dropped": [
+      "sunlight"
+    ],
+    "offered": true
+  },
+  "ro": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "uk": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "nl": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "da": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "no": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "sv": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "cs": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "fi": {
+    "kept": 35,
+    "dropped": [
+      "read_back"
+    ],
+    "offered": true
+  },
+  "hu": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "bg": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "hr": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "sr": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "ka": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "sq": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "uz": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "kk": {
+    "kept": 35,
+    "dropped": [
+      "sunlight"
+    ],
+    "offered": true
+  },
+  "ps": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "az": {
+    "kept": 35,
+    "dropped": [
+      "exact_angle"
+    ],
+    "offered": true
+  },
+  "mn": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "am": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "ti": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "so": {
+    "kept": 34,
+    "dropped": [
+      "sunlight",
+      "exact_angle"
+    ],
+    "offered": true
+  },
+  "sw": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "ha": {
+    "kept": 35,
     "dropped": [
       "drawn_by_code"
-    ]
+    ],
+    "offered": true
   },
-  "tl": {
-    "kept": 33,
+  "yo": {
+    "kept": 35,
     "dropped": [
       "drawn_by_code"
-    ]
+    ],
+    "offered": true
   },
-  "vi": {
-    "kept": 33,
-    "dropped": [
-      "drawn_by_code"
-    ]
+  "ig": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "zu": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
+  },
+  "af": {
+    "kept": 36,
+    "dropped": [],
+    "offered": true
   }
 }

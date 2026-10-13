@@ -49,7 +49,7 @@ export function Follow() {
   if (!examples.length) return null;
   const e = examples[Math.min(at, examples.length - 1)];
   return (
-    <section className="section section--alt" id="pictures">
+    <section className="section" id="pictures">
       <div className="container">
         <div className="section-head">
           <p className="eyebrow">

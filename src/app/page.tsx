@@ -1,13 +1,14 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState, type ReactNode } from "react";
 import { CardSheet } from "@/components/Cards";
-import { HowItIsChecked, Mark, Questions, WhoItIsFor, Why } from "@/components/Landing";
+import { HowItIsChecked, Mark, PicturesWork, Questions, References, WhoItIsFor, Why } from "@/components/Landing";
 import { Follow } from "@/components/Follow";
 import { Results } from "@/components/Results";
 import type { TileState } from "@/components/Tile";
 import { tilesFor, type Card } from "@/lib/plan";
-import { LANGUAGES, type Disagreement, type Lang, type Regimen } from "@/lib/schema";
+import { LANGUAGE_LIST, type Disagreement, type Lang, type Regimen } from "@/lib/schema";
+import { hasLanguage } from "@/lib/labels";
 import type { TileSpec } from "@/lib/tiles";
 import samples from "@/data/samples.json";
 
@@ -25,6 +26,17 @@ const SAMPLES = samples as unknown as { name: string; text: string; parsed: Pars
 const SAMPLE_PHOTO = { src: "/samples/discharge-sheet.jpg", name: "discharge-sheet.jpg" };
 
 type Report = { spec: TileSpec; state: TileState };
+
+// Only languages whose labels passed the round-trip check are offered.
+function Seal({ children }: { children: ReactNode }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      {children}
+    </svg>
+  );
+}
+
+const OFFERED = LANGUAGE_LIST.filter(([code]) => hasLanguage(code));
 
 // Pictures normally come from the saved, already-checked set. With this set to 1 the
 // page also offers to draw every picture again, which needs the image service's key.
@@ -127,6 +139,37 @@ export default function Home() {
                 Why it matters
               </a>
             </div>
+            <ul className="seals">
+              <li>
+                <Seal>
+                  <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+                  <path d="M9 12l2 2 4-4.5" />
+                </Seal>
+                Every picture read back by two models
+              </li>
+              <li>
+                <Seal>
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+                </Seal>
+                {OFFERED.length} languages
+              </li>
+              <li>
+                <Seal>
+                  <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" />
+                  <path d="M14 3v5h5M9 13h6M9 17h4" />
+                </Seal>
+                Every figure linked to its source
+              </li>
+              <li>
+                <Seal>
+                  <path d="M8 6l-6 6 6 6M16 6l6 6-6 6" />
+                </Seal>
+                <a href="https://github.com/kinnuworks/concord" target="_blank" rel="noreferrer">
+                  Open source
+                </a>
+              </li>
+            </ul>
             <p className="trust">
               <span>No account needed</span>
               <span>Text or a photo of the sheet</span>
@@ -202,12 +245,13 @@ export default function Home() {
                 <label className="field">
                   Language
                   <select className="select" value={lang} onChange={(e) => setLang(e.target.value as Lang)}>
-                    {Object.entries(LANGUAGES).map(([code, name]) => (
+                    {OFFERED.map(([code, name, native]) => (
                       <option key={code} value={code}>
-                        {name}
+                        {native === name ? name : `${native} · ${name}`}
                       </option>
                     ))}
                   </select>
+                  <span className="t-micro">{OFFERED.length} languages</span>
                 </label>
                 {LIVE_DRAWING ? (
                   <label className="field">
@@ -309,11 +353,13 @@ export default function Home() {
         </section>
 
         <Why />
+        <PicturesWork />
         <HowItIsChecked />
         <Follow />
         <Results />
         <WhoItIsFor />
         <Questions />
+        <References />
       </main>
 
       <footer className="footer">

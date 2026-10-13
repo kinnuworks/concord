@@ -2,6 +2,8 @@
 
 Visual discharge instructions, verified before the patient sees them.
 
+[![CI](https://github.com/kinnuworks/concord/actions/workflows/ci.yml/badge.svg)](https://github.com/kinnuworks/concord/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 **Live site:** https://concord-health.vercel.app
 **Built for:** Banana Hacks 2026 (image AI), solo, 9 to 12 October 2026
 
@@ -11,15 +13,37 @@ Concord turns a hospital discharge sheet into picture cards a patient can follow
 
 ## The problem
 
-A discharge sheet packs medicines, exercises and warning signs into a page or two of dense text. Published studies put numbers on what happens next:
+Researchers showed 395 adults a prescription label that read "Take two tablets by mouth twice daily" and asked them to count out the pills. Among patients with low literacy, 71% could say the instruction back and 35% could count out the right number of pills for a day ([Davis et al., 2006](https://pubmed.ncbi.nlm.nih.gov/17135578/)). People can read a label and still take the wrong dose.
 
-- 78% of emergency patients went home with a gap in understanding their care or instructions in at least one area, and most did not know it ([Engel et al., 2009](https://psnet.ahrq.gov/issue/patient-comprehension-emergency-department-care-and-instructions-are-patients-aware-when-they), 140 patients).
-- 46% of patients misread at least one of five prescription labels ([Davis et al., 2006](https://psnet.ahrq.gov/issue/literacy-and-misunderstanding-prescription-drug-labels), 395 patients).
-- 19% of patients had an adverse event in the weeks after leaving hospital, and for 6% it was preventable ([Forster et al., 2003](https://pubmed.ncbi.nlm.nih.gov/12558354/), 400 patients).
+A discharge sheet is a page or two of labels like that one.
 
-Pictures help. In a randomized trial, low-literacy patients given pictogram labels understood and followed their medicines better ([trial, 2019](https://www.ijpsonline.com/articles/development-and-evaluation-of-a-pictogram-for-thai-patients-with-low-literate-skills-3590.html)). But a picture only helps if it is read correctly, and in one study just 1 of 12 standard medicine pictograms met the ISO bar for being understood ([study](https://turkmedline.net/detay/comprehensibility-of-pharmaceutical-pictograms-in-patient-information-leaflets-a-cross-sectional-study-in-ankara-turkiye/019dc352747347da/tr/409)).
+| How many | What | Source |
+|---|---|---|
+| 35.7 million | hospital admissions a year in the United States, nearly all ending with instructions to follow at home | [American Hospital Association, 2024 survey](https://www.aha.org/statistics/fast-facts-us-hospitals) |
+| 1.5 million | people a year who go to a US emergency department because of harm from a medicine, almost 500,000 of whom are admitted | [CDC](https://www.cdc.gov/medication-safety/data-research/facts-stats/index.html) |
+| 78% | of emergency patients who went home with a gap in understanding their care, most without knowing it | [Engel et al., 2009](https://psnet.ahrq.gov/issue/patient-comprehension-emergency-department-care-and-instructions-are-patients-aware-when-they) |
+| 19% | of patients who had an adverse event in the weeks after discharge, two thirds of them caused by a medicine | [Forster et al., 2003](https://pubmed.ncbi.nlm.nih.gov/12558354/) |
 
-An image generator can draw a pictogram for any instruction. It also miscounts pills, which a patient cannot afford. Concord is built around that fact.
+### What pictures change
+
+| Study | Without pictures | With pictures |
+|---|---|---|
+| Spoken medical instructions recalled ([Houts et al., 1998](https://pubmed.ncbi.nlm.nih.gov/10026551/)) | 14% | 85% |
+| Carers who measured a child's daily liquid medicine wrong, randomized trial, 245 caregivers ([Yin et al., 2008](https://pubmed.ncbi.nlm.nih.gov/18762597/)) | 47.8% | 5.4% |
+| Emergency patients who got at least five of ten questions about their discharge sheet right, randomized, 101 patients ([Austin et al., 1995](https://pubmed.ncbi.nlm.nih.gov/7532382/)) | 43% | 65% |
+
+In a follow-up to the first study, adults who read below a fifth-grade level recalled 85% of 236 instructions straight away and 71% four weeks later ([Houts et al., 2001](https://pubmed.ncbi.nlm.nih.gov/11384821/)). A review of the field found that pictures improve recall, understanding and adherence, most of all for patients who find reading hard ([Katz, Kripalani and Weiss, 2006](https://pubmed.ncbi.nlm.nih.gov/17106013/)).
+
+A picture only helps if it is read correctly. In one study just 1 of 12 standard medicine pictograms met the ISO bar for being understood ([study](https://turkmedline.net/detay/comprehensibility-of-pharmaceutical-pictograms-in-patient-information-leaflets-a-cross-sectional-study-in-ankara-turkiye/019dc352747347da/tr/409)). An image generator can draw a pictogram for any instruction. It also miscounts pills, which a patient cannot afford. Concord is built around that fact.
+
+### Who it helps
+
+| Group | How many | Source |
+|---|---|---|
+| Older adults | 61.2 million people in the United States are 65 or older. They go to an emergency department for harm from a medicine more than 600,000 times a year, over twice as often as younger people. | [Census Bureau, ACS 2024](https://data.census.gov/table/ACSST1Y2024.S0101), [CDC](https://www.cdc.gov/medication-safety/data-research/facts-stats/index.html) |
+| People who find reading hard | 739 million adults worldwide lack basic literacy skills. In the United States, 28% of adults aged 16 to 65 score at the lowest literacy level. | [UNESCO, 2025](https://www.unesco.org/sites/default/files/medias/fichiers/2025/09/ild-2025-factsheet.pdf), [NCES, PIAAC 2023](https://nces.ed.gov/surveys/piaac/2023/national_results.asp) |
+| People who read another language | 28.9 million people in the United States speak English less than very well. | [Census Bureau, ACS 2024](https://data.census.gov/table/ACSST1Y2024.S1601) |
+| Family and carers | 63 million Americans care for a relative with a medical condition or disability. | [AARP and NAC, 2025](https://www.aarp.org/press/releases/2025-07-24-new-report-reveals-crisis-point-for-americas-63-million-family-caregivers.html) |
 
 ## What it does
 
@@ -30,7 +54,7 @@ Paste the text of a discharge sheet, or photograph it. Concord returns:
 - **A warning card** for the symptoms that should bring the patient back.
 - **A follow-up card** with the date.
 
-Labels come in nine languages: English, Spanish, Chinese, Tagalog, Vietnamese, Arabic, Hindi, Telugu and Tamil. A card can be read aloud or printed. Anything the sheet says that the cards cannot hold (half tablets, tapering doses, "as needed") is shown as text and never drawn.
+Cards come in 70 languages, from Spanish, Chinese and Arabic to Hindi, Telugu and Swahili. The medicine's name is written in the patient's own script next to the printed one ("Amoxicillin 500 mg" also appears as "एमॉक्सिसिलिन 500 mg" or "阿莫西林 500 mg"), and exercise names and the clinic are translated. A translation is kept only if a second model, which never saw the original, reads it back with the same meaning. Right-to-left languages get a mirrored layout. A card can be read aloud or printed. Anything the sheet says that the cards cannot hold (half tablets, tapering doses, "as needed") is shown as text and never drawn.
 
 ## How it works
 
@@ -104,7 +128,7 @@ The site draws from a saved set of pictures that have already passed the read-ba
 | `scripts/eval-tiles.ts` | Draws every tile several times and records the readings |
 | `scripts/eval-style.ts` | Labels drawing style and judges the saved descriptions again |
 | `scripts/audit-library.ts` | Re-checks the saved picture library |
-| `scripts/labels.ts` | Translates labels and keeps those that survive a round trip |
+| `scripts/labels.ts` | Translates the card labels into every language and keeps those that survive a round trip through a second model |
 | `scripts/report.ts` | Compiles the numbers shown on the site |
 
 ## Credits and licences
@@ -113,7 +137,7 @@ The site draws from a saved set of pictures that have already passed the read-ba
 - **Training set:** [OpenMoji](https://openmoji.org), CC BY-SA 4.0. The adapter and the pictures in `public/tiles/` are derived from it and are shared under the same licence.
 - **Readers:** Gemini 3.8 Flash and Gemini 2.5 Flash (Google), GPT-6 Luna (OpenAI). Gemini 3.5 Flash-Lite is the last fallback for reading a sheet when the others are busy.
 - **Libraries:** Next.js, React, zod, the fal, Google GenAI and OpenAI clients.
-- **Evidence:** the studies linked above.
+- **Evidence:** the studies and public statistics linked above. The site lists them under Sources.
 
 ### AI tools used
 

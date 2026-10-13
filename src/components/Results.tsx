@@ -35,7 +35,7 @@ export function Results() {
   const reader = r.reader && r.reader.errors === 0 ? r.reader : null;
 
   return (
-    <section className="section" id="results">
+    <section className="section section--alt" id="results">
       <div className="container">
         <div className="section-head">
           <p className="eyebrow">
