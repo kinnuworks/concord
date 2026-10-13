@@ -1,4 +1,4 @@
-# I asked an image model to draw one spoonful of medicine. It drew eight.
+# Seven in ten could read the label. One in three could take the right dose.
 
 *Post this on dev.to, Medium or LinkedIn under your own name. Suggested tags: healthtech, ai, opensource, accessibility. Attach `docs/cards.png` as the cover and `docs/gallery/` images where marked.*
 

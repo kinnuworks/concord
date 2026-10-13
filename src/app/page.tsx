@@ -53,8 +53,9 @@ const HERO_PICS: [name: string, alt: string][] = [
   ["meal", "After a meal"],
 ];
 
-// Pictures normally come from the saved, already-checked set. With this set to 1 the
-// page also offers to draw every picture again, which needs the image service's key.
+// Pictures normally come from the saved, already-checked set. With this set to 1 the page
+// also offers to draw every picture of a card set live, which needs a paid reader allowance.
+// One picture at a time can always be drawn live in "Where the image model works".
 const LIVE_DRAWING = process.env.NEXT_PUBLIC_LIVE_DRAWING === "1";
 
 export default function Home() {
@@ -310,13 +311,19 @@ export default function Home() {
                       checked={fresh}
                       onChange={(e) => setFresh(e.target.checked)}
                     />
-                    Draw every picture new
+                    Draw every picture live
                   </label>
                 ) : null}
                 <button type="button" className="btn btn-ink" onClick={submit} disabled={busy}>
                   {busy ? "Reading the sheet" : "Make the cards"}
                 </button>
               </div>
+              {LIVE_DRAWING && fresh ? (
+                <p className="note">
+                  Every picture will be drawn now by an image model and read by two vision models before it is
+                  shown. It takes about half a minute. A picture the readers misread is drawn again.
+                </p>
+              ) : null}
               {error ? <p className="note note--bad">{error}</p> : null}
               {notice ? <p className="note">{notice}</p> : null}
             </div>

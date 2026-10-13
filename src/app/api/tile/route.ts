@@ -3,8 +3,25 @@ import { libraryTile, saveToLibrary } from "@/lib/library";
 import { adapterUrl } from "@/lib/generate";
 import { tileKey, type TileSpec } from "@/lib/tiles";
 import { allow } from "@/lib/limit";
+import { fallbackDataUrl } from "@/lib/fallback";
 
 export const maxDuration = 300;
+
+// A ceiling on pictures drawn live in one day by one running copy of the server, so a busy
+// day cannot run up a bill. Past it, the saved pictures are shown.
+const DAILY_CAP = 60;
+let day = "";
+let drawnToday = 0;
+function underDailyCap(): boolean {
+  const today = new Date().toISOString().slice(0, 10);
+  if (today !== day) {
+    day = today;
+    drawnToday = 0;
+  }
+  if (drawnToday >= DAILY_CAP) return false;
+  drawnToday += 1;
+  return true;
+}
 
 type Body = {
   spec: TileSpec;
@@ -20,16 +37,18 @@ export async function POST(request: Request) {
   const body = (await request.json()) as Body;
   const key = tileKey(body.spec);
 
-  if (!body.fresh) {
+  // Without a request to draw fresh, or once the limits are reached, a picture comes from the
+  // saved, already-checked set, or from the code-drawn pictogram where the set has none.
+  const saved = () => {
     const hit = libraryTile(key);
-    if (hit) {
-      const event: GateEvent = { type: "accepted", n: 0, url: hit.file, seed: hit.seed, source: "library" };
-      return new Response(JSON.stringify(event) + "\n", { headers: { "content-type": "application/x-ndjson" } });
-    }
-  }
-
-  const limit = allow(request, "tile", 40);
-  if (!limit.ok) return Response.json({ error: limit.message }, { status: 429 });
+    const event: GateEvent = hit
+      ? { type: "accepted", n: 0, url: hit.file, seed: hit.seed, source: "library" }
+      : { type: "fallback", url: fallbackDataUrl(body.spec), reason: "no saved picture for this one" };
+    return new Response(JSON.stringify(event) + "\n", { headers: { "content-type": "application/x-ndjson" } });
+  };
+  const drawLive = body.fresh || process.env.READBACK_SAVE_TILES === "1";
+  if (!drawLive) return saved();
+  if (!allow(request, "tile", 12).ok || !underDailyCap()) return saved();
 
   const encoder = new TextEncoder();
   const stream = new ReadableStream({

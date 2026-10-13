@@ -99,11 +99,18 @@ export const READER_NAMES = READERS.map((r) => r.name);
 async function askReaders(q: string, image: ImageInput): Promise<ReaderResult[]> {
   return Promise.all(
     READERS.map(async (r) => {
-      try {
-        return { reader: r.name, reading: asReading(await r.run(q, image)) };
-      } catch (e) {
-        return { reader: r.name, reading: null, error: e instanceof Error ? e.message : String(e) };
+      // A reader that fails to answer is asked again. Only a reader that answered can
+      // reject a picture, so a busy service is never mistaken for a misread.
+      let error = "";
+      for (const wait of [0, 2500, 6000]) {
+        if (wait) await new Promise((done) => setTimeout(done, wait));
+        try {
+          return { reader: r.name, reading: asReading(await r.run(q, image)) };
+        } catch (e) {
+          error = e instanceof Error ? e.message : String(e);
+        }
       }
+      return { reader: r.name, reading: null, error };
     }),
   );
 }

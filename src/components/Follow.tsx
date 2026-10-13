@@ -4,6 +4,8 @@ import { useState } from "react";
 import data from "@/data/results.json";
 import { label } from "@/lib/labels";
 import type { Avoid, TimeOfDay, Warning } from "@/lib/schema";
+import { tileFromKey } from "@/lib/tiles";
+import { useTile } from "./Tile";
 
 type Shot = { file: string; saw: string[]; plain?: boolean };
 type Example = { key: string; prompt: string; meant: string; stopped: Shot; kept: Shot };
@@ -42,10 +44,58 @@ function Attempt({ shot, kept }: { shot: Shot; kept: boolean }) {
   );
 }
 
+const said = (reading: Record<string, unknown> | null | undefined) =>
+  typeof reading?.shows === "string" ? reading.shows.replace(/\.$/, "") : "did not answer in time";
+
+// The same picture drawn again while the visitor watches: the image model draws, both readers
+// describe what they see, and a misread picture is drawn again.
+function Live({ pictureKey, run }: { pictureKey: string; run: number }) {
+  const state = useTile(tileFromKey(pictureKey), { fresh: true, run });
+  const working = state.status === "working" || state.status === "idle";
+  return (
+    <div className="follow__live" aria-live="polite">
+      {state.attempts.map((a) => (
+        <div key={a.n} className="follow__attempt" data-kept={a.verdict ? a.verdict.pass : undefined}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={a.url} alt="" width={148} height={148} />
+          <div className="follow__said">
+            {a.verdict ? (
+              <>
+                {a.verdict.readers.map((r, i) => (
+                  <p key={r.reader}>
+                    <span className="follow__who">{READERS[i]}</span>
+                    &ldquo;{said(r.reading)}&rdquo;
+                  </p>
+                ))}
+                <p className="follow__verdict">
+                  {a.verdict.pass
+                    ? "Kept. This one can go on a card."
+                    : a.verdict.readers.some((r) => !r.reading)
+                      ? "A reader did not answer, so this picture cannot be used."
+                      : "Thrown away and drawn again."}
+                </p>
+              </>
+            ) : (
+              <p className="follow__wait">Drawn. The two readers are looking at it now.</p>
+            )}
+          </div>
+        </div>
+      ))}
+      {working && state.attempts.every((a) => a.verdict) ? <p className="follow__wait">The image model is drawing. This takes about fifteen seconds.</p> : null}
+      {state.status === "accepted" && state.source === "library" ? (
+        <p className="t-small">Live drawing has reached its limit for now, so nothing new was drawn. The pictures above are from the recorded run.</p>
+      ) : null}
+      {state.status === "fallback" ? <p className="t-small">No drawing passed both readers this time, so a card would use the plain pictogram drawn by code.</p> : null}
+      {state.status === "error" ? <p className="t-small">The image model did not answer. Please try again in a minute.</p> : null}
+    </div>
+  );
+}
+
 // One real picture followed from prompt to card: what code asked for, what the image
 // model drew, what each reader said, and whether it was kept.
 export function Follow() {
   const [at, setAt] = useState(0);
+  const [live, setLive] = useState<{ key: string; run: number } | null>(null);
   if (!examples.length) return null;
   const e = examples[Math.min(at, examples.length - 1)];
   return (
@@ -83,6 +133,15 @@ export function Follow() {
                 <Attempt shot={e.stopped} kept={false} />
                 <Attempt shot={e.kept} kept />
               </div>
+              <div className="follow__again">
+                <button type="button" className="btn btn-ink btn-sm" onClick={() => setLive({ key: e.key, run: (live?.run ?? 0) + 1 })}>
+                  Draw it again, live
+                </button>
+                <span className="t-micro">
+                  A new picture is drawn now by OpenAI&rsquo;s image model and read by the same two readers.
+                </span>
+              </div>
+              {live && live.key === e.key ? <Live key={live.run} pictureKey={live.key} run={1000 + live.run} /> : null}
             </li>
             <li>
               <p className="t-title">3. Code places the kept picture on the card</p>
@@ -92,7 +151,10 @@ export function Follow() {
               </p>
             </li>
           </ol>
-          <p className="t-micro">Recorded from our evaluation run. The readers were told nothing about what the picture was meant to show.</p>
+          <p className="t-micro">
+            The two pictures in step 2 are recorded from our evaluation run, drawn by FLUX.1 [dev] with our adapter. The
+            readers were told nothing about what a picture was meant to show.
+          </p>
         </div>
       </div>
     </section>

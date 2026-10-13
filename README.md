@@ -141,7 +141,7 @@ cp .env.example .env.local   # add GEMINI_API_KEY, OPENAI_API_KEY, FAL_KEY
 pnpm dev
 ```
 
-The site draws from a saved set of pictures that have already passed the read-back. Set `NEXT_PUBLIC_LIVE_DRAWING=1` to add a switch that draws every picture again through the full generate, read back and redraw loop.
+The site draws from a saved set of pictures that have already passed the read-back. In "Where the image model works", one picture at a time can be drawn again live through the full generate, read back and redraw loop. Set `NEXT_PUBLIC_LIVE_DRAWING=1` to add a switch that does this for every picture of a card set, and `IMAGE_BACKEND=fal` to draw with FLUX.1 [dev] and the adapter as the evaluation did.
 
 | Script | What it does |
 |---|---|
@@ -160,7 +160,7 @@ The site draws from a saved set of pictures that have already passed the read-ba
 
 ## Credits and licences
 
-- **Pictures:** FLUX.1 [dev] by Black Forest Labs, run and fine-tuned on [fal](https://fal.ai).
+- **Pictures:** FLUX.1 [dev] by Black Forest Labs, run and fine-tuned on [fal](https://fal.ai). Pictures drawn live on the site ("Draw it again, live") come from OpenAI's gpt-image-2.5-flare and go through the same read-back.
 - **Training set:** [OpenMoji](https://openmoji.org), CC BY-SA 4.0. The adapter and the pictures in `public/tiles/` are derived from it and are shared under the same licence.
 - **Readers:** Gemini 3.8 Flash and Gemini 2.5 Flash (Google), GPT-6 Luna (OpenAI). Gemini 3.5 Flash-Lite reads names and labels back and is the fallback for reading a sheet; Gemini 3.1 Flash-Lite, Gemini 3.5 Flash and Gemma 4 take over when it is over its daily limit.
 - **Medicine names:** the medicine list is from [RxNorm](https://www.nlm.nih.gov/research/umls/rxnorm/) (U.S. National Library of Medicine). Names in other languages come from [Wikidata](https://www.wikidata.org) (CC0) where it has them.

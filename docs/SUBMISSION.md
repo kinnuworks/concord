@@ -15,7 +15,7 @@ Everything to paste into Devpost, then the video script.
 
 **Built with:** nextjs, typescript, react, fal, flux, lora, gemini, openai, openmoji, wikidata, rxnorm, vercel
 
-**AI tools used (the rules ask for this):** Claude Code for writing code and building the demo video (rendered with Remotion, music synthesized by a script). FLUX.1 [dev] with our own LoRA adapter for the pictures. Gemini 3.8 Flash, Gemini 2.5 Flash, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite and GPT-6 Luna as readers.
+**AI tools used (the rules ask for this):** Claude Code for writing code and building the demo video (rendered with Remotion, music synthesized by a script). FLUX.1 [dev] with our own LoRA adapter for the pictures, and OpenAI gpt-image-2.5-flare for pictures drawn live on the site. Gemini 3.8 Flash, Gemini 2.5 Flash, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite and GPT-6 Luna as readers.
 
 **Upload a file (additional info for judges):** `docs/Concord-notes-for-judges.pdf`. Two pages: where to look for each judging criterion, how to try the site in two minutes, and the measured numbers.
 

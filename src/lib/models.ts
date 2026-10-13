@@ -10,6 +10,7 @@ export const MODELS = {
   routerText: "openrouter/router",
   routerGoogle: "google/gemini-2.5-flash",
   falImage: "fal-ai/flux-lora",
+  openaiImage: "gpt-image-2.5-flare",
   falTrain: "fal-ai/flux-lora-fast-training",
 } as const;
 
@@ -75,16 +76,36 @@ async function withRetry<T>(run: () => Promise<T>, fallback?: () => Promise<T>):
 
 // Google's lighter models, in the order they are tried. Each has its own daily allowance, so
 // when one is used up the next takes over and the second reader stays a Google model.
-const GOOGLE_LIGHT = [MODELS.geminiFast, "gemini-3.1-flash-lite", "gemini-3.5-flash", "gemini-3.6-flash", "gemma-4-26b-a4b-it"];
+const GOOGLE_LIGHT = [MODELS.geminiFast, "gemini-3.1-flash-lite", "gemini-3-flash-preview", "gemini-3.6-flash", "gemini-3.5-flash", "gemma-4-26b-a4b-it"];
 const usedUp = new Map<string, number>();
 
-// Over its daily limit, a model is skipped for an hour. Busy or slow, for two minutes.
+// Over its daily limit, a model is skipped for an hour. Busy or slow, for a few seconds.
 function rest(model: string, e: unknown) {
   const daily = /PerDay/.test(e instanceof Error ? e.message : String(e));
-  usedUp.set(model, Date.now() + (daily ? 60 : 2) * 60 * 1000);
+  usedUp.set(model, Date.now() + (daily ? 60 * 60 : 8) * 1000);
+}
+
+// Google's allowance is counted per minute and a burst gets refused, so requests to its
+// lighter models take turns: two at a time, each starting a moment after the last.
+const waiting: (() => void)[] = [];
+let running = 0;
+async function inTurn<T>(run: () => Promise<T>): Promise<T> {
+  if (running >= 2) await new Promise<void>((go) => waiting.push(go));
+  running += 1;
+  try {
+    return await run();
+  } finally {
+    await sleep(700);
+    running -= 1;
+    waiting.shift()?.();
+  }
 }
 
 async function googleLight(prompt: string, images: ImageInput[]): Promise<unknown> {
+  return inTurn(() => googleLightNow(prompt, images));
+}
+
+async function googleLightNow(prompt: string, images: ImageInput[]): Promise<unknown> {
   let last: unknown;
   for (const model of GOOGLE_LIGHT) {
     // A model that is resting is skipped.
@@ -114,7 +135,8 @@ async function geminiOnce(prompt: string, images: ImageInput[], model: string): 
     ],
     config: {
       // A reader that has not answered in this time is treated as busy and the next one is asked.
-      httpOptions: { timeout: 12000 },
+      // Gemma is the last in line and slower, so it gets longer.
+      httpOptions: { timeout: model.startsWith("gemma") ? 25000 : 12000 },
       // Gemma has no JSON mode. Its reply is still parsed as JSON below.
       ...(model.startsWith("gemma") ? {} : { responseMimeType: "application/json" }),
       temperature: 0,
@@ -153,9 +175,10 @@ type RouterResult = { data: { output?: string; error?: string | null } };
 
 // The router is an extra path, so it gets little time, and after a failure it is left alone
 // for ten minutes so a request does not wait on it again.
+// It is only tried when READBACK_ROUTER=1, which needs a funded fal account.
 let routerDownUntil = 0;
 async function viaRouter<T>(run: () => Promise<T>): Promise<T> {
-  if (Date.now() < routerDownUntil) throw new Error("router unavailable");
+  if (process.env.READBACK_ROUTER !== "1" || Date.now() < routerDownUntil) throw new Error("router unavailable");
   try {
     return await Promise.race([
       run(),
@@ -229,6 +252,9 @@ export async function openaiJson(
 }
 
 export async function fetchImage(url: string): Promise<ImageInput> {
+  // A picture drawn on the spot arrives as a data URL and needs no second request.
+  const inline = url.match(/^data:([^;]+);base64,(.*)$/);
+  if (inline) return { mime: inline[1], base64: inline[2] };
   const res = await fetch(url);
   if (!res.ok) throw new Error(`image fetch failed: ${res.status}`);
   const mime = res.headers.get("content-type") ?? "image/jpeg";

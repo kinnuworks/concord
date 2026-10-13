@@ -48,6 +48,8 @@ async function start(id: string, spec: TileSpec, opts: { fresh?: boolean; adapte
   if (store.has(id)) return;
   store.set(id, { state: { status: "working", attempts: [] }, subs: new Set() });
   try {
+    // Live drawings start a moment apart, so a card's pictures do not all ask at once.
+    if (opts.fresh) await new Promise((done) => setTimeout(done, Math.random() * 3000));
     const res = await fetch("/api/tile", {
       method: "POST",
       headers: { "content-type": "application/json" },
