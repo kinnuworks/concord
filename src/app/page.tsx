@@ -168,6 +168,17 @@ export default function Home() {
               </a>
             </div>
             <ul className="seals">
+              <li className="seals__lead">
+                <a href="#tried">
+                  <Seal>
+                    <circle cx="9" cy="8" r="3.5" />
+                    <path d="M2.5 20a6.5 6.5 0 0 1 13 0" />
+                    <circle cx="17.5" cy="9" r="2.5" />
+                    <path d="M17 14.2a5 5 0 0 1 4.5 5" />
+                  </Seal>
+                  Tried by 7 people who take medicines daily: 7 of 7 found the card easier
+                </a>
+              </li>
               <li>
                 <Seal>
                   <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />

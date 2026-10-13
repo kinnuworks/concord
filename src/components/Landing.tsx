@@ -427,6 +427,22 @@ export function WhoItIsFor() {
             whether the medicine is taken right.
           </p>
         </div>
+        <div className="card tried" id="tried">
+          <div>
+            <p className="eyebrow">Tried by real people</p>
+            <p className="tried__figure">7 of 7</p>
+            <p className="t-small">said the card was easier to understand than the written sheet.</p>
+          </div>
+          <div>
+            <p className="t-title">Seven adults aged 23 to 74 who take medicines every day looked at the same instructions as an English sheet and as a Concord card.</p>
+            <ul>
+              <li>A 60-year-old who cannot read English followed her medicines from the Telugu card and counted out the right pills on the first try.</li>
+              <li>A 45-year-old who reads English well said the card was easier to remember because of the pictures.</li>
+              <li>A 42-year-old who reads Telugu said the card was easier to understand than the text.</li>
+            </ul>
+            <p className="t-micro">An informal test with family and neighbours on 13 October 2026, not a clinical study.</p>
+          </div>
+        </div>
         <div className="grid grid-2">
           {PEOPLE.map((p) => (
             <div key={p.title} className="card stat-card person">

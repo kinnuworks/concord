@@ -38,13 +38,13 @@ Pictures close that gap. In a randomized trial, picture instructions cut parents
 
 ## What it does
 
-Concord takes a discharge sheet, typed or photographed, and returns picture cards: a morning-to-night schedule with the dose under each time, the food rule, a box for every day, things to avoid, exercises, warning signs and the next visit. Cards come in 70 languages, with the medicine's name in the patient's own script, and can be read aloud or printed.
+Concord takes a discharge sheet, typed or photographed, and returns picture cards: a morning-to-night schedule with the dose under each time, the food rule, a box for every day, things to avoid, exercises, warning signs and the next visit. Cards come in 70 languages, with the medicine's name in the patient's own script, and can be read aloud.
 
-It is built for the people a page of text leaves behind: 61.2 million Americans aged 65 or older, 28.9 million who speak English less than very well, and the 28% of working-age adults at the lowest literacy level.
+It is built for 61.2 million Americans aged 65 or older, 28.9 million who speak English less than very well, and the 28% of working-age adults at the lowest literacy level.
 
 ## How image generation is used
 
-Every pictogram on a card is generated. FLUX.1 [dev], with a LoRA style adapter I trained on 70 OpenMoji pictograms, draws one fact per picture. Code writes each prompt, so nothing from the patient's sheet reaches the image model.
+Every pictogram on a card is generated. FLUX.1 [dev], with a LoRA style adapter I trained on 70 OpenMoji pictograms, draws one fact per picture.
 
 Then two vision models from different companies look at each picture with no hint and no list of answers, and say what they see. A misread picture is thrown away and drawn again.
 
@@ -53,17 +53,17 @@ Then two vision models from different companies look at each picture with no hin
 Code places and counts, the model paints.
 
 - Asked to draw a whole dose in one picture, an image model got the count wrong 83 times out of 168. Asked for a single pill, it was right 58 times out of 60, and the read-back caught the other two. So Concord draws one checked pill and code repeats it.
-- My fine-tune gave the cards one drawing style: 21% of pictures came out as flat pictograms before it, 78% with it. That figure is about style. For meaning, every picture on a card has passed the read-back.
+- My fine-tune gave the cards one drawing style: 21% of pictures came out as flat pictograms before it, 78% with it. That is style; for meaning, every picture has passed the read-back.
 - Words are checked like pictures. I wrote 1,830 prescribable medicines in 69 languages, 126,270 names in all, and a second model read each one back unseen. 98% matched. Where Wikidata already has the name, the card uses it.
 - The sheet reader got 100 of 100 test instructions right.
 
 ## Resources
 
-FLUX.1 [dev] and LoRA training on fal. Gemini and GPT-6 Luna as readers. OpenMoji (CC BY-SA 4.0) as the training set. Code written with Claude Code.
+FLUX.1 [dev] and LoRA training on fal. Gemini and GPT-6 Luna as readers. OpenMoji as the training set. Code written with Claude Code.
 
 ## Final product and what comes next
 
-The live site needs no sign-in, opens on finished cards and scores 100 on Lighthouse. A technical report, the adapter and all 155,637 checked names are published with DOIs. A comprehension study with patients and a pharmacist comes next.
+The live site needs no sign-in, opens on finished cards and scores 100 on Lighthouse. A technical report, the adapter and all 155,637 checked names are published with DOIs. Seven adults who take medicines daily tried it; all seven found the card easier to understand than the sheet. A 60-year-old who cannot read English counted out the right pills from the Telugu card. A study with a pharmacist comes next.
 ```
 
 ## Two more sections, if you want them

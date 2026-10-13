@@ -50,6 +50,10 @@ A picture only helps if it is read correctly. In one study just 1 of 12 standard
 | People who read another language | 28.9 million people in the United States speak English less than very well. | [Census Bureau, ACS 2024](https://data.census.gov/table/ACSST1Y2024.S1601) |
 | Family and carers | 63 million Americans care for a relative with a medical condition or disability. | [AARP and NAC, 2025](https://www.aarp.org/press/releases/2025-07-24-new-report-reveals-crisis-point-for-americas-63-million-family-caregivers.html) |
 
+### Tried by real people
+
+Seven adults aged 23 to 74 who take medicines every day looked at the same instructions as an English sheet and as a Concord card. All seven said the card was easier to understand. A 60-year-old who cannot read English followed her medicines from the Telugu card and counted out the right pills on the first try. This was an informal test with family and neighbours on 13 October 2026, not a clinical study.
+
 ## What it does
 
 Paste the text of a discharge sheet, or photograph it. Concord returns:
@@ -136,7 +140,7 @@ Everything above is reproducible from the scripts in [`scripts/`](scripts/). The
 
 ## Scope
 
-Concord redraws what a sheet says. It is a reading aid: it gives no medical advice and does not check whether a dose is appropriate. The next step is a comprehension study with patients and a pharmacist.
+Concord redraws what a sheet says. It is a reading aid: it gives no medical advice and does not check whether a dose is appropriate. The next step is a comprehension study with a pharmacist.
 
 ## Run it
 
