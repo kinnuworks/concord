@@ -578,6 +578,8 @@ const PUBLISHED: [name: string, href: string][] = [
   ["GitHub", "https://github.com/kinnuworks/concord"],
   ["Devpost", "https://devpost.com/software/concord-qayso0"],
   ["YouTube", "https://www.youtube.com/watch?v=fIPK5c8TOQg"],
+  ["Hugging Face: the adapter", "https://huggingface.co/heykinnu/concord-pictogram-lora"],
+  ["Hugging Face: the checked names", "https://huggingface.co/datasets/heykinnu/concord-medicine-names"],
 ];
 
 export function Quality() {

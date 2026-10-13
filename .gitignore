@@ -57,3 +57,4 @@ concord-demo-v2*.mp4
 concord-submission.zip
 training/names/parts/
 training/weights/
+publish/dataset/names.jsonl

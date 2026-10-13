@@ -12,8 +12,10 @@ Everything to paste into Devpost, then the video script.
 
 - https://concord-health.vercel.app
 - https://github.com/kinnuworks/concord
+- https://huggingface.co/heykinnu/concord-pictogram-lora
+- https://huggingface.co/datasets/heykinnu/concord-medicine-names
 
-**Built with:** nextjs, typescript, react, fal, flux, lora, gemini, openai, openmoji, wikidata, rxnorm, vercel
+**Built with:** nextjs, typescript, react, fal, flux, lora, gemini, openai, huggingface, openmoji, wikidata, rxnorm, vercel
 
 **AI tools used (the rules ask for this):** Claude Code for writing code and building the demo video (rendered with Remotion, music synthesized by a script). FLUX.1 [dev] with our own LoRA adapter for the pictures, and OpenAI gpt-image-2.5-flare for pictures drawn live on the site. Gemini 3.8 Flash, Gemini 2.5 Flash, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite and GPT-6 Luna as readers.
 
