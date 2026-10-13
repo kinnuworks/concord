@@ -578,8 +578,10 @@ const PUBLISHED: [name: string, href: string][] = [
   ["GitHub", "https://github.com/kinnuworks/concord"],
   ["Devpost", "https://devpost.com/software/concord-qayso0"],
   ["YouTube", "https://www.youtube.com/watch?v=fIPK5c8TOQg"],
-  ["Hugging Face: the adapter", "https://huggingface.co/heykinnu/concord-pictogram-lora"],
-  ["Hugging Face: the checked names", "https://huggingface.co/datasets/heykinnu/concord-medicine-names"],
+  ["Product Hunt", "https://www.producthunt.com/products/concord-2?launch=concord-3"],
+  ["Write-up on dev.to", "https://dev.to/kinnuworks/seven-in-ten-could-read-the-label-one-in-three-could-take-the-right-dose-2jb2"],
+  ["The adapter, DOI 10.57967/hf/10889", "https://doi.org/10.57967/hf/10889"],
+  ["The checked names, DOI 10.57967/hf/10890", "https://doi.org/10.57967/hf/10890"],
 ];
 
 export function Quality() {
