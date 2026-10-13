@@ -227,6 +227,23 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="tryit" aria-label="Try it in a minute">
+          <div className="container">
+            <p className="tryit__title">Try it in 60 seconds</p>
+            <ol>
+              <li>
+                <a href="#make">Click &ldquo;A photo of a printed sheet&rdquo;, then &ldquo;Make the cards&rdquo;.</a> Two models read it live.
+              </li>
+              <li>
+                <a href="#make">Switch the language to Hindi or Arabic.</a> The medicine&rsquo;s name appears in that script.
+              </li>
+              <li>
+                <a href="#pictures">Press &ldquo;Draw it again, live&rdquo;.</a> A picture is drawn and read back while you watch.
+              </li>
+            </ol>
+          </div>
+        </section>
+
         <section className="workspace" id="make">
           <div className="container">
             <div className="card block">
