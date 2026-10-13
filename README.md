@@ -66,7 +66,7 @@ The plain model returns a different drawing style for almost every picture. We t
 |---|---|
 | Whole doses an image model on its own drew with the wrong number of pills | 83 of 168 |
 | Single-unit pictures that passed the read-back on the first try | 58 of 60 |
-| Pictures both readers called a flat outlined pictogram, before our adapter | 56 of 270 (21%) |
+| Drawing style: pictures both readers called a flat outlined pictogram, before our adapter | 56 of 270 (21%) |
 | The same, with our adapter | 210 of 270 (78%) |
 | Written instructions the sheet reader got right | 100 of 100 |
 
@@ -80,7 +80,7 @@ Everything above is reproducible from the scripts in [`scripts/`](scripts/). The
 1. **Code counts, the model draws.** Asked for a whole dose in one picture, the image model got the number wrong about half the time. Concord asks for one unit, checks that it is exactly one, and repeats it by code. The count on a card is exact by construction.
 2. **Readers describe, they do not choose.** Given a list of answers, a reader can land on the right one by elimination. Concord's readers get no list. They say what they see, and a separate judge compares that with what the picture was meant to say.
 3. **Angles are exact.** Exercise figures are drawn by code at the prescribed angle, like the calendar and the numbers.
-4. **Style and meaning are separate jobs.** Our adapter gives a set of cards one look: 78% of pictures read as flat pictograms, up from 21%. The first attempt at a picture is drawn in that style. If the readers cannot read it, the redraw goes to the plain model, because meaning comes before style.
+4. **Style and meaning are separate jobs.** Our adapter gives a set of cards one drawing style: 78% of pictures come out as flat pictograms, up from 21%. That number is about style only; for meaning, every generated picture on a card has passed the read-back. The first attempt at a picture is drawn in that style. If the readers cannot read it, the redraw goes to the plain model, because meaning comes before style.
 
 ## Scope
 

@@ -86,8 +86,9 @@ export function Results() {
                 {flatBase}% to {flatAdapter}%
               </p>
               <p className="stat-card__text">
-                The share of pictures both readers called a flat outlined pictogram, before and after our
-                fine-tuned style adapter. A set of cards now shares one look.
+                This one is about drawing style, not meaning: the share of pictures that came out as flat
+                outlined pictograms, before and after our fine-tuned adapter. A set of cards now shares one look,
+                and every picture on a card has still passed the read-back.
                 {r.training
                   ? ` The adapter was trained for ${r.training.steps} steps on ${r.training.images} OpenMoji pictograms in ${r.training.seconds} seconds.`
                   : ""}

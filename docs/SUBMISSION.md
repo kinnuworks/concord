@@ -42,8 +42,8 @@ Then two vision models from different companies look at each picture with no hin
 
 Code places and counts, the model paints. Two models read the sheet separately and any field they disagree on is flagged. I measured before trusting anything: 540 pictures for 100 test instructions.
 
-- On its own, an image model asked for a whole dose drew the wrong number 83 times out of 168. With Concord it draws one unit, readers check that it is exactly one, and code repeats it, so the count is exact.
-- The adapter gave the cards one look: pictures both readers call a flat pictogram went from 21% to 78%.
+- Asked to draw a whole dose in one picture, an image model got the count wrong 83 times out of 168. Asked for a single pill, it was right 58 times out of 60, and the read-back caught the other two. So Concord draws one checked pill and code repeats it, which makes the count on a card exact.
+- My fine-tune gave the cards one drawing style: 21% of pictures came out as flat pictograms before it, 78% with it. That figure is about style. For meaning, every generated picture on a card has passed the read-back.
 - The read-back stopped a "swollen foot" that both readers saw as a red sock.
 - The sheet reader got 100 of 100 test instructions right.
 
@@ -53,7 +53,7 @@ FLUX.1 [dev] and LoRA training on fal. Gemini 3.8 Flash, Gemini 2.5 Flash, Gemin
 
 ## Final product and what comes next
 
-The live site runs with no sign-in and opens on finished cards. A section called "Where the image model works" follows real pictures from prompt to card, and the repository holds every script and raw reading behind the numbers. A comprehension study with patients and a pharmacist comes next.
+The live site needs no sign-in and opens on finished cards. Its section "Where the image model works" follows real pictures from prompt to card. The repository holds every script and raw reading. A comprehension study with patients and a pharmacist comes next.
 ```
 
 ## Video
