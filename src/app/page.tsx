@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo, useRef, useState, type ReactNode } from "react";
 import { CardSheet } from "@/components/Cards";
-import { HowItIsChecked, Mark, PicturesWork, Quality, Questions, References, WhoItIsFor, Why } from "@/components/Landing";
+import { Evidence, HowItIsChecked, Mark, PicturesWork, Quality, Questions, References, WhoItIsFor, Why } from "@/components/Landing";
 import { Follow } from "@/components/Follow";
 import { Languages } from "@/components/Languages";
 import { Results } from "@/components/Results";
@@ -195,7 +195,7 @@ export default function Home() {
                   <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" />
                   <path d="M14 3v5h5M9 13h6M9 17h4" />
                 </Seal>
-                Every figure linked to its source
+                <a href="#evidence-published">Report, data and model published with DOIs</a>
               </li>
               <li>
                 <Seal>
@@ -418,6 +418,7 @@ export default function Home() {
         <Languages />
         <WhoItIsFor />
         <Questions />
+        <Evidence />
         <Quality />
         <References />
       </main>

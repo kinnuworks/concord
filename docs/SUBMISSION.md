@@ -14,6 +14,9 @@ Everything to paste into Devpost, then the video script.
 - https://github.com/kinnuworks/concord
 - https://huggingface.co/heykinnu/concord-pictogram-lora
 - https://huggingface.co/datasets/heykinnu/concord-medicine-names
+- https://dev.to/kinnuworks/seven-in-ten-could-read-the-label-one-in-three-could-take-the-right-dose-2jb2
+- https://www.producthunt.com/products/concord-2?launch=concord-3
+- https://github.com/kinnuworks/concord/blob/main/docs/Concord-technical-report.pdf
 
 **Built with:** nextjs, typescript, react, fal, flux, lora, gemini, openai, huggingface, openmoji, wikidata, rxnorm, vercel
 
@@ -59,7 +62,7 @@ FLUX.1 [dev] and LoRA training on fal. Gemini and GPT-6 Luna as readers. OpenMoj
 
 ## Final product and what comes next
 
-The live site needs no sign-in, opens on finished cards and scores 100 on all four Lighthouse audits. Every figure on it links to its source. A comprehension study with patients and a pharmacist comes next.
+The live site needs no sign-in, opens on finished cards and scores 100 on all four Lighthouse audits. The adapter and all 155,637 checked names are published with DOIs. A comprehension study with patients and a pharmacist comes next.
 ```
 
 ## Two more sections, if you want them

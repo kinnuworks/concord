@@ -783,8 +783,22 @@
     grid-template-columns: 1fr;
   }
 }
+.evidence {
+  color: inherit;
+}
+.evidence__link {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink) !important;
+  text-decoration: underline;
+  text-decoration-color: var(--line-2);
+  text-underline-offset: 3px;
+  word-break: break-word;
+}
 .quality {
   padding-block: clamp(40px, 5vw, 64px);
+  background: var(--bg-alt);
 }
 .quality .container {
   display: flex;

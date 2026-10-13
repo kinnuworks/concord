@@ -537,7 +537,7 @@ const REFERENCES: [text: string, href: string][] = [
 
 export function References() {
   return (
-    <section className="section section--alt references" id="sources">
+    <section className="section references" id="sources">
       <div className="container">
         <h2 className="eyebrow">
           <span className="dot" />
@@ -573,16 +573,112 @@ const CHECKS = [
   "0 known vulnerabilities in the dependencies",
 ];
 
-// Places where Concord is public. A new one is added here only once the page exists.
-const PUBLISHED: [name: string, href: string][] = [
-  ["GitHub", "https://github.com/kinnuworks/concord"],
-  ["Devpost", "https://devpost.com/software/concord-qayso0"],
-  ["YouTube", "https://www.youtube.com/watch?v=fIPK5c8TOQg"],
-  ["Product Hunt", "https://www.producthunt.com/products/concord-2?launch=concord-3"],
-  ["Write-up on dev.to", "https://dev.to/kinnuworks/seven-in-ten-could-read-the-label-one-in-three-could-take-the-right-dose-2jb2"],
-  ["The adapter, DOI 10.57967/hf/10889", "https://doi.org/10.57967/hf/10889"],
-  ["The checked names, DOI 10.57967/hf/10890", "https://doi.org/10.57967/hf/10890"],
+// What has been published about Concord, each with the page that proves it. An entry is added
+// here only once that page exists.
+const EVIDENCE: { title: string; text: string; link: string; href: string; icon: ReactNode }[] = [
+  {
+    title: "Technical report",
+    text: "Six pages on the method, the full evaluation and its limits. Not peer reviewed.",
+    link: "Read the report",
+    href: "https://github.com/kinnuworks/concord/blob/main/docs/Concord-technical-report.pdf",
+    icon: (
+      <>
+        <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" />
+        <path d="M14 3v5h5M9 13h6M9 17h4" />
+      </>
+    ),
+  },
+  {
+    title: "Open data, with a DOI",
+    text: "All 155,637 medicine names with what the second model read back, in 69 languages.",
+    link: "doi.org/10.57967/hf/10890",
+    href: "https://doi.org/10.57967/hf/10890",
+    icon: (
+      <>
+        <ellipse cx="12" cy="6" rx="8" ry="3" />
+        <path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" />
+      </>
+    ),
+  },
+  {
+    title: "Fine-tuned adapter, with a DOI",
+    text: "The style adapter trained for Concord, published with its training settings and results.",
+    link: "doi.org/10.57967/hf/10889",
+    href: "https://doi.org/10.57967/hf/10889",
+    icon: (
+      <>
+        <path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5L12 3z" />
+      </>
+    ),
+  },
+  {
+    title: "Published write-up",
+    text: "The story behind it: the label study, the miscounting image model and the read-back.",
+    link: "Read it on dev.to",
+    href: "https://dev.to/kinnuworks/seven-in-ten-could-read-the-label-one-in-three-could-take-the-right-dose-2jb2",
+    icon: (
+      <>
+        <path d="M2 5h7a3 3 0 0 1 3 3v12a2.5 2.5 0 0 0-2.5-2.5H2V5z" />
+        <path d="M22 5h-7a3 3 0 0 0-3 3v12a2.5 2.5 0 0 1 2.5-2.5H22V5z" />
+      </>
+    ),
+  },
+  {
+    title: "Launched on Product Hunt",
+    text: "A public launch page, open to questions and feedback from anyone.",
+    link: "See the launch",
+    href: "https://www.producthunt.com/products/concord-2?launch=concord-3",
+    icon: (
+      <>
+        <path d="M5 15c-1 1-1.5 4-1.5 4s3-.5 4-1.5" />
+        <path d="M9 15l-3-3c1-4 4-8 12-9-1 8-5 11-9 12z" />
+        <circle cx="14.5" cy="9.5" r="1.5" />
+      </>
+    ),
+  },
+  {
+    title: "Open source",
+    text: "Code, scripts and every raw reading, under the MIT licence, with 29 tests run on every commit.",
+    link: "github.com/kinnuworks/concord",
+    href: "https://github.com/kinnuworks/concord",
+    icon: (
+      <>
+        <path d="M8 6l-6 6 6 6M16 6l6 6-6 6" />
+      </>
+    ),
+  },
 ];
+
+export function Evidence() {
+  return (
+    <section className="section" id="evidence-published">
+      <div className="container">
+        <div className="section-head">
+          <p className="eyebrow">
+            <span className="dot" />
+            Research and evidence
+          </p>
+          <h2>Built in the open. Backed by experiments.</h2>
+          <p className="lead">Everything behind the numbers on this page is published, and each item below opens the page that proves it.</p>
+        </div>
+        <div className="grid grid-3">
+          {EVIDENCE.map((e) => (
+            <a key={e.title} className="tile evidence" href={e.href} target="_blank" rel="noreferrer">
+              <span className="icon-tile">
+                <Icon>{e.icon}</Icon>
+              </span>
+              <div>
+                <p className="t-title">{e.title}</p>
+                <p>{e.text}</p>
+                <p className="evidence__link">{e.link}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export function Quality() {
   return (
@@ -606,14 +702,6 @@ export function Quality() {
             <Source href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fconcord-health.vercel.app">Run the audit yourself</Source>
             <Source href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fconcord-health.vercel.app%2F">Check the HTML</Source>
             <Source href="https://github.com/kinnuworks/concord/actions/workflows/ci.yml">Build and tests</Source>
-          </p>
-          <p className="quality__links">
-            <span className="t-micro">Published on</span>
-            {PUBLISHED.map(([name, href]) => (
-              <a key={name} className="source-tag" href={href} target="_blank" rel="noreferrer">
-                {name}
-              </a>
-            ))}
           </p>
         </div>
         <ul className="scores">
