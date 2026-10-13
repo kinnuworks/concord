@@ -75,7 +75,7 @@ A picture that passes is saved and reused, so "morning" is drawn and checked onc
 - **Vision models read every generated picture back** before it can be used.
 - **Code composes the card.** It repeats the checked unit for the dose, puts the pictures in schedule order and writes the numbers and labels.
 
-The site has a section, "Where the image model works", that follows real pictures from prompt to card.
+The site has a section, "Where the image model works", that follows real pictures from prompt to card. A second section, "Every picture", shows all 540 pictures the model drew for the evaluation. Pick any one to see what was asked for, what each of the two vision models said it shows, and whether the read-back kept it. The first screen of the site cycles through six of them.
 
 ### The style adapter
 
@@ -156,6 +156,7 @@ The site draws from a saved set of pictures that have already passed the read-ba
 | `scripts/wikidata-labels.ts` | Collects the names Wikidata has for the same medicines, matched by RxNorm id |
 | `scripts/wikidata-names.ts` | Reads the Wikidata names back with the same rule |
 | `scripts/report.ts` | Compiles the numbers shown on the site |
+| `scripts/gallery.py` | Builds the wall of all 540 evaluation pictures with what each reader saw |
 
 ## Credits and licences
 

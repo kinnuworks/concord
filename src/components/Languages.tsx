@@ -35,7 +35,7 @@ export function Languages() {
   if (names.languages < 20) return null;
 
   return (
-    <section className="section" id="languages">
+    <section className="section section--alt" id="languages">
       <div className="container">
         <div className="section-head">
           <p className="eyebrow">

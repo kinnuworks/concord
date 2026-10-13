@@ -5,7 +5,9 @@ import { CardSheet } from "@/components/Cards";
 import { HowItIsChecked, Mark, PicturesWork, Quality, Questions, References, WhoItIsFor, Why } from "@/components/Landing";
 import { Follow } from "@/components/Follow";
 import { Languages } from "@/components/Languages";
+import { Proof } from "@/components/Proof";
 import { Results } from "@/components/Results";
+import { Wall } from "@/components/Wall";
 import type { TileState } from "@/components/Tile";
 import namesReport from "@/data/names-report.json";
 import samplePhoto from "@/data/sample-photo.json";
@@ -193,6 +195,7 @@ export default function Home() {
                 </a>
               </li>
             </ul>
+            <Proof />
             <p className="trust">
               <span>No account needed</span>
               <span>Text or a photo of the sheet</span>
@@ -381,6 +384,7 @@ export default function Home() {
         <PicturesWork />
         <HowItIsChecked />
         <Follow />
+        <Wall />
         <Results />
         <Languages />
         <WhoItIsFor />
