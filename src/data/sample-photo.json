@@ -1,0 +1,289 @@
+{
+ "regimen": {
+  "medicines": [
+   {
+    "name": "Paracetamol 500 mg",
+    "form": "tablet",
+    "count": 1,
+    "times": [
+     "morning",
+     "afternoon",
+     "night"
+    ],
+    "food": "after_food",
+    "days": 7,
+    "avoid": []
+   },
+   {
+    "name": "Ibuprofen 400 mg",
+    "form": "tablet",
+    "count": 1,
+    "times": [
+     "morning",
+     "night"
+    ],
+    "food": "with_food",
+    "days": 5,
+    "avoid": [
+     "driving"
+    ]
+   }
+  ],
+  "exercises": [
+   {
+    "name": "Knee bends",
+    "movement": "knee_bend",
+    "angle": 90,
+    "reps": 10,
+    "sets": 3,
+    "timesPerDay": 2
+   },
+   {
+    "name": "Straight leg raise",
+    "movement": "straight_leg_raise",
+    "angle": 45,
+    "reps": 10,
+    "sets": 2,
+    "timesPerDay": 2
+   }
+  ],
+  "warnings": [
+   "fever",
+   "swelling",
+   "wound_discharge"
+  ],
+  "followUp": {
+   "date": "2026-10-26",
+   "place": "the orthopaedic clinic"
+  },
+  "unparsed": []
+ },
+ "disagreements": [],
+ "readers": [
+  "gemini",
+  "openai"
+ ],
+ "cards": [
+  {
+   "kind": "medicine",
+   "id": "med-0",
+   "medicine": {
+    "name": "Paracetamol 500 mg",
+    "form": "tablet",
+    "count": 1,
+    "times": [
+     "morning",
+     "afternoon",
+     "night"
+    ],
+    "food": "after_food",
+    "days": 7,
+    "avoid": []
+   },
+   "rows": [
+    {
+     "time": "morning",
+     "timeTile": {
+      "kind": "time",
+      "time": "morning"
+     },
+     "doseTile": {
+      "kind": "unit",
+      "form": "tablet"
+     },
+     "meal": "before_dose",
+     "count": 1
+    },
+    {
+     "time": "afternoon",
+     "timeTile": {
+      "kind": "time",
+      "time": "afternoon"
+     },
+     "doseTile": {
+      "kind": "unit",
+      "form": "tablet"
+     },
+     "meal": "before_dose",
+     "count": 1
+    },
+    {
+     "time": "night",
+     "timeTile": {
+      "kind": "time",
+      "time": "night"
+     },
+     "doseTile": {
+      "kind": "unit",
+      "form": "tablet"
+     },
+     "meal": "before_dose",
+     "count": 1
+    }
+   ],
+   "days": 7,
+   "avoid": []
+  },
+  {
+   "kind": "medicine",
+   "id": "med-1",
+   "medicine": {
+    "name": "Ibuprofen 400 mg",
+    "form": "tablet",
+    "count": 1,
+    "times": [
+     "morning",
+     "night"
+    ],
+    "food": "with_food",
+    "days": 5,
+    "avoid": [
+     "driving"
+    ]
+   },
+   "rows": [
+    {
+     "time": "morning",
+     "timeTile": {
+      "kind": "time",
+      "time": "morning"
+     },
+     "doseTile": {
+      "kind": "unit",
+      "form": "tablet"
+     },
+     "meal": "with_dose",
+     "count": 1
+    },
+    {
+     "time": "night",
+     "timeTile": {
+      "kind": "time",
+      "time": "night"
+     },
+     "doseTile": {
+      "kind": "unit",
+      "form": "tablet"
+     },
+     "meal": "with_dose",
+     "count": 1
+    }
+   ],
+   "days": 5,
+   "avoid": [
+    {
+     "kind": "avoid",
+     "item": "driving"
+    }
+   ]
+  },
+  {
+   "kind": "exercise",
+   "id": "ex-0",
+   "exercise": {
+    "name": "Knee bends",
+    "movement": "knee_bend",
+    "angle": 90,
+    "reps": 10,
+    "sets": 3,
+    "timesPerDay": 2
+   },
+   "tile": {
+    "kind": "exercise",
+    "movement": "knee_bend",
+    "angle": 90
+   }
+  },
+  {
+   "kind": "exercise",
+   "id": "ex-1",
+   "exercise": {
+    "name": "Straight leg raise",
+    "movement": "straight_leg_raise",
+    "angle": 45,
+    "reps": 10,
+    "sets": 2,
+    "timesPerDay": 2
+   },
+   "tile": {
+    "kind": "exercise",
+    "movement": "straight_leg_raise",
+    "angle": 45
+   }
+  },
+  {
+   "kind": "warning",
+   "id": "warnings",
+   "signs": [
+    {
+     "sign": "fever",
+     "tile": {
+      "kind": "warning",
+      "sign": "fever"
+     }
+    },
+    {
+     "sign": "swelling",
+     "tile": {
+      "kind": "warning",
+      "sign": "swelling"
+     }
+    },
+    {
+     "sign": "wound_discharge",
+     "tile": {
+      "kind": "warning",
+      "sign": "wound_discharge"
+     }
+    }
+   ]
+  },
+  {
+   "kind": "followup",
+   "id": "followup",
+   "date": "2026-10-26",
+   "place": "the orthopaedic clinic"
+  }
+ ],
+ "tiles": [
+  {
+   "kind": "time",
+   "time": "morning"
+  },
+  {
+   "kind": "time",
+   "time": "afternoon"
+  },
+  {
+   "kind": "time",
+   "time": "evening"
+  },
+  {
+   "kind": "time",
+   "time": "night"
+  },
+  {
+   "kind": "unit",
+   "form": "tablet"
+  },
+  {
+   "kind": "meal"
+  },
+  {
+   "kind": "avoid",
+   "item": "driving"
+  },
+  {
+   "kind": "warning",
+   "sign": "fever"
+  },
+  {
+   "kind": "warning",
+   "sign": "swelling"
+  },
+  {
+   "kind": "warning",
+   "sign": "wound_discharge"
+  }
+ ]
+}

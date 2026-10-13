@@ -8,6 +8,7 @@ import { Languages } from "@/components/Languages";
 import { Results } from "@/components/Results";
 import type { TileState } from "@/components/Tile";
 import namesReport from "@/data/names-report.json";
+import samplePhoto from "@/data/sample-photo.json";
 import { tilesFor, type Card } from "@/lib/plan";
 import { LANGUAGE_LIST, type Disagreement, type Lang, type Regimen } from "@/lib/schema";
 import { hasLanguage } from "@/lib/labels";
@@ -25,7 +26,7 @@ type Parsed = {
 // on screen when the page opens. "Make the cards" always runs the real reader again.
 const SAMPLES = samples as unknown as { name: string; text: string; parsed: Parsed }[];
 
-const SAMPLE_PHOTO = { src: "/samples/discharge-sheet.jpg", name: "discharge-sheet.jpg" };
+const SAMPLE_PHOTO = { src: "/samples/discharge-sheet.jpg", name: "discharge-sheet.jpg", parsed: samplePhoto as unknown as Parsed };
 
 type Report = { spec: TileSpec; state: TileState };
 
@@ -53,6 +54,7 @@ export default function Home() {
   const [drawFresh, setDrawFresh] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
   const [parsed, setParsed] = useState<Parsed | null>(SAMPLES[0].parsed);
   const [run, setRun] = useState(0);
   const [reports, setReports] = useState<Record<string, Report>>({});
@@ -84,6 +86,7 @@ export default function Home() {
   async function submit() {
     setBusy(true);
     setError(null);
+    setNotice(null);
     setReports({});
     try {
       const res = await fetch("/api/parse", {
@@ -91,13 +94,23 @@ export default function Home() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(photo ? { image: { mime: photo.mime, base64: photo.base64 } } : { text }),
       });
-      const data = await res.json();
+      // A reader that is slow or down answers with something that is not JSON.
+      const data = await res.json().catch(() => ({ error: "The readers are busy right now. Please try again in a minute." }));
       if (!res.ok) throw new Error(data.error ?? "Could not read the instructions.");
       setParsed(data as Parsed);
       setDrawFresh(fresh);
       setRun((n) => n + 1);
     } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
+      // For the sample sheets there is a saved reading to fall back on, and the page says so.
+      const saved = photo ? (photo.name === SAMPLE_PHOTO.name ? SAMPLE_PHOTO.parsed : null) : (SAMPLES.find((s) => s.text === text)?.parsed ?? null);
+      if (saved) {
+        setParsed(saved);
+        setDrawFresh(false);
+        setRun((n) => n + 1);
+        setNotice("The readers are busy right now, so these cards come from the saved reading of this sample.");
+      } else {
+        setError(e instanceof Error ? e.message : String(e));
+      }
     } finally {
       setBusy(false);
     }
@@ -202,6 +215,7 @@ export default function Home() {
                       setText(s.text);
                       setPhoto(null);
                       setError(null);
+                      setNotice(null);
                       setReports({});
                       setParsed(s.parsed);
                       setDrawFresh(false);
@@ -279,6 +293,7 @@ export default function Home() {
                 </button>
               </div>
               {error ? <p className="note note--bad">{error}</p> : null}
+              {notice ? <p className="note">{notice}</p> : null}
             </div>
 
             {parsed ? (

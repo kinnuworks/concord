@@ -75,7 +75,7 @@ async function withRetry<T>(run: () => Promise<T>, fallback?: () => Promise<T>):
 
 // Google's lighter models, in the order they are tried. Each has its own daily allowance, so
 // when one is used up the next takes over and the second reader stays a Google model.
-const GOOGLE_LIGHT = [MODELS.geminiFast, "gemini-3.1-flash-lite", "gemini-3.5-flash", "gemma-4-26b-a4b-it"];
+const GOOGLE_LIGHT = [MODELS.geminiFast, "gemini-3.1-flash-lite", "gemini-3.5-flash", "gemini-3.6-flash", "gemma-4-26b-a4b-it"];
 const usedUp = new Map<string, number>();
 
 async function googleLight(prompt: string, images: ImageInput[]): Promise<unknown> {
@@ -87,11 +87,12 @@ async function googleLight(prompt: string, images: ImageInput[]): Promise<unknow
       return await geminiOnce(prompt, images, model);
     } catch (e) {
       last = e;
-      if (!/PerDay/.test(e instanceof Error ? e.message : String(e))) throw e;
-      usedUp.set(model, Date.now() + 60 * 60 * 1000);
+      // Over its daily limit: skip it for an hour. Busy right now: try the next one this time.
+      if (/PerDay/.test(e instanceof Error ? e.message : String(e))) usedUp.set(model, Date.now() + 60 * 60 * 1000);
+      else if (!isBusy(e)) throw e;
     }
   }
-  throw last ?? new Error("every Google reader is over its daily limit");
+  throw last ?? new Error("every Google reader is busy or over its daily limit");
 }
 
 async function geminiOnce(prompt: string, images: ImageInput[], model: string): Promise<unknown> {
@@ -107,6 +108,7 @@ async function geminiOnce(prompt: string, images: ImageInput[], model: string): 
       },
     ],
     config: {
+      httpOptions: { timeout: 25000 },
       // Gemma has no JSON mode. Its reply is still parsed as JSON below.
       ...(model.startsWith("gemma") ? {} : { responseMimeType: "application/json" }),
       temperature: 0,
@@ -139,11 +141,27 @@ export async function geminiJson(
 
 type RouterResult = { data: { output?: string; error?: string | null } };
 
+// The router is an extra path, so it gets little time, and after a failure it is left alone
+// for ten minutes so a request does not wait on it again.
+let routerDownUntil = 0;
+async function viaRouter<T>(run: () => Promise<T>): Promise<T> {
+  if (Date.now() < routerDownUntil) throw new Error("router unavailable");
+  try {
+    return await Promise.race([
+      run(),
+      new Promise<never>((_, reject) => setTimeout(() => reject(new Error("router timed out")), 8000)),
+    ]);
+  } catch (e) {
+    routerDownUntil = Date.now() + 10 * 60 * 1000;
+    throw e;
+  }
+}
+
 // The Google reader for pictures. It goes through fal's model router, which has no
 // free-tier request cap, so a busy hour cannot be mistaken for an unreadable picture.
 export async function googleVisionJson(prompt: string, images: ImageInput[]): Promise<unknown> {
   try {
-    return await withRetry(async () => {
+    return await viaRouter(async () => {
       const res = (await falClient().subscribe(MODELS.routerVision, {
         input: {
           model: MODELS.routerGoogle,
@@ -162,7 +180,7 @@ export async function googleVisionJson(prompt: string, images: ImageInput[]): Pr
 }
 
 export async function googleTextJson(prompt: string): Promise<unknown> {
-  return withRetry(async () => {
+  return viaRouter(async () => {
     const res = (await falClient().subscribe(MODELS.routerText, {
       input: { model: MODELS.routerGoogle, prompt, temperature: 0 },
     })) as unknown as RouterResult;
