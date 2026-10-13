@@ -54,7 +54,7 @@ Paste the text of a discharge sheet, or photograph it. Concord returns:
 - **A warning card** for the symptoms that should bring the patient back.
 - **A follow-up card** with the date.
 
-Cards come in 70 languages, from Spanish, Chinese and Arabic to Hindi, Telugu and Swahili. The medicine's name is written in the patient's own script next to the printed one ("Amoxicillin 500 mg" also appears as "एमॉक्सिसिलिन 500 mg" or "阿莫西林 500 mg"), and exercise names and the clinic are translated. A translation is kept only if a second model, which never saw the original, reads it back with the same meaning. Right-to-left languages get a mirrored layout. A card can be read aloud or printed. Anything the sheet says that the cards cannot hold (half tablets, tapering doses, "as needed") is shown as text and never drawn.
+Cards come in 70 languages, from Spanish, Chinese and Arabic to Hindi, Telugu and Swahili. The medicine's name is written in the patient's own script next to the printed one ("Amoxicillin 500 mg" also appears as "एमोक्सिसिलिन 500 mg" or "阿莫西林 500 mg"), and exercise names and the clinic are translated. Where Wikidata already has the medicine's name in that language, the card uses it, so an Arabic reader sees the word their pharmacy uses for paracetamol. Every name and label is kept only if a second model, which never saw the English, reads it back with the same meaning. Right-to-left languages get a mirrored layout. A card can be read aloud or printed. Anything the sheet says that the cards cannot hold (half tablets, tapering doses, "as needed") is shown as text and never drawn.
 
 ## How it works
 
@@ -97,6 +97,29 @@ The plain model returns a different drawing style for almost every picture. We t
 The read-back earns its place on warning signs. One "fever" picture came back as "a person's face with red tears and blue drool". A "swollen foot" came back as "a red sock". The check stopped both before they reached a card, and the site shows them next to the pictures it kept.
 <!-- results:end -->
 
+### Words are checked like pictures
+
+| What was checked | Result |
+|---|---|
+| Medicine names written in 69 languages (1,830 prescribable medicines each) and read back by a second model | 123,712 of 126,270 came back as the same medicine |
+| Names Wikidata already has for those medicines, read back the same way | 28,127 of 29,367 kept |
+| Names on the cards that come from Wikidata | 22,199 |
+| Concord's own spelling against Wikidata's, where both exist | 20,866 of 27,983 identical, 25,063 within a letter or two |
+| Card labels kept after a round trip through a second model, 69 languages | 2,469 of 2,484 |
+| Medicine cards that 16 checked pictures can build | 115,200 |
+
+The medicines are every ingredient of a currently prescribable medicine in [RxNorm](https://www.nlm.nih.gov/research/umls/rxnorm/) that carries a WHO ATC code. Wikidata entries are matched through their RxNorm id, never by name. A name that fails the read-back, or that mixes two scripts, is left in Latin letters on the card. The raw results for every name are in [`training/names/`](training/names/) and [`training/wikidata/`](training/wikidata/).
+
+### Checks you can run again
+
+| Check | Result on 13 October 2026 | How to run it |
+|---|---|---|
+| Test suite | 29 of 29 pass | `pnpm test`, also run on every commit |
+| Lighthouse, desktop, live site | 100 performance, 100 accessibility, 100 best practices, 100 SEO | [PageSpeed Insights](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fconcord-health.vercel.app), saved report in [`docs/lighthouse-desktop.html`](docs/lighthouse-desktop.html) |
+| Accessibility scan | 0 violations of WCAG 2.1 AA in English and Arabic | axe-core 4.10 |
+| HTML | 0 errors | [W3C checker](https://validator.w3.org/nu/?doc=https%3A%2F%2Fconcord-health.vercel.app%2F) |
+| Dependencies | 0 known vulnerabilities | `pnpm audit --prod` |
+
 Everything above is reproducible from the scripts in [`scripts/`](scripts/). The raw readings for every picture are in [`training/eval/`](training/eval/).
 
 ## Design decisions the measurements drove
@@ -129,13 +152,17 @@ The site draws from a saved set of pictures that have already passed the read-ba
 | `scripts/eval-style.ts` | Labels drawing style and judges the saved descriptions again |
 | `scripts/audit-library.ts` | Re-checks the saved picture library |
 | `scripts/labels.ts` | Translates the card labels into every language and keeps those that survive a round trip through a second model |
+| `scripts/eval-names.ts` | Writes every prescribable medicine's name in every language, reads each one back and builds the name dictionary |
+| `scripts/wikidata-labels.ts` | Collects the names Wikidata has for the same medicines, matched by RxNorm id |
+| `scripts/wikidata-names.ts` | Reads the Wikidata names back with the same rule |
 | `scripts/report.ts` | Compiles the numbers shown on the site |
 
 ## Credits and licences
 
 - **Pictures:** FLUX.1 [dev] by Black Forest Labs, run and fine-tuned on [fal](https://fal.ai).
 - **Training set:** [OpenMoji](https://openmoji.org), CC BY-SA 4.0. The adapter and the pictures in `public/tiles/` are derived from it and are shared under the same licence.
-- **Readers:** Gemini 3.8 Flash and Gemini 2.5 Flash (Google), GPT-6 Luna (OpenAI). Gemini 3.5 Flash-Lite is the last fallback for reading a sheet when the others are busy.
+- **Readers:** Gemini 3.8 Flash and Gemini 2.5 Flash (Google), GPT-6 Luna (OpenAI). Gemini 3.5 Flash-Lite reads names and labels back and is the fallback for reading a sheet; Gemini 3.1 Flash-Lite, Gemini 3.5 Flash and Gemma 4 take over when it is over its daily limit.
+- **Medicine names:** the medicine list is from [RxNorm](https://www.nlm.nih.gov/research/umls/rxnorm/) (U.S. National Library of Medicine). Names in other languages come from [Wikidata](https://www.wikidata.org) (CC0) where it has them.
 - **Libraries:** Next.js, React, zod, the fal, Google GenAI and OpenAI clients.
 - **Evidence:** the studies and public statistics linked above. The site lists them under Sources.
 

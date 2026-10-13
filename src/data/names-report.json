@@ -2,19 +2,19 @@
   "source": "RxNorm, U.S. National Library of Medicine: every ingredient of a currently prescribable medicine that carries a WHO ATC code",
   "url": "https://www.nlm.nih.gov/research/umls/rxnorm/",
   "medicines": 1830,
-  "languages": 43,
-  "written": 78690,
-  "matched": 76757,
+  "languages": 69,
+  "written": 126270,
+  "matched": 123712,
   "wikidata": {
-    "names": 22338,
-    "kept": 21355,
-    "used": 17037
+    "names": 29367,
+    "kept": 28127,
+    "used": 22199
   },
-  "readBack": 101028,
+  "readBack": 155637,
   "agreement": {
-    "compared": 21248,
-    "identical": 16263,
-    "close": 19597
+    "compared": 27983,
+    "identical": 20866,
+    "close": 25063
   },
   "perLanguage": {
     "es": {
@@ -263,17 +263,173 @@
       "wikidata": 782,
       "wikidataKept": 768
     },
+    "uk": {
+      "written": 1830,
+      "matched": 1783,
+      "wikidata": 912,
+      "wikidataKept": 887
+    },
     "ro": {
       "written": 1830,
       "matched": 1808,
       "wikidata": 849,
       "wikidataKept": 809
     },
+    "nl": {
+      "written": 1830,
+      "matched": 1811,
+      "wikidata": 1030,
+      "wikidataKept": 1002
+    },
+    "sv": {
+      "written": 1830,
+      "matched": 1803,
+      "wikidata": 510,
+      "wikidataKept": 489
+    },
     "da": {
       "written": 1830,
       "matched": 1806,
       "wikidata": 206,
       "wikidataKept": 195
+    },
+    "no": {
+      "written": 1830,
+      "matched": 1799,
+      "wikidata": 330,
+      "wikidataKept": 325
+    },
+    "fi": {
+      "written": 1830,
+      "matched": 1794,
+      "wikidata": 749,
+      "wikidataKept": 724
+    },
+    "cs": {
+      "written": 1830,
+      "matched": 1805,
+      "wikidata": 430,
+      "wikidataKept": 411
+    },
+    "hu": {
+      "written": 1830,
+      "matched": 1794,
+      "wikidata": 534,
+      "wikidataKept": 518
+    },
+    "bg": {
+      "written": 1830,
+      "matched": 1782,
+      "wikidata": 251,
+      "wikidataKept": 242
+    },
+    "sr": {
+      "written": 1830,
+      "matched": 1790,
+      "wikidata": 1212,
+      "wikidataKept": 1166
+    },
+    "hr": {
+      "written": 1830,
+      "matched": 1802,
+      "wikidata": 224,
+      "wikidataKept": 217
+    },
+    "sq": {
+      "written": 1830,
+      "matched": 1816,
+      "wikidata": 64,
+      "wikidataKept": 54
+    },
+    "ka": {
+      "written": 1830,
+      "matched": 1806,
+      "wikidata": 82,
+      "wikidataKept": 78
+    },
+    "kk": {
+      "written": 1830,
+      "matched": 1798,
+      "wikidata": 88,
+      "wikidataKept": 81
+    },
+    "uz": {
+      "written": 1830,
+      "matched": 1800,
+      "wikidata": 124,
+      "wikidataKept": 122
+    },
+    "az": {
+      "written": 1830,
+      "matched": 1778,
+      "wikidata": 96,
+      "wikidataKept": 86
+    },
+    "mn": {
+      "written": 1830,
+      "matched": 1801,
+      "wikidata": 27,
+      "wikidataKept": 22
+    },
+    "ps": {
+      "written": 1830,
+      "matched": 1795,
+      "wikidata": 59,
+      "wikidataKept": 53
+    },
+    "am": {
+      "written": 1830,
+      "matched": 1811,
+      "wikidata": 5,
+      "wikidataKept": 5
+    },
+    "ti": {
+      "written": 1830,
+      "matched": 1809,
+      "wikidata": 0,
+      "wikidataKept": 0
+    },
+    "so": {
+      "written": 1830,
+      "matched": 1823,
+      "wikidata": 8,
+      "wikidataKept": 8
+    },
+    "sw": {
+      "written": 1830,
+      "matched": 1822,
+      "wikidata": 122,
+      "wikidataKept": 120
+    },
+    "ha": {
+      "written": 1830,
+      "matched": 1822,
+      "wikidata": 37,
+      "wikidataKept": 34
+    },
+    "yo": {
+      "written": 1830,
+      "matched": 1828,
+      "wikidata": 5,
+      "wikidataKept": 5
+    },
+    "ig": {
+      "written": 1830,
+      "matched": 1830,
+      "wikidata": 10,
+      "wikidataKept": 10
+    },
+    "zu": {
+      "written": 1830,
+      "matched": 1828,
+      "wikidata": 10,
+      "wikidataKept": 8
+    },
+    "af": {
+      "written": 1830,
+      "matched": 1825,
+      "wikidata": 110,
+      "wikidataKept": 105
     }
   },
   "samples": {
@@ -311,7 +467,19 @@
       "el": "μετφορμίνη",
       "he": "מטפורמין",
       "hy": "Մետֆորմին",
-      "ro": "metformină"
+      "uk": "метформін",
+      "ro": "metformină",
+      "nl": "metformine",
+      "fi": "metformiini",
+      "bg": "метформин",
+      "sr": "метформин",
+      "ka": "მეტფორმინი",
+      "kk": "метформин",
+      "mn": "метформин",
+      "ps": "مېټفورمین",
+      "am": "ሜትፎርሚን",
+      "ti": "ሜትፎርሚን",
+      "af": "Metformien"
     },
     "amoxicillin": {
       "es": "amoxicilina",
@@ -352,7 +520,22 @@
       "he": "אמוקסיצילין",
       "hy": "Ամոքսիցիլին",
       "tr": "amoksisilin",
-      "ro": "Amoxicilină"
+      "uk": "амоксицилін",
+      "ro": "Amoxicilină",
+      "nl": "amoxicilline",
+      "fi": "amoksisilliini",
+      "cs": "amoxicilin",
+      "bg": "Амоксицилин",
+      "sr": "амоксицилин",
+      "hr": "amoksicilin",
+      "ka": "ამოქსიცილინი",
+      "kk": "Амоксицилин",
+      "uz": "Amoksitsillin",
+      "az": "Amoksisillin",
+      "mn": "амоксициллин",
+      "ps": "اموکسیسیلین",
+      "am": "አሞክሲሲሊን",
+      "ti": "ኣሞክሲሲሊን"
     },
     "ibuprofen": {
       "es": "ibuprofeno",
@@ -386,7 +569,19 @@
       "my": "အိုင်ဘူပရိုဖင်",
       "el": "ιβουπροφαίνη",
       "he": "איבופרופן",
-      "hy": "Իբուպրոֆեն"
+      "hy": "Իբուպրոֆեն",
+      "uk": "ібупрофен",
+      "fi": "ibuprofeeni",
+      "bg": "Ибупрофен",
+      "sr": "ибупрофен",
+      "ka": "იბუპროფენი",
+      "kk": "Ибуфен",
+      "az": "Nurofen (sirop)",
+      "mn": "ибупрофен",
+      "ps": "ايبوپروفېن",
+      "am": "ኢቡፕሮፌን",
+      "ti": "ኢቡፕሮፈን",
+      "af": "Ibuprofeen"
     }
   }
 }
