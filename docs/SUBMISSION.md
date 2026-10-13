@@ -62,6 +62,23 @@ FLUX.1 [dev] and LoRA training on fal. Gemini and GPT-6 Luna as readers. OpenMoj
 The live site needs no sign-in, opens on finished cards and scores 100 on all four Lighthouse audits. Every figure on it links to its source. A comprehension study with patients and a pharmacist comes next.
 ```
 
+## Two more sections, if you want them
+
+The strongest rival pages run to 700 words and more and use Devpost's usual headings, so the 500-word limit does not seem to be enforced. These two sections tell the build story. Paste them after "Design process" if you want the longer version.
+
+```markdown
+## Challenges I ran into
+
+- The image model could not count. Asked for a whole dose, it drew the wrong number of pills in 83 of 168 pictures. I stopped asking it to count: it draws one pill, two readers confirm it is one, and code repeats it.
+- A reader given a list of answers can guess the right one. So the readers get no list. They say what they see in their own words, and a separate judge compares that with what the picture was meant to show.
+- My fine-tune fixed the drawing style but not the meaning. The first attempt now uses the fine-tune and a redraw uses the plain model, which cut the share of warning signs that needed a code-drawn stand-in from 53% to 23%.
+- Translation hid two traps. In several languages evening and night came back as the same word, and "checked by two readers" came back as "two people". Both are now ruled out by the check itself.
+
+## What I learned
+
+A generated picture is a claim, and a claim about medicine has to be checked before anyone acts on it. Measuring first changed the design three times. And the most reliable part of the system is the part where the model is not asked to do the job at all: code counts, the model paints.
+```
+
 ## Video
 
 The new cut is `concord-demo-v2.mp4` in the project folder (1920 by 1080, 2 minutes 51 seconds, music and captions). It was built in code with Remotion from the real generated pictures, the recorded reader quotes, 70 cards captured from the live site and a screen capture of the live site.
@@ -83,6 +100,8 @@ Edits are open until Wednesday 14 October, 2:30 AM.
 - "Built with": add `wikidata` and `rxnorm`.
 - AI tools field: use the line at the top of this file.
 - Upload: replace the PDF with the new `docs/Concord-notes-for-judges.pdf`.
+- Image gallery: delete the six old images and upload the eight new ones from `docs/gallery/`.
+- Try it out links: add the two Hugging Face links.
 - Video: the new YouTube link.
 
 ## Checklist before you press submit
@@ -92,5 +111,5 @@ Edits are open until Wednesday 14 October, 2:30 AM.
 - [ ] GitHub repo is public.
 - [ ] Write-up is under 500 words.
 - [ ] AI tools are named in the Devpost field.
-- [ ] Thumbnail is `docs/thumbnail.png`, and the six images in `docs/gallery/` are uploaded to the image gallery in their numbered order.
+- [ ] Thumbnail is `docs/thumbnail.png`, and the eight images in `docs/gallery/` replace the old gallery, in their numbered order.
 - [ ] You are listed as the only team member.
