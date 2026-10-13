@@ -19,11 +19,15 @@ const MAY_DROP = 2;
 
 const TIMES_OF_DAY = ["morning", "afternoon", "evening", "night"];
 
+// With KEYS set (comma separated), only those labels are translated again and the rest are kept.
+const KEYS = (process.env.KEYS ?? "").split(",").filter((k) => k in source);
+const wanted: Table = KEYS.length ? Object.fromEntries(KEYS.map((k) => [k, source[k]])) : source;
+
 async function translate(lang: string, subset: Table, note = ""): Promise<Table> {
   return (await openaiJson(
     `Translate the values of this JSON object from English into ${lang}. They are short labels printed on medicine instruction cards for patients, so use plain everyday words a person with little schooling would know, in the usual script for ${lang}. ` +
       `The four parts of the day (morning, afternoon, evening, night) must be four different words or phrases; for evening, use the word for the time around sunset if the language has one, and if everyday speech uses one word for both evening and night, write evening as "at sunset" and keep the plain word for night. "do_not" is a heading that stands before a crossed-out picture of an action, and the action labels after it (such as "Drink alcohol" or "Drive") must read naturally under that heading. ` +
-      `"read_back" follows a number, as in "7 pictures checked by two readers". ${note}Keep the keys unchanged. Return only the JSON object.\n\n${JSON.stringify(subset)}`,
+      `"read_back" follows a number, as in "7 pictures checked by two AI models"; the two checkers are computer programs, so never write people or persons. ${note}Keep the keys unchanged. Return only the JSON object.\n\n${JSON.stringify(subset)}`,
   )) as Table;
 }
 
@@ -38,7 +42,7 @@ async function backTranslate(lang: string, table: Table): Promise<Table> {
 async function sameMeaning(subset: Table, back: Table): Promise<Record<string, boolean>> {
   const pairs = Object.fromEntries(Object.keys(subset).map((k) => [k, { original: subset[k], roundTrip: back[k] ?? "" }]));
   return (await openaiJson(
-    `For each key, decide whether "roundTrip" means the same as "original" for a patient reading a medicine card. Small wording differences are fine. A different time of day, a different food instruction, a different symptom or a missing negation is not. For the evening label, wording such as dusk, sunset time, nightfall or early evening counts as the same, as long as it is clearly later than afternoon and earlier than night. Return a JSON object mapping each key to true or false.\n\n${JSON.stringify(pairs)}`,
+    `For each key, decide whether "roundTrip" means the same as "original" for a patient reading a medicine card. Small wording differences are fine. A different time of day, a different food instruction, a different symptom or a missing negation is not. For the evening label, wording such as dusk, sunset time, nightfall or early evening counts as the same, as long as it is clearly later than afternoon and earlier than night. For the read_back label, the round trip must still say the checkers are AI models or computer programs; if it says people, persons or humans, answer false. Return a JSON object mapping each key to true or false.\n\n${JSON.stringify(pairs)}`,
   )) as Record<string, boolean>;
 }
 
@@ -59,16 +63,17 @@ function clash(kept: Table): boolean {
 }
 
 async function one(name: string): Promise<{ kept: Table; dropped: string[] }> {
-  const kept = await round(name, source);
-  if (clash(kept)) for (const k of TIMES_OF_DAY) delete kept[k];
+  const whole = KEYS.length === 0;
+  const kept = await round(name, wanted);
+  if (whole && clash(kept)) for (const k of TIMES_OF_DAY) delete kept[k];
   // Labels that did not survive get one more attempt with plainer wording.
-  const missing = Object.fromEntries(Object.entries(source).filter(([k]) => !(k in kept)));
+  const missing = Object.fromEntries(Object.entries(wanted).filter(([k]) => !(k in kept)));
   if (Object.keys(missing).length) {
     const again = await round(name, missing, "A first attempt at these labels changed their meaning when translated back, so choose wording whose meaning is unmistakable. ");
     Object.assign(kept, again);
-    if (clash(kept)) for (const k of TIMES_OF_DAY) delete kept[k];
+    if (whole && clash(kept)) for (const k of TIMES_OF_DAY) delete kept[k];
   }
-  return { kept, dropped: Object.keys(source).filter((k) => !(k in kept)) };
+  return { kept, dropped: Object.keys(wanted).filter((k) => !(k in kept)) };
 }
 
 async function main() {
@@ -81,7 +86,7 @@ async function main() {
     writeFileSync(tablesFile, JSON.stringify(tables, null, 2) + "\n");
     writeFileSync(reportFile, JSON.stringify(report, null, 2) + "\n");
   };
-  const queue = LANGUAGE_LIST.filter(([code]) => code !== "en" && (only.length === 0 || only.includes(code)));
+  const queue = LANGUAGE_LIST.filter(([code]) => code !== "en" && (only.length === 0 || only.includes(code)) && (KEYS.length === 0 || code in tables));
   await Promise.all(
     Array.from({ length: 3 }, async () => {
       for (let job = queue.shift(); job; job = queue.shift()) {
@@ -89,7 +94,10 @@ async function main() {
         // A busy model is not a failed language: wait and try the whole language again.
         for (let attempt = 1; attempt <= 4; attempt++) {
           try {
-            const { kept, dropped } = await one(name);
+            const result = await one(name);
+            // A partial run merges into the saved table; a label that fails now is shown in English.
+            const kept = KEYS.length ? { ...Object.fromEntries(Object.entries(tables[code] ?? {}).filter(([k]) => !KEYS.includes(k))), ...result.kept } : result.kept;
+            const dropped = Object.keys(source).filter((k) => !(k in kept));
             const offered = dropped.length <= MAY_DROP;
             if (offered) tables[code] = kept;
             else delete tables[code];

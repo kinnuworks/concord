@@ -33,9 +33,9 @@
     "times_a_day": "दिन में बार",
     "take": "लें",
     "checked": "जाँच लिया",
-    "read_back": "चित्र दो लोगों ने जाँचे",
     "exact_angle": "ठीक उसी कोण पर बना चित्र",
-    "drawn_by_code": "दिए गए अंकों से बनाया गया"
+    "drawn_by_code": "दिए गए अंकों से बनाया गया",
+    "read_back": "तस्वीरों की जाँच दो एआई प्रोग्रामों ने की"
   },
   "te": {
     "morning": "ఉదయం",
@@ -70,10 +70,10 @@
     "times_a_day": "రోజుకు సార్లు",
     "take": "తీసుకోండి",
     "checked": "సరిచూశారు",
-    "read_back": "ఇద్దరు చూసి సరిచూసిన చిత్రాలు",
     "exact_angle": "ఖచ్చితమైన కోణంలో గీసిన చిత్రం",
     "drawn_by_code": "సంఖ్యల ఆధారంగా గీసినది",
-    "do_not": "చేయకూడనివి"
+    "do_not": "చేయకూడనివి",
+    "read_back": "చిత్రాలను రెండు AI ప్రోగ్రామ్‌లు తనిఖీ చేశాయి"
   },
   "ta": {
     "morning": "காலை",
@@ -109,9 +109,9 @@
     "times_a_day": "முறை தினமும்",
     "take": "எடுத்துக்கொள்ளுங்கள்",
     "checked": "சரிபார்க்கப்பட்டது",
-    "read_back": "படங்களை இரண்டு பேர் சரிபார்த்தனர்",
     "exact_angle": "சரியான கோணத்தில் வரையப்பட்ட படம்",
-    "drawn_by_code": "எண்களின் அடிப்படையில் வரையப்பட்டது"
+    "drawn_by_code": "எண்களின் அடிப்படையில் வரையப்பட்டது",
+    "read_back": "படங்களை இரண்டு செயற்கை நுண்ணறிவு கணினி நிரல்கள் சரிபார்த்தன"
   },
   "zh": {
     "morning": "早上",
@@ -149,7 +149,7 @@
     "checked": "已核对",
     "exact_angle": "按准确角度画出的图",
     "drawn_by_code": "根据数字绘制",
-    "read_back": "张由两个人核对过的图片"
+    "read_back": "张图片经两个 AI 模型核对"
   },
   "ar": {
     "morning": "صباحًا",
@@ -185,9 +185,9 @@
     "times_a_day": "مرات في اليوم",
     "take": "تناول",
     "checked": "تم التحقق",
-    "read_back": "صور فحصها قارئان",
     "exact_angle": "الشكل مرسوم بالزاوية المحددة بدقة",
-    "drawn_by_code": "مرسوم اعتمادًا على الأرقام"
+    "drawn_by_code": "مرسوم اعتمادًا على الأرقام",
+    "read_back": "صور فحصها نموذجان للذكاء الاصطناعي"
   },
   "zh-Hant": {
     "morning": "早上",
@@ -223,8 +223,8 @@
     "times_a_day": "一天",
     "take": "服用",
     "checked": "已核對",
-    "read_back": "張圖由兩位讀者核對",
-    "exact_angle": "按精確角度繪製的圖"
+    "exact_angle": "按精確角度繪製的圖",
+    "read_back": "張圖片已由兩個 AI 模型檢查"
   },
   "tl": {
     "before_food": "Bago kumain",
@@ -256,13 +256,13 @@
     "times_a_day": "beses sa isang araw",
     "take": "Inumin",
     "checked": "Nasuri",
-    "read_back": "mga larawang sinuri ng dalawang tao",
     "exact_angle": "Larawang iginuhit sa eksaktong anggulo",
     "drawn_by_code": "Iginuhit batay sa mga numero",
     "morning": "Umaga",
     "afternoon": "Hapon",
     "evening": "Takipsilim",
-    "night": "Gabi"
+    "night": "Gabi",
+    "read_back": "mga larawang sinuri ng dalawang programang AI"
   },
   "fr": {
     "morning": "Matin",
@@ -298,9 +298,9 @@
     "times_a_day": "fois par jour",
     "take": "Prenez",
     "checked": "Vérifié",
-    "read_back": "images vérifiées par deux personnes",
     "exact_angle": "Figure dessinée avec l’angle exact",
-    "drawn_by_code": "Dessiné à partir des chiffres"
+    "drawn_by_code": "Dessiné à partir des chiffres",
+    "read_back": "images vérifiées par deux modèles d’IA"
   },
   "ko": {
     "before_food": "식사 전에",
@@ -332,13 +332,13 @@
     "times_a_day": "하루에",
     "take": "드세요",
     "checked": "확인",
-    "read_back": "장의 그림을 두 사람이 확인함",
     "exact_angle": "정확한 각도로 그린 그림",
     "drawn_by_code": "숫자를 보고 그린 그림",
     "morning": "아침",
     "afternoon": "오후",
     "evening": "저녁",
-    "night": "밤"
+    "night": "밤",
+    "read_back": "개의 그림을 AI 프로그램 두 개가 확인함"
   },
   "ru": {
     "morning": "Утром",
@@ -372,11 +372,11 @@
     "times_a_day": "раз в день",
     "take": "Принимайте",
     "checked": "Проверено",
-    "read_back": "картинок проверили два человека",
     "exact_angle": "Рисунок выполнен под точным углом",
     "drawn_by_code": "Нарисовано по числам",
     "come_back": "Снова обратитесь в больницу, если у вас есть",
-    "fever": "высокая температура"
+    "fever": "высокая температура",
+    "read_back": "картинок проверено двумя моделями ИИ"
   },
   "pt": {
     "before_food": "Antes de comer",
@@ -408,13 +408,13 @@
     "times_a_day": "vezes ao dia",
     "take": "Tome",
     "checked": "Conferido",
-    "read_back": "figuras conferidas por duas pessoas",
     "exact_angle": "Figura desenhada no ângulo exato",
     "drawn_by_code": "Desenhado a partir dos números",
     "morning": "Manhã",
     "afternoon": "Tarde",
     "evening": "Entardecer",
-    "night": "Noite"
+    "night": "Noite",
+    "read_back": "imagens verificadas por dois modelos de IA"
   },
   "ht": {
     "morning": "Maten",
@@ -451,7 +451,7 @@
     "checked": "Tcheke",
     "exact_angle": "Desen an fèt nan ang egzak la",
     "drawn_by_code": "Desen an fèt dapre nimewo yo",
-    "read_back": "foto verifye pa de moun"
+    "read_back": "imaj verifye pa de pwogram entèlijans atifisyèl"
   },
   "de": {
     "morning": "Morgen",
@@ -486,10 +486,10 @@
     "times_a_day": "Mal am Tag",
     "take": "Nehmen Sie",
     "checked": "Geprüft",
-    "read_back": "Bilder, die von zwei Personen geprüft wurden",
     "exact_angle": "Abbildung im genauen Winkel gezeichnet",
     "drawn_by_code": "Nach den Zahlen gezeichnet",
-    "sunlight": "In der prallen Sonne bleiben"
+    "sunlight": "In der prallen Sonne bleiben",
+    "read_back": "Bilder von zwei KI-Modellen überprüft"
   },
   "pl": {
     "before_food": "Przed posiłkiem",
@@ -520,14 +520,14 @@
     "times_a_day": "razy dziennie",
     "take": "Weź",
     "checked": "Sprawdzono",
-    "read_back": "obrazków sprawdzonych przez dwie osoby",
     "exact_angle": "Narysowano pod dokładnym kątem",
     "drawn_by_code": "Narysowano na podstawie liczb",
     "morning": "Rano",
     "afternoon": "Po południu",
     "evening": "Wieczorem",
     "night": "W nocy",
-    "sunlight": "Przebywaj w pełnym słońcu"
+    "sunlight": "Przebywaj w pełnym słońcu",
+    "read_back": "obrazków sprawdzonych przez dwa modele AI"
   },
   "ur": {
     "morning": "صبح",
@@ -563,9 +563,9 @@
     "times_a_day": "بار روزانہ",
     "take": "لیں",
     "checked": "چیک کیا گیا",
-    "read_back": "تصویریں دو لوگوں نے دیکھ کر چیک کیں",
     "exact_angle": "بالکل اسی زاویے پر بنائی گئی شکل",
-    "drawn_by_code": "اعداد کے مطابق بنائی گئی شکل"
+    "drawn_by_code": "اعداد کے مطابق بنائی گئی شکل",
+    "read_back": "تصویریں جن کی جانچ مصنوعی ذہانت کے دو پروگراموں نے کی"
   },
   "it": {
     "morning": "Mattina",
@@ -601,9 +601,9 @@
     "times_a_day": "volte al giorno",
     "take": "Prendi",
     "checked": "Controllato",
-    "read_back": "immagini controllate da due lettori",
     "exact_angle": "Figura disegnata con l'angolo esatto",
-    "drawn_by_code": "Disegnato a partire dai numeri"
+    "drawn_by_code": "Disegnato a partire dai numeri",
+    "read_back": "immagini controllate da due modelli di IA"
   },
   "fa": {
     "morning": "صبح",
@@ -639,9 +639,9 @@
     "times_a_day": "بار در روز",
     "take": "مصرف کنید",
     "checked": "بررسی‌شده",
-    "read_back": "تصویر که دو نفر بررسی کرده‌اند",
     "exact_angle": "شکل با زاویهٔ دقیق کشیده شده",
-    "drawn_by_code": "با استفاده از شماره‌ها کشیده شده"
+    "drawn_by_code": "با استفاده از شماره‌ها کشیده شده",
+    "read_back": "تصویر بررسی‌شده توسط دو برنامهٔ هوش مصنوعی"
   },
   "ja": {
     "morning": "朝",
@@ -677,9 +677,9 @@
     "times_a_day": "1日あたり",
     "take": "飲む",
     "checked": "確認済み",
-    "read_back": "枚の図を2人で確認",
     "exact_angle": "正確な角度で描かれた図",
-    "drawn_by_code": "番号をもとに描かれた図"
+    "drawn_by_code": "番号をもとに描かれた図",
+    "read_back": "枚の画像を2つのAIモデルで確認"
   },
   "gu": {
     "morning": "સવાર",
@@ -715,9 +715,9 @@
     "times_a_day": "દિવસમાં વખત",
     "take": "લો",
     "checked": "તપાસ્યું",
-    "read_back": "ચિત્રો બે લોકોએ તપાસ્યાં",
     "exact_angle": "ચોક્કસ ખૂણે દોરેલું ચિત્ર",
-    "drawn_by_code": "આંકડાઓ પરથી દોરેલું"
+    "drawn_by_code": "આંકડાઓ પરથી દોરેલું",
+    "read_back": "બે AI પ્રોગ્રામોએ તપાસેલાં ચિત્રો"
   },
   "bn": {
     "morning": "সকাল",
@@ -753,9 +753,9 @@
     "times_a_day": "দিনে",
     "take": "খান",
     "checked": "যাচাই করা হয়েছে",
-    "read_back": "দুইজন মিলে যাচাই করা ছবি",
     "exact_angle": "ঠিক কোণে আঁকা ছবি",
-    "drawn_by_code": "সংখ্যাগুলো দেখে আঁকা"
+    "drawn_by_code": "সংখ্যাগুলো দেখে আঁকা",
+    "read_back": "ছবি দুটি এআই প্রোগ্রাম দিয়ে যাচাই করা হয়েছে"
   },
   "mr": {
     "morning": "सकाळ",
@@ -791,9 +791,9 @@
     "times_a_day": "दिवसातून वेळा",
     "take": "घ्या",
     "checked": "तपासले",
-    "read_back": "चित्रे दोन जणांनी तपासली",
     "exact_angle": "आकृती अगदी त्याच कोनात काढलेली",
-    "drawn_by_code": "आकडे पाहून काढलेली"
+    "drawn_by_code": "आकडे पाहून काढलेली",
+    "read_back": "दोन एआय प्रोग्रामनी तपासलेली चित्रे"
   },
   "pa": {
     "morning": "ਸਵੇਰ",
@@ -829,9 +829,9 @@
     "times_a_day": "ਦਿਨ ਵਿੱਚ ਵਾਰ",
     "take": "ਲਓ",
     "checked": "ਜਾਂਚਿਆ",
-    "read_back": "ਦੋ ਪਾਠਕਾਂ ਵੱਲੋਂ ਜਾਂਚੀਆਂ ਤਸਵੀਰਾਂ",
     "exact_angle": "ਬਿਲਕੁਲ ਸਹੀ ਕੋਣ 'ਤੇ ਬਣਾਇਆ ਚਿੱਤਰ",
-    "drawn_by_code": "ਨੰਬਰਾਂ ਦੇ ਆਧਾਰ 'ਤੇ ਬਣਾਇਆ"
+    "drawn_by_code": "ਨੰਬਰਾਂ ਦੇ ਆਧਾਰ 'ਤੇ ਬਣਾਇਆ",
+    "read_back": "ਤਸਵੀਰਾਂ ਦੀ ਜਾਂਚ ਦੋ ਏਆਈ ਕੰਪਿਊਟਰ ਪ੍ਰੋਗਰਾਮਾਂ ਨੇ ਕੀਤੀ"
   },
   "kn": {
     "morning": "ಬೆಳಿಗ್ಗೆ",
@@ -866,10 +866,10 @@
     "times_a_day": "ದಿನಕ್ಕೆ ಬಾರಿ",
     "take": "ತೆಗೆದುಕೊಳ್ಳಿ",
     "checked": "ಪರಿಶೀಲಿಸಲಾಗಿದೆ",
-    "read_back": "ಚಿತ್ರಗಳನ್ನು ಇಬ್ಬರು ಓದಿ ಪರಿಶೀಲಿಸಿದ್ದಾರೆ",
     "exact_angle": "ನಿಖರವಾದ ಕೋನದಲ್ಲಿ ಚಿತ್ರ ಬಿಡಿಸಲಾಗಿದೆ",
     "drawn_by_code": "ಸಂಖ್ಯೆಗಳನ್ನು ನೋಡಿ ಚಿತ್ರ ಬಿಡಿಸಲಾಗಿದೆ",
-    "rash": "ಚರ್ಮದ ದದ್ದು"
+    "rash": "ಚರ್ಮದ ದದ್ದು",
+    "read_back": "ಎರಡು AI ಕಂಪ್ಯೂಟರ್ ಕಾರ್ಯಕ್ರಮಗಳು ಪರಿಶೀಲಿಸಿದ ಚಿತ್ರಗಳು"
   },
   "ml": {
     "morning": "രാവിലെ",
@@ -904,9 +904,9 @@
     "sets": "സെറ്റുകൾ",
     "take": "എടുക്കുക",
     "checked": "പരിശോധിച്ചു",
-    "read_back": "ചിത്രങ്ങൾ രണ്ട് പേർ പരിശോധിച്ച് ഉറപ്പാക്കി",
     "exact_angle": "കൃത്യമായ കോണിൽ വരച്ച ചിത്രം",
-    "drawn_by_code": "അക്കങ്ങൾ നോക്കി വരച്ചത്"
+    "drawn_by_code": "അക്കങ്ങൾ നോക്കി വരച്ചത്",
+    "read_back": "രണ്ട് എഐ പ്രോഗ്രാമുകൾ പരിശോധിച്ച ചിത്രങ്ങൾ"
   },
   "as": {
     "morning": "পুৱা",
@@ -942,9 +942,9 @@
     "times_a_day": "দিনত বাৰ",
     "take": "লওক",
     "checked": "পৰীক্ষা কৰা হৈছে",
-    "read_back": "দুজন পঢ়োঁতাই পৰীক্ষা কৰা ছবি",
     "exact_angle": "ঠিক কোণত অঁকা ছবি",
-    "drawn_by_code": "সংখ্যাৰ পৰা অঁকা"
+    "drawn_by_code": "সংখ্যাৰ পৰা অঁকা",
+    "read_back": "দুটা AI মডেলে পৰীক্ষা কৰা ছবি"
   },
   "or": {
     "morning": "ସକାଳ",
@@ -981,7 +981,8 @@
     "checked": "ଯାଞ୍ଚ ହେଲା",
     "exact_angle": "ଠିକ୍ କୋଣରେ ଅଙ୍କା ଚିତ୍ର",
     "drawn_by_code": "ନମ୍ବର ଦେଖି ଅଙ୍କା",
-    "sunlight": "କଡ଼ା ଖରାରେ ରୁହନ୍ତୁ"
+    "sunlight": "କଡ଼ା ଖରାରେ ରୁହନ୍ତୁ",
+    "read_back": "ଦୁଇଟି AI ପ୍ରୋଗ୍ରାମ୍ ଯାଞ୍ଚ କରିଥିବା ଚିତ୍ର"
   },
   "ne": {
     "morning": "बिहान",
@@ -1018,8 +1019,8 @@
     "take": "लिनुहोस्",
     "checked": "जाँचियो",
     "exact_angle": "ठ्याक्कै कोणमा बनाइएको चित्र",
-    "read_back": "दुई जनाले जाँच गरेका चित्रहरू",
-    "drawn_by_code": "अङ्कका आधारमा कोरिएको"
+    "drawn_by_code": "अङ्कका आधारमा कोरिएको",
+    "read_back": "दुईवटा एआई प्रोग्रामले जाँचेका चित्रहरू"
   },
   "si": {
     "morning": "උදේ",
@@ -1054,10 +1055,10 @@
     "sets": "කට්ටල",
     "take": "ගන්න",
     "checked": "පරීක්ෂා කළා",
-    "read_back": "දෙදෙනෙක් පරීක්ෂා කළ පින්තූර",
     "exact_angle": "හරියටම නියමිත කෝණයට ඇඳූ රූපය",
     "drawn_by_code": "අංක අනුව ඇඳූ රූපය",
-    "times_a_day": "දිනකට වාර"
+    "times_a_day": "දිනකට වාර",
+    "read_back": "පරිගණක වැඩසටහන් දෙකකින් පරීක්ෂා කළ පින්තූර"
   },
   "th": {
     "morning": "เช้า",
@@ -1091,10 +1092,10 @@
     "times_a_day": "ครั้งต่อวัน",
     "take": "กิน",
     "checked": "ตรวจแล้ว",
-    "read_back": "รูปที่คนสองคนตรวจแล้ว",
     "exact_angle": "วาดรูปตามมุมที่กำหนดเป๊ะๆ",
     "drawn_by_code": "วาดตามตัวเลข",
-    "dairy": "กินนมหรือชีส"
+    "dairy": "กินนมหรือชีส",
+    "read_back": "รูปที่ตรวจสอบโดย AI สองระบบ"
   },
   "km": {
     "morning": "ពេលព្រឹក",
@@ -1130,8 +1131,8 @@
     "times_a_day": "ដងក្នុងមួយថ្ងៃ",
     "take": "លេប",
     "checked": "ពិនិត្យរួច",
-    "read_back": "រូបភាពដែលបានពិនិត្យដោយអ្នកអានពីរនាក់",
-    "exact_angle": "រូបដែលគូរតាមមុំដែលបានកំណត់"
+    "exact_angle": "រូបដែលគូរតាមមុំដែលបានកំណត់",
+    "read_back": "រូបភាពដែលកម្មវិធី AI ពីរបានពិនិត្យ"
   },
   "lo": {
     "morning": "ຕອນເຊົ້າ",
@@ -1167,9 +1168,9 @@
     "times_a_day": "ຄັ້ງຕໍ່ມື້",
     "take": "ກິນ",
     "checked": "ກວດແລ້ວ",
-    "read_back": "ຮູບທີ່ຄົນສອງຄົນກວດແລ້ວ",
     "exact_angle": "ຮູບທີ່ແຕ້ມຕາມມຸມທີ່ຖືກຕ້ອງພອດີ",
-    "drawn_by_code": "ວາດຈາກຕົວເລກ"
+    "drawn_by_code": "ວາດຈາກຕົວເລກ",
+    "read_back": "ຮູບທີ່ກວດແລ້ວໂດຍໂປຣແກຣມ AI ສອງໂປຣແກຣມ"
   },
   "my": {
     "morning": "မနက်",
@@ -1203,10 +1204,10 @@
     "times_a_day": "တစ်နေ့လျှင်",
     "take": "သောက်ပါ",
     "checked": "စစ်ဆေးပြီး",
-    "read_back": "ပုံများကို လူနှစ်ယောက်က စစ်ဆေးထားသည်",
     "exact_angle": "ပုံကို ထောင့်အတိုင်း အတိအကျ ဆွဲထားသည်",
     "drawn_by_code": "နံပါတ်များအတိုင်း ဆွဲထားသည်",
-    "dairy": "နို့သောက်ပါ သို့မဟုတ် ဒိန်ခဲစားပါ"
+    "dairy": "နို့သောက်ပါ သို့မဟုတ် ဒိန်ခဲစားပါ",
+    "read_back": "ပုံကို AI ပရိုဂရမ် ၂ ခုက စစ်ဆေးထားသည်"
   },
   "id": {
     "morning": "Pagi",
@@ -1242,9 +1243,9 @@
     "times_a_day": "kali sehari",
     "take": "Minum",
     "checked": "Diperiksa",
-    "read_back": "gambar diperiksa oleh dua orang",
     "drawn_by_code": "Digambar dari angka-angka",
-    "exact_angle": "Gambar dibuat dengan sudut yang sama persis"
+    "exact_angle": "Gambar dibuat dengan sudut yang sama persis",
+    "read_back": "gambar diperiksa oleh dua model AI"
   },
   "ms": {
     "morning": "Pagi",
@@ -1281,8 +1282,8 @@
     "checked": "Disemak",
     "drawn_by_code": "Dilukis berdasarkan nombor",
     "sunlight": "Berada di bawah matahari yang terik",
-    "read_back": "gambar diperiksa oleh dua orang",
-    "exact_angle": "Rajah dilukis pada sudut yang tepat"
+    "exact_angle": "Rajah dilukis pada sudut yang tepat",
+    "read_back": "gambar disemak oleh dua program AI"
   },
   "hmn": {
     "morning": "Sawv ntxov",
@@ -1318,7 +1319,7 @@
     "checked": "Kuaj lawm",
     "exact_angle": "Daim duab kos kom raug lub kaum sab xis",
     "come_back": "Rov qab mus tsev kho mob yog tias koj muaj",
-    "read_back": "cov duab uas ob tug neeg tau xyuas"
+    "read_back": "daim duab uas ob lub qauv AI tau kuaj xyuas"
   },
   "he": {
     "morning": "בוקר",
@@ -1354,9 +1355,9 @@
     "times_a_day": "פעמים ביום",
     "take": "לקחת",
     "checked": "נבדק",
-    "read_back": "תמונות שנבדקו על ידי שני אנשים",
     "exact_angle": "ציור בזווית המדויקת",
-    "drawn_by_code": "צויר לפי המספרים"
+    "drawn_by_code": "צויר לפי המספרים",
+    "read_back": "תמונות שנבדקו על ידי שתי תוכנות בינה מלאכותית"
   },
   "ro": {
     "morning": "Dimineața",
@@ -1392,9 +1393,9 @@
     "times_a_day": "ori pe zi",
     "take": "Luați",
     "checked": "Verificat",
-    "read_back": "imagini verificate de doi cititori",
     "exact_angle": "Desen făcut la unghiul exact",
-    "drawn_by_code": "Desenat după numere"
+    "drawn_by_code": "Desenat după numere",
+    "read_back": "imagini verificate de două programe AI"
   },
   "es": {
     "morning": "Mañana",
@@ -1430,9 +1431,9 @@
     "times_a_day": "veces al día",
     "take": "Tome",
     "checked": "Revisado",
-    "read_back": "dibujos revisados por dos personas",
     "exact_angle": "Dibujo hecho con el ángulo exacto",
-    "drawn_by_code": "Hecho según los números"
+    "drawn_by_code": "Hecho según los números",
+    "read_back": "imágenes revisadas por dos modelos de IA"
   },
   "vi": {
     "morning": "Buổi sáng",
@@ -1468,9 +1469,9 @@
     "times_a_day": "lần mỗi ngày",
     "take": "Uống",
     "checked": "Đã kiểm tra",
-    "read_back": "hình được hai người đọc lại",
     "exact_angle": "Hình được vẽ đúng góc",
-    "drawn_by_code": "Được vẽ theo các con số"
+    "drawn_by_code": "Được vẽ theo các con số",
+    "read_back": "hình ảnh được hai mô hình AI kiểm tra"
   },
   "el": {
     "morning": "Πρωί",
@@ -1506,9 +1507,9 @@
     "times_a_day": "φορές την ημέρα",
     "take": "Πάρτε",
     "checked": "Ελεγμένο",
-    "read_back": "εικόνες που ελέγχθηκαν από δύο άτομα",
     "exact_angle": "Σχήμα σχεδιασμένο στην ακριβή γωνία",
-    "drawn_by_code": "Σχεδιασμένο με βάση τους αριθμούς"
+    "drawn_by_code": "Σχεδιασμένο με βάση τους αριθμούς",
+    "read_back": "εικόνες που ελέγχθηκαν από δύο προγράμματα τεχνητής νοημοσύνης"
   },
   "hy": {
     "morning": "Առավոտյան",
@@ -1542,11 +1543,11 @@
     "times_a_day": "անգամ օրական",
     "take": "Ընդունեք",
     "checked": "Ստուգված է",
-    "read_back": "երկու ընթերցողի կողմից ստուգված նկար",
     "exact_angle": "Նկարը գծված է ճշգրիտ անկյան տակ",
     "drawn_by_code": "Թվերի հիման վրա գծված",
     "days": "օրեր",
-    "dairy": "Կաթ խմեք կամ պանիր կերեք"
+    "dairy": "Կաթ խմեք կամ պանիր կերեք",
+    "read_back": "երկու համակարգչային ծրագրով ստուգված նկարներ"
   },
   "tr": {
     "morning": "Sabah",
@@ -1581,9 +1582,9 @@
     "times_a_day": "günde ... kez",
     "take": "Alın",
     "checked": "Kontrol edildi",
-    "read_back": "iki kişi tarafından kontrol edilen resim",
     "exact_angle": "Şekil tam doğru açıyla çizildi",
-    "drawn_by_code": "Sayılara göre çizildi"
+    "drawn_by_code": "Sayılara göre çizildi",
+    "read_back": "iki yapay zekâ modelinin kontrol ettiği resimler"
   },
   "nl": {
     "morning": "Ochtend",
@@ -1619,9 +1620,9 @@
     "times_a_day": "keer per dag",
     "take": "Neem",
     "checked": "Gecontroleerd",
-    "read_back": "plaatjes gecontroleerd door twee lezers",
     "exact_angle": "Figuur getekend onder precies de juiste hoek",
-    "drawn_by_code": "Getekend op basis van de cijfers"
+    "drawn_by_code": "Getekend op basis van de cijfers",
+    "read_back": "plaatjes gecontroleerd door twee AI-programma's"
   },
   "da": {
     "morning": "Morgen",
@@ -1657,9 +1658,9 @@
     "times_a_day": "gange om dagen",
     "take": "Tag",
     "checked": "Kontrolleret",
-    "read_back": "billeder kontrolleret af to personer",
     "exact_angle": "Figur tegnet i præcis den rigtige vinkel",
-    "drawn_by_code": "Tegnet ud fra tallene"
+    "drawn_by_code": "Tegnet ud fra tallene",
+    "read_back": "billeder tjekket af to AI-modeller"
   },
   "no": {
     "morning": "Morgen",
@@ -1695,9 +1696,9 @@
     "times_a_day": "ganger om dagen",
     "take": "Ta",
     "checked": "Kontrollert",
-    "read_back": "bilder kontrollert av to personer",
     "exact_angle": "Tegning laget i nøyaktig riktig vinkel",
-    "drawn_by_code": "Tegnet ut fra tallene"
+    "drawn_by_code": "Tegnet ut fra tallene",
+    "read_back": "bilder sjekket av to KI-modeller"
   },
   "sv": {
     "morning": "Morgon",
@@ -1732,10 +1733,10 @@
     "times_a_day": "gånger om dagen",
     "take": "Ta",
     "checked": "Kontrollerad",
-    "read_back": "bilder granskade av två personer",
     "exact_angle": "Figur ritad i exakt vinkel",
     "drawn_by_code": "Ritad utifrån siffrorna",
-    "dairy": "Drick mjölk eller ät ost"
+    "dairy": "Drick mjölk eller ät ost",
+    "read_back": "bilder kontrollerade av två AI-program"
   },
   "cs": {
     "morning": "Ráno",
@@ -1771,9 +1772,9 @@
     "times_a_day": "krát denně",
     "take": "Vezměte",
     "checked": "Zkontrolováno",
-    "read_back": "obrázků, které zkontrolovali dva čtenáři",
     "exact_angle": "Obrázek nakreslený v přesném úhlu",
-    "drawn_by_code": "Nakresleno podle čísel"
+    "drawn_by_code": "Nakresleno podle čísel",
+    "read_back": "obrázků zkontrolovaných dvěma modely umělé inteligence"
   },
   "fi": {
     "morning": "Aamu",
@@ -1810,7 +1811,8 @@
     "take": "Ota",
     "checked": "Tarkistettu",
     "exact_angle": "Piirros täsmälleen oikeassa kulmassa",
-    "drawn_by_code": "Piirretty numeroiden perusteella"
+    "drawn_by_code": "Piirretty numeroiden perusteella",
+    "read_back": "kuvaa, jotka kaksi tekoälymallia tarkisti"
   },
   "hu": {
     "morning": "Reggel",
@@ -1848,7 +1850,7 @@
     "checked": "Ellenőrizve",
     "exact_angle": "Pontosan ilyen szögben rajzolt ábra",
     "drawn_by_code": "A számok alapján rajzolva",
-    "read_back": "két olvasó által ellenőrzött kép"
+    "read_back": "képet két MI-program ellenőrzött"
   },
   "bg": {
     "morning": "Сутрин",
@@ -1882,11 +1884,11 @@
     "times_a_day": "пъти на ден",
     "take": "Вземете",
     "checked": "Проверено",
-    "read_back": "снимки, проверени от двама души",
     "exact_angle": "Фигура, начертана под точния ъгъл",
     "drawn_by_code": "Начертано по числата",
     "dairy": "Пийте мляко или яжте сирене",
-    "fever": "Температура"
+    "fever": "Температура",
+    "read_back": "картинки, проверени от два модела с изкуствен интелект"
   },
   "hr": {
     "morning": "Ujutro",
@@ -1922,9 +1924,9 @@
     "times_a_day": "puta na dan",
     "take": "Uzmite",
     "checked": "Provjereno",
-    "read_back": "slika koje su provjerile dvije osobe",
     "exact_angle": "Crtež nacrtan pod točnim kutom",
-    "drawn_by_code": "Nacrtano prema brojevima"
+    "drawn_by_code": "Nacrtano prema brojevima",
+    "read_back": "slika koje su provjerila dva AI modela"
   },
   "sr": {
     "morning": "Ујутру",
@@ -1960,9 +1962,9 @@
     "times_a_day": "пута дневно",
     "take": "Узмите",
     "checked": "Проверено",
-    "read_back": "слика које су проверила два читаоца",
     "exact_angle": "Слика нацртана под тачним углом",
-    "drawn_by_code": "Извучено из бројева"
+    "drawn_by_code": "Извучено из бројева",
+    "read_back": "слика које су проверила два модела вештачке интелигенције"
   },
   "ka": {
     "morning": "დილა",
@@ -1998,9 +2000,9 @@
     "times_a_day": "ჯერ დღეში",
     "take": "მიიღეთ",
     "checked": "შემოწმებულია",
-    "read_back": "სურათი, რომელიც ორმა ადამიანმა შეამოწმა",
     "exact_angle": "ზუსტად საჭირო კუთხით დახატული ნახატი",
-    "drawn_by_code": "რიცხვების მიხედვით დახატული"
+    "drawn_by_code": "რიცხვების მიხედვით დახატული",
+    "read_back": "სურათი შეამოწმა ხელოვნური ინტელექტის ორმა მოდელმა"
   },
   "sq": {
     "morning": "Në mëngjes",
@@ -2035,10 +2037,10 @@
     "times_a_day": "herë në ditë",
     "take": "Merr",
     "checked": "Kontrolluar",
-    "read_back": "figura të kontrolluara nga dy lexues",
     "exact_angle": "Figura e vizatuar në këndin e saktë",
     "drawn_by_code": "Vizatuar sipas numrave",
-    "dairy": "Pini qumësht ose hani djathë"
+    "dairy": "Pini qumësht ose hani djathë",
+    "read_back": "figura të kontrolluara nga dy programe të inteligjencës artificiale"
   },
   "uz": {
     "morning": "Ertalab",
@@ -2074,9 +2076,9 @@
     "times_a_day": "kuniga marta",
     "take": "Iching",
     "checked": "Tekshirildi",
-    "read_back": "ta rasmni ikki kishi tekshirdi",
     "exact_angle": "Aynan shu burchakda chizilgan rasm",
-    "drawn_by_code": "Raqamlarga qarab chizilgan"
+    "drawn_by_code": "Raqamlarga qarab chizilgan",
+    "read_back": "rasmni ikkita sun’iy intellekt dasturi tekshirdi"
   },
   "kk": {
     "morning": "Таңертең",
@@ -2111,9 +2113,9 @@
     "times_a_day": "күніне рет",
     "take": "Ішіңіз",
     "checked": "Тексерілді",
-    "read_back": "екі адам тексерген сурет",
     "exact_angle": "Дәл осы бұрышпен салынған сурет",
-    "drawn_by_code": "Сандарға қарап салынған сурет"
+    "drawn_by_code": "Сандарға қарап салынған сурет",
+    "read_back": "суретті екі жасанды интеллект бағдарламасы тексерді"
   },
   "ps": {
     "morning": "سهار",
@@ -2149,9 +2151,9 @@
     "times_a_day": "ځله په ورځ کې",
     "take": "واخلئ",
     "checked": "کتل شوی",
-    "read_back": "انځورونه چې دوو کسانو کتلي دي",
     "exact_angle": "شکل په کره زاویه کې رسم شوی",
-    "drawn_by_code": "له شمېرو څخه رسم شوی"
+    "drawn_by_code": "له شمېرو څخه رسم شوی",
+    "read_back": "انځورونه د مصنوعي ځیرکتیا د دوو پروګرامونو له خوا کتل شوي"
   },
   "az": {
     "morning": "Səhər",
@@ -2187,8 +2189,8 @@
     "times_a_day": "gündə ... dəfə",
     "take": "Qəbul edin",
     "checked": "Yoxlanılıb",
-    "read_back": "şəkil iki nəfər tərəfindən yoxlanıb",
-    "drawn_by_code": "Rəqəmlərə əsasən çəkilib"
+    "drawn_by_code": "Rəqəmlərə əsasən çəkilib",
+    "read_back": "şəkil iki süni intellekt modeli tərəfindən yoxlanılıb"
   },
   "mn": {
     "morning": "Өглөө",
@@ -2223,10 +2225,10 @@
     "times_a_day": "өдөрт ... удаа",
     "take": "Уугаарай",
     "checked": "Шалгасан",
-    "read_back": "хоёр хүн шалгасан зураг",
     "exact_angle": "Яг тэр өнцгөөр зурсан дүрс",
     "drawn_by_code": "Тоонуудын дагуу зурсан",
-    "dairy": "Сүү уух эсвэл бяслаг идэх"
+    "dairy": "Сүү уух эсвэл бяслаг идэх",
+    "read_back": "хиймэл оюуны хоёр загвараар шалгасан зураг"
   },
   "am": {
     "morning": "ጠዋት",
@@ -2262,9 +2264,9 @@
     "times_a_day": "በቀን ጊዜ",
     "take": "ይውሰዱ",
     "checked": "ተፈትሿል",
-    "read_back": "ሥዕሎች በሁለት ሰዎች የተፈተሹ",
     "exact_angle": "በትክክለኛው አንግል የተሳለ ምስል",
-    "drawn_by_code": "ከቁጥሮቹ ተነስቶ የተሳለ"
+    "drawn_by_code": "ከቁጥሮቹ ተነስቶ የተሳለ",
+    "read_back": "በሁለት የሰው ሠራሽ አእምሮ ፕሮግራሞች የተፈተሹ ምስሎች"
   },
   "ti": {
     "morning": "ንግሆ",
@@ -2300,9 +2302,9 @@
     "times_a_day": "ግዜ ኣብ መዓልቲ",
     "take": "ውሰዱ",
     "checked": "ተረጋጊጹ",
-    "read_back": "ስእልታት ብኽልተ ኣንበብቲ ተረጋጊጾም",
     "exact_angle": "ብትኽክለኛ ኩርናዕ ዝተሳእለ ስእሊ",
-    "drawn_by_code": "ብመሰረት ቁጽርታት ዝተሳእለ"
+    "drawn_by_code": "ብመሰረት ቁጽርታት ዝተሳእለ",
+    "read_back": "ብክልተ ናይ ኮምፒዩተር ፕሮግራማት ዝተረጋገጹ ስእልታት"
   },
   "so": {
     "morning": "Subax",
@@ -2337,8 +2339,8 @@
     "times_a_day": "Jeer maalintii",
     "take": "Qaado",
     "checked": "La hubiyey",
-    "read_back": "sawirro ay laba qof hubiyeen",
-    "drawn_by_code": "Laga sawiray tirooyinka"
+    "drawn_by_code": "Laga sawiray tirooyinka",
+    "read_back": "sawirro ay hubiyeen laba barnaamij oo caqli macmal ah"
   },
   "sw": {
     "morning": "Asubuhi",
@@ -2374,9 +2376,9 @@
     "times_a_day": "mara kwa siku",
     "take": "Tumia",
     "checked": "Imekaguliwa",
-    "read_back": "picha zilizokaguliwa na watu wawili",
     "exact_angle": "Picha iliyochorwa kwa pembe sahihi kabisa",
-    "drawn_by_code": "Iliyotolewa kutoka kwenye namba"
+    "drawn_by_code": "Iliyotolewa kutoka kwenye namba",
+    "read_back": "picha zilizokaguliwa na programu mbili za akili bandia"
   },
   "ha": {
     "morning": "Da safe",
@@ -2413,7 +2415,7 @@
     "take": "Ɗauki",
     "checked": "An duba",
     "exact_angle": "Zanen da aka yi a daidai kusurwa",
-    "read_back": "Hotunan da masu karatu biyu suka duba"
+    "read_back": "hotuna da shirye-shiryen kwamfuta biyu masu amfani da AI suka duba"
   },
   "yo": {
     "morning": "Òwúrọ̀",
@@ -2448,9 +2450,9 @@
     "times_a_day": "ìgbà lójúmọ́",
     "take": "Mu",
     "checked": "Ti ṣàyẹ̀wò",
-    "read_back": "àwòrán tí ènìyàn méjì ti ṣàyẹ̀wò",
     "exact_angle": "Àwòrán tí a ya ní igun tó péye",
-    "come_back": "Pada si ile-iwosan ti o ba ni"
+    "come_back": "Pada si ile-iwosan ti o ba ni",
+    "read_back": "àwọn àwòrán tí ètò AI méjì ṣàyẹ̀wò"
   },
   "zu": {
     "morning": "Ekuseni",
@@ -2486,9 +2488,9 @@
     "times_a_day": "izikhathi ngosuku",
     "take": "Thatha",
     "checked": "Kuhloliwe",
-    "read_back": "izithombe ezihlolwe ngabahloli ababili",
     "exact_angle": "Umdwebo odwetshwe nge-engeli efanayo ncamashi",
-    "drawn_by_code": "Umdwebo owenziwe kusetshenziswa izinombolo"
+    "drawn_by_code": "Umdwebo owenziwe kusetshenziswa izinombolo",
+    "read_back": "izithombe ezihlolwe izinhlelo ezimbili zekhompyutha ze-AI"
   },
   "af": {
     "morning": "Oggend",
@@ -2524,9 +2526,9 @@
     "times_a_day": "keer per dag",
     "take": "Neem",
     "checked": "Nagegaan",
-    "read_back": "prente deur twee lesers nagegaan",
     "exact_angle": "Figuur teen die presiese hoek geteken",
-    "drawn_by_code": "Volgens die getalle geteken"
+    "drawn_by_code": "Volgens die getalle geteken",
+    "read_back": "prente wat deur twee KI-programme nagegaan is"
   },
   "uk": {
     "morning": "Вранці",
@@ -2562,9 +2564,9 @@
     "times_a_day": "разів на день",
     "take": "Приймайте",
     "checked": "Перевірено",
-    "read_back": "зображень, перевірених двома людьми",
     "exact_angle": "Фігуру намальовано під точним кутом",
-    "drawn_by_code": "Вибрано з чисел"
+    "drawn_by_code": "Вибрано з чисел",
+    "read_back": "зображень, перевірених двома моделями ШІ"
   },
   "ig": {
     "morning": "Ụtụtụ",
@@ -2601,7 +2603,7 @@
     "exact_angle": "Ihe osise e sere n’akụkụ ziri ezi kpọmkwem",
     "do_not": "Amachibidoro:",
     "come_back": "Laghachi n’ụlọ ọgwụ ma ọ bụrụ na ị nwere",
-    "read_back": "ihe osise mmadụ abụọ gụrụ ma nyochara",
-    "drawn_by_code": "E nwetara ya site n’ọnụọgụgụ"
+    "drawn_by_code": "E nwetara ya site n’ọnụọgụgụ",
+    "read_back": "eserese nke mmemme kọmputa abụọ nwere ọgụgụ isi aka nyochara"
   }
 }

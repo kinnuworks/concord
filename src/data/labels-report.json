@@ -141,10 +141,8 @@
     "offered": true
   },
   "or": {
-    "kept": 35,
-    "dropped": [
-      "read_back"
-    ],
+    "kept": 36,
+    "dropped": [],
     "offered": true
   },
   "ne": {
@@ -259,10 +257,8 @@
     "offered": true
   },
   "fi": {
-    "kept": 35,
-    "dropped": [
-      "read_back"
-    ],
+    "kept": 36,
+    "dropped": [],
     "offered": true
   },
   "hu": {

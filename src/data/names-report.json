@@ -2,19 +2,19 @@
   "source": "RxNorm, U.S. National Library of Medicine: every ingredient of a currently prescribable medicine that carries a WHO ATC code",
   "url": "https://www.nlm.nih.gov/research/umls/rxnorm/",
   "medicines": 1830,
-  "languages": 34,
-  "written": 62220,
-  "matched": 60722,
+  "languages": 43,
+  "written": 78690,
+  "matched": 76757,
   "wikidata": {
-    "names": 18908,
-    "kept": 18053,
-    "used": 14207
+    "names": 22338,
+    "kept": 21355,
+    "used": 17037
   },
-  "readBack": 81128,
+  "readBack": 101028,
   "agreement": {
-    "compared": 17956,
-    "identical": 13729,
-    "close": 16551
+    "compared": 21248,
+    "identical": 16263,
+    "close": 19597
   },
   "perLanguage": {
     "es": {
@@ -203,6 +203,24 @@
       "wikidata": 304,
       "wikidataKept": 283
     },
+    "km": {
+      "written": 1830,
+      "matched": 1758,
+      "wikidata": 6,
+      "wikidataKept": 5
+    },
+    "lo": {
+      "written": 1830,
+      "matched": 1760,
+      "wikidata": 15,
+      "wikidataKept": 9
+    },
+    "my": {
+      "written": 1830,
+      "matched": 1738,
+      "wikidata": 28,
+      "wikidataKept": 22
+    },
     "id": {
       "written": 1830,
       "matched": 1809,
@@ -220,6 +238,42 @@
       "matched": 1828,
       "wikidata": 0,
       "wikidataKept": 0
+    },
+    "el": {
+      "written": 1830,
+      "matched": 1790,
+      "wikidata": 578,
+      "wikidataKept": 559
+    },
+    "he": {
+      "written": 1830,
+      "matched": 1772,
+      "wikidata": 623,
+      "wikidataKept": 599
+    },
+    "hy": {
+      "written": 1830,
+      "matched": 1803,
+      "wikidata": 343,
+      "wikidataKept": 336
+    },
+    "tr": {
+      "written": 1830,
+      "matched": 1800,
+      "wikidata": 782,
+      "wikidataKept": 768
+    },
+    "ro": {
+      "written": 1830,
+      "matched": 1808,
+      "wikidata": 849,
+      "wikidataKept": 809
+    },
+    "da": {
+      "written": 1830,
+      "matched": 1806,
+      "wikidata": 206,
+      "wikidataKept": 195
     }
   },
   "samples": {
@@ -250,7 +304,14 @@
       "as": "মেটফৰ্মিন",
       "ne": "मेटफर्मिन",
       "si": "මෙට්ෆෝමින්",
-      "th": "เมตฟอร์มิน"
+      "th": "เมตฟอร์มิน",
+      "km": "មេតហ្វ័រមីន",
+      "lo": "ເມດຟໍມິນ",
+      "my": "မက်ဖော်မင်",
+      "el": "μετφορμίνη",
+      "he": "מטפורמין",
+      "hy": "Մետֆորմին",
+      "ro": "metformină"
     },
     "amoxicillin": {
       "es": "amoxicilina",
@@ -282,8 +343,16 @@
       "ne": "एमोक्सिसिलिन",
       "si": "ඇමොක්සිසිලින්",
       "th": "อะม็อกซีซิลลิน",
+      "km": "អាម៉ុកស៊ីស៊ីលីន",
+      "lo": "ອຳມອກຊີຊິລລິນ",
+      "my": "အမောက်ဆီဆီလင်",
       "id": "Amoksisilin",
-      "ms": "Amoksisilin"
+      "ms": "Amoksisilin",
+      "el": "αμοξυκιλλίνη",
+      "he": "אמוקסיצילין",
+      "hy": "Ամոքսիցիլին",
+      "tr": "amoksisilin",
+      "ro": "Amoxicilină"
     },
     "ibuprofen": {
       "es": "ibuprofeno",
@@ -311,7 +380,13 @@
       "as": "আইবুপ্ৰ'ফেন",
       "ne": "इबुप्रोफेन",
       "si": "ඉබුප්‍රොෆෙන්",
-      "th": "ไอบูโปรเฟน"
+      "th": "ไอบูโปรเฟน",
+      "km": "អ៊ីប៊ុយប្រូហ្វេន",
+      "lo": "ໄອບູໂພຣເຟນ",
+      "my": "အိုင်ဘူပရိုဖင်",
+      "el": "ιβουπροφαίνη",
+      "he": "איבופרופן",
+      "hy": "Իբուպրոֆեն"
     }
   }
 }

@@ -39,7 +39,7 @@ export const EN = {
   times_a_day: "times a day",
   take: "Take",
   checked: "Checked",
-  read_back: "pictures checked by two readers",
+  read_back: "pictures checked by two AI models",
   exact_angle: "Figure drawn at the exact angle",
   drawn_by_code: "Drawn from the numbers",
 } as const;
